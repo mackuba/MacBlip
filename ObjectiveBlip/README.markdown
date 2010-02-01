@@ -15,6 +15,8 @@ Note: iPhone SDK 3.x is required.
 * add -> existing files -> select everything inside ObjectiveBlip directory
 * add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions)
 * optionally, change BLIP\_USER\_AGENT constant in Constants.h to a more suitable value
+* for MacOSX apps, don't add the files Reachability.* and ASIAuthenticationDialog.* - they're iPhone-only and won't
+compile with Mac version of Cocoa
 
 ## Usage instructions
 
