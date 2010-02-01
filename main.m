@@ -1,14 +1,12 @@
+// -------------------------------------------------------
+// main.m
 //
-//  main.m
-//  MacBlip
-//
-//  Created by Jakub Suder on 1.2.10.
-//  Copyright __MyCompanyName__ 2010. All rights reserved.
-//
+// Copyright (c) 2010 Jakub Suder <jakub.suder@gmail.com>
+// Licensed under GPL v3 license
+// -------------------------------------------------------
 
 #import <MacRuby/MacRuby.h>
 
-int main(int argc, char *argv[])
-{
-    return macruby_main("rb_main.rb", argc, argv);
+int main(int argc, char *argv[]) {
+  return macruby_main("rb_main.rb", argc, argv);
 }
