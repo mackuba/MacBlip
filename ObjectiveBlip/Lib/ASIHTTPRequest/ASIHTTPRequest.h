@@ -2,7 +2,7 @@
 //  ASIHTTPRequest.h
 //
 //  Created by Ben Copsey on 04/10/2007.
-//  Copyright 2007-2009 All-Seeing Interactive. All rights reserved.
+//  Copyright 2007-2010 All-Seeing Interactive. All rights reserved.
 //
 //  A guide to the main features is available at:
 //  http://allseeing-i.com/ASIHTTPRequest
@@ -57,6 +57,9 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	
 	// The url for this operation, should include GET params in the query string where appropriate
 	NSURL *url; 
+	
+	// Will always contain the original url used for making the request (the value of url can change when a request is redirected)
+	NSURL *originalURL;
 	
 	// The delegate, you need to manage setting and talking to your delegate in your subclasses
 	id delegate;
@@ -298,7 +301,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// Incremented every time this request redirects. When it reaches 5, we give up
 	int redirectCount;
 	
-	// When NO, requests will not check the secure certificate is valid (use for self-signed cerficates during development, DO NOT USE IN PRODUCTION) Default is YES
+	// When NO, requests will not check the secure certificate is valid (use for self-signed certificates during development, DO NOT USE IN PRODUCTION) Default is YES
 	BOOL validatesSecureCertificate;
 	
 	// Details on the proxy to use - you could set these yourself, but it's probably best to let ASIHTTPRequest detect the system proxy settings
@@ -313,7 +316,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	
 	// When YES, ASIHTTPRequests will present credentials from the session store for requests to the same server before being asked for them
 	// This avoids an extra round trip for requests after authentication has succeeded, which is much for efficient for authenticated requests with large bodies, or on slower connections
-	// Set to NO to only present credentials when explictly asked for them
+	// Set to NO to only present credentials when explicitly asked for them
 	// This only affects credentials stored in the session cache when useSessionPersistance is YES. Credentials from the keychain are never presented unless the server asks for them
 	// Default is YES
 	BOOL shouldPresentCredentialsBeforeChallenge;
@@ -335,7 +338,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// The number of times this request has retried (when numberOfTimesToRetryOnTimeout > 0)
 	int retryCount;
 	
-	// When YES, requests will keep the connection to the server alive for a while to allow subsequent requests to re-use it for a substatial speed-boost
+	// When YES, requests will keep the connection to the server alive for a while to allow subsequent requests to re-use it for a substantial speed-boost
 	// Persistent connections only work when the server sends a 'Keep-Alive' header
 	// Default is YES
 	BOOL shouldAttemptPersistentConnection;
@@ -359,6 +362,13 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	
 	// This timer checks up on the request every 0.25 seconds, and updates progress
 	NSTimer *statusTimer;
+	
+	// When set to YES, 301 and 302 automatic redirects will use the original method and and body, according to the HTTP 1.1 standard
+	// Default is NO (to follow the behaviour of most browsers)
+	BOOL shouldUseRFC2616RedirectBehaviour;
+	
+	// Used internally to record when a request has finished downloading data
+	BOOL downloadComplete;
 }
 
 #pragma mark init / dealloc
@@ -374,11 +384,15 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 // Add a custom header to the request
 - (void)addRequestHeader:(NSString *)header value:(NSString *)value;
 
+// Called during buildRequestHeaders and after a redirect to create a cookie header from request cookies and the global store
+- (void)applyCookieHeader;
+
 // Populate the request headers dictionary. Called before a request is started, or by a HEAD request that needs to borrow them
 - (void)buildRequestHeaders;
 
 // Used to apply authorization header to a request before it is sent (when shouldPresentCredentialsBeforeChallenge is YES)
 - (void)applyAuthorizationHeader;
+
 
 // Create the post body
 - (void)buildPostBody;
@@ -491,6 +505,14 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 - (void)handleBytesAvailable;
 - (void)handleStreamComplete;
 - (void)handleStreamError;
+
+// Called automatically when a request is started to clean up any persistent connections that have expired
++ (void)expirePersistentConnections;
+
+#pragma mark default time out
+
++ (NSTimeInterval)defaultTimeOutSeconds;
++ (void)setDefaultTimeOutSeconds:(NSTimeInterval)newTimeOutSeconds;
 
 #pragma mark session credentials
 
@@ -628,6 +650,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (assign) int proxyPort;
 
 @property (retain,setter=setURL:) NSURL *url;
+@property (retain) NSURL *originalURL;
 @property (assign) id delegate;
 @property (assign) id queue;
 @property (assign) id uploadProgressDelegate;
@@ -693,4 +716,5 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (assign) int numberOfTimesToRetryOnTimeout;
 @property (assign, readonly) int retryCount;
 @property (assign) BOOL shouldAttemptPersistentConnection;
+@property (assign) BOOL shouldUseRFC2616RedirectBehaviour;
 @end
