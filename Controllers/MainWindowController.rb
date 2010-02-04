@@ -11,6 +11,23 @@ class MainWindowController < NSWindowController
 
   def init
     initWithWindowNibName "MainWindow"
+    self
+  end
+
+  def messages
+    OBMessage.list
+  end
+
+  def refresh
+    @table.reloadData
+  end
+
+  def tableView table, objectValueForTableColumn: column, row: row
+    messages[row].send(column.identifier)
+  end
+
+  def numberOfRowsInTableView table
+    messages.length
   end
 
 end
