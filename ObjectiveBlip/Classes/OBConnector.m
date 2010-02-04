@@ -14,6 +14,8 @@
 #import "OBUtils.h"
 #import "NSString+BSJSONAdditions.h"
 
+static OBConnector *sharedConnector;
+
 @interface OBConnector ()
 - (OBRequest *) requestWithPath: (NSString *) path
                          method: (NSString *) method
@@ -27,6 +29,13 @@
 
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
+
++ (OBConnector *) sharedConnector {
+  if (!sharedConnector) {
+    sharedConnector = [[OBConnector alloc] init];
+  }
+  return sharedConnector;
+}
 
 - (id) init {
   self = [super init];

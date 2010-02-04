@@ -34,6 +34,10 @@ OBConnector and set a login and password:
     OBConnector *blip = [[OBConnector alloc] init];
     blip.account.username = username;
     blip.account.password = password;
+    
+    // or use a single global connector:
+    
+    OBConnector *blip = [OBConnector sharedConnector];
 
 Requests are made by generating a request object (OBRequest) by calling a method on the connector, and then calling
 a `send` or `sendFor` method on the request. Use `sendFor` if you want the request to call a callback method when

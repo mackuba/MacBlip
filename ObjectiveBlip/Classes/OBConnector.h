@@ -30,6 +30,8 @@
 @property (nonatomic, retain) OBAccount *account;
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
 
++ (OBConnector *) sharedConnector;
+
 - (id) init;
 - (id) initWithUsername: (NSString *) username password: (NSString *) password;
 
