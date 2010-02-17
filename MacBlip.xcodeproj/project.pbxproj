@@ -44,7 +44,6 @@
 
 /* Begin PBXBuildFile section */
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
-		4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE3BE130D8651D900ECA448 /* MacRuby.framework */; };
 		5821058B11178FB00025DAF4 /* OBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821055E11178FB00025DAF4 /* OBAccount.m */; };
 		5821058C11178FB00025DAF4 /* OBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056011178FB00025DAF4 /* OBConnector.m */; };
 		5821058D11178FB00025DAF4 /* OBDashboardMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056211178FB00025DAF4 /* OBDashboardMonitor.m */; };
@@ -69,6 +68,11 @@
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
+		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
+		5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFA51129C9530029B4D9 /* SDKVO.m */; };
+		5897EFB11129C9530029B4D9 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFAA1129C9530029B4D9 /* SDListView.m */; };
+		5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFAD1129C9530029B4D9 /* SDListViewItem.m */; };
+		5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EFBC1129C9E90029B4D9 /* Quartz.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -96,7 +100,6 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4DE339F60D74FCDD00ADB6EE /* rb_main.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
-		4DE3BE130D8651D900ECA448 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = /Library/Frameworks/MacRuby.framework; sourceTree = "<absolute>"; };
 		5821055D11178FB00025DAF4 /* OBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAccount.h; sourceTree = "<group>"; };
 		5821055E11178FB00025DAF4 /* OBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAccount.m; sourceTree = "<group>"; };
 		5821055F11178FB00025DAF4 /* OBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBConnector.h; sourceTree = "<group>"; };
@@ -142,6 +145,16 @@
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		585A92AF111B7060003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5897EF461129C3750029B4D9 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
+		5897EFA41129C9530029B4D9 /* SDKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKVO.h; sourceTree = "<group>"; };
+		5897EFA51129C9530029B4D9 /* SDKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKVO.m; sourceTree = "<group>"; };
+		5897EFA81129C9530029B4D9 /* SDListView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDListView+Private.h"; sourceTree = "<group>"; };
+		5897EFA91129C9530029B4D9 /* SDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListView.h; sourceTree = "<group>"; };
+		5897EFAA1129C9530029B4D9 /* SDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListView.m; sourceTree = "<group>"; };
+		5897EFAB1129C9530029B4D9 /* SDListViewItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDListViewItem+Private.h"; sourceTree = "<group>"; };
+		5897EFAC1129C9530029B4D9 /* SDListViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListViewItem.h; sourceTree = "<group>"; };
+		5897EFAD1129C9530029B4D9 /* SDListViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListViewItem.m; sourceTree = "<group>"; };
+		5897EFBC1129C9E90029B4D9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,9 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				4DE3BE140D8651D900ECA448 /* MacRuby.framework in Frameworks */,
 				582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */,
 				582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */,
+				5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */,
+				5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,10 +178,11 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DE3BE130D8651D900ECA448 /* MacRuby.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				582105BA111793B60025DAF4 /* libz.1.2.3.dylib */,
 				582105C0111793C20025DAF4 /* SystemConfiguration.framework */,
+				5897EF461129C3750029B4D9 /* MacRuby.framework */,
+				5897EFBC1129C9E90029B4D9 /* Quartz.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -203,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				585A923A111B6708003ABD05 /* Controllers */,
+				5897EFA11129C93C0029B4D9 /* Lib */,
 				5821055B11178F990025DAF4 /* ObjectiveBlip */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -337,6 +353,37 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5897EFA11129C93C0029B4D9 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				5897EFA21129C9530029B4D9 /* SDKVO */,
+				5897EFA61129C9530029B4D9 /* SDListView */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		5897EFA21129C9530029B4D9 /* SDKVO */ = {
+			isa = PBXGroup;
+			children = (
+				5897EFA41129C9530029B4D9 /* SDKVO.h */,
+				5897EFA51129C9530029B4D9 /* SDKVO.m */,
+			);
+			path = SDKVO;
+			sourceTree = "<group>";
+		};
+		5897EFA61129C9530029B4D9 /* SDListView */ = {
+			isa = PBXGroup;
+			children = (
+				5897EFA81129C9530029B4D9 /* SDListView+Private.h */,
+				5897EFA91129C9530029B4D9 /* SDListView.h */,
+				5897EFAA1129C9530029B4D9 /* SDListView.m */,
+				5897EFAB1129C9530029B4D9 /* SDListViewItem+Private.h */,
+				5897EFAC1129C9530029B4D9 /* SDListViewItem.h */,
+				5897EFAD1129C9530029B4D9 /* SDListViewItem.m */,
+			);
+			path = SDListView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -461,6 +508,9 @@
 				5821059C11178FB00025DAF4 /* NSDictionary+BSJSONAdditions.m in Sources */,
 				5821059D11178FB00025DAF4 /* NSScanner+BSJSONAdditions.m in Sources */,
 				5821059E11178FB00025DAF4 /* NSString+BSJSONAdditions.m in Sources */,
+				5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */,
+				5897EFB11129C9530029B4D9 /* SDListView.m in Sources */,
+				5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
