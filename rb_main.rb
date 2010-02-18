@@ -14,6 +14,9 @@ dir_path = NSBundle.mainBundle.resourcePath.fileSystemRepresentation
 Dir.glob(File.join(dir_path, '*.{rb,rbo}')).map { |x| File.basename(x, File.extname(x)) }.uniq.each do |path|
   require(path) unless path == main
 end
+Dir.glob(File.join(dir_path, '*.bridgesupport')).uniq.each do |path|
+  load_bridge_support_file(path)
+end
 
 # Starting the Cocoa main loop
 NSApplicationMain(0, nil)

@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<string_constant name='BLIP_API_VERSION' nsstring='true' value='0.02'/>
+<string_constant name='BLIP_ERROR_DOMAIN' nsstring='true' value='BlipErrorDomain'/>
+<string_constant name='BLIP_USER_AGENT' nsstring='true' value='ObjectiveBlip/0.1'/>
+<enum name='BLIP_ERROR_MR_OPONKA' value='1001'/>
+</signatures>

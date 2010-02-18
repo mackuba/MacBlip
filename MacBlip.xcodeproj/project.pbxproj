@@ -77,6 +77,16 @@
 		5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F031112C766F0029B4D9 /* MessageCell.xib */; };
 		5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897F162112DCB180029B4D9 /* SDKeychain.m */; };
 		5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897F16A112DCB480029B4D9 /* Security.framework */; };
+		5897F1C2112DDD5D0029B4D9 /* Constants.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */; };
+		5897F1C3112DDD5D0029B4D9 /* OBAccount.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */; };
+		5897F1C4112DDD5D0029B4D9 /* OBConnector.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */; };
+		5897F1C5112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */; };
+		5897F1C6112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */; };
+		5897F1C7112DDD5D0029B4D9 /* OBMessage.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */; };
+		5897F1C8112DDD5D0029B4D9 /* OBModel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BD112DDD5D0029B4D9 /* OBModel.bridgesupport */; };
+		5897F1C9112DDD5D0029B4D9 /* OBModelManager.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BE112DDD5D0029B4D9 /* OBModelManager.bridgesupport */; };
+		5897F1CA112DDD5D0029B4D9 /* OBRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */; };
+		5897F1CB112DDD5D0029B4D9 /* OBUtils.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1C0112DDD5D0029B4D9 /* OBUtils.bridgesupport */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -164,6 +174,16 @@
 		5897F161112DCB180029B4D9 /* SDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKeychain.h; sourceTree = "<group>"; };
 		5897F162112DCB180029B4D9 /* SDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeychain.m; sourceTree = "<group>"; };
 		5897F16A112DCB480029B4D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Constants.bridgesupport; sourceTree = "<group>"; };
+		5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAccount.bridgesupport; sourceTree = "<group>"; };
+		5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBConnector.bridgesupport; sourceTree = "<group>"; };
+		5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBDashboardMonitor.bridgesupport; sourceTree = "<group>"; };
+		5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ObjectiveBlip.bridgesupport; sourceTree = "<group>"; };
+		5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBMessage.bridgesupport; sourceTree = "<group>"; };
+		5897F1BD112DDD5D0029B4D9 /* OBModel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBModel.bridgesupport; sourceTree = "<group>"; };
+		5897F1BE112DDD5D0029B4D9 /* OBModelManager.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBModelManager.bridgesupport; sourceTree = "<group>"; };
+		5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBRequest.bridgesupport; sourceTree = "<group>"; };
+		5897F1C0112DDD5D0029B4D9 /* OBUtils.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUtils.bridgesupport; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -272,6 +292,7 @@
 		5821055B11178F990025DAF4 /* ObjectiveBlip */ = {
 			isa = PBXGroup;
 			children = (
+				5897F1B6112DDD5D0029B4D9 /* Bridges */,
 				5821055C11178FB00025DAF4 /* Classes */,
 				5821056D11178FB00025DAF4 /* Constants.h */,
 				5821056E11178FB00025DAF4 /* Lib */,
@@ -407,6 +428,23 @@
 			path = SDKeychain;
 			sourceTree = "<group>";
 		};
+		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */,
+				5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */,
+				5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */,
+				5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */,
+				5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */,
+				5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */,
+				5897F1BD112DDD5D0029B4D9 /* OBModel.bridgesupport */,
+				5897F1BE112DDD5D0029B4D9 /* OBModelManager.bridgesupport */,
+				5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */,
+				5897F1C0112DDD5D0029B4D9 /* OBUtils.bridgesupport */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -462,6 +500,16 @@
 				585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */,
 				5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */,
 				5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */,
+				5897F1C2112DDD5D0029B4D9 /* Constants.bridgesupport in Resources */,
+				5897F1C3112DDD5D0029B4D9 /* OBAccount.bridgesupport in Resources */,
+				5897F1C4112DDD5D0029B4D9 /* OBConnector.bridgesupport in Resources */,
+				5897F1C5112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport in Resources */,
+				5897F1C6112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport in Resources */,
+				5897F1C7112DDD5D0029B4D9 /* OBMessage.bridgesupport in Resources */,
+				5897F1C8112DDD5D0029B4D9 /* OBModel.bridgesupport in Resources */,
+				5897F1C9112DDD5D0029B4D9 /* OBModelManager.bridgesupport in Resources */,
+				5897F1CA112DDD5D0029B4D9 /* OBRequest.bridgesupport in Resources */,
+				5897F1CB112DDD5D0029B4D9 /* OBUtils.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

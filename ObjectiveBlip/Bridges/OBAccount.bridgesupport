@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<class name='OBAccount'>
+<method selector='hasCredentials'>
+<retval type='B'/>
+</method>
+<method selector='isLoggedIn'>
+<retval type='B'/>
+</method>
+<method selector='setLoggedIn:'>
+<arg type='B' index='0'/>
+</method>
+</class>
+</signatures>
