@@ -73,6 +73,8 @@
 		5897EFB11129C9530029B4D9 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFAA1129C9530029B4D9 /* SDListView.m */; };
 		5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFAD1129C9530029B4D9 /* SDListViewItem.m */; };
 		5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EFBC1129C9E90029B4D9 /* Quartz.framework */; };
+		5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F02F112C76650029B4D9 /* MessageCellController.rb */; };
+		5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F031112C766F0029B4D9 /* MessageCell.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -155,6 +157,8 @@
 		5897EFAC1129C9530029B4D9 /* SDListViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDListViewItem.h; sourceTree = "<group>"; };
 		5897EFAD1129C9530029B4D9 /* SDListViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDListViewItem.m; sourceTree = "<group>"; };
 		5897EFBC1129C9E90029B4D9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		5897F02F112C76650029B4D9 /* MessageCellController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCellController.rb; sourceTree = "<group>"; };
+		5897F032112C766F0029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MessageCell.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -339,6 +343,7 @@
 		585A923A111B6708003ABD05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5897F02F112C76650029B4D9 /* MessageCellController.rb */,
 				585A923D111B674D003ABD05 /* MainWindowController.rb */,
 			);
 			path = Controllers;
@@ -347,6 +352,7 @@
 		585A924F111B6831003ABD05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5897F031112C766F0029B4D9 /* MessageCell.xib */,
 				585A92AE111B7060003ABD05 /* MainMenu.xib */,
 				585A92AC111B7011003ABD05 /* MainWindow.xib */,
 			);
@@ -437,6 +443,8 @@
 				585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */,
 				585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */,
 				585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */,
+				5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */,
+				5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +547,14 @@
 				585A92AF111B7060003ABD05 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		5897F031112C766F0029B4D9 /* MessageCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5897F032112C766F0029B4D9 /* English */,
+			);
+			name = MessageCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -7,27 +7,24 @@
 
 class MainWindowController < NSWindowController
 
-  attr_accessor :table
+  attr_accessor :listView, :spinner
 
   def init
     initWithWindowNibName "MainWindow"
     self
   end
 
-  def messages
-    OBMessage.list
+  def windowDidLoad
+    window.setContentBorderThickness 32, forEdge: NSMinYEdge
+    listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
   end
 
-  def refresh
-    @table.reloadData
+  def newMessagePressed(sender)
+    puts "new message ..."
   end
 
-  def tableView table, objectValueForTableColumn: column, row: row
-    messages[row].send(column.identifier)
-  end
-
-  def numberOfRowsInTableView table
-    messages.length
+  def refreshPressed(sender)
+    puts "refresh..."
   end
 
 end

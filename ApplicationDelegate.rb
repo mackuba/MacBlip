@@ -31,14 +31,7 @@ class ApplicationDelegate
   end
 
   def authenticationSuccessful
-    monitor = OBConnector.sharedConnector.dashboardMonitor
-    center = NSNotificationCenter.defaultCenter
-    center.addObserver(self, selector: "dashboardUpdated", name: "OBDashboardUpdatedNotification", object: monitor)
-    monitor.startMonitoring
-  end
-
-  def dashboardUpdated
-    @mainWindow.refresh
+    OBConnector.sharedConnector.dashboardMonitor.startMonitoring
   end
 
   def requestFailedWithError(error)
