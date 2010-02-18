@@ -4,16 +4,16 @@ MacBlip is a MacOSX client for [Blip.pl](http://blip.pl), Polish microblogging s
 
 The ObjectiveBlip directory contains the backend code that handles the connection to Blip API. It's a separate
 subproject, available at [http://github.com/psionides/ObjectiveBlip](http://github.com/psionides/ObjectiveBlip), and you
-can use it to create your own Blip clients in ObjectiveC/Cocoa if you want.
+can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's MIT-licensed).
 
 ## Features
 
-It compiles. And starts. :)
+You can log in and download the messages on the dashboard, and that's pretty much it.
 
 Currently it requires [MacRuby](http://macruby.org) 0.5 or later installed separately in the system.
-And probably Snow Leopard too.
+Oh, and Snow Leopard too.
 
 ## License
 
 Copyright by Jakub Suder <jakub.suder at gmail.com>. Licensed under GPL v3.
-Includes open source libraries BSJSONAdditions by Blake Seely and ASIHTTPRequest by Ben Copsey.
+Includes open source libraries by Blake Seely (BSJSONAdditions), Ben Copsey (ASIHTTPRequest), and Steven Degutis.
