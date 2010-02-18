@@ -7,7 +7,7 @@
 
 class MainWindowController < NSWindowController
 
-  attr_accessor :listView, :spinner, :loadingView, :newMessageButton, :refreshButton
+  attr_accessor :listView, :spinner, :loadingView, :newMessageButton, :dashboardButton
 
   def init
     initWithWindowNibName "MainWindow"
@@ -29,7 +29,7 @@ class MainWindowController < NSWindowController
   def dashboardUpdated
     @loadingView.mbHide
     @newMessageButton.mbEnable
-    @refreshButton.mbEnable
+    @dashboardButton.mbEnable
     @spinner.stopAnimation(self)
   end
 
@@ -37,8 +37,8 @@ class MainWindowController < NSWindowController
     puts "new message ..."
   end
 
-  def refreshPressed(sender)
-    puts "refresh..."
+  def dashboardPressed(sender)
+    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString("http://blip.pl/dashboard"))
   end
 
   def displayLoadingError(error)

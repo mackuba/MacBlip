@@ -72,7 +72,7 @@
 								<int key="NSButtonFlags2">163</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSAddTemplate</string>
+									<string key="NSResourceName">new_message</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -96,7 +96,7 @@
 								<int key="NSButtonFlags2">163</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSRefreshTemplate</string>
+									<string key="NSResourceName">home</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -245,14 +245,6 @@
 					<int key="connectionID">114</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">refreshPressed:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="898900580"/>
-					</object>
-					<int key="connectionID">115</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">prototypeItem</string>
 						<reference key="source" ref="1015876437"/>
@@ -286,11 +278,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">refreshButton</string>
+						<string key="label">dashboardButton</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="898900580"/>
 					</object>
-					<int key="connectionID">125</int>
+					<int key="connectionID">126</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">dashboardPressed:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="898900580"/>
+					</object>
+					<int key="connectionID">127</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -490,7 +490,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">125</int>
+			<int key="maxID">127</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -502,8 +502,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>dashboardPressed:</string>
 							<string>newMessagePressed:</string>
-							<string>refreshPressed:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -515,10 +515,10 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>dashboardButton</string>
 							<string>listView</string>
 							<string>loadingView</string>
 							<string>newMessageButton</string>
-							<string>refreshButton</string>
 							<string>spinner</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">

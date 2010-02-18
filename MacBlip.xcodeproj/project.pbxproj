@@ -92,6 +92,8 @@
 		5897F1D3112DDE750029B4D9 /* blip80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1D2112DDE750029B4D9 /* blip80.png */; };
 		5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1D4112DDE850029B4D9 /* LoginWindow.xib */; };
 		5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1FB112DE9060029B4D9 /* macblip_icon.icns */; };
+		5897F20C112DEBEC0029B4D9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20B112DEBEC0029B4D9 /* home.png */; };
+		5897F20E112DED5D0029B4D9 /* new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20D112DED5D0029B4D9 /* new_message.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -194,6 +196,8 @@
 		5897F1D2112DDE750029B4D9 /* blip80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blip80.png; sourceTree = "<group>"; };
 		5897F1D5112DDE850029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/LoginWindow.xib; sourceTree = "<group>"; };
 		5897F1FB112DE9060029B4D9 /* macblip_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = macblip_icon.icns; sourceTree = "<group>"; };
+		5897F20B112DEBEC0029B4D9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		5897F20D112DED5D0029B4D9 /* new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_message.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -462,6 +466,8 @@
 		5897F1D1112DDE660029B4D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5897F20D112DED5D0029B4D9 /* new_message.png */,
+				5897F20B112DEBEC0029B4D9 /* home.png */,
 				5897F1FB112DE9060029B4D9 /* macblip_icon.icns */,
 				5897F1D2112DDE750029B4D9 /* blip80.png */,
 			);
@@ -538,6 +544,8 @@
 				5897F1D3112DDE750029B4D9 /* blip80.png in Resources */,
 				5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */,
 				5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */,
+				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
+				5897F20E112DED5D0029B4D9 /* new_message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
