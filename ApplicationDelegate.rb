@@ -7,18 +7,34 @@
 
 class ApplicationDelegate
 
-  def awakeFromNib
-    @mainWindow = MainWindowController.new
-    @mainWindow.showWindow(self)
+  USERNAME_KEY = "account.username"
 
-    blip = OBConnector.sharedConnector
-    blip.account.username = "..."
-    blip.account.password = "..."
-    blip.authenticateRequest.sendFor(self)
+  # initialization
+
+  def awakeFromNib
+    @blip = OBConnector.sharedConnector
+    loadLoginAndPassword
+
+    if @blip.account.hasCredentials
+      createMainWindow
+      restoreMainWindow
+      @blip.authenticateRequest.sendFor(self)
+    else
+      @loginDialog = LoginWindowController.new
+      @loginDialog.showWindow(self)
+      mbObserve(@loginDialog, :authenticationSuccessful, :firstLoginSuccessful)
+    end
+  end
+
+  def createMainWindow
+    @mainWindow ||= MainWindowController.new
   end
 
   def restoreMainWindow
-    @mainWindow.showWindow(self) unless @mainWindow.window.isVisible
+    if @mainWindow && !@mainWindow.window.visible?
+      @mainWindow.showWindow(self)
+      # TODO @mainWindow.makeKeyWindow
+    end
   end
 
   def applicationWillBecomeActive(notification)
@@ -30,12 +46,39 @@ class ApplicationDelegate
     false
   end
 
+
+  # settings
+
+  def loadLoginAndPassword
+    user = @blip.account
+    user.username = NSUserDefaults.standardUserDefaults.objectForKey(USERNAME_KEY)
+    user.password = SDKeychain.securePasswordForIdentifier(user.username) if user.username
+  end
+
+  def saveLoginAndPassword
+    SDKeychain.setSecurePassword(@blip.account.password, forIdentifier: @blip.account.username)
+    NSUserDefaults.standardUserDefaults.setObject(@blip.account.username, forKey: USERNAME_KEY)
+  end
+
+
+  # authentication
+
+  def firstLoginSuccessful
+    mbStopObserving(@loginDialog, :authenticationSuccessful)
+    @loginDialog.close
+    saveLoginAndPassword
+    authenticationSuccessful
+  end
+
   def authenticationSuccessful
-    OBConnector.sharedConnector.dashboardMonitor.startMonitoring
+    createMainWindow
+    restoreMainWindow
+    @blip.dashboardMonitor.startMonitoring
   end
 
   def requestFailedWithError(error)
-    p error.localizedDescription
+    # TODO: handle timeouts (retry)
+    @mainWindow.displayLoadingError(error)
   end
 
 end

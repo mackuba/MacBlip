@@ -7,7 +7,7 @@
 
 class MainWindowController < NSWindowController
 
-  attr_accessor :listView, :spinner
+  attr_accessor :listView, :spinner, :loadingView, :newMessageButton, :refreshButton
 
   def init
     initWithWindowNibName "MainWindow"
@@ -15,8 +15,22 @@ class MainWindowController < NSWindowController
   end
 
   def windowDidLoad
+    @blip = OBConnector.sharedConnector
+    mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, :dashboardUpdated)
     window.setContentBorderThickness 32, forEdge: NSMinYEdge
-    listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
+    @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
+    @spinner.startAnimation(self)
+  end
+
+  def dashboardUpdating
+    @spinner.startAnimation(self)
+  end
+
+  def dashboardUpdated
+    @loadingView.mbHide
+    @newMessageButton.mbEnable
+    @refreshButton.mbEnable
+    @spinner.stopAnimation(self)
   end
 
   def newMessagePressed(sender)
@@ -25,6 +39,10 @@ class MainWindowController < NSWindowController
 
   def refreshPressed(sender)
     puts "refresh..."
+  end
+
+  def displayLoadingError(error)
+    puts "error: #{error}"
   end
 
 end
