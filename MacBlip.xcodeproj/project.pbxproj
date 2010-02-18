@@ -75,6 +75,8 @@
 		5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EFBC1129C9E90029B4D9 /* Quartz.framework */; };
 		5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F02F112C76650029B4D9 /* MessageCellController.rb */; };
 		5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F031112C766F0029B4D9 /* MessageCell.xib */; };
+		5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897F162112DCB180029B4D9 /* SDKeychain.m */; };
+		5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897F16A112DCB480029B4D9 /* Security.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -159,6 +161,9 @@
 		5897EFBC1129C9E90029B4D9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		5897F02F112C76650029B4D9 /* MessageCellController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCellController.rb; sourceTree = "<group>"; };
 		5897F032112C766F0029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MessageCell.xib; sourceTree = "<group>"; };
+		5897F161112DCB180029B4D9 /* SDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKeychain.h; sourceTree = "<group>"; };
+		5897F162112DCB180029B4D9 /* SDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeychain.m; sourceTree = "<group>"; };
+		5897F16A112DCB480029B4D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,6 +178,7 @@
 				582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */,
 				5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */,
 				5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */,
+				5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +193,7 @@
 				582105C0111793C20025DAF4 /* SystemConfiguration.framework */,
 				5897EF461129C3750029B4D9 /* MacRuby.framework */,
 				5897EFBC1129C9E90029B4D9 /* Quartz.framework */,
+				5897F16A112DCB480029B4D9 /* Security.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -362,6 +369,7 @@
 		5897EFA11129C93C0029B4D9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
 				5897EFA61129C9530029B4D9 /* SDListView */,
 			);
@@ -388,6 +396,15 @@
 				5897EFAD1129C9530029B4D9 /* SDListViewItem.m */,
 			);
 			path = SDListView;
+			sourceTree = "<group>";
+		};
+		5897F15F112DCB180029B4D9 /* SDKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				5897F161112DCB180029B4D9 /* SDKeychain.h */,
+				5897F162112DCB180029B4D9 /* SDKeychain.m */,
+			);
+			path = SDKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -519,6 +536,7 @@
 				5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */,
 				5897EFB11129C9530029B4D9 /* SDListView.m in Sources */,
 				5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */,
+				5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
