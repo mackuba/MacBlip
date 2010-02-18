@@ -19,4 +19,8 @@
   return self;
 }
 
+- (BOOL) hasCredentials {
+  return username && password && (username.length > 0) && (password.length > 0);
+}
+
 @end

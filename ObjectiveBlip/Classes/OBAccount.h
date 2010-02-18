@@ -13,8 +13,10 @@
   NSString *password;
 }
 
-@property (nonatomic) BOOL loggedIn;
+@property (nonatomic, getter=isLoggedIn) BOOL loggedIn;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *password;
+
+- (BOOL) hasCredentials;
 
 @end
