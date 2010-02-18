@@ -91,7 +91,11 @@ OnDeallocRelease(properties);
 }
 
 + (void) appendObjectsToList: (NSArray *) objects {
-  [[self list] addObjectsFromArray: objects];
+  NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(0, objects.count)];
+  [self willChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+  [[self list] insertObjects: objects atIndexes: indexes];
+  [self didChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+
   NSMutableDictionary *identityMap = [self identityMap];
   for (id object in objects) {
     [identityMap setObject: object forKey: [object valueForKey: RECORD_ID]];
