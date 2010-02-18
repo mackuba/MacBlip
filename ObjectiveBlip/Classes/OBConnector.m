@@ -102,7 +102,7 @@ static OBConnector *sharedConnector;
 #pragma mark Response handling
 
 - (void) handleFinishedRequest: (id) request {
-  BOOL html = [[[request responseHeaders] objectForKey: @"Content-Type"] isEqual: @"text/html; charset=utf-8"];
+  BOOL html = [[[request responseHeaders] objectForKey: @"Content-Type"] hasPrefix: @"text/html"];
   NSLog(@"finished request to %@ (text = %@)", [request url], html ? @"<...html...>" : [request responseString]);
   [[request retain] autorelease];
   [currentRequests removeObject: request];
@@ -110,8 +110,14 @@ static OBConnector *sharedConnector;
 
 - (void) authenticationSuccessful: (id) request {
   [self handleFinishedRequest: request];
-  account.loggedIn = YES;
-  [[request target] authenticationSuccessful];
+  NSRange errorFound = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
+  if (errorFound.location == NSNotFound) {
+    account.loggedIn = YES;
+    [[request target] authenticationSuccessful];
+  } else {
+    NSError *error = [NSError errorWithDomain: BLIP_ERROR_DOMAIN code: BLIP_ERROR_MR_OPONKA userInfo: nil];
+    [[request target] requestFailedWithError: error];
+  }
 }
 
 - (void) dashboardUpdated: (id) request {
