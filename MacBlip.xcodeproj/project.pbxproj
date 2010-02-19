@@ -64,6 +64,7 @@
 		5821059E11178FB00025DAF4 /* NSString+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821058911178FB00025DAF4 /* NSString+BSJSONAdditions.m */; };
 		582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105BA111793B60025DAF4 /* libz.1.2.3.dylib */; };
 		582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105C0111793C20025DAF4 /* SystemConfiguration.framework */; };
+		58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
@@ -162,6 +163,7 @@
 		5821058A11178FB00025DAF4 /* ObjectiveBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveBlip.h; sourceTree = "<group>"; };
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = HumanReadableDateFormatter.rb; path = Models/HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				585A923A111B6708003ABD05 /* Controllers */,
 				5897EFA11129C93C0029B4D9 /* Lib */,
+				58341F9F112F0CFD008938A9 /* Models */,
 				5821055B11178F990025DAF4 /* ObjectiveBlip */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -382,6 +385,14 @@
 				5821058911178FB00025DAF4 /* NSString+BSJSONAdditions.m */,
 			);
 			path = BSJSONAdditions;
+			sourceTree = "<group>";
+		};
+		58341F9F112F0CFD008938A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		585A923A111B6708003ABD05 /* Controllers */ = {
@@ -546,6 +557,7 @@
 				5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */,
 				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
 				5897F20E112DED5D0029B4D9 /* new_message.png in Resources */,
+				58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
