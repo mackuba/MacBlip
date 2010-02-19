@@ -24,5 +24,6 @@
 - (id) initWithConnector: (OBConnector *) obConnector;
 - (void) startMonitoring;
 - (void) stopMonitoring;
+- (void) forceUpdate;
 
 @end

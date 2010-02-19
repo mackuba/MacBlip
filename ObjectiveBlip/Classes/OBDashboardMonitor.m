@@ -36,12 +36,16 @@
                                                 userInfo: nil
                                                  repeats: YES];
   [monitorTimer retain];
-  [self dashboardTimerFired: nil];
+  [self forceUpdate];
 }
 
 - (void) stopMonitoring {
   [monitorTimer invalidate];
   monitorTimer = nil;
+}
+
+- (void) forceUpdate {
+  [self dashboardTimerFired: nil];
 }
 
 - (void) dashboardTimerFired: (NSTimer *) timer {
