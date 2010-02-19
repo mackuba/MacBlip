@@ -7,7 +7,7 @@
 
 class MessageCellController < SDListViewItem
 
-  attr_accessor :dateLabel
+  attr_accessor :dateLabel, :textView
 
   def self.dateFormatter
     @dateFormatter ||= HumanReadableDateFormatter.new
@@ -16,6 +16,13 @@ class MessageCellController < SDListViewItem
   def loadView
     super
     dateLabel.formatter = self.class.dateFormatter
+
+    # pull text view out of its scroll view (we can't do that in IB, Bad Things happen then)
+    scrollView = textView.enclosingScrollView
+    frame = scrollView.frame
+    scrollView.removeFromSuperview
+    textView.frame = frame
+    self.view.addSubview(textView)
   end
 
   def heightForGivenWidth(width)
