@@ -7,7 +7,7 @@
 
 class MainWindowController < NSWindowController
 
-  attr_accessor :listView, :spinner, :loadingView, :newMessageButton, :dashboardButton
+  attr_accessor :listView, :scrollView, :spinner, :loadingView, :newMessageButton, :dashboardButton
 
   def init
     initWithWindowNibName "MainWindow"
@@ -16,7 +16,7 @@ class MainWindowController < NSWindowController
 
   def windowDidLoad
     @blip = OBConnector.sharedConnector
-    mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, :dashboardUpdated)
+    mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, 'dashboardUpdated:')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
     window.setContentBorderThickness 32, forEdge: NSMinYEdge
@@ -30,7 +30,15 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
-  def dashboardUpdated
+  def scrollToTop
+    scrollView.verticalScroller.floatValue = 0
+    scrollView.contentView.scrollToPoint(NSZeroPoint)
+  end
+
+  def dashboardUpdated(notification)
+    messages = notification.userInfo["messages"]
+    scrollToTop if messages && messages.count > 0
+
     @loadingView.mbHide
     @newMessageButton.mbEnable
     @dashboardButton.mbEnable

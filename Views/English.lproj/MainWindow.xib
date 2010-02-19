@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -294,6 +294,14 @@
 					</object>
 					<int key="connectionID">127</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">scrollView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1036750389"/>
+					</object>
+					<int key="connectionID">130</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -496,7 +504,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">127</int>
+			<int key="maxID">130</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -525,10 +533,12 @@
 							<string>listView</string>
 							<string>loadingView</string>
 							<string>newMessageButton</string>
+							<string>scrollView</string>
 							<string>spinner</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
