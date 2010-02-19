@@ -18,7 +18,10 @@ class MainWindowController < NSWindowController
     @blip = OBConnector.sharedConnector
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, :dashboardUpdated)
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
+
     window.setContentBorderThickness 32, forEdge: NSMinYEdge
+    window.movableByWindowBackground = true
+
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
     @spinner.startAnimation(self)
   end
