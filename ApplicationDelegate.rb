@@ -82,4 +82,11 @@ class ApplicationDelegate
     @mainWindow.displayLoadingError(error)
   end
 
+
+  # menu actions
+
+  def forceDashboardUpdate(sender)
+    @blip.dashboardMonitor.forceUpdate if @blip.account.loggedIn?
+  end
+
 end
