@@ -1,6 +1,10 @@
 #!/bin/bash
 DIR=`dirname $0`
-FILES="$DIR/Classes/*.h $DIR/*.h"
+if [ -n "$1" ]; then
+  FILES="$1"
+else
+  FILES="$DIR/Classes/*.h $DIR/*.h"
+fi
 INCLUDES="-I$DIR -I$DIR/Classes -I$DIR/Lib/ASIHTTPRequest"
 
 mkdir -p $DIR/Bridges
