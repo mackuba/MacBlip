@@ -11,11 +11,11 @@
 
 @implementation OBMessage
 
-@synthesize username, userPath, body;
-OnDeallocRelease(username, userPath, body);
+@synthesize username, userPath, body, date, createdAt;
+OnDeallocRelease(username, userPath, body, date, createdAt);
 
 - (id) init {
-  return [super initWithProperties: OBArray(@"body", @"username", @"userPath")];
+  return [super initWithProperties: OBArray(@"body", @"username", @"userPath", @"date", @"createdAt")];
 }
 
 - (void) setUserPath: (NSString *) path {
@@ -23,6 +23,23 @@ OnDeallocRelease(username, userPath, body);
   [username release];
   userPath = [path copy];
   username = [[[path componentsSeparatedByString: @"/"] lastObject] copy];
+}
+
++ (NSDateFormatter *) timeZoneLessDateFormatter {
+  static NSDateFormatter *formatter = nil;
+  if (!formatter) {
+    formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName: @"Europe/Warsaw"];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+  }
+  return formatter;
+}
+
+- (void) setCreatedAt: (NSString *) created {
+  [createdAt release];
+  [date release];
+  createdAt = [created copy];
+  date = [[[[self class] timeZoneLessDateFormatter] dateFromString: createdAt] retain];
 }
 
 @end

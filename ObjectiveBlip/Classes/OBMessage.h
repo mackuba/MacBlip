@@ -11,11 +11,16 @@
 @interface OBMessage : OBModel {
   NSString *body;
   NSString *username;
+  NSDate *date;
+
   NSString *userPath;
+  NSString *createdAt;
 }
 
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *userPath;
+@property (nonatomic, copy) NSDate *date;
+@property (nonatomic, copy) NSString *createdAt;
 
 @end
