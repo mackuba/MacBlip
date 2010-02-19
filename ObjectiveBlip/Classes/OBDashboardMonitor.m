@@ -63,7 +63,7 @@
 }
 
 - (void) requestFailedWithError: (NSError *) error {
-  // ignore
+  isSendingDashboardRequest = NO;
 }
 
 - (void) dealloc {
