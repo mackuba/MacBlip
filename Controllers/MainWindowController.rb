@@ -17,12 +17,13 @@ class MainWindowController < NSWindowController
   def windowDidLoad
     @blip = OBConnector.sharedConnector
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, :dashboardUpdated)
+    mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
     window.setContentBorderThickness 32, forEdge: NSMinYEdge
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
     @spinner.startAnimation(self)
   end
 
-  def dashboardUpdating
+  def dashboardWillUpdate
     @spinner.startAnimation(self)
   end
 

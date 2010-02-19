@@ -131,6 +131,8 @@ static OBConnector *sharedConnector;
     }
     [OBMessage appendObjectsToList: messages];
     [[request target] dashboardUpdatedWithMessages: messages];
+  } else {
+    [[request target] dashboardUpdatedWithMessages: [NSArray array]];
   }
 }
 

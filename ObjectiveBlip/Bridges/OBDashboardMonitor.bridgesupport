@@ -2,4 +2,5 @@
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
 <signatures version='0.9'>
 <string_constant name='OBDashboardUpdatedNotification' nsstring='true' value='OBDashboardUpdatedNotification'/>
+<string_constant name='OBDashboardWillUpdateNotification' nsstring='true' value='OBDashboardWillUpdateNotification'/>
 </signatures>

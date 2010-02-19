@@ -48,6 +48,7 @@
   if (!isSendingDashboardRequest) {
     // TODO: if a request is waiting too long, kill it and try again
     isSendingDashboardRequest = YES;
+    Notify(OBDashboardWillUpdateNotification);
     [[connector dashboardRequest] sendFor: self];
   }
 }
@@ -58,9 +59,7 @@
 }
 
 - (void) requestFailedWithError: (NSError *) error {
-  if ([error domain] == NSURLErrorDomain && [error code] == NSURLErrorTimedOut) {
-    [self stopMonitoring];
-  }
+  // ignore
 }
 
 - (void) dealloc {

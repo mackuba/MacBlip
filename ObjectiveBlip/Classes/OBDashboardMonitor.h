@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #define OBDashboardUpdatedNotification @"OBDashboardUpdatedNotification"
+#define OBDashboardWillUpdateNotification @"OBDashboardWillUpdateNotification"
 
 @class OBConnector;
 
