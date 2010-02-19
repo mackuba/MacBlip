@@ -532,6 +532,8 @@
 	[self _layout];
 }
 
+- (BOOL) isFlipped { return YES; }
+
 @end
 
 @implementation SDFlippedClipView

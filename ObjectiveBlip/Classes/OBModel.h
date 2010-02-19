@@ -22,6 +22,7 @@
 + (NSArray *) objectsFromJSONString: (NSString *) jsonString;
 
 + (void) appendObjectsToList: (NSArray *) objects;
++ (void) addObjectsToBeginningOfList: (NSArray *) objects;
 + (id) objectWithId: (NSInteger) objectId;
 + (NSInteger) count;
 + (NSMutableArray *) list;

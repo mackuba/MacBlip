@@ -42,4 +42,8 @@ OnDeallocRelease(username, userPath, body, date, createdAt);
   date = [[[[self class] timeZoneLessDateFormatter] dateFromString: createdAt] retain];
 }
 
+- (NSString *) description {
+  return OBFormat(@"<OBMessage: username=%@, date=%@, body=\"%@\">", username, date, body);
+}
+
 @end

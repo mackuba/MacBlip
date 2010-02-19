@@ -129,7 +129,7 @@ static OBConnector *sharedConnector;
       // msgs are coming in the order from newest to oldest
       lastMessageId = [[messages objectAtIndex: 0] recordId];
     }
-    [OBMessage appendObjectsToList: messages];
+    [OBMessage addObjectsToBeginningOfList: messages];
     [[request target] dashboardUpdatedWithMessages: messages];
   } else {
     [[request target] dashboardUpdatedWithMessages: [NSArray array]];

@@ -90,16 +90,27 @@ OnDeallocRelease(properties);
   return [[self identityMap] objectForKey: OBInt(objectId)];
 }
 
-+ (void) appendObjectsToList: (NSArray *) objects {
-  NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(0, objects.count)];
-  [self willChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
-  [[self list] insertObjects: objects atIndexes: indexes];
-  [self didChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
-
++ (void) addObjectsToMap: (NSArray *) objects {
   NSMutableDictionary *identityMap = [self identityMap];
   for (id object in objects) {
     [identityMap setObject: object forKey: [object valueForKey: RECORD_ID]];
   }
+}
+
++ (void) appendObjectsToList: (NSArray *) objects {
+  NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(self.list.count, objects.count)];
+  [self willChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+  [[self list] addObjectsFromArray: objects];
+  [self didChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+  [self addObjectsToMap: objects];
+}
+
++ (void) addObjectsToBeginningOfList: (NSArray *) objects {
+  NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(0, objects.count)];
+  [self willChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+  [[self list] insertObjects: objects atIndexes: indexes];
+  [self didChange: NSKeyValueChangeInsertion valuesAtIndexes: indexes forKey: @"list"];
+  [self addObjectsToMap: objects];
 }
 
 + (NSInteger) count {
