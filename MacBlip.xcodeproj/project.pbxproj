@@ -65,6 +65,8 @@
 		582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105BA111793B60025DAF4 /* libz.1.2.3.dylib */; };
 		582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105C0111793C20025DAF4 /* SystemConfiguration.framework */; };
 		58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */; };
+		58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FE8112F1A88008938A9 /* ClickableLabel.rb */; };
+		58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FEE112F1B44008938A9 /* BrowserController.rb */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
@@ -164,6 +166,8 @@
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = HumanReadableDateFormatter.rb; path = Models/HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
+		58341FE8112F1A88008938A9 /* ClickableLabel.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ClickableLabel.rb; sourceTree = "<group>"; };
+		58341FEE112F1B44008938A9 /* BrowserController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BrowserController.rb; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 		585A923A111B6708003ABD05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58341FEE112F1B44008938A9 /* BrowserController.rb */,
 				5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */,
 				5897F02F112C76650029B4D9 /* MessageCellController.rb */,
 				585A923D111B674D003ABD05 /* MainWindowController.rb */,
@@ -408,6 +413,7 @@
 		585A924F111B6831003ABD05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58341FE8112F1A88008938A9 /* ClickableLabel.rb */,
 				5897F1D4112DDE850029B4D9 /* LoginWindow.xib */,
 				5897F031112C766F0029B4D9 /* MessageCell.xib */,
 				585A92AE111B7060003ABD05 /* MainMenu.xib */,
@@ -558,6 +564,8 @@
 				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
 				5897F20E112DED5D0029B4D9 /* new_message.png in Resources */,
 				58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */,
+				58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */,
+				58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

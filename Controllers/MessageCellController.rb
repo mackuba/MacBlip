@@ -22,4 +22,8 @@ class MessageCellController < SDListViewItem
     self.view.frame.size.height
   end
 
+  def nameLabelClicked(sender)
+    BrowserController.openUsersDashboard(sender.stringValue)
+  end
+
 end

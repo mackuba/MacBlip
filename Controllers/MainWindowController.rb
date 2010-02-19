@@ -39,7 +39,7 @@ class MainWindowController < NSWindowController
   end
 
   def dashboardPressed(sender)
-    NSWorkspace.sharedWorkspace.openURL(NSURL.URLWithString("http://blip.pl/dashboard"))
+    BrowserController.openDashboard
   end
 
   def displayLoadingError(error)
