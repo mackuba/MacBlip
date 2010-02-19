@@ -73,6 +73,7 @@ class ApplicationDelegate
   def authenticationSuccessful
     createMainWindow
     restoreMainWindow
+    @blip.dashboardMonitor.interval = 60
     @blip.dashboardMonitor.startMonitoring
   end
 
