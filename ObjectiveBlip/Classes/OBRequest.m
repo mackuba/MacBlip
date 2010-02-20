@@ -19,6 +19,7 @@
   self = [super initWithURL: wrappedUrl];
   if (self) {
     self.timeOutSeconds = 15;
+    self.shouldRedirect = NO;
     self.requestMethod = method;
     [self addRequestHeader: @"X-Blip-API" value: BLIP_API_VERSION];
     [self addRequestHeader: @"User-Agent" value: BLIP_USER_AGENT];
