@@ -99,9 +99,8 @@ static OBConnector *sharedConnector;
   return request;
 }
 
-- (OBRequest *) avatarImageRequestToUrl: (NSString *) url {
-  OBRequest *request = [self requestWithPath: @"" method: @"GET" text: nil];
-  [request setURL: [NSURL URLWithString: url]];
+- (OBRequest *) avatarImageRequestToPath: (NSString *) path {
+  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
   return request;
 }
@@ -193,8 +192,8 @@ static OBConnector *sharedConnector;
   } else {
     NSString *trimmedString = [[request responseString] trimmedString];
     NSDictionary *avatarInfo = [NSDictionary dictionaryWithJSONString: trimmedString];
-    NSString *url = [avatarInfo objectForKey: @"url"];
-    OBRequest *avatarRequest = [self avatarImageRequestToUrl: url];
+    NSString *url = [avatarInfo objectForKey: @"url_50"];
+    OBRequest *avatarRequest = [self avatarImageRequestToPath: url];
     [avatarRequest setUserInfo: [request userInfo]];
     [avatarRequest sendFor: [request target]];
   }
