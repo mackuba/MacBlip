@@ -15,6 +15,7 @@ class ApplicationDelegate
     GrowlApplicationBridge.growlDelegate = ""
     @blip = OBConnector.sharedConnector
     @blip.userAgent = userAgentString
+    @blip.autoLoadAvatars = true
     loadLoginAndPassword
 
     if @blip.account.hasCredentials

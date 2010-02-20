@@ -65,7 +65,7 @@ class MainWindowController < NSWindowController
       message.user.login,
       description: message.body,
       notificationName: "Update received",
-      iconData: nil,   # TODO: use avatar
+      iconData: message.user.avatarData,
       priority: 0,
       isSticky: false,
       clickContext: nil

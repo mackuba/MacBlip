@@ -284,7 +284,7 @@
 							<int key="NSCellFlags2">33554432</int>
 							<int key="NSAlign">0</int>
 							<int key="NSScale">0</int>
-							<int key="NSStyle">2</int>
+							<int key="NSStyle">0</int>
 							<bool key="NSAnimates">NO</bool>
 						</object>
 						<bool key="NSEditable">YES</bool>
@@ -301,6 +301,7 @@
 					<string>body</string>
 					<string>date</string>
 					<string>user.login</string>
+					<string>user.avatar</string>
 				</object>
 				<string key="NSObjectClassName">OBMessage</string>
 				<bool key="NSEditable">YES</bool>
@@ -405,6 +406,22 @@
 						</object>
 					</object>
 					<int key="connectionID">37</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: selection.user.avatar</string>
+						<reference key="source" ref="371864193"/>
+						<reference key="destination" ref="453162517"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="371864193"/>
+							<reference key="NSDestination" ref="453162517"/>
+							<string key="NSLabel">value: selection.user.avatar</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">selection.user.avatar</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">46</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -581,7 +598,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
