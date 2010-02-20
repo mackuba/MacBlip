@@ -11,12 +11,16 @@
 #import "OBDashboardMonitor.h"
 #import "OBRequest.h"
 #import "OBMessage.h"
+#import "OBUser.h"
 #import "OBUtils.h"
+#import "NSDictionary+BSJSONAdditions.h"
 #import "NSString+BSJSONAdditions.h"
 
 static OBConnector *sharedConnector;
 
 @interface OBConnector ()
+- (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request;
+- (void) completeAvatarRequest: (id) request withImageData: (NSData *) image;
 - (OBRequest *) requestWithPath: (NSString *) path
                          method: (NSString *) method
                            text: (NSString *) text;
@@ -25,7 +29,7 @@ static OBConnector *sharedConnector;
 
 @implementation OBConnector
 
-@synthesize account, userAgent;
+@synthesize account, userAgent, autoLoadAvatars;
 
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
@@ -44,6 +48,7 @@ static OBConnector *sharedConnector;
     account = [[OBAccount alloc] init];
     lastMessageId = -1;
     userAgent = BLIP_USER_AGENT;
+    autoLoadAvatars = NO;
   }
   return self;
 }
@@ -87,6 +92,20 @@ static OBConnector *sharedConnector;
   return request;
 }
 
+- (OBRequest *) avatarInfoRequestForUser: (OBUser *) user {
+  NSString *path = OBFormat(@"/users/%@/avatar", user.login);
+  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
+  [request setDidFinishSelector: @selector(avatarInfoLoaded:)];
+  return request;
+}
+
+- (OBRequest *) avatarImageRequestToUrl: (NSString *) url {
+  OBRequest *request = [self requestWithPath: @"" method: @"GET" text: nil];
+  [request setURL: [NSURL URLWithString: url]];
+  [request setDidFinishSelector: @selector(avatarImageLoaded:)];
+  return request;
+}
+
 - (OBRequest *) requestWithPath: (NSString *) path
                          method: (NSString *) method
                            text: (NSString *) text {
@@ -104,8 +123,14 @@ static OBConnector *sharedConnector;
 #pragma mark Response handling
 
 - (void) handleFinishedRequest: (id) request {
-  BOOL html = [[[request responseHeaders] objectForKey: @"Content-Type"] hasPrefix: @"text/html"];
-  NSLog(@"finished request to %@ (text = %@)", [request url], html ? @"<...html...>" : [request responseString]);
+  NSString *contentType = [[request responseHeaders] objectForKey: @"Content-Type"];
+  NSString *loggedText;
+  if ([contentType hasPrefix: @"application/json"]) {
+    loggedText = [request responseString];
+  } else {
+    loggedText = OBFormat(@"<Content-Type = %@, length = %d>", contentType, [[request responseData] length]);
+  }
+  NSLog(@"finished request to %@ (text = %@)", [request url], loggedText);
   [[request retain] autorelease];
   [currentRequests removeObject: request];
 }
@@ -131,10 +156,64 @@ static OBConnector *sharedConnector;
       // msgs are coming in the order from newest to oldest
       lastMessageId = [[messages objectAtIndex: 0] recordId];
     }
-    [OBMessage addObjectsToBeginningOfList: messages];
-    [[request target] dashboardUpdatedWithMessages: messages];
+
+    if (autoLoadAvatars) {
+      NSArray *users = [messages valueForKeyPath: @"@distinctUnionOfObjects.user"];
+      NSPredicate *filter = [NSPredicate predicateWithFormat: @"avatar == NIL"];
+      NSMutableArray *missing = [NSMutableArray arrayWithArray: [users filteredArrayUsingPredicate: filter]];
+      if (missing.count > 0) {
+        for (OBUser *user in missing) {
+          OBRequest *avatarRequest = [self avatarInfoRequestForUser: user];
+          [avatarRequest setUserInfo: OBDict(user, @"user", missing, @"allUsers", messages, @"messages")];
+          [avatarRequest sendFor: [request target]];
+        }
+      } else {
+        // all users already have avatars, problem solved
+        [self acceptNewMessages: messages fromRequest: request];
+      }
+    } else {
+      [self acceptNewMessages: messages fromRequest: request];
+    }
   } else {
     [[request target] dashboardUpdatedWithMessages: [NSArray array]];
+  }
+}
+
+- (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request {
+  [OBMessage addObjectsToBeginningOfList: messages];
+  [[request target] dashboardUpdatedWithMessages: messages];
+}
+
+- (void) avatarInfoLoaded: (id) request {
+  [self handleFinishedRequest: request];
+
+  NSInteger status = [[[request responseHeaders] objectForKey: @"Status"] intValue];
+  if (status == 404) {
+    [self completeAvatarRequest: request withImageData: nil];
+  } else {
+    NSString *trimmedString = [[request responseString] trimmedString];
+    NSDictionary *avatarInfo = [NSDictionary dictionaryWithJSONString: trimmedString];
+    NSString *url = [avatarInfo objectForKey: @"url"];
+    OBRequest *avatarRequest = [self avatarImageRequestToUrl: url];
+    [avatarRequest setUserInfo: [request userInfo]];
+    [avatarRequest sendFor: [request target]];
+  }
+}
+
+- (void) avatarImageLoaded: (id) request {
+  [self handleFinishedRequest: request];
+  NSData *imageData = [request responseData];
+  [self completeAvatarRequest: request withImageData: imageData];
+}
+
+- (void) completeAvatarRequest: (id) request withImageData: (NSData *) data {
+  OBUser *user = [[request userInfo] objectForKey: @"user"];
+  NSMutableArray *allUsers = [[request userInfo] objectForKey: @"allUsers"];
+  user.avatarData = data;
+  [allUsers removeObject: user];
+  if (allUsers.count == 0) {
+    // all avatars have been downloaded
+    [self acceptNewMessages: [[request userInfo] objectForKey: @"messages"] fromRequest: request];
   }
 }
 

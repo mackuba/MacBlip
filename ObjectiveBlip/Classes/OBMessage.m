@@ -5,24 +5,25 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
-#import "NSArray+BSJSONAdditions.h"
 #import "OBMessage.h"
+#import "OBUser.h"
 #import "OBUtils.h"
 
 @implementation OBMessage
 
-@synthesize username, userPath, body, date, createdAt;
-OnDeallocRelease(username, userPath, body, date, createdAt);
+@synthesize userPath, body, date, user, createdAt;
+OnDeallocRelease(userPath, body, date, user, createdAt);
 
 - (id) init {
-  return [super initWithProperties: OBArray(@"body", @"username", @"userPath", @"date", @"createdAt")];
+  return [super initWithProperties: OBArray(@"body", @"userPath", @"createdAt")];
 }
 
 - (void) setUserPath: (NSString *) path {
   [userPath release];
-  [username release];
+  [user release];
   userPath = [path copy];
-  username = [[[path componentsSeparatedByString: @"/"] lastObject] copy];
+  NSString *login = [[path componentsSeparatedByString: @"/"] lastObject];
+  user = [[OBUser findOrCreateByLogin: login] retain];
 }
 
 + (NSDateFormatter *) timeZoneLessDateFormatter {
@@ -43,7 +44,7 @@ OnDeallocRelease(username, userPath, body, date, createdAt);
 }
 
 - (NSString *) description {
-  return OBFormat(@"<OBMessage: username=%@, date=%@, body=\"%@\">", username, date, body);
+  return OBFormat(@"<OBMessage: user.login=%@, date=%@, body=\"%@\">", user.login, date, body);
 }
 
 @end

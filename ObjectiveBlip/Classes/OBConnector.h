@@ -26,11 +26,13 @@
   NSString *userAgent;
   OBDashboardMonitor *dashboardMonitor;
   OBAccount *account;
+  BOOL autoLoadAvatars;
 }
 
 @property (nonatomic, retain) OBAccount *account;
 @property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
+@property (nonatomic) BOOL autoLoadAvatars;
 
 + (OBConnector *) sharedConnector;
 
