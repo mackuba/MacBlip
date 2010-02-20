@@ -14,6 +14,7 @@ class ApplicationDelegate
   def awakeFromNib
     GrowlApplicationBridge.growlDelegate = ""
     @blip = OBConnector.sharedConnector
+    @blip.userAgent = userAgentString
     loadLoginAndPassword
 
     if @blip.account.hasCredentials
@@ -36,6 +37,13 @@ class ApplicationDelegate
       @mainWindow.showWindow(self)
       # TODO @mainWindow.makeKeyWindow
     end
+  end
+
+  def userAgentString
+    info = NSBundle.mainBundle.infoDictionary
+    appName = info['CFBundleName']
+    appVersion = info['CFBundleVersion']
+    "#{appName}/#{appVersion}"
   end
 
   def applicationWillBecomeActive(notification)
