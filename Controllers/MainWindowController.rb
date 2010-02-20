@@ -37,7 +37,10 @@ class MainWindowController < NSWindowController
 
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
-    scrollToTop if messages && messages.count > 0
+    if messages && messages.count > 0
+      scrollToTop
+      messages.each { |m| sendGrowlNotification(m) }
+    end
 
     @loadingView.mbHide
     @newMessageButton.mbEnable
@@ -55,6 +58,18 @@ class MainWindowController < NSWindowController
 
   def displayLoadingError(error)
     puts "error: #{error}"
+  end
+
+  def sendGrowlNotification(message)
+    GrowlApplicationBridge.notifyWithTitle(
+      message.username,
+      description: message.body,
+      notificationName: "Update received",
+      iconData: nil,   # TODO: use avatar
+      priority: 0,
+      isSticky: false,
+      clickContext: nil
+    )
   end
 
 end

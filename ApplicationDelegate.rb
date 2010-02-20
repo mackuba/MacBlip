@@ -12,6 +12,7 @@ class ApplicationDelegate
   # initialization
 
   def awakeFromNib
+    GrowlApplicationBridge.growlDelegate = ""
     @blip = OBConnector.sharedConnector
     loadLoginAndPassword
 

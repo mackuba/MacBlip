@@ -67,6 +67,9 @@
 		58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */; };
 		58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FE8112F1A88008938A9 /* ClickableLabel.rb */; };
 		58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FEE112F1B44008938A9 /* BrowserController.rb */; };
+		583420A91130031E008938A9 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
+		583420D2113003DA008938A9 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
+		583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
@@ -109,6 +112,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				583420D2113003DA008938A9 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,8 @@
 		58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = HumanReadableDateFormatter.rb; path = Models/HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		58341FE8112F1A88008938A9 /* ClickableLabel.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ClickableLabel.rb; sourceTree = "<group>"; };
 		58341FEE112F1B44008938A9 /* BrowserController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BrowserController.rb; sourceTree = "<group>"; };
+		583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		583420A81130031E008938A9 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */,
 				5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */,
 				5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */,
+				583420A91130031E008938A9 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +306,7 @@
 				5897F1D1112DDE660029B4D9 /* Images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 		5897EFA11129C93C0029B4D9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				583420A81130031E008938A9 /* Growl.framework */,
 				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
 				5897EFA61129C9530029B4D9 /* SDListView */,
@@ -566,6 +575,7 @@
 				58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */,
 				58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */,
 				58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */,
+				583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +770,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
+					"\"$(SRCROOT)/Lib\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -781,6 +792,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
+					"\"$(SRCROOT)/Lib\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
