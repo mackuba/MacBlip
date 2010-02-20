@@ -22,7 +22,6 @@
     self.shouldRedirect = NO;
     self.requestMethod = method;
     [self addRequestHeader: @"X-Blip-API" value: BLIP_API_VERSION];
-    [self addRequestHeader: @"User-Agent" value: BLIP_USER_AGENT];
     [self addRequestHeader: @"Accept" value: @"application/json"];
     [self addRequestHeader: @"Content-Type" value: @"application/json"];
     if (text) {

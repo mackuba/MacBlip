@@ -23,11 +23,13 @@
 @interface OBConnector : NSObject {
   NSInteger lastMessageId;
   NSMutableArray *currentRequests;
+  NSString *userAgent;
   OBDashboardMonitor *dashboardMonitor;
   OBAccount *account;
 }
 
 @property (nonatomic, retain) OBAccount *account;
+@property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
 
 + (OBConnector *) sharedConnector;

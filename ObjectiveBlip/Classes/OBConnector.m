@@ -25,7 +25,7 @@ static OBConnector *sharedConnector;
 
 @implementation OBConnector
 
-@synthesize account;
+@synthesize account, userAgent;
 
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
@@ -43,6 +43,7 @@ static OBConnector *sharedConnector;
     currentRequests = [[NSMutableArray alloc] initWithCapacity: 5];
     account = [[OBAccount alloc] init];
     lastMessageId = -1;
+    userAgent = BLIP_USER_AGENT;
   }
   return self;
 }
@@ -91,6 +92,7 @@ static OBConnector *sharedConnector;
                            text: (NSString *) text {
   OBRequest *request = [[OBRequest alloc] initWithPath: path method: method text: text];
   [request addBasicAuthenticationHeaderWithUsername: account.username andPassword: account.password];
+  [request addRequestHeader: @"User-Agent" value: userAgent];
   [request setDelegate: self];
   [request autorelease];
   [currentRequests addObject: request];
@@ -165,7 +167,7 @@ static OBConnector *sharedConnector;
 
 - (void) dealloc {
   [self cancelAllRequests];
-  ReleaseAll(currentRequests, dashboardMonitor, account);
+  ReleaseAll(currentRequests, dashboardMonitor, account, userAgent);
   [super dealloc];
 }
 
