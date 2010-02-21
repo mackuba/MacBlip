@@ -23,6 +23,9 @@ class MainWindowController < NSWindowController
     window.movableByWindowBackground = true
 
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
+    @listView.sortDescriptors = [NSSortDescriptor.sortDescriptorWithKey('date', ascending: true)]
+    # the order is actually descending, but listView is not flipped so it counts Y coordinate from bottom... o_O
+
     @spinner.startAnimation(self)
   end
 
