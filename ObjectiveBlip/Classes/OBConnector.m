@@ -188,7 +188,7 @@ static OBConnector *sharedConnector;
 
   NSInteger status = [[[request responseHeaders] objectForKey: @"Status"] intValue];
   if (status == 404) {
-    [self completeAvatarRequest: request withImageData: nil];
+    [self completeAvatarRequest: request withImageData: [OBUser defaultAvatarData]];
   } else {
     NSString *trimmedString = [[request responseString] trimmedString];
     NSDictionary *avatarInfo = [NSDictionary dictionaryWithJSONString: trimmedString];

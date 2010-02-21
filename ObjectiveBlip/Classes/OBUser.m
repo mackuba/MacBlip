@@ -9,6 +9,7 @@
 #import "OBUtils.h"
 
 static NSMutableDictionary *loginIndex;
+static NSData *defaultAvatarData;
 
 @implementation OBUser
 
@@ -17,6 +18,7 @@ OnDeallocRelease(login, avatar, avatarData);
 
 + (void) initialize {
   loginIndex = [[NSMutableDictionary alloc] initWithCapacity: 100];
+  defaultAvatarData = nil;
 }
 
 + (OBUser *) findOrCreateByLogin: (NSString *) login {
@@ -26,6 +28,14 @@ OnDeallocRelease(login, avatar, avatarData);
     user.login = login;
   }
   return user;
+}
+
++ (NSData *) defaultAvatarData {
+  if (!defaultAvatarData) {
+    NSString *imagePath = [[NSBundle mainBundle] pathForImageResource: @"ob_default_avatar.png"];
+    defaultAvatarData = [NSData dataWithContentsOfFile: imagePath];
+  }
+  return defaultAvatarData;
 }
 
 - (id) init {
