@@ -7,10 +7,13 @@
 
 class MainWindowController < NSWindowController
 
+  LAST_GROWLED_KEY = "growl.lastGrowledMessageId"
+
   attr_accessor :listView, :scrollView, :spinner, :loadingView, :newMessageButton, :dashboardButton
 
   def init
     initWithWindowNibName "MainWindow"
+    @lastGrowled = NSUserDefaults.standardUserDefaults.integerForKey(LAST_GROWLED_KEY)
     self
   end
 
@@ -45,8 +48,11 @@ class MainWindowController < NSWindowController
     if messages && messages.count > 0
       scrollToTop
       messages.each do |msg|
-        sendGrowlNotification(msg) unless msg.user.login == @blip.account.username
+        own_message = (msg.user.login == @blip.account.username)
+        sendGrowlNotification(msg) unless own_message || msg.recordId <= @lastGrowled
       end
+      @lastGrowled = [@lastGrowled, messages.first.recordId].max
+      NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
 
     @loadingView.mbHide
