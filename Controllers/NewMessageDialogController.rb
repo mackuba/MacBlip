@@ -17,6 +17,7 @@ class NewMessageDialogController < NSWindowController
     @blip = OBConnector.sharedConnector
     @gray = NSColor.colorWithDeviceRed 0.2, green: 0.2, blue: 0.2, alpha: 1.0
     @red = NSColor.colorWithDeviceRed 0.67, green: 0, blue: 0, alpha: 1.0
+    @sent = false
     self
   end
 
@@ -28,10 +29,32 @@ class NewMessageDialogController < NSWindowController
     mbObserve(textField, NSControlTextDidChangeNotification, :refreshCounter)
   end
 
-  def windowWillClose(notification)
-    # TODO handle closing with content
-    mbStopObserving(textField, NSControlTextDidChangeNotification)
-    @mainWindow.newMessageDialogClosed
+  def windowShouldClose(notification)
+    if textField.stringValue.length > 0 && !@sent
+      alertWindow = NSAlert.alertWithMessageText("Are you sure?",
+        defaultButton: "Close window",
+        alternateButton: "Cancel",
+        otherButton: nil,
+        informativeTextWithFormat: "You haven't sent that message yet."
+      )
+      alertWindow.beginSheetModalForWindow(self.window,
+        modalDelegate: self,
+        didEndSelector: 'confirmationWindowClosed:result:context:',
+        contextInfo: nil
+      )
+      false
+    else
+      mbStopObserving(textField, NSControlTextDidChangeNotification)
+      @mainWindow.newMessageDialogClosed
+      true
+    end
+  end
+
+  def confirmationWindowClosed(alert, result: result, context: context)
+    if result == NSAlertDefaultReturn
+      @sent = true
+      window.close
+    end
   end
 
   def refreshCounter
@@ -75,6 +98,7 @@ class NewMessageDialogController < NSWindowController
   end
 
   def connectionDidFinishLoading(con)
+    @sent = true
     window.close
     @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 1)
   end
