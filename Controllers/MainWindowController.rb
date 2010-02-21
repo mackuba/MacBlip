@@ -24,6 +24,8 @@ class MainWindowController < NSWindowController
 
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
     @listView.sortDescriptors = [NSSortDescriptor.sortDescriptorWithKey('date', ascending: true)]
+    @listView.topPadding = 5
+    @listView.bottomPadding = 5
     # the order is actually descending, but listView is not flipped so it counts Y coordinate from bottom... o_O
 
     @spinner.startAnimation(self)
