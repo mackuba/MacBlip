@@ -214,6 +214,7 @@
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{250, 172}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSFrameAutosaveName">MainWindow</string>
 			</object>
 			<object class="NSViewController" id="340764516">
 				<string key="NSNibName">MessageCell</string>
