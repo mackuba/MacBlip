@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>MacBlip Changelog</title>
+    <link>http://github.com/downloads/psionides/MacBlip/macblip_appcast.xml</link>
+    <description>Najnowsze zmiany w MacBlip</description>
+    <language>pl</language>
+    <item>
+      <title>Wersja 0.2</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/downloads/psionides/MacBlip/release_0.2.html
+      </sparkle:releaseNotesLink>
+      <pubDate>Wed, 21 Feb 2010 22:20:11 +0000</pubDate>
+      <enclosure
+        url="http://github.com/downloads/psionides/MacBlip/macblip-0.2.zip"
+        sparkle:version="0.2"
+        length="1623481"
+        type="application/octet-stream"
+        sparkle:dsaSignature="MCwCFChHLMBM1S4vrcFMkxK0WEkBPUZGAhRPaAMoLVxTWr8k8SJeISnkAJ9nVg==" />
+    </item>
+  </channel>
+</rss>
