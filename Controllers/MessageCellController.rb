@@ -9,6 +9,9 @@ class MessageCellController < SDListViewItem
 
   attr_accessor :dateLabel, :textView
 
+  TEXT_VIEW_HORIZONTAL_PADDING = 8  # approximate value, based on experiments :)
+  MINIMUM_CELL_HEIGHT = 72          # likewise
+
   def self.dateFormatter
     @dateFormatter ||= HumanReadableDateFormatter.new
   end
@@ -25,8 +28,21 @@ class MessageCellController < SDListViewItem
     self.view.addSubview(textView)
   end
 
-  def heightForGivenWidth(width)
-    self.view.frame.size.height
+  def heightForGivenWidth(newCellWidth)
+    cellSize = self.view.frame.size
+    textViewSize = textView.frame.size
+    heightOutsideTextView = cellSize.height - textViewSize.height
+    widthOutsideTextView = cellSize.width - textViewSize.width
+    newTextWidth = newCellWidth - widthOutsideTextView - TEXT_VIEW_HORIZONTAL_PADDING
+
+    boxForTextView = textView.string.boundingRectWithSize(
+      NSSize.new(newTextWidth, 2000),
+      options: NSStringDrawingUsesLineFragmentOrigin,
+      attributes: {}
+    )
+    newCellHeight = heightOutsideTextView + boxForTextView.size.height
+
+    [newCellHeight, MINIMUM_CELL_HEIGHT].max
   end
 
   def nameLabelClicked(sender)
