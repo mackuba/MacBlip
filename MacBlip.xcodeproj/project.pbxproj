@@ -108,6 +108,9 @@
 		58E6E400113183B300B97529 /* OBMessage.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FE113183B300B97529 /* OBMessage.rb */; };
 		58E6E4411131A8DF00B97529 /* ob_default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E4401131A8DF00B97529 /* ob_default_avatar.png */; };
 		58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */; };
+		58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
+		58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
+		58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -121,6 +124,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				583420D2113003DA008938A9 /* Growl.framework in CopyFiles */,
+				58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +230,8 @@
 		58E6E3FE113183B300B97529 /* OBMessage.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBMessage.rb; sourceTree = "<group>"; };
 		58E6E4401131A8DF00B97529 /* ob_default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ob_default_avatar.png; sourceTree = "<group>"; };
 		58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TweetieLikeScroller.rb; sourceTree = "<group>"; };
+		58E6E5731131D98000B97529 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle_pub_key.pem; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -242,6 +248,7 @@
 				5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */,
 				5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */,
 				583420A91130031E008938A9 /* Growl.framework in Frameworks */,
+				58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +326,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				58E6E5971131E3FA00B97529 /* Sparkle */,
 				5897F1D1112DDE660029B4D9 /* Images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -457,6 +465,7 @@
 		5897EFA11129C93C0029B4D9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				58E6E5731131D98000B97529 /* Sparkle.framework */,
 				583420A81130031E008938A9 /* Growl.framework */,
 				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
@@ -530,6 +539,14 @@
 				58E6E4401131A8DF00B97529 /* ob_default_avatar.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		58E6E5971131E3FA00B97529 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */,
+			);
+			path = Sparkle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -615,6 +632,7 @@
 				58E6E400113183B300B97529 /* OBMessage.rb in Resources */,
 				58E6E4411131A8DF00B97529 /* ob_default_avatar.png in Resources */,
 				58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */,
+				58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
