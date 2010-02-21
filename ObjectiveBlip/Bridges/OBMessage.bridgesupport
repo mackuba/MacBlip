@@ -1,3 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'/>
+<signatures version='0.9'>
+<enum name='OBDirectedMessage' value='1'/>
+<enum name='OBPrivateMessage' value='2'/>
+<enum name='OBStatusMessage' value='0'/>
+</signatures>
