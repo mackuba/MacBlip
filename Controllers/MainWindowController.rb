@@ -39,7 +39,9 @@ class MainWindowController < NSWindowController
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
       scrollToTop
-      messages.each { |m| sendGrowlNotification(m) }
+      messages.each do |msg|
+        sendGrowlNotification(msg) unless msg.user.login == @blip.account.username
+      end
     end
 
     @loadingView.mbHide
