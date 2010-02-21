@@ -44,16 +44,21 @@ class NewMessageDialogController < NSWindowController
       )
       false
     else
-      mbStopObserving(textField, NSControlTextDidChangeNotification)
-      @mainWindow.newMessageDialogClosed
+      closeWindow
       true
     end
+  end
+
+  def closeWindow
+    mbStopObserving(textField, NSControlTextDidChangeNotification)
+    @mainWindow.newMessageDialogClosed
+    window.close
   end
 
   def confirmationWindowClosed(alert, result: result, context: context)
     if result == NSAlertDefaultReturn
       @sent = true
-      window.close
+      closeWindow
     end
   end
 
@@ -99,7 +104,7 @@ class NewMessageDialogController < NSWindowController
 
   def connectionDidFinishLoading(con)
     @sent = true
-    window.close
+    closeWindow
     @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 1)
   end
 
