@@ -46,7 +46,7 @@ class MessageCellController < SDListViewItem
   end
 
   def nameLabelClicked(sender)
-    BrowserController.openUsersDashboard(sender.stringValue)
+    BrowserController.openUsersDashboard(self.representedObject.user.login)
   end
 
 end
