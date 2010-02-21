@@ -64,7 +64,6 @@
 		5821059E11178FB00025DAF4 /* NSString+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821058911178FB00025DAF4 /* NSString+BSJSONAdditions.m */; };
 		582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105BA111793B60025DAF4 /* libz.1.2.3.dylib */; };
 		582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105C0111793C20025DAF4 /* SystemConfiguration.framework */; };
-		58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */; };
 		58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FE8112F1A88008938A9 /* ClickableLabel.rb */; };
 		58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FEE112F1B44008938A9 /* BrowserController.rb */; };
 		583420A91130031E008938A9 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
@@ -105,6 +104,8 @@
 		5897F20E112DED5D0029B4D9 /* new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20D112DED5D0029B4D9 /* new_message.png */; };
 		58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E31A113172EA00B97529 /* MessageCell.rb */; };
 		58E6E39211317CF900B97529 /* AvatarView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E39111317CF900B97529 /* AvatarView.rb */; };
+		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
+		58E6E400113183B300B97529 /* OBMessage.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FE113183B300B97529 /* OBMessage.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -174,7 +175,6 @@
 		5821058A11178FB00025DAF4 /* ObjectiveBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveBlip.h; sourceTree = "<group>"; };
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = HumanReadableDateFormatter.rb; path = Models/HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		58341FE8112F1A88008938A9 /* ClickableLabel.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ClickableLabel.rb; sourceTree = "<group>"; };
 		58341FEE112F1B44008938A9 /* BrowserController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BrowserController.rb; sourceTree = "<group>"; };
 		583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
@@ -220,6 +220,8 @@
 		5897F20D112DED5D0029B4D9 /* new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_message.png; sourceTree = "<group>"; };
 		58E6E31A113172EA00B97529 /* MessageCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCell.rb; sourceTree = "<group>"; };
 		58E6E39111317CF900B97529 /* AvatarView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AvatarView.rb; sourceTree = "<group>"; };
+		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
+		58E6E3FE113183B300B97529 /* OBMessage.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBMessage.rb; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -413,9 +415,10 @@
 		58341F9F112F0CFD008938A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				58341FA0112F0D0A008938A9 /* HumanReadableDateFormatter.rb */,
+				58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */,
+				58E6E3FE113183B300B97529 /* OBMessage.rb */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		585A923A111B6708003ABD05 /* Controllers */ = {
@@ -587,7 +590,6 @@
 				5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */,
 				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
 				5897F20E112DED5D0029B4D9 /* new_message.png in Resources */,
-				58341FA1112F0D0A008938A9 /* HumanReadableDateFormatter.rb in Resources */,
 				58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */,
 				58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */,
 				583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */,
@@ -595,6 +597,8 @@
 				5834229811306E7E008938A9 /* NewMessageDialogController.rb in Resources */,
 				58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */,
 				58E6E39211317CF900B97529 /* AvatarView.rb in Resources */,
+				58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */,
+				58E6E400113183B300B97529 /* OBMessage.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

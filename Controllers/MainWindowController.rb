@@ -74,7 +74,7 @@ class MainWindowController < NSWindowController
 
   def sendGrowlNotification(message)
     GrowlApplicationBridge.notifyWithTitle(
-      message.user.login,
+      message.senderAndRecipient,
       description: message.body,
       notificationName: "Update received",
       iconData: message.user.avatarData,
