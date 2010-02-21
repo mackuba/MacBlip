@@ -19,7 +19,7 @@ class MainWindowController < NSWindowController
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, 'dashboardUpdated:')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
-    window.setContentBorderThickness 32, forEdge: NSMinYEdge
+    window.setContentBorderThickness(32, forEdge: NSMinYEdge)
     window.movableByWindowBackground = true
 
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
@@ -49,7 +49,12 @@ class MainWindowController < NSWindowController
   end
 
   def newMessagePressed(sender)
-    puts "new message ..."
+    @newMessageDialog = NewMessageDialogController.alloc.initWithMainWindow(self) if @newMessageDialog.nil?
+    @newMessageDialog.showWindow(self)
+  end
+
+  def newMessageDialogClosed
+    @newMessageDialog = nil
   end
 
   def dashboardPressed(sender)

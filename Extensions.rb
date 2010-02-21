@@ -60,3 +60,15 @@ class NSString
     self.to_s.gsub(/\s+/, '') == ""
   end
 end
+
+class NSWindowController
+  def mbShowAlertSheet(title, message)
+    alertWindow = NSAlert.alertWithMessageText(title,
+      defaultButton: "OK",
+      alternateButton: nil,
+      otherButton: nil,
+      informativeTextWithFormat: message
+    )
+    alertWindow.beginSheetModalForWindow(self.window, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+  end
+end

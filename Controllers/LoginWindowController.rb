@@ -48,26 +48,16 @@ class LoginWindowController < NSWindowController
 
   def authenticationFailed
     reenableForm
-    alert("Error", "Login or password is incorrect")
+    mbShowAlertSheet("Error", "Login or password is incorrect")
   end
 
   def requestFailedWithError(error)
     reenableForm
     if error.domain == BLIP_ERROR_DOMAIN && error.code == BLIP_ERROR_MR_OPONKA
-      alert("Error", "Mr Oponka says that unfortunately the Blip server is overloaded at the moment.")
+      mbShowAlertSheet("Error", "Mr Oponka says that unfortunately the Blip server is overloaded at the moment.")
     else
-      alert("Error", error.localizedDescription)
+      mbShowAlertSheet("Error", error.localizedDescription)
     end
-  end
-
-  def alert(title, message)
-    alertWindow = NSAlert.alertWithMessageText(title,
-      defaultButton: "OK",
-      alternateButton: nil,
-      otherButton: nil,
-      informativeTextWithFormat: message
-    )
-    alertWindow.beginSheetModalForWindow(window, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
   end
 
 end

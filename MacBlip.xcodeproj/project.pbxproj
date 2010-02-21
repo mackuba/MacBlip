@@ -71,6 +71,8 @@
 		583420D2113003DA008938A9 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
 		583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */; };
 		583421A4113043B8008938A9 /* OBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 583421A3113043B8008938A9 /* OBUser.m */; };
+		5834229811306E7E008938A9 /* NewMessageDialogController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5834229711306E7E008938A9 /* NewMessageDialogController.rb */; };
+		583422CD113083BA008938A9 /* NewMessageDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583422CC113083BA008938A9 /* NewMessageDialog.xib */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
@@ -176,6 +178,8 @@
 		583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		583420A81130031E008938A9 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		583421A3113043B8008938A9 /* OBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUser.m; sourceTree = "<group>"; };
+		5834229211306A9F008938A9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/NewMessageDialog.xib; sourceTree = "<group>"; };
+		5834229711306E7E008938A9 /* NewMessageDialogController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = NewMessageDialogController.rb; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 				5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */,
 				5897F02F112C76650029B4D9 /* MessageCellController.rb */,
 				585A923D111B674D003ABD05 /* MainWindowController.rb */,
+				5834229711306E7E008938A9 /* NewMessageDialogController.rb */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				5897F031112C766F0029B4D9 /* MessageCell.xib */,
 				585A92AE111B7060003ABD05 /* MainMenu.xib */,
 				585A92AC111B7011003ABD05 /* MainWindow.xib */,
+				583422CC113083BA008938A9 /* NewMessageDialog.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,6 +585,8 @@
 				58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */,
 				58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */,
 				583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */,
+				583422CD113083BA008938A9 /* NewMessageDialog.xib in Resources */,
+				5834229811306E7E008938A9 /* NewMessageDialogController.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +675,14 @@
 				089C165DFE840E0CC02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		583422CC113083BA008938A9 /* NewMessageDialog.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5834229211306A9F008938A9 /* English */,
+			);
+			name = NewMessageDialog.xib;
 			sourceTree = "<group>";
 		};
 		585A92AC111B7011003ABD05 /* MainWindow.xib */ = {
