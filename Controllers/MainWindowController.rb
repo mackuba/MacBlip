@@ -46,7 +46,7 @@ class MainWindowController < NSWindowController
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
-      scrollToTop
+      self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2)
       messages.each do |msg|
         own_message = (msg.user.login == @blip.account.username)
         sendGrowlNotification(msg) unless own_message || msg.recordId <= @lastGrowled
