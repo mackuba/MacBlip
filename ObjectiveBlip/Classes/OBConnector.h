@@ -27,6 +27,7 @@
   OBDashboardMonitor *dashboardMonitor;
   OBAccount *account;
   BOOL autoLoadAvatars;
+  BOOL autoLoadPictureInfo;
 }
 
 @property (nonatomic, retain) OBAccount *account;

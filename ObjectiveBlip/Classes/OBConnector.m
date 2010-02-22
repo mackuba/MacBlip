@@ -49,6 +49,7 @@ static OBConnector *sharedConnector;
     lastMessageId = -1;
     userAgent = BLIP_USER_AGENT;
     autoLoadAvatars = NO;
+    autoLoadPictureInfo = YES;
   }
   return self;
 }
@@ -80,6 +81,10 @@ static OBConnector *sharedConnector;
 
 - (OBRequest *) dashboardRequest {
   NSString *path = (lastMessageId > 0) ? OBFormat(@"/dashboard/since/%d", lastMessageId) : @"/dashboard?limit=20";
+  if (autoLoadPictureInfo) {
+    NSString *separator = ([path rangeOfString: @"?"].location == NSNotFound) ? @"?" : @"&";
+    path = OBFormat(@"%@%@%@", path, separator, @"include=pictures");
+  }
   OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(dashboardUpdated:)];
   return request;

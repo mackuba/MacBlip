@@ -11,11 +11,12 @@
 
 @implementation OBMessage
 
-@synthesize userPath, recipientPath, body, date, user, recipient, createdAt, messageType, type;
-OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt, type);
+@synthesize userPath, recipientPath, body, date, user, recipient, createdAt, messageType, type, pictures;
+OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt, type, pictures);
 
 - (id) init {
-  return [super initWithProperties: OBArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type")];
+  NSArray *fields = OBArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
+  return [super initWithProperties: fields];
 }
 
 - (void) setUserPath: (NSString *) path {

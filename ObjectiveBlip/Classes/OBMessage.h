@@ -19,6 +19,7 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageT
   OBUser *user;
   OBUser *recipient;
   OBMessageType messageType;
+  NSArray *pictures;
 
   // less interesting stuff
   NSString *type;
@@ -33,6 +34,7 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageT
 @property (nonatomic, copy) NSString *recipientPath;
 @property (nonatomic, copy) NSDate *date;
 @property (nonatomic, copy) NSString *createdAt;
+@property (nonatomic, copy) NSArray *pictures;
 @property (nonatomic, retain) OBUser *user;
 @property (nonatomic, retain) OBUser *recipient;
 @property (nonatomic) OBMessageType messageType;
