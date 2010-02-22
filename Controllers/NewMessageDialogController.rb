@@ -11,26 +11,30 @@ class NewMessageDialogController < NSWindowController
 
   attr_accessor :counterLabel, :sendButton, :textField, :spinner
 
-  def initWithMainWindow(mainWindow)
+  def initWithMainWindow(mainWindow, text: text)
     initWithWindowNibName "NewMessageDialog"
     @mainWindow = mainWindow
     @blip = OBConnector.sharedConnector
     @gray = NSColor.colorWithDeviceRed 0.2, green: 0.2, blue: 0.2, alpha: 1.0
     @red = NSColor.colorWithDeviceRed 0.67, green: 0, blue: 0, alpha: 1.0
     @sent = false
+    @edited = false
+    @text = text
     self
   end
 
   def windowDidLoad
-    refreshCounter
     window.setContentBorderThickness(32, forEdge: NSMinYEdge)
     window.movableByWindowBackground = true
     window.delegate = self
-    mbObserve(textField, NSControlTextDidChangeNotification, :refreshCounter)
+    mbObserve(textField, NSControlTextDidChangeNotification, :textEdited)
+    textField.stringValue = @text
+    textField.mbUnselectText
+    refreshCounter
   end
 
   def windowShouldClose(notification)
-    if textField.stringValue.length > 0 && !@sent
+    if @edited && !@sent
       alertWindow = NSAlert.alertWithMessageText("Are you sure?",
         defaultButton: "Close window",
         alternateButton: "Cancel",
@@ -60,6 +64,11 @@ class NewMessageDialogController < NSWindowController
       @sent = true
       closeWindow
     end
+  end
+
+  def textEdited
+    @edited = true
+    refreshCounter
   end
 
   def refreshCounter

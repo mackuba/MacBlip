@@ -61,6 +61,13 @@ class NSString
   end
 end
 
+class NSTextField
+  def mbUnselectText
+    editor = self.window.fieldEditor(true, forObject: self)
+    editor.selectedRange = NSRange.new(editor.string.length, 0)
+  end
+end
+
 class NSWindowController
   def mbShowAlertSheet(title, message)
     alertWindow = NSAlert.alertWithMessageText(title,

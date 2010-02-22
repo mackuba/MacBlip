@@ -24,5 +24,11 @@ class BrowserController
       openPage "/users/#{username}/dashboard"
     end
 
+    def openAttachedPicture(message)
+      if message.pictures && message.pictures.first
+        openURL(message.pictures.first['url'])
+      end
+    end
+
   end
 end

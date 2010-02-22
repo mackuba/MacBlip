@@ -62,7 +62,28 @@ class MainWindowController < NSWindowController
   end
 
   def newMessagePressed(sender)
-    @newMessageDialog = NewMessageDialogController.alloc.initWithMainWindow(self) if @newMessageDialog.nil?
+    openNewMessageWindow
+  end
+
+  def quoteActionSelected(sender)
+    message = sender.menu.delegate.representedObject
+    openNewMessageWindow("#{message.url} ")
+  end
+
+  def replyActionSelected(sender)
+    message = sender.menu.delegate.representedObject
+    openNewMessageWindow(">#{message.user.login}: ")
+  end
+
+  def showPictureActionSelected(sender)
+    message = sender.menu.delegate.representedObject
+    BrowserController.openAttachedPicture(message)
+  end
+
+  def openNewMessageWindow(text = nil)
+    if @newMessageDialog.nil?
+      @newMessageDialog = NewMessageDialogController.alloc.initWithMainWindow(self, text: text)
+    end
     @newMessageDialog.showWindow(self)
   end
 

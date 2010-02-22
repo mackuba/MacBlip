@@ -26,6 +26,22 @@ class MessageCellController < SDListViewItem
     scrollView.removeFromSuperview
     textView.frame = frame
     self.view.addSubview(textView)
+
+    self.view.menu = createContextMenu
+    self.view.subviews.each { |v| v.menu = self.view.menu }
+  end
+
+  def createContextMenu
+    menu = NSMenu.alloc.initWithTitle ""
+    menu.addItemWithTitle "Quote...", action: 'quoteActionSelected:', keyEquivalent: ''
+    if representedObject.user.login != OBConnector.sharedConnector.account.username
+      menu.addItemWithTitle "Reply...", action: 'replyActionSelected:', keyEquivalent: ''
+    end
+    if representedObject.pictures && representedObject.pictures.length > 0
+      menu.addItemWithTitle "Show picture...", action: 'showPictureActionSelected:', keyEquivalent: ''
+    end
+    menu.delegate = self
+    menu
   end
 
   def heightForGivenWidth(newCellWidth)

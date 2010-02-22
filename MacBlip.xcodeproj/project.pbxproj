@@ -111,6 +111,7 @@
 		58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */; };
+		58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E65511331C0400B97529 /* MessageTextView.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -232,6 +233,7 @@
 		58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TweetieLikeScroller.rb; sourceTree = "<group>"; };
 		58E6E5731131D98000B97529 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle_pub_key.pem; sourceTree = "<group>"; };
+		58E6E65511331C0400B97529 /* MessageTextView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageTextView.rb; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -457,6 +459,7 @@
 				585A92AC111B7011003ABD05 /* MainWindow.xib */,
 				583422CC113083BA008938A9 /* NewMessageDialog.xib */,
 				58E6E31A113172EA00B97529 /* MessageCell.rb */,
+				58E6E65511331C0400B97529 /* MessageTextView.rb */,
 				58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */,
 			);
 			path = Views;
@@ -633,6 +636,7 @@
 				58E6E4411131A8DF00B97529 /* ob_default_avatar.png in Resources */,
 				58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */,
 				58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */,
+				58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
