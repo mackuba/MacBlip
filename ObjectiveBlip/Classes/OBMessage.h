@@ -6,6 +6,7 @@
 // -------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 #import "OBModel.h"
 
 @class OBUser;
@@ -38,5 +39,7 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageT
 @property (nonatomic, retain) OBUser *user;
 @property (nonatomic, retain) OBUser *recipient;
 @property (nonatomic) OBMessageType messageType;
+
+- (NSString *) url;
 
 @end

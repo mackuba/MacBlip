@@ -64,6 +64,10 @@ OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt
   date = [[[[self class] timeZoneLessDateFormatter] dateFromString: createdAt] retain];
 }
 
+- (NSString *) url {
+  return OBFormat(@"%@/s/%d", BLIP_WWW_HOST, self.recordId);
+}
+
 - (NSString *) description {
   return OBFormat(@"<OBMessage: user.login=%@, date=%@, body=\"%@\">", user.login, date, body);
 }
