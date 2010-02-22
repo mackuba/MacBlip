@@ -6,12 +6,12 @@
     <integer>1</integer>
     <key>AllNotifications</key>
     <array>
-      <string>Update received</string>
+      <string>Status received</string>
       <string>Directed message received</string>
     </array>
     <key>DefaultNotifications</key>
     <array>
-      <string>Update received</string>
+      <string>Status received</string>
       <string>Directed message received</string>
     </array>
   </dict>

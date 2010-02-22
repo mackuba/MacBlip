@@ -79,10 +79,11 @@ class MainWindowController < NSWindowController
   end
 
   def sendGrowlNotification(message)
+    growlType = (message.messageType == OBStatusMessage) ? "Status received" : "Directed message received"
     GrowlApplicationBridge.notifyWithTitle(
       message.senderAndRecipient,
       description: message.processedBody,
-      notificationName: "Update received",
+      notificationName: growlType,
       iconData: message.user.avatarData,
       priority: 0,
       isSticky: false,
