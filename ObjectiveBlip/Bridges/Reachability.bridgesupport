@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<string_constant name='kReachabilityChangedNotification' nsstring='true' value='kNetworkReachabilityChangedNotification'/>
+<enum name='NotReachable' value='0'/>
+<enum name='ReachableViaWWAN' value='2'/>
+<enum name='ReachableViaWiFi' value='1'/>
+<class name='Reachability'>
+<method selector='connectionRequired'>
+<retval type='B'/>
+</method>
+<method selector='startNotifer'>
+<retval type='B'/>
+</method>
+</class>
+</signatures>

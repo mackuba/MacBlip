@@ -1,0 +1,172 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<constant name='ASIHTTPRequestVersion' type='@'/>
+<constant name='ASIWWANBandwidthThrottleAmount' type='L'/>
+<constant name='NetworkRequestErrorDomain' type='@'/>
+<enum name='ASIAuthenticationErrorType' value='3'/>
+<enum name='ASIConnectionFailureErrorType' value='1'/>
+<enum name='ASIFileManagementError' value='8'/>
+<enum name='ASIHTTPAuthenticationNeeded' value='1'/>
+<enum name='ASIInternalErrorWhileApplyingCredentialsType' value='7'/>
+<enum name='ASIInternalErrorWhileBuildingRequestType' value='6'/>
+<enum name='ASINoAuthenticationNeededYet' value='0'/>
+<enum name='ASIProxyAuthenticationNeeded' value='2'/>
+<enum name='ASIRequestCancelledErrorType' value='4'/>
+<enum name='ASIRequestTimedOutErrorType' value='2'/>
+<enum name='ASITooMuchRedirectionErrorType' value='9'/>
+<enum name='ASIUnableToCreateRequestErrorType' value='5'/>
+<enum name='ASIUnhandledExceptionError' value='10'/>
+<class name='ASIHTTPRequest'>
+<method selector='allowCompressedResponse'>
+<retval type='B'/>
+</method>
+<method selector='allowResumeForFileDownloads'>
+<retval type='B'/>
+</method>
+<method selector='applyCredentials:'>
+<retval type='B'/>
+</method>
+<method selector='applyProxyCredentials:'>
+<retval type='B'/>
+</method>
+<method selector='complete'>
+<retval type='B'/>
+</method>
+<method selector='didCreateTemporaryPostDataFile'>
+<retval type='B'/>
+</method>
+<method selector='haveBuiltPostBody'>
+<retval type='B'/>
+</method>
+<method selector='haveBuiltRequestHeaders'>
+<retval type='B'/>
+</method>
+<method selector='inProgress'>
+<retval type='B'/>
+</method>
+<method selector='isBandwidthThrottled' class_method='true'>
+<retval type='B'/>
+</method>
+<method selector='isResponseCompressed'>
+<retval type='B'/>
+</method>
+<method selector='isSynchronous'>
+<retval type='B'/>
+</method>
+<method selector='isiPhoneOS2' class_method='true'>
+<retval type='B'/>
+</method>
+<method selector='setAllowCompressedResponse:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setAllowResumeForFileDownloads:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setDidCreateTemporaryPostDataFile:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setHaveBuiltPostBody:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setHaveBuiltRequestHeaders:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldAttemptPersistentConnection:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldCompressRequestBody:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldPresentAuthenticationDialog:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldPresentCredentialsBeforeChallenge:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldPresentProxyAuthenticationDialog:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldRedirect:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldResetProgressIndicators:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldStreamPostDataFromDisk:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldUseRFC2616RedirectBehaviour:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShowAccurateProgress:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setUseCookiePersistance:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setUseHTTPVersionOne:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setUseKeychainPersistance:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setUseSessionPersistance:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setValidatesSecureCertificate:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='shouldAttemptPersistentConnection'>
+<retval type='B'/>
+</method>
+<method selector='shouldCompressRequestBody'>
+<retval type='B'/>
+</method>
+<method selector='shouldPresentAuthenticationDialog'>
+<retval type='B'/>
+</method>
+<method selector='shouldPresentCredentialsBeforeChallenge'>
+<retval type='B'/>
+</method>
+<method selector='shouldPresentProxyAuthenticationDialog'>
+<retval type='B'/>
+</method>
+<method selector='shouldRedirect'>
+<retval type='B'/>
+</method>
+<method selector='shouldResetProgressIndicators'>
+<retval type='B'/>
+</method>
+<method selector='shouldStreamPostDataFromDisk'>
+<retval type='B'/>
+</method>
+<method selector='shouldUseRFC2616RedirectBehaviour'>
+<retval type='B'/>
+</method>
+<method selector='showAccurateProgress'>
+<retval type='B'/>
+</method>
+<method selector='showAuthenticationDialog'>
+<retval type='B'/>
+</method>
+<method selector='showProxyAuthenticationDialog'>
+<retval type='B'/>
+</method>
+<method selector='useCookiePersistance'>
+<retval type='B'/>
+</method>
+<method selector='useHTTPVersionOne'>
+<retval type='B'/>
+</method>
+<method selector='useKeychainPersistance'>
+<retval type='B'/>
+</method>
+<method selector='useSessionPersistance'>
+<retval type='B'/>
+</method>
+<method selector='validatesSecureCertificate'>
+<retval type='B'/>
+</method>
+</class>
+</signatures>

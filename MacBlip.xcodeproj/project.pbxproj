@@ -112,6 +112,13 @@
 		58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */; };
 		58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E65511331C0400B97529 /* MessageTextView.rb */; };
+		58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */; };
+		58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */; };
+		58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */; };
+		58E6E6EB113336D200B97529 /* ASIInputStream.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */; };
+		58E6E6EC113336D200B97529 /* ASINetworkQueue.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */; };
+		58E6E6ED113336D200B97529 /* ASINSStringAdditions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */; };
+		58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E6113336D200B97529 /* OBUser.bridgesupport */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -234,6 +241,13 @@
 		58E6E5731131D98000B97529 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle_pub_key.pem; sourceTree = "<group>"; };
 		58E6E65511331C0400B97529 /* MessageTextView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageTextView.rb; sourceTree = "<group>"; };
+		58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIFormDataRequest.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequest.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestConfig.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIInputStream.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINetworkQueue.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINSStringAdditions.bridgesupport; sourceTree = "<group>"; };
+		58E6E6E6113336D200B97529 /* OBUser.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUser.bridgesupport; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -511,6 +525,13 @@
 		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */,
+				58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */,
+				58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */,
+				58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */,
+				58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */,
+				58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */,
+				58E6E6E6113336D200B97529 /* OBUser.bridgesupport */,
 				5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */,
 				5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */,
 				5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */,
@@ -637,6 +658,13 @@
 				58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */,
 				58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */,
 				58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */,
+				58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */,
+				58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */,
+				58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */,
+				58E6E6EB113336D200B97529 /* ASIInputStream.bridgesupport in Resources */,
+				58E6E6EC113336D200B97529 /* ASINetworkQueue.bridgesupport in Resources */,
+				58E6E6ED113336D200B97529 /* ASINSStringAdditions.bridgesupport in Resources */,
+				58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
