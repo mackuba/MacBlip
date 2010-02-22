@@ -1,22 +1,25 @@
 # ObjectiveBlip
 
 ObjectiveBlip is a Cocoa library that lets you connect to [blip.pl](http://blip.pl), Polish microblogging service,
-via its REST API. It was extracted from [xBlip](http://github.com/psionides/xblip) project (iPhone client for Blip).
-You can use it to create your own Blip clients in ObjectiveC/Cocoa if you want. It's pretty simple at the moment though,
-so don't expect much...
-
-Note: iPhone SDK 3.x is required.
+via its REST API. It was extracted from [xBlip](http://github.com/psionides/xblip) project (prototype iPhone client for
+Blip) and it's also used in [MacBlip](http://github.com/psionides/MacBlip) (MacOSX Blip client). You can use it to
+create your own Blip clients in ObjectiveC/Cocoa if you want. It's pretty simple at the moment though, so don't expect
+much...
 
 ## Setup instructions
 
 * add a ObjectiveBlip directory to your project
-* copy all \*.m and \*.h files from the ObjectiveBlip source tree to that directory
-* create a new group "ObjectiveBlip" in your Xcode project; set its path to ObjectiveBlip directory (context menu -> "Get Info" -> path)
+* copy all \*.m and \*.h files from the ObjectiveBlip source tree to that directory, together with the Lib subdirectory
+  and images
+* create a new group "ObjectiveBlip" in your Xcode project; set its path to ObjectiveBlip directory (context menu ->
+  "Get Info" -> path)
 * add -> existing files -> select everything inside ObjectiveBlip directory
-* add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions)
-* optionally, change BLIP\_USER\_AGENT constant in Constants.h to a more suitable value
+* add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the
+  [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions)
 * for MacOSX apps, don't add the files Reachability.* and ASIAuthenticationDialog.* - they're iPhone-only and won't
-compile with Mac version of Cocoa
+  compile with Mac version of Cocoa
+* The *.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
+  [MacRuby](http://macruby.org)
 
 ## Usage instructions
 
@@ -77,6 +80,13 @@ Messages from the dashboard are stored in a global list accessible through OBMes
     [OBMessage count]; // returns number of messages
     [OBMessage objectWithId: 123]; // returns specific message (lookup is fast since it's done through a dictionary)
 
+Some options that you may want to set on OBConnector:
+
+* `autoLoadAvatars` - if on, it will first fetch all missing avatar images before answering to a dashboardRequest
+  request (off by default)
+* `userAgent` - your user agent string (default: ObjectiveBlip/0.x)
+* `autoLoadPictureInfo` - if on, it will pass ?include=pictures to dashboard requests to include attached picture URLs;
+  it's not a lot of data, but you can turn this off if you don't need pictures (default is on)
 
 ## License
 
