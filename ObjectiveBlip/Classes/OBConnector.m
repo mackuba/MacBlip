@@ -79,7 +79,7 @@ static OBConnector *sharedConnector;
 }
 
 - (OBRequest *) dashboardRequest {
-  NSString *path = (lastMessageId > 0) ? OBFormat(@"/dashboard/since/%d", lastMessageId) : @"/dashboard";
+  NSString *path = (lastMessageId > 0) ? OBFormat(@"/dashboard/since/%d", lastMessageId) : @"/dashboard?limit=20";
   OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(dashboardUpdated:)];
   return request;
