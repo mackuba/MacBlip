@@ -19,4 +19,16 @@ class OBMessage
     NSSet.setWithObjects("messageType", "user", "recipient", nil)
   end
 
+  def processedBody
+    if pictures && pictures.length > 0
+      "#{body} [FOTO]"
+    else
+      body
+    end
+  end
+
+  def keyPathsForValuesAffectingProcessedBody
+    NSSet.setWithObjects("body", "pictures", nil)
+  end
+
 end
