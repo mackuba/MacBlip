@@ -8,6 +8,7 @@
 class ApplicationDelegate
 
   USERNAME_KEY = "account.username"
+  LOGGING_KEY = "objectiveblip.forceLogging"
 
   # initialization
 
@@ -16,6 +17,10 @@ class ApplicationDelegate
     @blip = OBConnector.sharedConnector
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
+
+    # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
+    OBConnector.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
+
     loadLoginAndPassword
 
     if @blip.account.hasCredentials
