@@ -8,8 +8,10 @@
 #import <Foundation/Foundation.h>
 
 @class OBAccount;
-@class OBRequest;
+@class OBAvatarGroup;
 @class OBDashboardMonitor;
+@class OBRequest;
+@class OBUser;
 
 // these callback methods will be called on objects that created the request
 @protocol OBConnectorDelegate
@@ -23,6 +25,7 @@
 @interface OBConnector : NSObject {
   NSInteger lastMessageId;
   NSMutableArray *currentRequests;
+  NSMutableArray *avatarGroups;
   NSString *userAgent;
   OBDashboardMonitor *dashboardMonitor;
   OBAccount *account;
@@ -43,5 +46,11 @@
 - (OBRequest *) authenticateRequest;
 - (OBRequest *) dashboardRequest;
 - (OBRequest *) sendMessageRequest: (NSString *) message;
+
+- (OBRequest *) avatarInfoRequestForUser: (OBUser *) user;
+- (OBRequest *) avatarImageRequestForUser: (OBUser *) user toPath: (NSString *) path;
+
+// internal
+- (void) avatarGroupLoaded: (OBAvatarGroup *) group;
 
 @end

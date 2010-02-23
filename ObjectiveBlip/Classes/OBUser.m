@@ -55,7 +55,7 @@ OnDeallocRelease(login, avatar, avatarData);
   [avatarData release];
   [avatar release];
   avatarData = [data copy];
-  avatar = [[OBImage alloc] initWithData: data];
+  avatar = data ? [[OBImage alloc] initWithData: data] : nil;
 }
 
 - (BOOL) isEqual: (id) other {

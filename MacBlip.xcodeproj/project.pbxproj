@@ -119,6 +119,7 @@
 		58E6E6EC113336D200B97529 /* ASINetworkQueue.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */; };
 		58E6E6ED113336D200B97529 /* ASINSStringAdditions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */; };
 		58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E6113336D200B97529 /* OBUser.bridgesupport */; };
+		58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E6E7101133404C00B97529 /* OBAvatarGroup.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -248,6 +249,8 @@
 		58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINetworkQueue.bridgesupport; sourceTree = "<group>"; };
 		58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINSStringAdditions.bridgesupport; sourceTree = "<group>"; };
 		58E6E6E6113336D200B97529 /* OBUser.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUser.bridgesupport; sourceTree = "<group>"; };
+		58E6E70F1133404C00B97529 /* OBAvatarGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAvatarGroup.h; sourceTree = "<group>"; };
+		58E6E7101133404C00B97529 /* OBAvatarGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAvatarGroup.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -378,6 +381,8 @@
 			children = (
 				5821055D11178FB00025DAF4 /* OBAccount.h */,
 				5821055E11178FB00025DAF4 /* OBAccount.m */,
+				58E6E70F1133404C00B97529 /* OBAvatarGroup.h */,
+				58E6E7101133404C00B97529 /* OBAvatarGroup.m */,
 				5821055F11178FB00025DAF4 /* OBConnector.h */,
 				5821056011178FB00025DAF4 /* OBConnector.m */,
 				5821056111178FB00025DAF4 /* OBDashboardMonitor.h */,
@@ -741,6 +746,7 @@
 				5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */,
 				5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */,
 				583421A4113043B8008938A9 /* OBUser.m in Sources */,
+				58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
