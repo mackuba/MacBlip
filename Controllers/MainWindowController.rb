@@ -66,10 +66,10 @@ class MainWindowController < NSWindowController
     error = notification.userInfo["error"]
     if error.blipTimeoutError?
       if OBMessage.list.empty?
-        puts "first dashboard update failed, retrying"
+        obprint "MainWindowController: first dashboard update failed, retrying"
         @blip.dashboardMonitor.forceUpdate
       else
-        puts "dashboard update failed, ignoring"
+        obprint "MainWindowController: dashboard update failed, ignoring"
         @spinner.stopAnimation(self)
       end
     else

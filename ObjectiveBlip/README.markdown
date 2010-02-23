@@ -90,6 +90,12 @@ Some options that you may want to set on OBConnector:
 * `userAgent` - your user agent string (default: ObjectiveBlip/0.x)
 * `autoLoadPictureInfo` - if on, it will pass ?include=pictures to dashboard requests to include attached picture URLs;
   it's not a lot of data, but you can turn this off if you don't need pictures (default is on)
+* `loggingEnabled` (class property) - by default it's on when DEBUG is defined, the idea is that you can enable this
+  setting only in debug mode, but not in release mode (in Xcode, add "-DDEBUG" to "Other C Flags" in the build
+  properties of your target); you can also manually change this property according to e.g. user's settings. Warning:
+  if this is enabled, OBConnector will print lots of boring shit so you really don't want this to be enabled by default
+  in release mode.
+
 
 ## License
 

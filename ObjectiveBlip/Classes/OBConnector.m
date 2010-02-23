@@ -18,6 +18,7 @@
 #import "NSString+BSJSONAdditions.h"
 
 static OBConnector *sharedConnector;
+static BOOL loggingEnabled;
 
 @interface OBConnector ()
 - (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request;
@@ -34,11 +35,27 @@ static OBConnector *sharedConnector;
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
 
++ (void) initialize {
+  #ifdef DEBUG
+    loggingEnabled = YES;
+  #else
+    loggingEnabled = NO;
+  #endif
+}
+
 + (OBConnector *) sharedConnector {
   if (!sharedConnector) {
     sharedConnector = [[OBConnector alloc] init];
   }
   return sharedConnector;
+}
+
++ (BOOL) loggingEnabled {
+  return loggingEnabled;
+}
+
++ (void) setLoggingEnabled: (BOOL) enabled {
+  loggingEnabled = enabled;
 }
 
 - (id) init {
@@ -122,7 +139,7 @@ static OBConnector *sharedConnector;
   [request setDelegate: self];
   [request autorelease];
   [currentRequests addObject: request];
-  NSLog(@"sending %@ to %@ with '%@'", method, path, text);
+  OBLog(@"sending %@ to %@ with '%@'", method, path, text);
   return request;
 }
 
@@ -137,7 +154,7 @@ static OBConnector *sharedConnector;
   } else {
     loggedText = OBFormat(@"<Content-Type = %@, length = %d>", contentType, [[request responseData] length]);
   }
-  NSLog(@"finished request to %@ (text = %@)", [request url], loggedText);
+  OBLog(@"finished request to %@ (text = %@)", [request url], loggedText);
 }
 
 - (BOOL) isMrOponkaResponse: (id) request {
@@ -151,7 +168,7 @@ static OBConnector *sharedConnector;
   [currentRequests removeObject: request];
 
   if ([self isMrOponkaResponse: request]) {
-    NSLog(@"Mr Oponka response detected");
+    OBLog(@"Mr Oponka response detected");
     NSError *error = [NSError errorWithDomain: BLIP_ERROR_DOMAIN code: BLIP_ERROR_MR_OPONKA userInfo: nil];
     [[request target] requestFailedWithError: error];
     return NO;
@@ -219,7 +236,6 @@ static OBConnector *sharedConnector;
 }
 
 - (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request {
-  NSLog(@"accept messages");
   [OBMessage addObjectsToBeginningOfList: messages];
   [[request target] dashboardUpdatedWithMessages: messages];
 }

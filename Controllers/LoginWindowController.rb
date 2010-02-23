@@ -53,7 +53,7 @@ class LoginWindowController < NSWindowController
 
   def requestFailedWithError(error)
     if error.blipTimeoutError?
-      puts "login controller: timeout problem, retrying"
+      obprint "LoginWindowController: timeout problem, retrying"
       OBConnector.sharedConnector.authenticateRequest.sendFor(self)
     else
       reenableForm

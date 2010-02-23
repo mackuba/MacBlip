@@ -5,6 +5,12 @@
 # Licensed under GPL v3 license
 # -------------------------------------------------------
 
+module Kernel
+  def obprint(*args)
+    puts(*args) if OBConnector.loggingEnabled
+  end
+end
+
 class NilClass
   def blank?
     true
@@ -43,7 +49,7 @@ class NSObject
     begin
       yield
     rescue Exception => e
-      puts e.backtrace
+      obprint e.backtrace
       raise
     end
   end

@@ -88,10 +88,10 @@ class ApplicationDelegate
   end
 
   def requestFailedWithError(error)
-    puts "got error: #{error.domain}, #{error.code}, #{error.localizedDescription}"
+    obprint "ApplicationDelegate: got error: #{error.domain}, #{error.code}, #{error.localizedDescription}"
     if error.blipTimeoutError?
       # retry until it works
-      puts "timeout problem, retrying"
+      obprint "timeout problem, retrying"
       @blip.authenticateRequest.sendFor(self)
     else
       @mainWindow.displayLoadingError(error)

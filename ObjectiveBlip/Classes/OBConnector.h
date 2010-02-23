@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+// to enable logging in debug mode, add "-DDEBUG" to "Other C Flags" in the build properties of your target
+#define OBLog(...) do { if ([OBConnector loggingEnabled]) NSLog(__VA_ARGS__); } while(0);
+
 @class OBAccount;
 @class OBAvatarGroup;
 @class OBDashboardMonitor;
@@ -39,6 +42,9 @@
 @property (nonatomic) BOOL autoLoadAvatars;
 
 + (OBConnector *) sharedConnector;
+
++ (BOOL) loggingEnabled;
++ (void) setLoggingEnabled: (BOOL) enabled;
 
 - (id) init;
 - (id) initWithUsername: (NSString *) username password: (NSString *) password;

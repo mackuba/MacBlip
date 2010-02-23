@@ -40,7 +40,7 @@ OnDeallocRelease(messages, request, connector);
   userCount = usersWithoutAvatars.count;
 
   if (userCount > 0) {
-    NSLog(@"got %d avatars, loading them...", userCount);
+    OBLog(@"AvatarGroup: %d avatars are missing and will be loaded now.", userCount);
     for (OBUser *user in usersWithoutAvatars) {
       [[connector avatarInfoRequestForUser: user] sendFor: self];
     }
@@ -51,31 +51,26 @@ OnDeallocRelease(messages, request, connector);
 }
 
 - (void) avatarInfoNotFoundForUser: (OBUser *) user {
-  NSLog(@"info not found for user %@", user.login);
   [self completeAvatarRequestForUser: user withImageData: [OBUser defaultAvatarData]];
 }
 
 - (void) avatarInfoLoadedForUser: (OBUser *) user path: (NSString *) path {
-  NSLog(@"info loaded for user %@", user.login);
   [[connector avatarImageRequestForUser: user toPath: path] sendFor: self];
 }
 
 - (void) avatarImageLoadedForUser: (OBUser *) user data: (NSData *) data {
-  NSLog(@"image loaded for user %@", user.login);
   [self completeAvatarRequestForUser: user withImageData: data];
 }
 
 - (void) requestFailedWithError: (NSError *) error {
   // couldn't load that avatar, ignore it
-  NSLog(@"error, whatever");
   [self decreaseUserCount];
 }
 
 - (void) decreaseUserCount {
-  NSLog(@"user %d -> %d", userCount, userCount-1);
   userCount--;
+  OBLog(@"AvatarGroup: %d avatars remaining", userCount);
   if (userCount == 0) {
-    NSLog(@"over");
     // all avatars have been downloaded
     [connector avatarGroupLoaded: self];
   }
