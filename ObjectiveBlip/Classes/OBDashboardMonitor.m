@@ -12,6 +12,7 @@
 
 @interface OBDashboardMonitor ()
 - (void) dashboardTimerFired: (NSTimer *) timer;
+- (void) executeUpdate;
 @end
 
 @implementation OBDashboardMonitor
@@ -36,7 +37,7 @@
                                                 userInfo: nil
                                                  repeats: YES];
   [monitorTimer retain];
-  [self forceUpdate];
+  [self executeUpdate];
 }
 
 - (void) stopMonitoring {
@@ -44,17 +45,26 @@
   monitorTimer = nil;
 }
 
-- (void) forceUpdate {
+// will try to make an update outside of normal schedule, unless there's one in progress
+- (void) requestManualUpdate {
   [self dashboardTimerFired: nil];
+}
+
+// will make an update now no matter what
+- (void) forceUpdate {
+  [self executeUpdate];
 }
 
 - (void) dashboardTimerFired: (NSTimer *) timer {
   if (!isSendingDashboardRequest) {
-    // TODO: if a request is waiting too long, kill it and try again
-    isSendingDashboardRequest = YES;
-    Notify(OBDashboardWillUpdateNotification);
-    [[connector dashboardRequest] sendFor: self];
+    [self executeUpdate];
   }
+}
+
+- (void) executeUpdate {
+  isSendingDashboardRequest = YES;
+  Notify(OBDashboardWillUpdateNotification);
+  [[connector dashboardRequest] sendFor: self];
 }
 
 - (void) dashboardUpdatedWithMessages: (NSArray *) messages {
@@ -63,6 +73,7 @@
 }
 
 - (void) requestFailedWithError: (NSError *) error {
+  NotifyWithData(OBDashboardUpdateFailedNotification, OBDict(error, @"error"));
   isSendingDashboardRequest = NO;
 }
 

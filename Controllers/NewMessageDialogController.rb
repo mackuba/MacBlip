@@ -114,7 +114,7 @@ class NewMessageDialogController < NSWindowController
   def connectionDidFinishLoading(con)
     @sent = true
     closeWindow
-    @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 1)
+    @blip.dashboardMonitor.performSelector('requestManualUpdate', withObject: nil, afterDelay: 1)
   end
 
   def requestFailedWithError(error)

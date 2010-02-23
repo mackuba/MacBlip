@@ -20,6 +20,7 @@ class MainWindowController < NSWindowController
   def windowDidLoad
     @blip = OBConnector.sharedConnector
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, 'dashboardUpdated:')
+    mbObserve(@blip.dashboardMonitor, OBDashboardUpdateFailedNotification, 'dashboardUpdateFailed:')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
     window.setContentBorderThickness(32, forEdge: NSMinYEdge)
@@ -61,6 +62,23 @@ class MainWindowController < NSWindowController
     @spinner.stopAnimation(self)
   end
 
+  def dashboardUpdateFailed(notification)
+    error = notification.userInfo["error"]
+    if error.blipTimeoutError?
+      if OBMessage.list.empty?
+        puts "first dashboard update failed, retrying"
+        @blip.dashboardMonitor.forceUpdate
+      else
+        puts "dashboard update failed, ignoring"
+        @spinner.stopAnimation(self)
+      end
+    else
+      @loadingView.mbHide
+      @spinner.stopAnimation(self)
+      displayLoadingError(error)
+    end
+  end
+
   def newMessagePressed(sender)
     openNewMessageWindow
   end
@@ -96,7 +114,7 @@ class MainWindowController < NSWindowController
   end
 
   def displayLoadingError(error)
-    puts "error: #{error}"
+    mbShowAlertSheet("Error", error.localizedDescription)
   end
 
   def sendGrowlNotification(message)

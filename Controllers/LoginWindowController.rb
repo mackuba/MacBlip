@@ -52,10 +52,11 @@ class LoginWindowController < NSWindowController
   end
 
   def requestFailedWithError(error)
-    reenableForm
-    if error.domain == BLIP_ERROR_DOMAIN && error.code == BLIP_ERROR_MR_OPONKA
-      mbShowAlertSheet("Error", "Mr Oponka says that unfortunately the Blip server is overloaded at the moment.")
+    if error.blipTimeoutError?
+      puts "login controller: timeout problem, retrying"
+      OBConnector.sharedConnector.authenticateRequest.sendFor(self)
     else
+      reenableForm
       mbShowAlertSheet("Error", error.localizedDescription)
     end
   end

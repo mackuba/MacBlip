@@ -129,7 +129,7 @@ static OBConnector *sharedConnector;
 // -------------------------------------------------------------------------------------------
 #pragma mark Response handling
 
-- (void) handleFinishedRequest: (id) request {
+- (void) logResponseToRequest: (id) request {
   NSString *contentType = [[request responseHeaders] objectForKey: @"Content-Type"];
   NSString *loggedText;
   if ([contentType hasPrefix: @"application/json"]) {
@@ -138,24 +138,38 @@ static OBConnector *sharedConnector;
     loggedText = OBFormat(@"<Content-Type = %@, length = %d>", contentType, [[request responseData] length]);
   }
   NSLog(@"finished request to %@ (text = %@)", [request url], loggedText);
-  [[request retain] autorelease];
-  [currentRequests removeObject: request];
 }
 
-- (void) authenticationSuccessful: (id) request {
-  [self handleFinishedRequest: request];
+- (BOOL) isMrOponkaResponse: (id) request {
   NSRange errorFound = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
-  if (errorFound.location == NSNotFound) {
-    account.loggedIn = YES;
-    [[request target] authenticationSuccessful];
-  } else {
+  return (errorFound.location != NSNotFound);
+}
+
+- (BOOL) handleFinishedRequest: (id) request {
+  [self logResponseToRequest: request];
+  [[request retain] autorelease];
+  [currentRequests removeObject: request];
+
+  if ([self isMrOponkaResponse: request]) {
+    NSLog(@"Mr Oponka response detected");
     NSError *error = [NSError errorWithDomain: BLIP_ERROR_DOMAIN code: BLIP_ERROR_MR_OPONKA userInfo: nil];
     [[request target] requestFailedWithError: error];
+    return NO;
+  } else {
+    return YES;
   }
 }
 
+- (void) authenticationSuccessful: (id) request {
+  if (![self handleFinishedRequest: request]) return;
+
+  account.loggedIn = YES;
+  [[request target] authenticationSuccessful];
+}
+
 - (void) dashboardUpdated: (id) request {
-  [self handleFinishedRequest: request];
+  if (![self handleFinishedRequest: request]) return;
+
   NSString *trimmedString = [[request responseString] trimmedString];
   if (trimmedString.length > 0) {
     NSArray *messages = [OBMessage objectsFromJSONString: trimmedString];
@@ -177,13 +191,8 @@ static OBConnector *sharedConnector;
   }
 }
 
-- (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request {
-  [OBMessage addObjectsToBeginningOfList: messages];
-  [[request target] dashboardUpdatedWithMessages: messages];
-}
-
 - (void) avatarInfoLoaded: (id) request {
-  [self handleFinishedRequest: request];
+  if (![self handleFinishedRequest: request]) return;
 
   OBUser *user = [[request userInfo] objectForKey: @"user"];
   NSInteger status = [[[request responseHeaders] objectForKey: @"Status"] intValue];
@@ -198,7 +207,7 @@ static OBConnector *sharedConnector;
 }
 
 - (void) avatarImageLoaded: (id) request {
-  [self handleFinishedRequest: request];
+  if (![self handleFinishedRequest: request]) return;
 
   OBUser *user = [[request userInfo] objectForKey: @"user"];
   [[request target] avatarImageLoadedForUser: user data: [request responseData]];
@@ -209,8 +218,14 @@ static OBConnector *sharedConnector;
   [avatarGroups removeObject: group];
 }
 
+- (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request {
+  NSLog(@"accept messages");
+  [OBMessage addObjectsToBeginningOfList: messages];
+  [[request target] dashboardUpdatedWithMessages: messages];
+}
+
 - (void) messageSent: (id) request {
-  [self handleFinishedRequest: request];
+  if (![self handleFinishedRequest: request]) return;
   [[request target] messageSent];
 }
 

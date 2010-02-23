@@ -74,6 +74,9 @@ to subscribe to this notification:
       // ...
     }
 
+OBDashboardMonitor also sends a notification when request is sent (OBDashboardWillUpdateNotification), and when a
+request fails (OBDashboardUpdateFailedNotification).
+
 Messages from the dashboard are stored in a global list accessible through OBMessage model:
 
     [OBMessage list]; // returns NSArray with all messages

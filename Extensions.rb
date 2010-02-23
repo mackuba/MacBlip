@@ -31,6 +31,13 @@ class NSControl
   end
 end
 
+class NSError
+  def blipTimeoutError?
+    (self.domain == "ASIHTTPRequestErrorDomain" && self.code == ASIRequestTimedOutErrorType) ||
+    (self.domain == BLIP_ERROR_DOMAIN && self.code == BLIP_ERROR_MR_OPONKA)
+  end
+end
+
 class NSObject
   def mbCatcher
     begin

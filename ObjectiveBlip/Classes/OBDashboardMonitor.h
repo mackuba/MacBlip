@@ -9,6 +9,7 @@
 
 #define OBDashboardUpdatedNotification @"OBDashboardUpdatedNotification"
 #define OBDashboardWillUpdateNotification @"OBDashboardWillUpdateNotification"
+#define OBDashboardUpdateFailedNotification @"OBDashboardUpdateFailedNotification"
 
 @class OBConnector;
 
@@ -24,6 +25,11 @@
 - (id) initWithConnector: (OBConnector *) obConnector;
 - (void) startMonitoring;
 - (void) stopMonitoring;
+
+// will make an update now no matter what
 - (void) forceUpdate;
+
+// will try to make an update outside of normal schedule, unless there's one in progress
+- (void) requestManualUpdate;
 
 @end

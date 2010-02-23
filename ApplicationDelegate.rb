@@ -88,15 +88,21 @@ class ApplicationDelegate
   end
 
   def requestFailedWithError(error)
-    # TODO: handle timeouts (retry)
-    @mainWindow.displayLoadingError(error)
+    puts "got error: #{error.domain}, #{error.code}, #{error.localizedDescription}"
+    if error.blipTimeoutError?
+      # retry until it works
+      puts "timeout problem, retrying"
+      @blip.authenticateRequest.sendFor(self)
+    else
+      @mainWindow.displayLoadingError(error)
+    end
   end
 
 
   # menu actions
 
   def forceDashboardUpdate(sender)
-    @blip.dashboardMonitor.forceUpdate if @blip.account.loggedIn?
+    @blip.dashboardMonitor.requestManualUpdate if @blip.account.loggedIn?
   end
 
 end
