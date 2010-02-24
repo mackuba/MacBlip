@@ -97,7 +97,7 @@ class ApplicationDelegate
     if error.blipTimeoutError?
       # retry until it works
       obprint "timeout problem, retrying"
-      @blip.authenticateRequest.sendFor(self)
+      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 10.0)
     else
       @mainWindow.displayLoadingError(error)
     end
