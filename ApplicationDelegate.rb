@@ -110,4 +110,9 @@ class ApplicationDelegate
     @blip.dashboardMonitor.requestManualUpdate if @blip.account.loggedIn?
   end
 
+  def showAboutWindow(sender)
+    @aboutWindow ||= AboutWindowController.new
+    @aboutWindow.showWindow(self)
+  end
+
 end
