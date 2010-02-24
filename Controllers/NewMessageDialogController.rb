@@ -19,7 +19,7 @@ class NewMessageDialogController < NSWindowController
     @red = NSColor.colorWithDeviceRed 0.67, green: 0, blue: 0, alpha: 1.0
     @sent = false
     @edited = false
-    @text = text
+    @text = text || ""
     self
   end
 
