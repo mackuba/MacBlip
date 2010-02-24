@@ -158,8 +158,13 @@ static BOOL loggingEnabled;
 }
 
 - (BOOL) isMrOponkaResponse: (id) request {
-  NSRange errorFound = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
-  return (errorFound.location != NSNotFound);
+  NSString *locationHeader = [[request responseHeaders] objectForKey: @"Location"];
+  if (!locationHeader) {
+    locationHeader = @"";
+  }
+  NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
+  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"errors/blip"];
+  return (errorFoundInUrl.location != NSNotFound) || (errorFoundInHeader.location != NSNotFound);
 }
 
 - (BOOL) handleFinishedRequest: (id) request {
