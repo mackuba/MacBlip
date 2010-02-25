@@ -90,7 +90,8 @@ class MainWindowController < NSWindowController
 
   def replyActionSelected(sender)
     message = sender.menu.delegate.representedObject
-    openNewMessageWindow(">#{message.user.login}: ")
+    symbol = (message.messageType == OBPrivateMessage) ? ">>" : ">"
+    openNewMessageWindow("#{symbol}#{message.user.login}: ")
   end
 
   def showPictureActionSelected(sender)
