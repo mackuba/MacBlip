@@ -15,10 +15,10 @@ much...
   "Get Info" -> path)
 * add -> existing files -> select everything inside ObjectiveBlip directory
 * add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the
-  [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions)
-* for MacOSX apps, don't add the files Reachability.* and ASIAuthenticationDialog.* - they're iPhone-only and won't
+  [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions))
+* for MacOSX apps, don't add the files Reachability.\* and ASIAuthenticationDialog.\* - they're iPhone-only and won't
   compile with Mac version of Cocoa
-* The *.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
+* The \*.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
   [MacRuby](http://macruby.org)
 
 ## Usage instructions
