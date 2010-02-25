@@ -7,11 +7,13 @@
     <key>AllNotifications</key>
     <array>
       <string>Status received</string>
+      <string>Status group received</string>
       <string>Directed message received</string>
     </array>
     <key>DefaultNotifications</key>
     <array>
       <string>Status received</string>
+      <string>Status group received</string>
       <string>Directed message received</string>
     </array>
   </dict>

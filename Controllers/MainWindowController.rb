@@ -8,12 +8,13 @@
 class MainWindowController < NSWindowController
 
   LAST_GROWLED_KEY = "growl.lastGrowledMessageId"
+  GROWL_LIMIT = 5
 
   attr_accessor :listView, :scrollView, :spinner, :loadingView, :newMessageButton, :dashboardButton
 
   def init
     initWithWindowNibName "MainWindow"
-    @lastGrowled = NSUserDefaults.standardUserDefaults.integerForKey(LAST_GROWLED_KEY)
+    @lastGrowled = NSUserDefaults.standardUserDefaults.integerForKey(LAST_GROWLED_KEY) || 0
     self
   end
 
@@ -48,10 +49,7 @@ class MainWindowController < NSWindowController
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2)
-      messages.each do |msg|
-        own_message = (msg.user.login == @blip.account.username)
-        sendGrowlNotification(msg) unless own_message || msg.recordId <= @lastGrowled
-      end
+      growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordId].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
@@ -116,6 +114,33 @@ class MainWindowController < NSWindowController
 
   def displayLoadingError(error)
     mbShowAlertSheet("Error", error.localizedDescription)
+  end
+
+  def growlMessages(messages)
+    myLogin = @blip.account.username
+
+    # don't growl own messages, or those that have been growled before
+    growlableMessages = messages.find_all { |m| m.user.login != myLogin && m.recordId > @lastGrowled }
+
+    if growlableMessages.count > GROWL_LIMIT + 1
+      growlableMessages.first(GROWL_LIMIT).each { |m| sendGrowlNotification(m) }
+      sendGroupedGrowlNotification(growlableMessages[GROWL_LIMIT..-1])
+    else
+      growlableMessages.each { |m| sendGrowlNotification(m) }
+    end
+  end
+
+  def sendGroupedGrowlNotification(messages)
+    users = messages.map(&:user).map(&:login).sort.uniq.join(", ")
+    GrowlApplicationBridge.notifyWithTitle(
+      "… and #{messages.count} other updates",
+      description: "From: #{users}",
+      notificationName: "Status group received",
+      iconData: nil,
+      priority: 0,
+      isSticky: false,
+      clickContext: nil
+    )
   end
 
   def sendGrowlNotification(message)
