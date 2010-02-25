@@ -8,10 +8,15 @@ can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's
 
 ## Features
 
-You can log in and download the messages on the dashboard, and that's pretty much it.
+* dashboard view
+* sending messages
+* displaying avatars
+* growl notifications
+* auto-update (Sparkle)
 
-Currently it requires [MacRuby](http://macruby.org) 0.5 or later installed separately in the system.
-Oh, and Snow Leopard too.
+## Requirements
+
+Snow Leopard is required to run. MacRuby installation isn't required (it's bundled inside the application).
 
 ## License
 
