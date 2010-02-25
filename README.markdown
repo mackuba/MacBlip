@@ -16,7 +16,8 @@ can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's
 
 ## Requirements
 
-Snow Leopard is required to run. MacRuby installation isn't required (it's bundled inside the application).
+* Snow Leopard
+* MacRuby (>= 0.5)
 
 ## License
 
