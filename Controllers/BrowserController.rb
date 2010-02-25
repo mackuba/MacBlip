@@ -17,7 +17,7 @@ class BrowserController
     end
 
     def openDashboard
-      openPage "/dashboard"
+      openUsersDashboard(OBConnector.sharedConnector.account.username)
     end
 
     def openUsersDashboard(username)
