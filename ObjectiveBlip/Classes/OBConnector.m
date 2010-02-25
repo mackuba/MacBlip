@@ -30,7 +30,7 @@ static BOOL loggingEnabled;
 
 @implementation OBConnector
 
-@synthesize account, userAgent, autoLoadAvatars;
+@synthesize account, userAgent, autoLoadAvatars, initialDashboardFetch;
 
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
@@ -65,6 +65,7 @@ static BOOL loggingEnabled;
     avatarGroups = [[NSMutableArray alloc] initWithCapacity: 1];
     account = [[OBAccount alloc] init];
     lastMessageId = -1;
+    initialDashboardFetch = 20;
     userAgent = BLIP_USER_AGENT;
     autoLoadAvatars = NO;
     autoLoadPictureInfo = YES;
@@ -98,7 +99,12 @@ static BOOL loggingEnabled;
 }
 
 - (OBRequest *) dashboardRequest {
-  NSString *path = (lastMessageId > 0) ? OBFormat(@"/dashboard/since/%d", lastMessageId) : @"/dashboard?limit=20";
+  NSString *path;
+  if (lastMessageId > 0) {
+    path = OBFormat(@"/dashboard/since/%d", lastMessageId);
+  } else {
+    path = OBFormat(@"/dashboard?limit=%d", initialDashboardFetch);
+  }
   if (autoLoadPictureInfo) {
     NSString *separator = ([path rangeOfString: @"?"].location == NSNotFound) ? @"?" : @"&";
     path = OBFormat(@"%@%@%@", path, separator, @"include=pictures");

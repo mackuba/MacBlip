@@ -34,12 +34,14 @@
   OBAccount *account;
   BOOL autoLoadAvatars;
   BOOL autoLoadPictureInfo;
+  NSInteger initialDashboardFetch;
 }
 
 @property (nonatomic, retain) OBAccount *account;
 @property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
 @property (nonatomic) BOOL autoLoadAvatars;
+@property (nonatomic) NSInteger initialDashboardFetch;
 
 + (OBConnector *) sharedConnector;
 
