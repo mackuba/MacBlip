@@ -7,5 +7,20 @@
     <link>http://github.com/psionides/MacBlip/raw/master/Sparkle/macblip_appcast.xml</link>
     <description>Najnowsze zmiany w MacBlip</description>
     <language>pl</language>
+
+    <item>
+      <title>Wersja 0.1.1</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.1.1.html
+      </sparkle:releaseNotesLink>
+      <pubDate>Wed, 26 Feb 2010 20:16:56 +0000</pubDate>
+      <enclosure
+        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.1.1.zip"
+        sparkle:version="0.1.1"
+        length="10901781"
+        type="application/octet-stream"
+        sparkle:dsaSignature="MC0CFQDQhDdHFs3SZIwF8VyLjQvIsfxxUAIUdudvy7uzdehbbCihtdGs0lGh3sY=" />
+    </item>
+
   </channel>
 </rss>
