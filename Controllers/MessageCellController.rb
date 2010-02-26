@@ -9,7 +9,7 @@ class MessageCellController < SDListViewItem
 
   attr_accessor :dateLabel, :textView
 
-  TEXT_VIEW_HORIZONTAL_PADDING = 8  # approximate value, based on experiments :)
+  TEXT_VIEW_HORIZONTAL_PADDING = 10  # approximate value, based on experiments :)
   MINIMUM_CELL_HEIGHT = 72          # likewise
 
   def self.dateFormatter
