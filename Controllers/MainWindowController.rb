@@ -149,7 +149,7 @@ class MainWindowController < NSWindowController
       message.senderAndRecipient,
       description: message.processedBody,
       notificationName: growlType,
-      iconData: message.user.avatarData,
+      iconData: message.user.fixedAvatarData,
       priority: 0,
       isSticky: false,
       clickContext: nil

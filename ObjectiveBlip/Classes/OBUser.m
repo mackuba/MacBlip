@@ -13,8 +13,8 @@ static NSData *defaultAvatarData;
 
 @implementation OBUser
 
-@synthesize login, avatar, avatarData;
-OnDeallocRelease(login, avatar, avatarData);
+@synthesize login, avatarData;
+OnDeallocRelease(login, avatarData);
 
 + (void) initialize {
   loginIndex = [[NSMutableDictionary alloc] initWithCapacity: 100];
@@ -32,7 +32,7 @@ OnDeallocRelease(login, avatar, avatarData);
 
 + (NSData *) defaultAvatarData {
   if (!defaultAvatarData) {
-    NSString *imagePath = [[NSBundle mainBundle] pathForImageResource: @"ob_default_avatar.png"];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource: @"ob_default_avatar" ofType: @"png"];
     defaultAvatarData = [NSData dataWithContentsOfFile: imagePath];
   }
   return defaultAvatarData;
@@ -49,13 +49,6 @@ OnDeallocRelease(login, avatar, avatarData);
   [login release];
   login = [newLogin copy];
   [loginIndex setObject: self forKey: login];
-}
-
-- (void) setAvatarData: (NSData *) data {
-  [avatarData release];
-  [avatar release];
-  avatarData = [data copy];
-  avatar = data ? [[OBImage alloc] initWithData: data] : nil;
 }
 
 - (BOOL) isEqual: (id) other {

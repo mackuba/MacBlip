@@ -44,6 +44,7 @@
 
 /* Begin PBXBuildFile section */
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
+		581805A11138516600A61784 /* OBUser.rb in Resources */ = {isa = PBXBuildFile; fileRef = 581805A01138516600A61784 /* OBUser.rb */; };
 		5821058B11178FB00025DAF4 /* OBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821055E11178FB00025DAF4 /* OBAccount.m */; };
 		5821058C11178FB00025DAF4 /* OBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056011178FB00025DAF4 /* OBConnector.m */; };
 		5821058D11178FB00025DAF4 /* OBDashboardMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056211178FB00025DAF4 /* OBDashboardMonitor.m */; };
@@ -151,6 +152,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4DE339F60D74FCDD00ADB6EE /* rb_main.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+		581805A01138516600A61784 /* OBUser.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBUser.rb; sourceTree = "<group>"; };
 		5821055D11178FB00025DAF4 /* OBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAccount.h; sourceTree = "<group>"; };
 		5821055E11178FB00025DAF4 /* OBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAccount.m; sourceTree = "<group>"; };
 		5821055F11178FB00025DAF4 /* OBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBConnector.h; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			children = (
 				58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */,
 				58E6E3FE113183B300B97529 /* OBMessage.rb */,
+				581805A01138516600A61784 /* OBUser.rb */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */,
 				58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */,
 				58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */,
+				581805A11138516600A61784 /* OBUser.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
