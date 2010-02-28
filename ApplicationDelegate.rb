@@ -116,4 +116,8 @@ class ApplicationDelegate
     @aboutWindow.showWindow(self)
   end
 
+  def openDashboard(sender)
+    BrowserController.openDashboard
+  end
+
 end
