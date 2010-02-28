@@ -53,6 +53,12 @@ class ApplicationDelegate
     "#{appName}/#{appVersion}"
   end
 
+  def applicationDockMenu(app)
+    menu = NSMenu.alloc.initWithTitle ""
+    menu.addItemWithTitle "New message...", action: 'newMessagePressed:', keyEquivalent: ''
+    menu
+  end
+
   def applicationWillBecomeActive(notification)
     restoreMainWindow
   end
@@ -118,6 +124,11 @@ class ApplicationDelegate
 
   def openDashboard(sender)
     BrowserController.openDashboard
+  end
+
+  def newMessagePressed(sender)
+    createMainWindow
+    @mainWindow.openNewMessageWindow
   end
 
 end
