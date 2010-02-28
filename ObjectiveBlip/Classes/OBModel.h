@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBModel - base class for Blip models (OBMessage, OBUser, etc.)
+*/
+
 #import <Foundation/Foundation.h>
 
 #define RECORD_ID @"recordId"

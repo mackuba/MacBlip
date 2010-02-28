@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBModelManager - helper class for OBModel, don't use it directly
+*/
+
 #import <Foundation/Foundation.h>
 
 @interface OBModelManager : NSObject {

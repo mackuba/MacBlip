@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBAccount - represents current user's account
+*/
+
 #import <Foundation/Foundation.h>
 
 @interface OBAccount : NSObject {

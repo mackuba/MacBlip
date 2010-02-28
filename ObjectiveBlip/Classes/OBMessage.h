@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBMessage - single Blip update (status, directed or private message)
+*/
+
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 #import "OBModel.h"

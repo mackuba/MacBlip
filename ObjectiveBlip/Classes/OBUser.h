@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBUser - represents a Blip user
+*/
+
 #import "OBModel.h"
 
 @interface OBUser : OBModel {

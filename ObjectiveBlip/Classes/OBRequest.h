@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBRequest - represents a single request to Blip API
+*/
+
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 

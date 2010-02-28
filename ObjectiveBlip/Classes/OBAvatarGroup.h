@@ -5,6 +5,12 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBAvatarGroup - a group of users' avatars loaded together. It's created when a group of messages is received,
+  then all matching avatars are loaded in parallel, and when all of them are ready, dashboard request can be completed.
+*/
+
+
 #import <Foundation/Foundation.h>
 
 @class OBConnector;

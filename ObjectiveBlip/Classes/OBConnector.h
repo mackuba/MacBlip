@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBConnector - the central class which manages everything related to Blip connection
+*/
+
 #import <Foundation/Foundation.h>
 
 // to enable logging in debug mode, add "-DDEBUG" to "Other C Flags" in the build properties of your target

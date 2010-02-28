@@ -1,4 +1,5 @@
 #import "OBAccount.h"
+#import "OBAvatarGroup.h"
 #import "OBConnector.h"
 #import "OBDashboardMonitor.h"
 #import "OBMessage.h"

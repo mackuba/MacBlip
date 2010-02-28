@@ -5,6 +5,10 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBUtils - various stuff that doesn't fit anywhere else
+*/
+
 #import <Foundation/Foundation.h>
 
 #define ReleaseAll(...) \

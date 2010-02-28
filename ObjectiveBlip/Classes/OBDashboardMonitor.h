@@ -5,6 +5,11 @@
 // Licensed under MIT license
 // -------------------------------------------------------
 
+/*
+  OBDashboardMonitor - keeps a timer which activates it in specified intervals, and sends requests to update the
+  dashboard when it does
+*/
+
 #import <Foundation/Foundation.h>
 
 #define OBDashboardUpdatedNotification @"OBDashboardUpdatedNotification"
