@@ -77,6 +77,7 @@
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
+		5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5883BD9C113D832C00F72D34 /* macblip_icon_80.png */; };
 		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
 		5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFA51129C9530029B4D9 /* SDKVO.m */; };
 		5897EFB11129C9530029B4D9 /* SDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFAA1129C9530029B4D9 /* SDListView.m */; };
@@ -98,7 +99,6 @@
 		5897F1CB112DDD5D0029B4D9 /* OBUtils.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1C0112DDD5D0029B4D9 /* OBUtils.bridgesupport */; };
 		5897F1CE112DDE4A0029B4D9 /* LoginWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */; };
 		5897F1D0112DDE5B0029B4D9 /* Extensions.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1CF112DDE5B0029B4D9 /* Extensions.rb */; };
-		5897F1D3112DDE750029B4D9 /* blip80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1D2112DDE750029B4D9 /* blip80.png */; };
 		5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1D4112DDE850029B4D9 /* LoginWindow.xib */; };
 		5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1FB112DE9060029B4D9 /* macblip_icon.icns */; };
 		5897F20C112DEBEC0029B4D9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20B112DEBEC0029B4D9 /* home.png */; };
@@ -205,6 +205,7 @@
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		585A92AF111B7060003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5883BD9C113D832C00F72D34 /* macblip_icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macblip_icon_80.png; sourceTree = "<group>"; };
 		5897EF461129C3750029B4D9 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
 		5897EFA41129C9530029B4D9 /* SDKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKVO.h; sourceTree = "<group>"; };
 		5897EFA51129C9530029B4D9 /* SDKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKVO.m; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		5897F1C0112DDD5D0029B4D9 /* OBUtils.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUtils.bridgesupport; sourceTree = "<group>"; };
 		5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = LoginWindowController.rb; sourceTree = "<group>"; };
 		5897F1CF112DDE5B0029B4D9 /* Extensions.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Extensions.rb; sourceTree = "<group>"; };
-		5897F1D2112DDE750029B4D9 /* blip80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blip80.png; sourceTree = "<group>"; };
 		5897F1D5112DDE850029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/LoginWindow.xib; sourceTree = "<group>"; };
 		5897F1FB112DE9060029B4D9 /* macblip_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = macblip_icon.icns; sourceTree = "<group>"; };
 		5897F20B112DEBEC0029B4D9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -563,10 +563,10 @@
 		5897F1D1112DDE660029B4D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5883BD9C113D832C00F72D34 /* macblip_icon_80.png */,
 				5897F20D112DED5D0029B4D9 /* new_message.png */,
 				5897F20B112DEBEC0029B4D9 /* home.png */,
 				5897F1FB112DE9060029B4D9 /* macblip_icon.icns */,
-				5897F1D2112DDE750029B4D9 /* blip80.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -654,7 +654,6 @@
 				5897F1CB112DDD5D0029B4D9 /* OBUtils.bridgesupport in Resources */,
 				5897F1CE112DDE4A0029B4D9 /* LoginWindowController.rb in Resources */,
 				5897F1D0112DDE5B0029B4D9 /* Extensions.rb in Resources */,
-				5897F1D3112DDE750029B4D9 /* blip80.png in Resources */,
 				5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */,
 				5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */,
 				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
@@ -682,6 +681,7 @@
 				58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */,
 				58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */,
 				581805A11138516600A61784 /* OBUser.rb in Resources */,
+				5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
