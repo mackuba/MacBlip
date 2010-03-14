@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1050</int>
+		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10C540</string>
 		<string key="IBDocument.InterfaceBuilderVersion">740</string>
 		<string key="IBDocument.AppKitVersion">1038.25</string>
@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="4"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -157,7 +157,7 @@
 											<int key="NSTCFlags">1</int>
 										</object>
 										<object class="NSTextViewSharedData" key="NSSharedData">
-											<int key="NSFlags">2052</int>
+											<int key="NSFlags">2053</int>
 											<int key="NSTextCheckingTypes">0</int>
 											<nil key="NSMarkedAttributes"/>
 											<object class="NSColor" key="NSBackgroundColor">
@@ -187,7 +187,10 @@
 													</object>
 												</object>
 											</object>
-											<reference key="NSInsertionColor" ref="890709816"/>
+											<object class="NSColor" key="NSInsertionColor">
+												<int key="NSColorSpace">1</int>
+												<bytes key="NSRGB">MCAwIDAAA</bytes>
+											</object>
 											<object class="NSDictionary" key="NSLinkAttributes">
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSArray" key="dict.sortedKeys">
@@ -226,8 +229,8 @@
 									<bytes key="NSRGB">MC40MTg0NzgyNjA5IDAuNDE4NDc4MjYwOSAwLjQxODQ3ODI2MDkgMC43AA</bytes>
 								</object>
 								<object class="NSCursor" key="NSCursor">
-									<string key="NSHotSpot">{1, -1}</string>
-									<int key="NSCursorType">0</int>
+									<string key="NSHotSpot">{4, -5}</string>
+									<int key="NSCursorType">1</int>
 								</object>
 								<int key="NScvFlags">2</int>
 							</object>
@@ -423,10 +426,23 @@
 							<string key="NSLabel">attributedString: selection.processedBody</string>
 							<string key="NSBinding">attributedString</string>
 							<string key="NSKeyPath">selection.processedBody</string>
+							<object class="NSDictionary" key="NSOptions">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSArray" key="dict.sortedKeys">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>NSAllowsEditingMultipleValuesSelection</string>
+									<string>NSConditionallySetsEditable</string>
+								</object>
+								<object class="NSMutableArray" key="dict.values">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<boolean value="NO"/>
+									<boolean value="NO"/>
+								</object>
+							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">51</int>
+					<int key="connectionID">55</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -607,7 +623,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">51</int>
+			<int key="maxID">55</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1071,6 +1087,13 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">ImageKit.framework/Headers/IKSaveOptions.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">ImageKit.framework/Headers/ImageKitDeprecated.h</string>
 					</object>
 				</object>
@@ -1107,6 +1130,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">QuartzFilters.framework/Headers/QuartzFilterManager.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">QuickLookUI.framework/Headers/QLPreviewPanel.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1237,7 +1267,7 @@
 		<int key="IBDocument.localizationMode">0</int>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1050" key="NS.object.0"/>
+			<integer value="1060" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>

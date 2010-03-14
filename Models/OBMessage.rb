@@ -20,11 +20,9 @@ class OBMessage
   end
 
   def processedBody
-    if pictures && pictures.length > 0
-      "#{body} [FOTO]"
-    else
-      body
-    end
+    text = body
+    text += " [FOTO]" if pictures && pictures.length > 0
+    text
   end
 
   def keyPathsForValuesAffectingProcessedBody
