@@ -3,7 +3,7 @@
 <signatures version='0.9'>
 <enum name='DEBUG_FORM_DATA_REQUEST' value='0'/>
 <enum name='DEBUG_PERSISTENT_CONNECTIONS' value='0'/>
-<enum name='DEBUG_REQUEST_STATUS' value='1'/>
+<enum name='DEBUG_REQUEST_STATUS' value='0'/>
 <enum name='DEBUG_THROTTLING' value='0'/>
 <enum name='REACHABILITY_20_API' value='1'/>
 </signatures>
