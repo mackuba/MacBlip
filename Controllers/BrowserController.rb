@@ -13,7 +13,7 @@ class BrowserController
     end
 
     def openPage(path)
-      openURL("http://blip.pl#{path}")
+      openURL(BLIP_WWW_HOST + path)
     end
 
     def openDashboard

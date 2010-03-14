@@ -87,7 +87,7 @@ class NewMessageDialogController < NSWindowController
     # @blip.sendMessageRequest(message).sendFor(self)
     # workaround until they fix CFReadStreamOpen in MacRuby
 
-    url = NSURL.URLWithString("http://api.blip.pl/updates")
+    url = NSURL.URLWithString(BLIP_API_HOST + "/updates")
     escapedMessage = message.gsub(/\\/, "\\\\").gsub(/"/, "\\\"")
     content = "{\"update\": {\"body\": \"#{escapedMessage}\"}}"
     username = @blip.account.username
