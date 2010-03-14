@@ -12,7 +12,7 @@ class AvatarView < NSImageView
     super(wholeImage)
 
     borderRect = NSInsetRect(wholeImage, -2.0, -2.0)
-    MessageCell::FOREGROUND.set
+    MessageCell::BACKGROUND.set
     rounded = NSBezierPath.bezierPathWithRoundedRect(borderRect, xRadius: 7, yRadius: 7)
     rounded.lineWidth = 5
     rounded.stroke

@@ -7,7 +7,7 @@
 
 class MessageCell < NSView
 
-  FOREGROUND = NSColor.colorWithDeviceRed(0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+  BACKGROUND = NSColor.colorWithDeviceRed(0.94, green: 0.94, blue: 0.94, alpha: 1.0)
   BORDER = NSColor.colorWithDeviceRed(0.6, green: 0.6, blue: 0.6, alpha: 1.0)
 
   def drawRect(rect)
@@ -15,7 +15,7 @@ class MessageCell < NSView
     padded = NSInsetRect(wholeCell, 10, 5)
     rounded = NSBezierPath.bezierPathWithRoundedRect(padded, xRadius: 5, yRadius: 5)
 
-    FOREGROUND.set
+    BACKGROUND.set
     rounded.fill
     BORDER.set
     rounded.stroke
