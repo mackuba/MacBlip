@@ -61,7 +61,7 @@ class MessageCellController < SDListViewItem
     [newCellHeight, MINIMUM_CELL_HEIGHT].max
   end
 
-  def nameLabelClicked(sender)
+  def avatarClicked(sender)
     BrowserController.openUsersDashboard(self.representedObject.user.login)
   end
 

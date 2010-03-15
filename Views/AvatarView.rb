@@ -18,4 +18,8 @@ class AvatarView < NSImageView
     rounded.stroke
   end
 
+  def mouseDown(event)
+    NSApp.sendAction(self.action, to: self.target, from: self) if self.target
+  end
+
 end

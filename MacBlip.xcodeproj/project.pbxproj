@@ -65,7 +65,6 @@
 		5821059E11178FB00025DAF4 /* NSString+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821058911178FB00025DAF4 /* NSString+BSJSONAdditions.m */; };
 		582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105BA111793B60025DAF4 /* libz.1.2.3.dylib */; };
 		582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105C0111793C20025DAF4 /* SystemConfiguration.framework */; };
-		58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FE8112F1A88008938A9 /* ClickableLabel.rb */; };
 		58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FEE112F1B44008938A9 /* BrowserController.rb */; };
 		583420A91130031E008938A9 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
 		583420D2113003DA008938A9 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
@@ -194,7 +193,6 @@
 		5821058A11178FB00025DAF4 /* ObjectiveBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveBlip.h; sourceTree = "<group>"; };
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		58341FE8112F1A88008938A9 /* ClickableLabel.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ClickableLabel.rb; sourceTree = "<group>"; };
 		58341FEE112F1B44008938A9 /* BrowserController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BrowserController.rb; sourceTree = "<group>"; };
 		583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		583420A81130031E008938A9 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				58E6E39111317CF900B97529 /* AvatarView.rb */,
-				58341FE8112F1A88008938A9 /* ClickableLabel.rb */,
 				58E6E8AA1135E6B800B97529 /* AboutWindow.xib */,
 				5897F1D4112DDE850029B4D9 /* LoginWindow.xib */,
 				5897F031112C766F0029B4D9 /* MessageCell.xib */,
@@ -658,7 +655,6 @@
 				5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */,
 				5897F20C112DEBEC0029B4D9 /* home.png in Resources */,
 				5897F20E112DED5D0029B4D9 /* new_message.png in Resources */,
-				58341FE9112F1A88008938A9 /* ClickableLabel.rb in Resources */,
 				58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */,
 				583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */,
 				583422CD113083BA008938A9 /* NewMessageDialog.xib in Resources */,
