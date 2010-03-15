@@ -7,6 +7,23 @@
 
 class MessageTextView < NSTextView
 
+  def menuForEvent(event)
+    # menu returned by super is a custom menu built by NSTextView, with service items merged in
+    # self.menu is our base menu, assigned by the controller
+    # here, we make sure that the new menu has the same delegate reference (it's needed later in the handler)
+    menu = super
+    menu.delegate = self.menu.delegate
+    menu
+  end
+
+  def awakeFromNib
+    self.linkTextAttributes = {
+      NSUnderlineStyleAttributeName => 0,
+      NSCursorAttributeName => NSCursor.pointingHandCursor,
+      NSForegroundColorAttributeName => NSColor.colorWithDeviceRed(0.2, green: 0.4, blue: 0.8, alpha: 1.0)
+    }
+  end
+
   def acceptsFirstResponder
     # unselect currently selected text in another text view, if any
     last = self.window.firstResponder
