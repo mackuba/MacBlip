@@ -9,6 +9,20 @@
     <language>pl</language>
 
     <item>
+      <title>Wersja 0.2</title>
+      <sparkle:releaseNotesLink>
+        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.2.html
+      </sparkle:releaseNotesLink>
+      <pubDate>Mon, 15 Mar 2010 19:26:21 +0000</pubDate>
+      <enclosure
+        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.2.zip"
+        sparkle:version="0.2"
+        length="11245003"
+        type="application/octet-stream"
+        sparkle:dsaSignature="MC0CFQDTyXehHeufQkPxuxn3oHHbRoMWygIUeMZ4XTsJGiEglO4t3OiohmoWZ5Y=" />
+    </item>
+
+    <item>
       <title>Wersja 0.1.1</title>
       <sparkle:releaseNotesLink>
         http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.1.1.html
