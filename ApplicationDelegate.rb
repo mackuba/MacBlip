@@ -127,8 +127,9 @@ class ApplicationDelegate
   end
 
   def newMessagePressed(sender)
+    NSApp.activateIgnoringOtherApps(true)
     createMainWindow
-    @mainWindow.openNewMessageWindow
+    @mainWindow.performSelector('openNewMessageWindow', withObject: nil, afterDelay: 0.01)
   end
 
 end
