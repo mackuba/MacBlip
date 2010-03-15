@@ -45,7 +45,7 @@ class OBMessage
     text += " [FOTO]" if pictures && pictures.length > 0
     richText = NSMutableAttributedString.alloc.initWithString(text, attributes: {})
 
-    detectLinks(richText, /\#([^\s\!\@\#\$\%\^\&\*\(\)\[\]\-\_\+\=\{\}\:\;\'\"\\\|\,\.\<\>\?\/\`\~]+)/) do
+    detectLinks(richText, /\#([^\s\!\@\#\$\%\^\&\*\(\)\[\]\+\=\{\}\:\;\'\"\\\|\,\.\<\>\?\/\`\~]+)/) do
       BLIP_WWW_HOST + "/tags/#{sanitizeTag($1)}"
     end
     detectLinks(richText, /\^(\w+)/) { BLIP_WWW_HOST + "/users/#{$1}/dashboard" }
