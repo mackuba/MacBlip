@@ -15,19 +15,21 @@
 #if TARGET_OS_IPHONE
 #import "Reachability.h"
 #import "ASIAuthenticationDialog.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 #else
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
 #import "ASIInputStream.h"
 
+
 // Automatically set on build
-NSString *ASIHTTPRequestVersion = @"v1.5-45 2010-02-10";
+NSString *ASIHTTPRequestVersion = @"v1.6.1-5 2010-04-01";
 
 NSString* const NetworkRequestErrorDomain = @"ASIHTTPRequestErrorDomain";
 
 static const CFOptionFlags kNetworkEvents = kCFStreamEventOpenCompleted | kCFStreamEventHasBytesAvailable | kCFStreamEventEndEncountered | kCFStreamEventErrorOccurred;
 
-// In memory caches of credentials, used on when useSessionPersistance is YES
+// In memory caches of credentials, used on when useSessionPersistence is YES
 static NSMutableArray *sessionCredentialsStore = nil;
 static NSMutableArray *sessionProxyCredentialsStore = nil;
 
@@ -175,13 +177,14 @@ static BOOL isiPhoneOS2;
 @property (assign) BOOL isSynchronous;
 @property (assign) BOOL inProgress;
 @property (assign) int retryCount;
-@property (assign) BOOL canUsePersistentConnection;
+@property (assign) BOOL connectionCanBeReused;
 @property (retain, nonatomic) NSMutableDictionary *connectionInfo;
 @property (retain, nonatomic) NSInputStream *readStream;
 @property (assign) ASIAuthenticationState authenticationNeeded;
 @property (assign, nonatomic) BOOL readStreamIsScheduled;
 @property (retain, nonatomic) NSTimer *statusTimer;
 @property (assign, nonatomic) BOOL downloadComplete;
+@property (retain) NSNumber *requestID;
 @end
 
 
@@ -218,11 +221,11 @@ static BOOL isiPhoneOS2;
 
 - (id)initWithURL:(NSURL *)newURL
 {
-	self = [super init];
-	closeStreamTime = 2;
+	self = [self init];
 	[self setRequestMethod:@"GET"];
 
 	[self setShouldAttemptPersistentConnection:YES];
+	[self setPersistentConnectionTimeoutSeconds:60.0];
 	[self setShouldPresentCredentialsBeforeChallenge:YES];
 	[self setShouldRedirect:YES];
 	[self setShowAccurateProgress:YES];
@@ -232,8 +235,8 @@ static BOOL isiPhoneOS2;
 	[self setShouldPresentProxyAuthenticationDialog:YES];
 	
 	[self setTimeOutSeconds:[ASIHTTPRequest defaultTimeOutSeconds]];
-	[self setUseSessionPersistance:YES];
-	[self setUseCookiePersistance:YES];
+	[self setUseSessionPersistence:YES];
+	[self setUseCookiePersistence:YES];
 	[self setValidatesSecureCertificate:YES];
 	[self setRequestCookies:[[[NSMutableArray alloc] init] autorelease]];
 	[self setDidStartSelector:@selector(requestStarted:)];
@@ -287,6 +290,7 @@ static BOOL isiPhoneOS2;
 	[proxyAuthenticationScheme release];
 	[proxyCredentials release];
 	[url release];
+	[originalURL release];
 	[lastActivityTime release];
 	[responseCookies release];
 	[rawResponseData release];
@@ -300,6 +304,7 @@ static BOOL isiPhoneOS2;
 	[PACurl release];
 	[responseStatusMessage release];
 	[connectionInfo release];
+	[requestID release];
 	[super dealloc];
 }
 
@@ -635,7 +640,7 @@ static BOOL isiPhoneOS2;
 		
 	// First, see if we have any credentials we can use in the session store
 	NSDictionary *credentials = nil;
-	if ([self useSessionPersistance]) {
+	if ([self useSessionPersistence]) {
 		credentials = [self findSessionAuthenticationCredentials];
 	}
 	
@@ -667,7 +672,7 @@ static BOOL isiPhoneOS2;
 			[self addBasicAuthenticationHeaderWithUsername:[usernameAndPassword objectForKey:(NSString *)kCFHTTPAuthenticationUsername] andPassword:[usernameAndPassword objectForKey:(NSString *)kCFHTTPAuthenticationPassword]];
 		}
 	}
-	if ([self useSessionPersistance]) {
+	if ([self useSessionPersistence]) {
 		credentials = [self findSessionProxyAuthenticationCredentials];
 		if (credentials) {
 			if (!CFHTTPMessageApplyCredentialDictionary(request, (CFHTTPAuthenticationRef)[credentials objectForKey:@"Authentication"], (CFDictionaryRef)[credentials objectForKey:@"Credentials"], NULL)) {
@@ -679,9 +684,9 @@ static BOOL isiPhoneOS2;
 
 - (void)applyCookieHeader
 {
-	// Add cookies from the persistant (mac os global) store
-	if ([self useCookiePersistance]) {
-		NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[self url]];
+	// Add cookies from the persistent (mac os global) store
+	if ([self useCookiePersistence]) {
+		NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[[self url] absoluteURL]];
 		if (cookies) {
 			[[self requestCookies] addObjectsFromArray:cookies];
 		}
@@ -892,7 +897,13 @@ static BOOL isiPhoneOS2;
 		}
 	}
 	if ([self proxyHost] && [self proxyPort]) {
-		NSMutableDictionary *proxyToUse = [NSMutableDictionary dictionaryWithObjectsAndKeys:[self proxyHost],kCFStreamPropertyHTTPProxyHost,[NSNumber numberWithInt:[self proxyPort]],kCFStreamPropertyHTTPProxyPort,nil];
+		NSString *hostKey = (NSString *)kCFStreamPropertyHTTPProxyHost;
+		NSString *portKey = (NSString *)kCFStreamPropertyHTTPProxyPort;
+		if ([[[[self url] scheme] lowercaseString] isEqualToString:@"https"]) {
+			hostKey = (NSString *)kCFStreamPropertyHTTPSProxyHost;
+			portKey = (NSString *)kCFStreamPropertyHTTPSProxyPort;
+		}
+		NSMutableDictionary *proxyToUse = [NSMutableDictionary dictionaryWithObjectsAndKeys:[self proxyHost],hostKey,[NSNumber numberWithInt:[self proxyPort]],portKey,nil];
 		CFReadStreamSetProperty((CFReadStreamRef)[self readStream], kCFStreamPropertyHTTPProxy, proxyToUse);
 	}
 
@@ -961,13 +972,17 @@ static BOOL isiPhoneOS2;
 			[persistentConnectionsPool addObject:[self connectionInfo]];
 		}
 		
-		nextRequestID++;
-		[[self connectionInfo] setObject:[NSNumber numberWithInt:nextRequestID] forKey:@"request"];		
+		// If we are retrying this request, it will already have a requestID
+		if (![self requestID]) {
+			nextRequestID++;
+			[self setRequestID:[NSNumber numberWithUnsignedInt:nextRequestID]];
+		}
+		[[self connectionInfo] setObject:[self requestID] forKey:@"request"];		
 		[[self connectionInfo] setObject:[self readStream] forKey:@"stream"];
 		CFReadStreamSetProperty((CFReadStreamRef)[self readStream],  kCFStreamPropertyHTTPAttemptPersistentConnection, kCFBooleanTrue);
 		
 		#if DEBUG_PERSISTENT_CONNECTIONS
-		NSLog(@"Request #%hi will use connection #%hi",nextRequestID,[[[self connectionInfo] objectForKey:@"id"] intValue]);
+		NSLog(@"Request #%@ will use connection #%hi",[self requestID],[[[self connectionInfo] objectForKey:@"id"] intValue]);
 		#endif
 		
 		
@@ -1007,7 +1022,7 @@ static BOOL isiPhoneOS2;
 	
 
 	if (!streamSuccessfullyOpened) {
-		[self setCanUsePersistentConnection:NO];
+		[self setConnectionCanBeReused:NO];
 		[self destroyReadStream];
 		[[self cancelledLock] unlock];
 		[self failWithError:[NSError errorWithDomain:NetworkRequestErrorDomain code:ASIInternalErrorWhileBuildingRequestType userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"Unable to start HTTP connection",NSLocalizedDescriptionKey,nil]]];
@@ -1036,7 +1051,7 @@ static BOOL isiPhoneOS2;
 	
 
 	[self setStatusTimer:[NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(updateStatus:) userInfo:nil repeats:YES]];
-	
+
 	// If we're running asynchronously on the main thread, the runloop will already be running and we can return control
 	if (![NSThread isMainThread] || [self isSynchronous]) {
 		while (!complete) {
@@ -1148,17 +1163,16 @@ static BOOL isiPhoneOS2;
 		// If we have a post body
 		if ([self postLength]) {
 		
-			// Find out if we've sent any more data than last time, and reset the timeout if so
-			if (totalBytesSent > lastBytesSent) {
-				[self setLastActivityTime:[NSDate date]];
-				[self setLastBytesSent:totalBytesSent];
-			}
+			[self setLastBytesSent:totalBytesSent];	
 			
 			// Find out how much data we've uploaded so far
 			[self setTotalBytesSent:[[(NSNumber *)CFReadStreamCopyProperty((CFReadStreamRef)[self readStream], kCFStreamPropertyHTTPRequestBytesWrittenCount) autorelease] unsignedLongLongValue]];
 			if (totalBytesSent > lastBytesSent) {
+				
+				// We've uploaded more data,  reset the timeout
+				[self setLastActivityTime:[NSDate date]];
 				[ASIHTTPRequest incrementBandwidthUsedInLastSecond:(unsigned long)(totalBytesSent-lastBytesSent)];		
-					
+						
 				#if DEBUG_REQUEST_STATUS
 				if ([self totalBytesSent] == [self postLength]) {
 					NSLog(@"Request %@ finished uploading data",self);
@@ -1358,12 +1372,15 @@ static BOOL isiPhoneOS2;
 		if (showAccurateProgress) {
 			if (totalBytesSent == postLength || lastBytesSent > 0) {
 				value = totalBytesSent-lastBytesSent;
-			} else {
-				value = 0;
 			}
 		} else {
 			value = 1;
 			[self setUpdatedProgress:YES];
+		}
+		
+		// No progress
+		if (value == 0) {
+			return;
 		}
 		
 		NSMethodSignature *signature = nil;
@@ -1386,6 +1403,9 @@ static BOOL isiPhoneOS2;
 			progress = (double)(1.0*(totalBytesSent-uploadBufferSize)/(postLength-uploadBufferSize));
 		}
 		[self setUpdatedProgress:YES];
+		if (progress == 0) {
+			return;
+		}
 		[ASIHTTPRequest setProgress:progress forProgressIndicator:uploadProgressDelegate];
 		
 	}
@@ -1435,6 +1455,10 @@ static BOOL isiPhoneOS2;
 				[self setUpdatedProgress:YES];
 			}
 			
+			// No progress
+			if (value == 0) {
+				return;
+			}
 			
 			NSMethodSignature *signature = [[queue class] instanceMethodSignatureForSelector:selector];
 			NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
@@ -1456,6 +1480,9 @@ static BOOL isiPhoneOS2;
 				}
 			}
 			[self setUpdatedProgress:YES];
+			if (progress == 0) {
+				return;
+			}
 			[ASIHTTPRequest setProgress:progress forProgressIndicator:downloadProgressDelegate];
 		}
 		
@@ -1470,7 +1497,7 @@ static BOOL isiPhoneOS2;
 	// We're using a progress queue or compatible controller to handle progress
 	SEL selector = @selector(decrementUploadProgressBy:);
 	if ([queue respondsToSelector:selector]) {
-		unsigned long long value = 0-lastBytesSent;
+		unsigned long long value = 0-[self totalBytesSent];
 		
 		NSMethodSignature *signature = [[queue class] instanceMethodSignatureForSelector:selector];
 		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
@@ -1527,15 +1554,17 @@ static BOOL isiPhoneOS2;
 	if ([self error] || [self mainRequest]) {
 		return;
 	}
+	// Let the delegate know we have started
+	if ([self didStartSelector] && [[self delegate] respondsToSelector:[self didStartSelector]]) {
+		[[self delegate] performSelectorOnMainThread:[self didStartSelector] withObject:self waitUntilDone:[NSThread isMainThread]];		
+	}
+	
 	// Let the queue know we have started
 	if ([[self queue] respondsToSelector:@selector(requestDidStart:)]) {
 		[[self queue] performSelectorOnMainThread:@selector(requestDidStart:) withObject:self waitUntilDone:[NSThread isMainThread]];		
 	}
 	
-	// Let the delegate know we have started
-	if ([self didStartSelector] && [[self delegate] respondsToSelector:[self didStartSelector]]) {
-		[[self delegate] performSelectorOnMainThread:[self didStartSelector] withObject:self waitUntilDone:[NSThread isMainThread]];		
-	}
+
 }
 
 // Subclasses might override this method to process the result in the same thread
@@ -1548,15 +1577,16 @@ static BOOL isiPhoneOS2;
 	if ([self error] || [self mainRequest]) {
 		return;
 	}
+	// Let the delegate know we are done
+	if ([self didFinishSelector] && [[self delegate] respondsToSelector:[self didFinishSelector]]) {
+		[[self delegate] performSelectorOnMainThread:[self didFinishSelector] withObject:self waitUntilDone:[NSThread isMainThread]];		
+	}
+	
 	// Let the queue know we are done
 	if ([[self queue] respondsToSelector:@selector(requestDidFinish:)]) {
 		[[self queue] performSelectorOnMainThread:@selector(requestDidFinish:) withObject:self waitUntilDone:[NSThread isMainThread]];		
 	}
 	
-	// Let the delegate know we are done
-	if ([self didFinishSelector] && [[self delegate] respondsToSelector:[self didFinishSelector]]) {
-		[[self delegate] performSelectorOnMainThread:[self didFinishSelector] withObject:self waitUntilDone:[NSThread isMainThread]];		
-	}
 }
 
 // Subclasses might override this method to perform error handling in the same thread
@@ -1572,15 +1602,15 @@ static BOOL isiPhoneOS2;
 	if (theError && [theError code] != ASIAuthenticationErrorType && [theError code] != ASITooMuchRedirectionErrorType) {
 		[connectionsLock lock];
 		#if DEBUG_PERSISTENT_CONNECTIONS
-		NSLog(@"Request #%@ failed and will invalidate connection #%@",[[self connectionInfo] objectForKey:@"request"],[[self connectionInfo] objectForKey:@"id"]);
+		NSLog(@"Request #%@ failed and will invalidate connection #%@",[self requestID],[[self connectionInfo] objectForKey:@"id"]);
 		#endif
 		[[self connectionInfo] removeObjectForKey:@"request"];
 		[persistentConnectionsPool removeObject:[self connectionInfo]];
 		[connectionsLock unlock];
 		[self destroyReadStream];
 	}
-	if ([self canUsePersistentConnection]) {
-		[[self connectionInfo] setObject:[NSDate dateWithTimeIntervalSinceNow:closeStreamTime] forKey:@"expires"];
+	if ([self connectionCanBeReused]) {
+		[[self connectionInfo] setObject:[NSDate dateWithTimeIntervalSinceNow:[self persistentConnectionTimeoutSeconds]] forKey:@"expires"];
 	}
 	
 	if ([self isCancelled] || [self error]) {
@@ -1597,14 +1627,14 @@ static BOOL isiPhoneOS2;
 		[failedRequest setError:theError];
 	}
 
-	// Let the queue know something went wrong
-	if ([[failedRequest queue] respondsToSelector:@selector(requestDidFail:)]) {
-		[[failedRequest queue] performSelectorOnMainThread:@selector(requestDidFail:) withObject:failedRequest waitUntilDone:[NSThread isMainThread]];		
-	}
-		
 	// Let the delegate know something went wrong
 	if ([failedRequest didFailSelector] && [[failedRequest delegate] respondsToSelector:[failedRequest didFailSelector]]) {
 		[[failedRequest delegate] performSelectorOnMainThread:[failedRequest didFailSelector] withObject:failedRequest waitUntilDone:[NSThread isMainThread]];	
+	}
+	
+	// Let the queue know something went wrong
+	if ([[failedRequest queue] respondsToSelector:@selector(requestDidFail:)]) {
+		[[failedRequest queue] performSelectorOnMainThread:@selector(requestDidFail:) withObject:failedRequest waitUntilDone:[NSThread isMainThread]];		
 	}
 	
 	[self markAsFinished];
@@ -1619,174 +1649,200 @@ static BOOL isiPhoneOS2;
 {
 	[self setAuthenticationNeeded:ASINoAuthenticationNeededYet];
 
-	CFHTTPMessageRef headers = (CFHTTPMessageRef)CFReadStreamCopyProperty((CFReadStreamRef)[self readStream], kCFStreamPropertyHTTPResponseHeader);
-	if (!headers) {
+	CFHTTPMessageRef message = (CFHTTPMessageRef)CFReadStreamCopyProperty((CFReadStreamRef)[self readStream], kCFStreamPropertyHTTPResponseHeader);
+	if (!message) {
 		return;
 	}
-	if (CFHTTPMessageIsHeaderComplete(headers)) {
+	
+	// Make sure we've received all the headers
+	if (!CFHTTPMessageIsHeaderComplete(message)) {
+		CFRelease(message);
+		return;
+	}
 
-#if DEBUG_REQUEST_STATUS
-		if ([self totalBytesSent] == [self postLength]) {
-			NSLog(@"Request %@ received response headers",self);
+	#if DEBUG_REQUEST_STATUS
+	if ([self totalBytesSent] == [self postLength]) {
+		NSLog(@"Request %@ received response headers",self);
+	}
+	#endif		
+
+	CFDictionaryRef headerFields = CFHTTPMessageCopyAllHeaderFields(message);
+	[self setResponseHeaders:(NSDictionary *)headerFields];
+
+	CFRelease(headerFields);
+	[self setResponseStatusCode:CFHTTPMessageGetResponseStatusCode(message)];
+	[self setResponseStatusMessage:[(NSString *)CFHTTPMessageCopyResponseStatusLine(message) autorelease]];
+
+	// Is the server response a challenge for credentials?
+	if ([self responseStatusCode] == 401) {
+		[self setAuthenticationNeeded:ASIHTTPAuthenticationNeeded];
+	} else if ([self responseStatusCode] == 407) {
+		[self setAuthenticationNeeded:ASIProxyAuthenticationNeeded];
+	}
+		
+	// Authentication succeeded, or no authentication was required
+	if (![self authenticationNeeded]) {
+
+		// Did we get here without an authentication challenge? (which can happen when shouldPresentCredentialsBeforeChallenge is YES and basic auth was successful)
+		if (!requestAuthentication && [self username] && [self password] && [self useSessionPersistence]) {
+			
+			NSMutableDictionary *newCredentials = [NSMutableDictionary dictionaryWithCapacity:2];
+			[newCredentials setObject:[self username] forKey:(NSString *)kCFHTTPAuthenticationUsername];
+			[newCredentials setObject:[self password] forKey:(NSString *)kCFHTTPAuthenticationPassword];
+			
+			// Store the credentials in the session 
+			NSMutableDictionary *sessionCredentials = [NSMutableDictionary dictionary];
+			[sessionCredentials setObject:newCredentials forKey:@"Credentials"];
+			[sessionCredentials setObject:[self url] forKey:@"URL"];
+			[sessionCredentials setObject:(NSString *)kCFHTTPAuthenticationSchemeBasic forKey:@"AuthenticationScheme"];
+			[[self class] storeAuthenticationCredentialsInSessionStore:sessionCredentials];
 		}
-#endif		
+	}
+	
+	// See if we got a Content-length header
+	NSString *cLength = [responseHeaders valueForKey:@"Content-Length"];
+	if (cLength) {
+		SInt32 length = CFStringGetIntValue((CFStringRef)cLength);
+		
+		// Workaround for Apache HEAD requests for dynamically generated content returning the wrong Content-Length when using gzip
+		if ([self mainRequest] && [self allowCompressedResponse] && length == 20 && [self showAccurateProgress] && [self shouldResetProgressIndicators]) {
+			[[self mainRequest] setShowAccurateProgress:NO];
+			[self resetDownloadProgress:1];
+			
+		} else {
+			[self setContentLength:length];
+			if ([self mainRequest]) {
+				[[self mainRequest] setContentLength:length];
+			}
 
-		CFDictionaryRef headerFields = CFHTTPMessageCopyAllHeaderFields(headers);
-		[self setResponseHeaders:(NSDictionary *)headerFields];
-
-		CFRelease(headerFields);
-		[self setResponseStatusCode:CFHTTPMessageGetResponseStatusCode(headers)];
-		[self setResponseStatusMessage:[(NSString *)CFHTTPMessageCopyResponseStatusLine(headers) autorelease]];
-
-		// Is the server response a challenge for credentials?
-		if ([self responseStatusCode] == 401) {
-			[self setAuthenticationNeeded:ASIHTTPAuthenticationNeeded];
-		} else if ([self responseStatusCode] == 407) {
-			[self setAuthenticationNeeded:ASIProxyAuthenticationNeeded];
+			if ([self showAccurateProgress] && [self shouldResetProgressIndicators]) {
+				[self resetDownloadProgress:[self contentLength]+[self partialDownloadSize]];
+			}
 		}
 		
-		// Authentication succeeded, or no authentication was required
-		if (![self authenticationNeeded]) {
+	} else if ([self showAccurateProgress] && [self shouldResetProgressIndicators]) {
+		[[self mainRequest] setShowAccurateProgress:NO];
+		[self resetDownloadProgress:1];			
+	}
 
-			// Did we get here without an authentication challenge? (which can happen when shouldPresentCredentialsBeforeChallenge is YES and basic auth was successful)
-			if (!requestAuthentication && [self username] && [self password] && [self useSessionPersistance]) {
-				
-				NSMutableDictionary *newCredentials = [NSMutableDictionary dictionaryWithCapacity:2];
-				[newCredentials setObject:[self username] forKey:(NSString *)kCFHTTPAuthenticationUsername];
-				[newCredentials setObject:[self password] forKey:(NSString *)kCFHTTPAuthenticationPassword];
-				
-				// Store the credentials in the session 
-				NSMutableDictionary *sessionCredentials = [NSMutableDictionary dictionary];
-				[sessionCredentials setObject:newCredentials forKey:@"Credentials"];
-				[sessionCredentials setObject:[self url] forKey:@"URL"];
-				[sessionCredentials setObject:(NSString *)kCFHTTPAuthenticationSchemeBasic forKey:@"AuthenticationScheme"];
-				[[self class] storeAuthenticationCredentialsInSessionStore:sessionCredentials];
+	// Handle response text encoding
+	// If the Content-Type header specified an encoding, we'll use that, otherwise we use defaultStringEncoding (which defaults to NSISOLatin1StringEncoding)
+	NSString *contentType = [[self responseHeaders] objectForKey:@"Content-Type"];
+	NSStringEncoding encoding = [self defaultResponseEncoding];
+	if (contentType) {
+
+		NSString *charsetSeparator = @"charset=";
+		NSScanner *charsetScanner = [NSScanner scannerWithString: contentType];
+		NSString *IANAEncoding = nil;
+
+		if ([charsetScanner scanUpToString: charsetSeparator intoString: NULL] && [charsetScanner scanLocation] < [contentType length])
+		{
+			[charsetScanner setScanLocation: [charsetScanner scanLocation] + [charsetSeparator length]];
+			[charsetScanner scanUpToString: @";" intoString: &IANAEncoding];
+		}
+
+		if (IANAEncoding) {
+			CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)IANAEncoding);
+			if (cfEncoding != kCFStringEncodingInvalidId) {
+				encoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
 			}
+		}
+	}
+	[self setResponseEncoding:encoding];
+
+	// Handle cookies
+	NSArray *newCookies = [NSHTTPCookie cookiesWithResponseHeaderFields:responseHeaders forURL:url];
+	[self setResponseCookies:newCookies];
+	
+	if ([self useCookiePersistence]) {
+		
+		// Store cookies in global persistent store
+		[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:newCookies forURL:url mainDocumentURL:nil];
+		
+		// We also keep any cookies in the sessionCookies array, so that we have a reference to them if we need to remove them later
+		NSHTTPCookie *cookie;
+		for (cookie in newCookies) {
+			[ASIHTTPRequest addSessionCookie:cookie];
+		}
+	}
+	
+	// Do we need to redirect?
+	// Note that ASIHTTPRequest does not currently support 305 Use Proxy
+	if ([self shouldRedirect] && [responseHeaders valueForKey:@"Location"]) {
+		if (([self responseStatusCode] > 300 && [self responseStatusCode] < 304) || [self responseStatusCode] == 307) {
 			
+			// By default, we redirect 301 and 302 response codes as GET requests
+			// According to RFC 2616 this is wrong, but this is what most browsers do, so it's probably what you're expecting to happen
+			// See also:
+			// http://allseeing-i.lighthouseapp.com/projects/27881/tickets/27-302-redirection-issue
+							
+			if ([self responseStatusCode] != 307 && (![self shouldUseRFC2616RedirectBehaviour] || [self responseStatusCode] == 303)) {
+				[self setRequestMethod:@"GET"];
+				[self setPostBody:nil];
+				[self setPostLength:0];
+				[self setRequestHeaders:nil];
+				[self setHaveBuiltRequestHeaders:NO];
+			} else {
 			
-			// See if we got a Content-length header
-			NSString *cLength = [responseHeaders valueForKey:@"Content-Length"];
-			if (cLength) {
-				SInt32 length = CFStringGetIntValue((CFStringRef)cLength);
+				// Force rebuild the cookie header incase we got some new cookies from this request
+				// All other request headers will remain as they are for 301 / 302 redirects
+				[self applyCookieHeader];
+			}
+
+			// Force the redirected request to rebuild the request headers (if not a 303, it will re-use old ones, and add any new ones)
+			
+			[self setURL:[[NSURL URLWithString:[responseHeaders valueForKey:@"Location"] relativeToURL:[self url]] absoluteURL]];
+			[self setNeedsRedirect:YES];
+			
+			// Clear the request cookies
+			// This means manually added cookies will not be added to the redirect request - only those stored in the global persistent store
+			// But, this is probably the safest option - we might be redirecting to a different domain
+			[self setRequestCookies:[NSMutableArray array]];
+			
+			#if DEBUG_REQUEST_STATUS
+				NSLog(@"Request will redirect (code: %hi): %@",[self responseStatusCode],self);
+			#endif
+			
+		}
+	}
+	// Handle connection persistence
+	if ([self shouldAttemptPersistentConnection]) {
+		
+		NSString *connectionHeader = [[[self responseHeaders] objectForKey:@"Connection"] lowercaseString];
+		NSString *httpVersion = [(NSString *)CFHTTPMessageCopyVersion(message) autorelease];
+		
+		// Don't re-use the connection if the server is HTTP 1.0 and didn't send Connection: Keep-Alive
+		if (![httpVersion isEqualToString:(NSString *)kCFHTTPVersion1_0] || [connectionHeader isEqualToString:@"keep-alive"]) {
+
+			// See if server explicitly told us to close the connection
+			if (![connectionHeader isEqualToString:@"close"]) {
 				
-				// Workaround for Apache HEAD requests for dynamically generated content returning the wrong Content-Length when using gzip
-				if ([self mainRequest] && [self allowCompressedResponse] && length == 20 && [self showAccurateProgress] && [self shouldResetProgressIndicators]) {
-					[[self mainRequest] setShowAccurateProgress:NO];
-					[self resetDownloadProgress:1];
-					
+				NSString *keepAliveHeader = [[self responseHeaders] objectForKey:@"Keep-Alive"];
+				
+				// If we got a keep alive header, we'll reuse the connection for as long as the server tells us
+				if (keepAliveHeader) { 
+					int timeout = 0;
+					int max = 0;
+					NSScanner *scanner = [NSScanner scannerWithString:keepAliveHeader];
+					[scanner scanString:@"timeout=" intoString:NULL];
+					[scanner scanInt:&timeout];
+					[scanner scanUpToString:@"max=" intoString:NULL];
+					[scanner scanString:@"max=" intoString:NULL];
+					[scanner scanInt:&max];
+					if (max > 5) {
+						[self setConnectionCanBeReused:YES];
+						[self setPersistentConnectionTimeoutSeconds:timeout];
+						#if DEBUG_PERSISTENT_CONNECTIONS
+							NSLog(@"Got a keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
+						#endif					
+					}
+				
+				// Otherwise, we'll assume we can keep this connection open
 				} else {
-					[self setContentLength:length];
-					if ([self mainRequest]) {
-						[[self mainRequest] setContentLength:length];
-					}
-
-					if ([self showAccurateProgress] && [self shouldResetProgressIndicators]) {
-						[self resetDownloadProgress:[self contentLength]+[self partialDownloadSize]];
-					}
-				}
-						 
-			} else if ([self showAccurateProgress] && [self shouldResetProgressIndicators]) {
-				[[self mainRequest] setShowAccurateProgress:NO];
-				[self resetDownloadProgress:1];			
-			}
-			
-			// Handle response text encoding
-			// If the Content-Type header specified an encoding, we'll use that, otherwise we use defaultStringEncoding (which defaults to NSISOLatin1StringEncoding)
-			NSString *contentType = [[self responseHeaders] objectForKey:@"Content-Type"];
-			NSStringEncoding encoding = [self defaultResponseEncoding];
-			if (contentType) {
-
-				NSString *charsetSeparator = @"charset=";
-				NSScanner *charsetScanner = [NSScanner scannerWithString: contentType];
-				NSString *IANAEncoding = nil;
-
-				if ([charsetScanner scanUpToString: charsetSeparator intoString: NULL] && [charsetScanner scanLocation] < [contentType length])
-				{
-					[charsetScanner setScanLocation: [charsetScanner scanLocation] + [charsetSeparator length]];
-					[charsetScanner scanUpToString: @";" intoString: &IANAEncoding];
-				}
-
-				if (IANAEncoding) {
-					CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)IANAEncoding);
-					if (cfEncoding != kCFStringEncodingInvalidId) {
-						encoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
-					}
-				}
-			}
-			[self setResponseEncoding:encoding];
-			
-			// Handle cookies
-			NSArray *newCookies = [NSHTTPCookie cookiesWithResponseHeaderFields:responseHeaders forURL:url];
-			[self setResponseCookies:newCookies];
-			
-			if ([self useCookiePersistance]) {
-				
-				// Store cookies in global persistent store
-				[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:newCookies forURL:url mainDocumentURL:nil];
-				
-				// We also keep any cookies in the sessionCookies array, so that we have a reference to them if we need to remove them later
-				NSHTTPCookie *cookie;
-				for (cookie in newCookies) {
-					[ASIHTTPRequest addSessionCookie:cookie];
-				}
-			}
-			// Do we need to redirect?
-			// Note that ASIHTTPRequest does not currently support 305 Use Proxy
-			if ([self shouldRedirect] && [responseHeaders valueForKey:@"Location"]) {
-				if (([self responseStatusCode] > 300 && [self responseStatusCode] < 304) || [self responseStatusCode] == 307) {
-					
-					// By default, we redirect 301 and 302 response codes as GET requests
-					// According to RFC 2616 this is wrong, but this is what most browsers do, so it's probably what you're expecting to happen
-					// See also:
-					// http://allseeing-i.lighthouseapp.com/projects/27881/tickets/27-302-redirection-issue
-									
-					if ([self responseStatusCode] != 307 && (![self shouldUseRFC2616RedirectBehaviour] || [self responseStatusCode] == 303)) {
-						[self setRequestMethod:@"GET"];
-						[self setPostBody:nil];
-						[self setPostLength:0];
-						[self setRequestHeaders:nil];
-						[self setHaveBuiltRequestHeaders:NO];
-					} else {
-					
-						// Force rebuild the cookie header incase we got some new cookies from this request
-						// All other request headers will remain as they are for 301 / 302 redirects
-						[self applyCookieHeader];
-					}
-
-					// Force the redirected request to rebuild the request headers (if not a 303, it will re-use old ones, and add any new ones)
-					
-					[self setURL:[[NSURL URLWithString:[responseHeaders valueForKey:@"Location"] relativeToURL:[self url]] absoluteURL]];
-					[self setNeedsRedirect:YES];
-					
-					// Clear the request cookies
-					// This means manually added cookies will not be added to the redirect request - only those stored in the global persistent store
-					// But, this is probably the safest option - we might be redirecting to a different domain
-					[self setRequestCookies:[NSMutableArray array]];
-					
-					#if DEBUG_REQUEST_STATUS
-						NSLog(@"Request will redirect (code: %hi): %@",[self responseStatusCode],self);
+					[self setConnectionCanBeReused:YES];
+					#if DEBUG_PERSISTENT_CONNECTIONS
+						NSLog(@"Got no keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
 					#endif
-					
-				}
-			}
-			
-		}
-		
-		// Handle connection persistence
-		if ([self shouldAttemptPersistentConnection] && [[[self responseHeaders] objectForKey:@"Connection"] isEqualToString:@"Keep-Alive"]) {
-			NSString *keepAliveHeader = [[self responseHeaders] objectForKey:@"Keep-Alive"];
-			if (keepAliveHeader) {
-				int timeout = 0;
-				int max = 0;
-				NSScanner *scanner = [NSScanner scannerWithString:keepAliveHeader];
-				[scanner scanString:@"timeout=" intoString:NULL];
-				[scanner scanInt:&timeout];
-				[scanner scanUpToString:@"max=" intoString:NULL];
-				[scanner scanString:@"max=" intoString:NULL];
-				[scanner scanInt:&max];
-				if (max > 5) {
-					[self setCanUsePersistentConnection:YES];
-					closeStreamTime = timeout;
 				}
 			}
 		}
@@ -1794,7 +1850,7 @@ static BOOL isiPhoneOS2;
 
 	
 	
-	CFRelease(headers);
+	CFRelease(message);
 }
 
 #pragma mark http authentication
@@ -1827,10 +1883,10 @@ static BOOL isiPhoneOS2;
 		if (CFHTTPMessageApplyCredentialDictionary(request, proxyAuthentication, (CFMutableDictionaryRef)newCredentials, NULL)) {
 			
 			//If we have credentials and they're ok, let's save them to the keychain
-			if (useKeychainPersistance) {
+			if (useKeychainPersistence) {
 				[self saveProxyCredentialsToKeychain:newCredentials];
 			}
-			if (useSessionPersistance) {
+			if (useSessionPersistence) {
 				NSMutableDictionary *sessionProxyCredentials = [NSMutableDictionary dictionary];
 				[sessionProxyCredentials setObject:(id)proxyAuthentication forKey:@"Authentication"];
 				[sessionProxyCredentials setObject:newCredentials forKey:@"Credentials"];
@@ -1857,10 +1913,10 @@ static BOOL isiPhoneOS2;
 		if (CFHTTPMessageApplyCredentialDictionary(request, requestAuthentication, (CFMutableDictionaryRef)newCredentials, NULL)) {
 			
 			//If we have credentials and they're ok, let's save them to the keychain
-			if (useKeychainPersistance) {
+			if (useKeychainPersistence) {
 				[self saveCredentialsToKeychain:newCredentials];
 			}
-			if (useSessionPersistance) {
+			if (useSessionPersistence) {
 				
 				NSMutableDictionary *sessionCredentials = [NSMutableDictionary dictionary];
 				[sessionCredentials setObject:(id)requestAuthentication forKey:@"Authentication"];
@@ -1911,7 +1967,7 @@ static BOOL isiPhoneOS2;
 
 	
 	// Ok, that didn't work, let's try the keychain
-	// For authenticating proxies, we'll look in the keychain regardless of the value of useKeychainPersistance
+	// For authenticating proxies, we'll look in the keychain regardless of the value of useKeychainPersistence
 	if ((!user || !pass)) {
 		NSURLCredential *authenticationCredentials = [ASIHTTPRequest savedCredentialsForProxy:[self proxyHost] port:[self proxyPort] protocol:[[self url] scheme] realm:[self proxyAuthenticationRealm]];
 		if (authenticationCredentials) {
@@ -1965,7 +2021,7 @@ static BOOL isiPhoneOS2;
 	}
 	
 	// Ok, that didn't work, let's try the keychain
-	if ((!user || !pass) && useKeychainPersistance) {
+	if ((!user || !pass) && useKeychainPersistence) {
 		NSURLCredential *authenticationCredentials = [ASIHTTPRequest savedCredentialsForHost:[[self url] host] port:[[[self url] port] intValue] protocol:[[self url] scheme] realm:[self authenticationRealm]];
 		if (authenticationCredentials) {
 			user = [authenticationCredentials user];
@@ -2082,7 +2138,7 @@ static BOOL isiPhoneOS2;
 			
 			
 			// Now we've acquired the lock, it may be that the session contains credentials we can re-use for this request
-			if ([self useSessionPersistance]) {
+			if ([self useSessionPersistence]) {
 				NSDictionary *credentials = [self findSessionProxyAuthenticationCredentials];
 				if (credentials && [self applyProxyCredentials:[credentials objectForKey:@"Credentials"]]) {
 					[delegateAuthenticationLock unlock];
@@ -2140,7 +2196,7 @@ static BOOL isiPhoneOS2;
 		}
 		
 		// Now we've acquired the lock, it may be that the session contains credentials we can re-use for this request
-		if ([self useSessionPersistance]) {
+		if ([self useSessionPersistence]) {
 			NSDictionary *credentials = [self findSessionProxyAuthenticationCredentials];
 			if (credentials && [self applyProxyCredentials:[credentials objectForKey:@"Credentials"]]) {
 				[delegateAuthenticationLock unlock];
@@ -2268,7 +2324,7 @@ static BOOL isiPhoneOS2;
 			}
 			
 			// Now we've acquired the lock, it may be that the session contains credentials we can re-use for this request
-			if ([self useSessionPersistance]) {
+			if ([self useSessionPersistence]) {
 				NSDictionary *credentials = [self findSessionAuthenticationCredentials];
 				if (credentials && [self applyCredentials:[credentials objectForKey:@"Credentials"]]) {
 					[delegateAuthenticationLock unlock];
@@ -2324,7 +2380,7 @@ static BOOL isiPhoneOS2;
 		}
 		
 		// Now we've acquired the lock, it may be that the session contains credentials we can re-use for this request
-		if ([self useSessionPersistance]) {
+		if ([self useSessionPersistence]) {
 			NSDictionary *credentials = [self findSessionAuthenticationCredentials];
 			if (credentials && [self applyCredentials:[credentials objectForKey:@"Credentials"]]) {
 				[delegateAuthenticationLock unlock];
@@ -2478,6 +2534,11 @@ static BOOL isiPhoneOS2;
 		// For bandwidth measurement / throttling
 		[ASIHTTPRequest incrementBandwidthUsedInLastSecond:bytesRead];
 		
+		// If we need to redirect, and have automatic redirect on, and might be resuming a download, let's do nothing with the content
+		if ([self needsRedirect] && [self shouldRedirect] && [self allowResumeForFileDownloads]) {
+			return;
+		}
+		
 		// Are we downloading to a file?
 		if ([self downloadDestinationPath]) {
 			if (![self fileDownloadOutputStream]) {
@@ -2515,6 +2576,7 @@ static BOOL isiPhoneOS2;
 
 	[progressLock lock];	
 	// Find out how much data we've uploaded so far
+	[self setLastBytesSent:totalBytesSent];	
 	[self setTotalBytesSent:[[(NSNumber *)CFReadStreamCopyProperty((CFReadStreamRef)[self readStream], kCFStreamPropertyHTTPRequestBytesWrittenCount) autorelease] unsignedLongLongValue]];
 	[self setComplete:YES];
 	[self updateProgressIndicators];
@@ -2534,15 +2596,19 @@ static BOOL isiPhoneOS2;
 		[[self fileDownloadOutputStream] close];
 		[self setFileDownloadOutputStream:nil];
 		
+		// If we are going to redirect and we are resuming, let's ignore this download
+		if ([self shouldRedirect] && [self needsRedirect] && [self allowResumeForFileDownloads]) {
+		
 		// Decompress the file (if necessary) directly to the destination path
-		if ([self isResponseCompressed]) {
+		} else if ([self isResponseCompressed]) {
 			int decompressionStatus = [ASIHTTPRequest uncompressZippedDataFromFile:[self temporaryFileDownloadPath] toFile:[self downloadDestinationPath]];
 			if (decompressionStatus != Z_OK) {
 				fileError = [NSError errorWithDomain:NetworkRequestErrorDomain code:ASIFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Decompression of %@ failed with code %hi",[self temporaryFileDownloadPath],decompressionStatus],NSLocalizedDescriptionKey,nil]];
 			}
 			[self removeTemporaryDownloadFile];
 		} else {
-					
+			
+	
 			//Remove any file at the destination path
 			NSError *moveError = nil;
 			if ([[NSFileManager defaultManager] fileExistsAtPath:[self downloadDestinationPath]]) {
@@ -2567,14 +2633,14 @@ static BOOL isiPhoneOS2;
 
 	
 	[connectionsLock lock];
-	if (![self canUsePersistentConnection]) {
+	if (![self connectionCanBeReused]) {
 		[self unscheduleReadStream];
 	}
 	#if DEBUG_PERSISTENT_CONNECTIONS
-	NSLog(@"Request #%@ finished using connection #%@",[[self connectionInfo] objectForKey:@"request"], [[self connectionInfo] objectForKey:@"id"]);
+	NSLog(@"Request #%@ finished using connection #%@",[self requestID], [[self connectionInfo] objectForKey:@"id"]);
 	#endif
 	[[self connectionInfo] removeObjectForKey:@"request"];
-	[[self connectionInfo] setObject:[NSDate dateWithTimeIntervalSinceNow:closeStreamTime] forKey:@"expires"];
+	[[self connectionInfo] setObject:[NSDate dateWithTimeIntervalSinceNow:[self persistentConnectionTimeoutSeconds]] forKey:@"expires"];
 	[connectionsLock unlock];
 	
 	if (![self authenticationNeeded]) {
@@ -2601,16 +2667,45 @@ static BOOL isiPhoneOS2;
 	CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
-
+- (BOOL)retryUsingNewConnection
+{
+	if ([self retryCount] == 0) {
+		#if DEBUG_PERSISTENT_CONNECTIONS
+			NSLog(@"Request attempted to use connection #%@, but it has been closed - will retry with a new connection", [[self connectionInfo] objectForKey:@"id"]);
+		#endif
+		[[self connectionInfo] removeObjectForKey:@"request"];
+		[persistentConnectionsPool removeObject:[self connectionInfo]];
+		[self setConnectionInfo:nil];
+		[self setRetryCount:[self retryCount]+1];
+		[self startRequest];
+		return YES;
+	}
+	#if DEBUG_PERSISTENT_CONNECTIONS
+		NSLog(@"Request attempted to use connection #%@, but it has been closed - we have already retried with a new connection, so we must give up", [[self connectionInfo] objectForKey:@"id"]);
+	#endif	
+	return NO;
+}
 
 - (void)handleStreamError
+
 {
 	NSError *underlyingError = [(NSError *)CFReadStreamCopyError((CFReadStreamRef)[self readStream]) autorelease];
 	
 	[self cancelLoad];
-	[self setComplete:YES];
 	
 	if (![self error]) { // We may already have handled this error
+		
+		// First, check for a 'socket not connected', 'broken pipe' or 'connection lost' error
+		// This may occur when we've attempted to reuse a connection that should have been closed
+		// If we get this, we need to retry the request
+		// We'll only do this once - if it happens again on retry, we'll give up
+		// -1005 = kCFURLErrorNetworkConnectionLost - this doesn't seem to be declared on Mac OS 10.5
+		if (([[underlyingError domain] isEqualToString:NSPOSIXErrorDomain] && ([underlyingError code] == ENOTCONN || [underlyingError code] == EPIPE)) 
+			|| ([[underlyingError domain] isEqualToString:(NSString *)kCFErrorDomainCFNetwork] && [underlyingError code] == -1005)) {
+			if ([self retryUsingNewConnection]) {
+				return;
+			}
+		}
 		
 		NSString *reason = @"A connection failure occurred";
 		
@@ -2619,7 +2714,7 @@ static BOOL isiPhoneOS2;
 		// Also, iPhone seems to handle errors differently from Mac OS X - a self-signed certificate returns a different error code on each platform, so we'll just provide a general error
 		if ([[underlyingError domain] isEqualToString:NSOSStatusErrorDomain]) {
 			if ([underlyingError code] <= -9800 && [underlyingError code] >= -9818) {
-				reason = [NSString stringWithFormat:@"%@: SSL problem (possibily a bad/expired/self-signed certificate)",reason];
+				reason = [NSString stringWithFormat:@"%@: SSL problem (possibly a bad/expired/self-signed certificate)",reason];
 			}
 		}
 		
@@ -2638,7 +2733,7 @@ static BOOL isiPhoneOS2;
 		CFReadStreamSetClient((CFReadStreamRef)[self readStream], kCFStreamEventNone, NULL, NULL);
 		[connectionsLock lock];		
 
-		if (![self canUsePersistentConnection]) {
+		if (![self connectionCanBeReused]) {
 			CFReadStreamUnscheduleFromRunLoop((CFReadStreamRef)[self readStream], CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
 			CFReadStreamClose((CFReadStreamRef)[self readStream]);
 			[self setReadStreamIsScheduled:NO];
@@ -2668,6 +2763,11 @@ static BOOL isiPhoneOS2;
 	}
 }
 
+- (NSNumber *)connectionID
+{
+	return [[self connectionInfo] objectForKey:@"id"];
+}
+
 + (void)expirePersistentConnections
 {
 	[connectionsLock lock];
@@ -2676,7 +2776,7 @@ static BOOL isiPhoneOS2;
 		NSDictionary *existingConnection = [persistentConnectionsPool objectAtIndex:i];
 		if (![existingConnection objectForKey:@"request"] && [[existingConnection objectForKey:@"expires"] timeIntervalSinceNow] <= 0) {
 #if DEBUG_PERSISTENT_CONNECTIONS
-			NSLog(@"Not re-using connection #%hi because it has expired",[[existingConnection objectForKey:@"id"] intValue]);
+			NSLog(@"Closing connection #%hi because it has expired",[[existingConnection objectForKey:@"id"] intValue]);
 #endif
 			NSInputStream *stream = [existingConnection objectForKey:@"stream"];
 			if (stream) {
@@ -2702,9 +2802,9 @@ static BOOL isiPhoneOS2;
 	[newRequest setPostBodyFilePath:[self postBodyFilePath]];
 	[newRequest setRequestHeaders:[[[self requestHeaders] copyWithZone:zone] autorelease]];
 	[newRequest setRequestCookies:[[[self requestCookies] copyWithZone:zone] autorelease]];
-	[newRequest setUseCookiePersistance:[self useCookiePersistance]];
-	[newRequest setUseKeychainPersistance:[self useKeychainPersistance]];
-	[newRequest setUseSessionPersistance:[self useSessionPersistance]];
+	[newRequest setUseCookiePersistence:[self useCookiePersistence]];
+	[newRequest setUseKeychainPersistence:[self useKeychainPersistence]];
+	[newRequest setUseSessionPersistence:[self useSessionPersistence]];
 	[newRequest setAllowCompressedResponse:[self allowCompressedResponse]];
 	[newRequest setDownloadDestinationPath:[self downloadDestinationPath]];
 	[newRequest setTemporaryFileDownloadPath:[self temporaryFileDownloadPath]];
@@ -2738,6 +2838,8 @@ static BOOL isiPhoneOS2;
 	[newRequest setShouldPresentCredentialsBeforeChallenge:[self shouldPresentCredentialsBeforeChallenge]];
 	[newRequest setNumberOfTimesToRetryOnTimeout:[self numberOfTimesToRetryOnTimeout]];
 	[newRequest setShouldUseRFC2616RedirectBehaviour:[self shouldUseRFC2616RedirectBehaviour]];
+	[newRequest setShouldAttemptPersistentConnection:[self shouldAttemptPersistentConnection]];
+	[newRequest setPersistentConnectionTimeoutSeconds:[self persistentConnectionTimeoutSeconds]];
 	return newRequest;
 }
 
@@ -3330,32 +3432,19 @@ static BOOL isiPhoneOS2;
 
 + (NSString *)mimeTypeForFileAtPath:(NSString *)path
 {
-	// NSTask does seem to exist in the 2.2.1 SDK, though it's not in the 3.0 SDK. It's probably best if we just use a generic mime type on iPhone all the time.
-#if TARGET_OS_IPHONE
-	return @"application/octet-stream";
-	
-	// Grab the mime type using an NSTask to run the 'file' program, with the Mac OS-specific parameters to grab the mime type
-	// Perhaps there is a better way to do this?
-#else
-	NSTask *task = [[[NSTask alloc] init] autorelease];
-	[task setLaunchPath: @"/usr/bin/file"];
-	[task setArguments:[NSMutableArray arrayWithObjects:@"-Ib",path,nil]];
-	
-    NSPipe *outputPipe = [NSPipe pipe];
-    [task setStandardOutput:outputPipe];
-	
-    NSFileHandle *file = [outputPipe fileHandleForReading];
-	
-	[task launch];
-	[task waitUntilExit];
-	
-	if ([task terminationStatus] != 0) {
-		return @"application/octet-stream";	
+	if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+		return nil;
+	} else if ([ASIHTTPRequest isiPhoneOS2]) {
+		return @"application/octet-stream";
 	}
-	
-	NSString *mimeTypeString = [[[[NSString alloc] initWithData:[file readDataToEndOfFile] encoding: NSUTF8StringEncoding] autorelease] stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-	return [[mimeTypeString componentsSeparatedByString:@";"] objectAtIndex:0];
-#endif
+	// Borrowed from http://stackoverflow.com/questions/2439020/wheres-the-iphone-mime-type-database
+	CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)[path pathExtension], NULL);
+    CFStringRef MIMEType = UTTypeCopyPreferredTagWithClass (UTI, kUTTagClassMIMEType);
+    CFRelease(UTI);
+	if (!MIMEType) {
+		return @"application/octet-stream";
+	}
+    return [(NSString *)MIMEType autorelease];
 }
 
 #pragma mark bandwidth measurement / throttling
@@ -3644,9 +3733,9 @@ static BOOL isiPhoneOS2;
 @synthesize queue;
 @synthesize uploadProgressDelegate;
 @synthesize downloadProgressDelegate;
-@synthesize useKeychainPersistance;
-@synthesize useSessionPersistance;
-@synthesize useCookiePersistance;
+@synthesize useKeychainPersistence;
+@synthesize useSessionPersistence;
+@synthesize useCookiePersistence;
 @synthesize downloadDestinationPath;
 @synthesize temporaryFileDownloadPath;
 @synthesize didStartSelector;
@@ -3719,11 +3808,13 @@ static BOOL isiPhoneOS2;
 @synthesize numberOfTimesToRetryOnTimeout;
 @synthesize retryCount;
 @synthesize shouldAttemptPersistentConnection;
-@synthesize canUsePersistentConnection;
+@synthesize persistentConnectionTimeoutSeconds;
+@synthesize connectionCanBeReused;
 @synthesize connectionInfo;
 @synthesize readStream;
 @synthesize readStreamIsScheduled;
 @synthesize statusTimer;
 @synthesize shouldUseRFC2616RedirectBehaviour;
 @synthesize downloadComplete;
+@synthesize requestID;
 @end

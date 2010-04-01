@@ -111,14 +111,14 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// Will be populated with cookies
 	NSArray *responseCookies;
 	
-	// If use useCookiePersistance is true, network requests will present valid cookies from previous requests
-	BOOL useCookiePersistance;
+	// If use useCookiePersistence is true, network requests will present valid cookies from previous requests
+	BOOL useCookiePersistence;
 	
-	// If useKeychainPersistance is true, network requests will attempt to read credentials from the keychain, and will save them in the keychain when they are successfully presented
-	BOOL useKeychainPersistance;
+	// If useKeychainPersistence is true, network requests will attempt to read credentials from the keychain, and will save them in the keychain when they are successfully presented
+	BOOL useKeychainPersistence;
 	
-	// If useSessionPersistance is true, network requests will save credentials and reuse for the duration of the session (until clearSession is called)
-	BOOL useSessionPersistance;
+	// If useSessionPersistence is true, network requests will save credentials and reuse for the duration of the session (until clearSession is called)
+	BOOL useSessionPersistence;
 	
 	// If allowCompressedResponse is true, requests will inform the server they can accept compressed data, and will automatically decompress gzipped responses. Default is true.
 	BOOL allowCompressedResponse;
@@ -317,7 +317,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// When YES, ASIHTTPRequests will present credentials from the session store for requests to the same server before being asked for them
 	// This avoids an extra round trip for requests after authentication has succeeded, which is much for efficient for authenticated requests with large bodies, or on slower connections
 	// Set to NO to only present credentials when explicitly asked for them
-	// This only affects credentials stored in the session cache when useSessionPersistance is YES. Credentials from the keychain are never presented unless the server asks for them
+	// This only affects credentials stored in the session cache when useSessionPersistence is YES. Credentials from the keychain are never presented unless the server asks for them
 	// Default is YES
 	BOOL shouldPresentCredentialsBeforeChallenge;
 	
@@ -339,16 +339,18 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	int retryCount;
 	
 	// When YES, requests will keep the connection to the server alive for a while to allow subsequent requests to re-use it for a substantial speed-boost
-	// Persistent connections only work when the server sends a 'Keep-Alive' header
+	// Persistent connections will not be used if the server explicitly closes the connection
 	// Default is YES
 	BOOL shouldAttemptPersistentConnection;
+
+	// Number of seconds to keep an inactive persistent connection open on the client side
+	// Default is 60
+	// If we get a keep-alive header, this is this value is replaced with how long the server told us to keep the connection around
+	// A future date is created from this and used for expiring the connection, this is stored in connectionInfo's expires value
+	NSTimeInterval persistentConnectionTimeoutSeconds;
 	
 	// Set to yes when an appropriate keep-alive header is found
-	BOOL canUsePersistentConnection;
-	
-	// Populated with the number of seconds the server told us we could keep a persistent connection around
-	// A future date is created from this and used for expiring the connection, this is stored in connectionInfo's expires value
-	NSTimeInterval closeStreamTime;
+	BOOL connectionCanBeReused;
 	
 	// Stores information about the persistent connection that is currently in use.
 	// It may contain:
@@ -369,6 +371,9 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	
 	// Used internally to record when a request has finished downloading data
 	BOOL downloadComplete;
+	
+	// An ID that uniquely identifies this request - primarily used for debugging persistent connections
+	NSNumber *requestID;
 }
 
 #pragma mark init / dealloc
@@ -461,6 +466,11 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 // Called when a request fails, and lets the delegate know via didFailSelector
 - (void)failWithError:(NSError *)theError;
 
+// Called to retry our request when our persistent connection is closed
+// Returns YES if we haven't already retried, and connection will be restarted
+// Otherwise, returns NO, and nothing will happen
+- (BOOL)retryUsingNewConnection;
+
 #pragma mark parsing HTTP response headers
 
 // Reads the response headers to find the content length, encoding, cookies for the session 
@@ -505,6 +515,9 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 - (void)handleBytesAvailable;
 - (void)handleStreamComplete;
 - (void)handleStreamError;
+
+// Get the ID of the connection this request used (only really useful in tests and debugging)
+- (NSNumber *)connectionID;
 
 // Called automatically when a request is started to clean up any persistent connections that have expired
 + (void)expirePersistentConnections;
@@ -587,7 +600,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 
 #pragma mark mime-type detection
 
-// Only works on Mac OS, will always return 'application/octet-stream' on iPhone
+// Return the mime type for a file
 + (NSString *)mimeTypeForFileAtPath:(NSString *)path;
 
 #pragma mark bandwidth measurement / throttling
@@ -655,8 +668,8 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (assign) id queue;
 @property (assign) id uploadProgressDelegate;
 @property (assign) id downloadProgressDelegate;
-@property (assign) BOOL useKeychainPersistance;
-@property (assign) BOOL useSessionPersistance;
+@property (assign) BOOL useKeychainPersistence;
+@property (assign) BOOL useSessionPersistence;
 @property (retain) NSString *downloadDestinationPath;
 @property (retain) NSString *temporaryFileDownloadPath;
 @property (assign) SEL didStartSelector;
@@ -670,7 +683,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (retain) NSMutableDictionary *requestHeaders;
 @property (retain) NSMutableArray *requestCookies;
 @property (retain,readonly) NSArray *responseCookies;
-@property (assign) BOOL useCookiePersistance;
+@property (assign) BOOL useCookiePersistence;
 @property (retain) NSDictionary *requestCredentials;
 @property (retain) NSDictionary *proxyCredentials;
 @property (assign,readonly) int responseStatusCode;
@@ -716,5 +729,8 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (assign) int numberOfTimesToRetryOnTimeout;
 @property (assign, readonly) int retryCount;
 @property (assign) BOOL shouldAttemptPersistentConnection;
+@property (assign) NSTimeInterval persistentConnectionTimeoutSeconds;
 @property (assign) BOOL shouldUseRFC2616RedirectBehaviour;
+@property (assign, readonly) BOOL connectionCanBeReused;
+@property (retain, readonly) NSNumber *requestID;
 @end

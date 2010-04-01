@@ -59,6 +59,23 @@
 	[self updateNetworkActivityIndicator];
 }
 
+- (void)reset
+{
+	[self cancelAllOperations];
+	[self setDelegate:nil];
+	[self setDownloadProgressDelegate:nil];
+	[self setUploadProgressDelegate:nil];
+	[self setRequestDidStartSelector:NULL];
+	[self setRequestDidFailSelector:NULL];
+	[self setRequestDidFinishSelector:NULL];
+	[self setQueueDidFinishSelector:NULL];
+	[self setTotalBytesToUpload:0];
+	[self setBytesUploadedSoFar:0];
+	[self setTotalBytesToDownload:0];
+	[self setBytesDownloadedSoFar:0];
+	[self setSuspended:YES];
+}
+
 
 - (void)go
 {
@@ -75,7 +92,6 @@
 
 - (void)cancelAllOperations
 {
-	[self setRequestsCount:0];
 	[self setBytesUploadedSoFar:0];
 	[self setTotalBytesToUpload:0];
 	[self setBytesDownloadedSoFar:0];
@@ -149,6 +165,9 @@
 	
 	if ([self showAccurateProgress]) {
 		
+		// Force the request to build its body (this may change requestMethod)
+		[request buildPostBody];
+		
 		// If this is a GET request and we want accurate progress, perform a HEAD request first to get the content-length
 		// We'll only do this before the queue is started
 		// If requests are added after the queue is started they will probably move the overall progress backwards anyway, so there's no value performing the HEAD requests first
@@ -191,14 +210,15 @@
 	if ([self requestDidFailSelector]) {
 		[[self delegate] performSelector:[self requestDidFailSelector] withObject:request];
 	}
-	if ([self shouldCancelAllRequestsOnFailure] && [self requestsCount] > 0) {
-		[self cancelAllOperations];
-	}
 	if ([self requestsCount] == 0) {
 		if ([self queueDidFinishSelector]) {
 			[[self delegate] performSelector:[self queueDidFinishSelector] withObject:self];
 		}
 	}
+	if ([self shouldCancelAllRequestsOnFailure] && [self requestsCount] > 0) {
+		[self cancelAllOperations];
+	}
+
 }
 
 - (void)requestDidFinish:(ASIHTTPRequest *)request
