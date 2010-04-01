@@ -84,34 +84,10 @@ class NewMessageDialogController < NSWindowController
     spinner.startAnimation(self)
 
     message = textField.stringValue
-    # @blip.sendMessageRequest(message).sendFor(self)
-    # workaround until they fix CFReadStreamOpen in MacRuby
-
-    url = NSURL.URLWithString(BLIP_API_HOST + "/updates")
-    escapedMessage = message.gsub(/\\/, "\\\\").gsub(/"/, "\\\"")
-    content = "{\"update\": {\"body\": \"#{escapedMessage}\"}}"
-    username = @blip.account.username
-    password = @blip.account.password
-    authString = "Basic "
-    authString += ASIHTTPRequest.base64forData("#{username}:#{password}".dataUsingEncoding(NSUTF8StringEncoding))
-    
-    request = NSMutableURLRequest.alloc.initWithURL(
-      url,
-      cachePolicy: NSURLRequestReloadIgnoringLocalCacheData,
-      timeoutInterval: 15
-    )
-    request.HTTPMethod = "POST"
-    request.HTTPBody = content.dataUsingEncoding(NSUTF8StringEncoding)
-    request.setValue(BLIP_API_VERSION, forHTTPHeaderField: "X-Blip-API")
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue(@blip.userAgent, forHTTPHeaderField: "User-Agent")
-    request.setValue(authString, forHTTPHeaderField: "Authorization")
-    
-    NSURLConnection.alloc.initWithRequest(request, delegate: self)
+    @blip.sendMessageRequest(message).sendFor(self)
   end
 
-  def connectionDidFinishLoading(con)
+  def messageSent
     @sent = true
     closeWindow
     @blip.dashboardMonitor.performSelector('requestManualUpdate', withObject: nil, afterDelay: 1)
