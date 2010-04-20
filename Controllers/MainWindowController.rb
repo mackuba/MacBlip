@@ -48,6 +48,7 @@ class MainWindowController < NSWindowController
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
+      messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2)
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordId].max
@@ -75,6 +76,19 @@ class MainWindowController < NSWindowController
       @spinner.stopAnimation(self)
       displayLoadingError(error)
     end
+  end
+
+  def requestFailedWithError(error)
+    request = error.userInfo['request']
+    if request.didFinishSelector == :'pictureLoaded:'
+      obprint "MainWindowController: picture load error, ignored"
+    else
+      obprint "MainWindowController: load error: #{error.localizedDescription}"
+    end
+  end
+
+  def pictureLoaded(data, forMessage: message)
+    # ok, ignore
   end
 
   def newMessagePressed(sender)
@@ -147,7 +161,7 @@ class MainWindowController < NSWindowController
     growlType = (message.messageType == OBStatusMessage) ? "Status received" : "Directed message received"
     GrowlApplicationBridge.notifyWithTitle(
       message.senderAndRecipient,
-      description: message.processedBody.string,
+      description: message.bodyForGrowl,
       notificationName: growlType,
       iconData: message.user.fixedAvatarData,
       priority: 0,

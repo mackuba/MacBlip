@@ -19,6 +19,29 @@ class OBMessage
     NSSet.setWithObjects("messageType", "user", "recipient", nil)
   end
 
+  def hasPicture
+    !pictures.first.nil?
+  end
+
+  def self.keyPathsForValuesAffectingHasPicture
+    NSSet.setWithObjects("pictures", nil)
+  end
+
+  def picture
+    pictureData = pictures.first && pictures.first['data']
+    if pictureData
+      image = NSImage.alloc.initWithData(pictureData)
+      minSize = [image.size.width, image.size.height].min
+      image.imageCroppedToFitSize(NSMakeSize(minSize, minSize))
+    else
+      nil
+    end
+  end
+
+  def self.keyPathsForValuesAffectingPicture
+    NSSet.setWithObjects("pictures", nil)
+  end
+
   def sanitizeTag(tag)
     # remove accented characters, i.e. replace "ó" with "o" etc.
     # first, separate characters and accents
@@ -40,10 +63,16 @@ class OBMessage
     end
   end
 
+  def bodyForGrowl
+    hasPicture ? "#{body} [FOTO]" : body
+  end
+
+  def keyPathsForValuesAffectingBodyForGrowl
+    NSSet.setWithObjects("hasPicture", "body", nil)
+  end
+
   def processedBody
-    text = body
-    text += " [FOTO]" if pictures && pictures.length > 0
-    richText = NSMutableAttributedString.alloc.initWithString(text, attributes: {})
+    richText = NSMutableAttributedString.alloc.initWithString(body, attributes: {})
 
     detectLinks(richText, /\#([^\s\!\@\#\$\%\^\&\*\(\)\[\]\+\=\{\}\:\;\'\"\\\|\,\.\<\>\?\/\`\~]+)/) do
       BLIP_WWW_HOST + "/tags/#{sanitizeTag($1)}"

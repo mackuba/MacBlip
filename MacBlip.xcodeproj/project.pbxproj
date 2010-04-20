@@ -122,6 +122,7 @@
 		58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E6E7101133404C00B97529 /* OBAvatarGroup.m */; };
 		58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */; };
 		58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8AA1135E6B800B97529 /* AboutWindow.xib */; };
+		58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -255,6 +256,8 @@
 		58E6E7101133404C00B97529 /* OBAvatarGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAvatarGroup.m; sourceTree = "<group>"; };
 		58E6E89F1135E21000B97529 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/AboutWindow.xib; sourceTree = "<group>"; };
 		58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AboutWindowController.rb; sourceTree = "<group>"; };
+		58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
+		58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -493,11 +496,12 @@
 		5897EFA11129C93C0029B4D9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				58E6E5731131D98000B97529 /* Sparkle.framework */,
-				583420A81130031E008938A9 /* Growl.framework */,
+				58FBAA06117A338A00D1D323 /* ImageCrop */,
 				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
 				5897EFA61129C9530029B4D9 /* SDListView */,
+				58E6E5731131D98000B97529 /* Sparkle.framework */,
+				583420A81130031E008938A9 /* Growl.framework */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -582,6 +586,15 @@
 				58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */,
 			);
 			path = Sparkle;
+			sourceTree = "<group>";
+		};
+		58FBAA06117A338A00D1D323 /* ImageCrop */ = {
+			isa = PBXGroup;
+			children = (
+				58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */,
+				58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */,
+			);
+			path = ImageCrop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -755,6 +768,7 @@
 				5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */,
 				583421A4113043B8008938A9 /* OBUser.m in Sources */,
 				58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */,
+				58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
