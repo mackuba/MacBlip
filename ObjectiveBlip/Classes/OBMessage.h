@@ -45,5 +45,6 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageT
 @property (nonatomic) OBMessageType messageType;
 
 - (NSString *) url;
+- (void) setPictureData: (NSData *) data;
 
 @end

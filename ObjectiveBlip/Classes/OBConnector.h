@@ -17,6 +17,7 @@
 @class OBAccount;
 @class OBAvatarGroup;
 @class OBDashboardMonitor;
+@class OBMessage;
 @class OBRequest;
 @class OBUser;
 
@@ -26,6 +27,7 @@
 - (void) authenticationFailed;
 - (void) messageSent;
 - (void) dashboardUpdatedWithMessages: (NSArray *) messages;
+- (void) pictureLoaded: (NSData *) data forMessage: (OBMessage *) message;
 - (void) requestFailedWithError: (NSError *) error;
 @end
 
@@ -58,6 +60,7 @@
 - (OBRequest *) authenticateRequest;
 - (OBRequest *) dashboardRequest;
 - (OBRequest *) sendMessageRequest: (NSString *) message;
+- (OBRequest *) loadPictureRequest: (OBMessage *) message;
 
 - (OBRequest *) avatarInfoRequestForUser: (OBUser *) user;
 - (OBRequest *) avatarImageRequestForUser: (OBUser *) user toPath: (NSString *) path;

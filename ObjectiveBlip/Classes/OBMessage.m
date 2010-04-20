@@ -16,7 +16,11 @@ OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt
 
 - (id) init {
   NSArray *fields = OBArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
-  return [super initWithProperties: fields];
+  self = [super initWithProperties: fields];
+  if (self) {
+    pictures = [[NSArray alloc] init];
+  }
+  return self;
 }
 
 - (void) setUserPath: (NSString *) path {
@@ -45,6 +49,13 @@ OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt
   } else {
     messageType = OBStatusMessage;
   }
+}
+
+- (void) setPictureData: (NSData *) data {
+  NSDictionary *pictureInfo = [pictures objectAtIndex: 0];
+  NSMutableDictionary *updatedInfo = [NSMutableDictionary dictionaryWithDictionary: pictureInfo];
+  [updatedInfo setObject: data forKey: @"data"];
+  self.pictures = OBArray(updatedInfo);
 }
 
 + (NSDateFormatter *) timeZoneLessDateFormatter {

@@ -121,6 +121,14 @@ static BOOL loggingEnabled;
   return request;
 }
 
+- (OBRequest *) loadPictureRequest: (OBMessage *) message {
+  NSString *imageUrl = [[message.pictures objectAtIndex: 0] objectForKey: @"url"];
+  OBRequest *request = [self requestWithPath: imageUrl method: @"GET" text: nil];
+  [request setDidFinishSelector: @selector(pictureLoaded:)];
+  [request setUserInfo: OBDict(message, @"message")];
+  return request;
+}
+
 - (OBRequest *) avatarInfoRequestForUser: (OBUser *) user {
   NSString *path = OBFormat(@"/users/%@/avatar", user.login);
   OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
@@ -256,8 +264,23 @@ static BOOL loggingEnabled;
   [[request target] messageSent];
 }
 
+- (void) pictureLoaded: (id) request {
+  if (![self handleFinishedRequest: request]) return;
+
+  NSData *pictureData = [request responseData];
+  OBMessage *message = [[request userInfo] objectForKey: @"message"];
+  [message setPictureData: pictureData];
+  [[request target] pictureLoaded: pictureData forMessage: message];
+}
+
 - (void) requestFailed: (id) request {
-  [[request target] requestFailedWithError: [request error]];
+  NSError *error = [request error];
+  NSDictionary *userInfo = [error userInfo];
+  NSMutableDictionary *updatedInfo = (userInfo) ?
+    [NSMutableDictionary dictionaryWithDictionary: userInfo] : [NSMutableDictionary dictionaryWithCapacity: 1];
+  [updatedInfo setObject: request forKey: @"request"];
+  NSError *updatedError = [NSError errorWithDomain: error.domain code: error.code userInfo: updatedInfo];
+  [[request target] requestFailedWithError: updatedError];
   [currentRequests removeObject: request];
 }
 

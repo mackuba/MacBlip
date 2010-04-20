@@ -15,7 +15,12 @@
 - (id) initWithPath: (NSString *) path
              method: (NSString *) method
                text: (NSString *) text {
-  NSURL *wrappedUrl = [NSURL URLWithString: [BLIP_API_HOST stringByAppendingString: path]];
+  NSURL *wrappedUrl;
+  if ([path hasPrefix: @"http://"] || [path hasPrefix: @"https://"]) {
+    wrappedUrl = [NSURL URLWithString: path];
+  } else {
+    wrappedUrl = [NSURL URLWithString: [BLIP_API_HOST stringByAppendingString: path]];
+  }
   self = [super initWithURL: wrappedUrl];
   if (self) {
     self.timeOutSeconds = 15;
