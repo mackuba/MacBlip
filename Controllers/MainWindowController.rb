@@ -181,7 +181,14 @@ class MainWindowController < NSWindowController
   end
 
   def updateQuickLookPosition
-    QLPreviewPanel.sharedPreviewPanel.currentPreviewItemIndex = messagesWithPictures.index(@messageInQuickLook)
+    panel = QLPreviewPanel.sharedPreviewPanel
+
+    # I know this doesn't make sense, but if this line *isn't* called, every second time the image that
+    # gets displayed in the panel is the one at index 0, instead of the one that was clicked. with this
+    # line, it works correctly. I have no idea why, ask Steve, he's got the source code.
+    panel.currentPreviewItemIndex = 0
+
+    panel.currentPreviewItemIndex = messagesWithPictures.index(@messageInQuickLook)
   end
 
   def acceptsPreviewPanelControl(panel)
