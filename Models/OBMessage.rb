@@ -53,7 +53,8 @@ class OBMessage
   end
 
   def detectLinks(richText, regexp)
-    richText.string.scan(regexp) do
+    rubyString = String.new(richText.string)
+    rubyString.scan(regexp) do
       url = yield
       if url && url.length > 0
         offset = $~.offset(0)
