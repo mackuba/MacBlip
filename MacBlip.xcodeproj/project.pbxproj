@@ -102,6 +102,8 @@
 		5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1FB112DE9060029B4D9 /* macblip_icon.icns */; };
 		5897F20C112DEBEC0029B4D9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20B112DEBEC0029B4D9 /* home.png */; };
 		5897F20E112DED5D0029B4D9 /* new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20D112DED5D0029B4D9 /* new_message.png */; };
+		58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */; };
+		58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58A25E10117DE5DB00784901 /* QuickLookPicture.rb */; };
 		58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E31A113172EA00B97529 /* MessageCell.rb */; };
 		58E6E39211317CF900B97529 /* AvatarView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E39111317CF900B97529 /* AvatarView.rb */; };
 		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
@@ -123,6 +125,7 @@
 		58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */; };
 		58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8AA1135E6B800B97529 /* AboutWindow.xib */; };
 		58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */; };
+		58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -236,6 +239,8 @@
 		5897F1FB112DE9060029B4D9 /* macblip_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = macblip_icon.icns; sourceTree = "<group>"; };
 		5897F20B112DEBEC0029B4D9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5897F20D112DED5D0029B4D9 /* new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_message.png; sourceTree = "<group>"; };
+		58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QLPreviewPanel.bridgesupport; sourceTree = "<group>"; };
+		58A25E10117DE5DB00784901 /* QuickLookPicture.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = QuickLookPicture.rb; sourceTree = "<group>"; };
 		58E6E31A113172EA00B97529 /* MessageCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCell.rb; sourceTree = "<group>"; };
 		58E6E39111317CF900B97529 /* AvatarView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AvatarView.rb; sourceTree = "<group>"; };
 		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
@@ -258,6 +263,7 @@
 		58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AboutWindowController.rb; sourceTree = "<group>"; };
 		58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
+		58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessagePictureView.rb; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -324,6 +330,7 @@
 		29B97314FDCFA39411CA2CEA /* MacBlip */ = {
 			isa = PBXGroup;
 			children = (
+				58A25DF6117DE4F200784901 /* Bridges */,
 				585A923A111B6708003ABD05 /* Controllers */,
 				5897EFA11129C93C0029B4D9 /* Lib */,
 				58341F9F112F0CFD008938A9 /* Models */,
@@ -456,6 +463,7 @@
 		58341F9F112F0CFD008938A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				58A25E10117DE5DB00784901 /* QuickLookPicture.rb */,
 				58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */,
 				58E6E3FE113183B300B97529 /* OBMessage.rb */,
 				581805A01138516600A61784 /* OBUser.rb */,
@@ -487,6 +495,7 @@
 				585A92AC111B7011003ABD05 /* MainWindow.xib */,
 				583422CC113083BA008938A9 /* NewMessageDialog.xib */,
 				58E6E31A113172EA00B97529 /* MessageCell.rb */,
+				58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */,
 				58E6E65511331C0400B97529 /* MessageTextView.rb */,
 				58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */,
 			);
@@ -570,6 +579,14 @@
 				5897F1FB112DE9060029B4D9 /* macblip_icon.icns */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		58A25DF6117DE4F200784901 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */,
+			);
+			path = Bridges;
 			sourceTree = "<group>";
 		};
 		58E6E43F1131A8DF00B97529 /* Images */ = {
@@ -691,6 +708,9 @@
 				58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */,
 				581805A11138516600A61784 /* OBUser.rb in Resources */,
 				5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */,
+				58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */,
+				58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */,
+				58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

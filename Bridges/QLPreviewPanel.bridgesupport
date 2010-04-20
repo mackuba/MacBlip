@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<class name='NSObject'>
+<method selector='acceptsPreviewPanelControl:'>
+<retval type='B'/>
+</method>
+<method selector='previewPanel:handleEvent:'>
+<retval type='B'/>
+</method>
+</class>
+<class name='QLPreviewPanel'>
+<method selector='enterFullScreenMode:withOptions:'>
+<retval type='B'/>
+</method>
+<method selector='isInFullScreenMode'>
+<retval type='B'/>
+</method>
+<method selector='sharedPreviewPanelExists' class_method='true'>
+<retval type='B'/>
+</method>
+</class>
+<informal_protocol name='QLPreviewPanelController'>
+<method type='B12@0:4@8' selector='acceptsPreviewPanelControl:'/>
+<method type='v12@0:4@8' selector='beginPreviewPanelControl:'/>
+<method type='v12@0:4@8' selector='endPreviewPanelControl:'/>
+</informal_protocol>
+<informal_protocol name='QLPreviewPanelDataSource'>
+<method type='i12@0:4@8' selector='numberOfPreviewItemsInPreviewPanel:'/>
+<method type='@16@0:4@8i12' selector='previewPanel:previewItemAtIndex:'/>
+</informal_protocol>
+<informal_protocol name='QLPreviewPanelDelegate'>
+<method type='B16@0:4@8@12' selector='previewPanel:handleEvent:'/>
+<method type='{_NSRect={_NSPoint=ff}{_NSSize=ff}}16@0:4@8@12' selector='previewPanel:sourceFrameOnScreenForPreviewItem:'/>
+<method type='@20@0:4@8@12^{_NSRect={_NSPoint=ff}{_NSSize=ff}}16' selector='previewPanel:transitionImageForPreviewItem:contentRect:'/>
+</informal_protocol>
+</signatures>

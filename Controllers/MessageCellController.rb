@@ -71,4 +71,9 @@ class MessageCellController < SDListViewItem
     BrowserController.openUsersDashboard(self.representedObject.user.login)
   end
 
+  def pictureClicked(sender)
+    mainWindowController = self.view.window.windowController
+    mainWindowController.displayImageInQuickLook(self.representedObject)
+  end
+
 end

@@ -170,4 +170,43 @@ class MainWindowController < NSWindowController
     )
   end
 
+  def displayImageInQuickLook(message)
+    @messageInQuickLook = message
+    panel = QLPreviewPanel.sharedPreviewPanel
+    if panel.isVisible
+      updateQuickLookPosition
+    else
+      panel.makeKeyAndOrderFront(self)
+    end
+  end
+
+  def updateQuickLookPosition
+    QLPreviewPanel.sharedPreviewPanel.currentPreviewItemIndex = messagesWithPictures.index(@messageInQuickLook)
+  end
+
+  def acceptsPreviewPanelControl(panel)
+    true
+  end
+
+  def beginPreviewPanelControl(panel)
+    panel.dataSource = self
+    updateQuickLookPosition
+  end
+
+  def endPreviewPanelControl(panel)
+  end
+
+  def messagesWithPictures
+    OBMessage.list.find_all { |m| m.hasPicture }
+  end
+
+  def numberOfPreviewItemsInPreviewPanel(panel)
+    messagesWithPictures.length
+  end
+
+  def previewPanel(panel, previewItemAtIndex: index)
+    message = messagesWithPictures[index]
+    QuickLookPicture.new(message.pictures.first)
+  end
+
 end
