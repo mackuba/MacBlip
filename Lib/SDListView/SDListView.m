@@ -292,7 +292,10 @@
 		else {
 			[[item.view animator] setFrame:newItemFrame];
 		}
-		
+
+		// without this, manual layout isn't done until first window resize - psionides
+		[item.view resizeSubviewsWithOldSize: item.view.frame.size];
+
 		y += height;
 	}
 	

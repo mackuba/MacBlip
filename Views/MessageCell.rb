@@ -9,6 +9,13 @@ class MessageCell < NSView
 
   BACKGROUND = NSColor.colorWithDeviceRed(0.94, green: 0.94, blue: 0.94, alpha: 1.0)
   BORDER = NSColor.colorWithDeviceRed(0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+  LABEL_PADDING = 4
+
+  def awakeFromNib
+    @userLabel = self.viewWithTag(1)
+    @dateLabel = self.viewWithTag(2)
+    @userLabelFont = @userLabel.font
+  end
 
   def drawRect(rect)
     wholeCell = self.bounds
@@ -21,6 +28,32 @@ class MessageCell < NSView
     rounded.stroke
 
     super(padded)
+  end
+
+  def resizeSubviewsWithOldSize(size)
+    user = @userLabel.stringValue
+    date = @dateLabel.stringValue
+    oldDateWidth = @dateLabel.frame.size.width
+    newDateWidth = date.sizeWithAttributes({ NSFontAttributeName => @dateLabel.font }).width + LABEL_PADDING
+    space = @dateLabel.frame.origin.x + oldDateWidth - @userLabel.frame.origin.x
+
+    frame = @dateLabel.frame
+    frame.size.width = newDateWidth
+    frame.origin.x += oldDateWidth - newDateWidth
+    @dateLabel.frame = frame
+
+    @userLabel.font = @userLabelFont
+    newUserWidth = user.sizeWithAttributes({ NSFontAttributeName => @userLabelFont }).width + LABEL_PADDING
+    while (space - newDateWidth < newUserWidth)
+      @userLabel.font = NSFont.fontWithName(@userLabel.font.fontName, size: @userLabel.font.pointSize - 0.5)
+      newUserWidth = user.sizeWithAttributes({ NSFontAttributeName => @userLabel.font }).width + LABEL_PADDING
+    end
+
+    frame = @userLabel.frame
+    frame.size.width = space - newDateWidth
+    @userLabel.frame = frame
+
+    super
   end
 
 end

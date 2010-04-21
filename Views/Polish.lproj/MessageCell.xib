@@ -76,6 +76,7 @@
 						<int key="NSvFlags">265</int>
 						<string key="NSFrame">{{230, 73}, {164, 14}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<int key="NSTag">2</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="473356515">
 							<int key="NSCellFlags">68288064</int>
@@ -106,6 +107,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{73, 72}, {158, 16}}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<int key="NSTag">1</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="104912689">
 							<int key="NSCellFlags">68288064</int>
@@ -690,7 +692,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{628, 334}, {412, 100}}</string>
+					<string>{{856, 568}, {412, 100}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
