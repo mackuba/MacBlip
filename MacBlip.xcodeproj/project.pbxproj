@@ -65,6 +65,7 @@
 		5821059E11178FB00025DAF4 /* NSString+BSJSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821058911178FB00025DAF4 /* NSString+BSJSONAdditions.m */; };
 		582105BB111793B60025DAF4 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105BA111793B60025DAF4 /* libz.1.2.3.dylib */; };
 		582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582105C0111793C20025DAF4 /* SystemConfiguration.framework */; };
+		58230496117F235C0076AFB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58230495117F235C0076AFB6 /* Localizable.strings */; };
 		58341FEF112F1B44008938A9 /* BrowserController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58341FEE112F1B44008938A9 /* BrowserController.rb */; };
 		583420A91130031E008938A9 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
 		583420D2113003DA008938A9 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 583420A81130031E008938A9 /* Growl.framework */; };
@@ -197,6 +198,14 @@
 		5821058A11178FB00025DAF4 /* ObjectiveBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveBlip.h; sourceTree = "<group>"; };
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58230493117F23550076AFB6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58230497117F23620076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Polish; path = Polish.lproj/Localizable.strings; sourceTree = "<group>"; };
+		58230498117F23910076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/AboutWindow.xib; sourceTree = "<group>"; };
+		58230499117F23960076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/LoginWindow.xib; sourceTree = "<group>"; };
+		5823049A117F239D0076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/MessageCell.xib; sourceTree = "<group>"; };
+		5823049B117F23A40076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5823049C117F23AA0076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		5823049D117F23AF0076AFB6 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Polish; path = Polish.lproj/NewMessageDialog.xib; sourceTree = "<group>"; };
 		58341FEE112F1B44008938A9 /* BrowserController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BrowserController.rb; sourceTree = "<group>"; };
 		583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		583420A81130031E008938A9 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
@@ -364,6 +373,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */,
+				58230495117F235C0076AFB6 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -644,6 +654,13 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "MacBlip" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				Polish,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MacBlip */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -711,6 +728,7 @@
 				58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */,
 				58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */,
 				58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */,
+				58230496117F235C0076AFB6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,10 +821,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		58230495117F235C0076AFB6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58230493117F23550076AFB6 /* English */,
+				58230497117F23620076AFB6 /* Polish */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		583422CC113083BA008938A9 /* NewMessageDialog.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5834229211306A9F008938A9 /* English */,
+				5823049D117F23AF0076AFB6 /* Polish */,
 			);
 			name = NewMessageDialog.xib;
 			sourceTree = "<group>";
@@ -815,6 +843,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				585A92AA111B7003003ABD05 /* English */,
+				5823049C117F23AA0076AFB6 /* Polish */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -823,6 +852,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				585A92AF111B7060003ABD05 /* English */,
+				5823049B117F23A40076AFB6 /* Polish */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -831,6 +861,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5897F032112C766F0029B4D9 /* English */,
+				5823049A117F239D0076AFB6 /* Polish */,
 			);
 			name = MessageCell.xib;
 			sourceTree = "<group>";
@@ -839,6 +870,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5897F1D5112DDE850029B4D9 /* English */,
+				58230499117F23960076AFB6 /* Polish */,
 			);
 			name = LoginWindow.xib;
 			sourceTree = "<group>";
@@ -847,6 +879,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				58E6E89F1135E21000B97529 /* English */,
+				58230498117F23910076AFB6 /* Polish */,
 			);
 			name = AboutWindow.xib;
 			sourceTree = "<group>";
