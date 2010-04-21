@@ -40,16 +40,10 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
-  def scrollToTop
-    scrollView.verticalScroller.floatValue = 0
-    scrollView.contentView.scrollToPoint(NSZeroPoint)
-  end
-
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
       messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
-      self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2)
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordId].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
