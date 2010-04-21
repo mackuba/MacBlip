@@ -141,8 +141,9 @@ class MainWindowController < NSWindowController
   def sendGroupedGrowlNotification(messages)
     users = messages.map(&:user).map(&:login).sort.uniq.join(", ")
     last_digit = messages.count % 10
+    template = tr((last_digit >= 2 && last_digit <= 4) ? "AND_2_TO_4_OTHER_UPDATES" : "AND_5_OR_MORE_OTHER_UPDATES")
     GrowlApplicationBridge.notifyWithTitle(
-      tr((last_digit >= 2 && last_digit <= 4) ? "AND_2_TO_4_OTHER_UPDATES" : "AND_5_OR_MORE_OTHER_UPDATES"),
+      template % messages.count,
       description: "#{tr('From:')} #{users}",
       notificationName: "Status group received",
       iconData: nil,
