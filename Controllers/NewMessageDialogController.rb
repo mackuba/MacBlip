@@ -35,11 +35,11 @@ class NewMessageDialogController < NSWindowController
 
   def windowShouldClose(notification)
     if @edited && !@sent
-      alertWindow = NSAlert.alertWithMessageText("Are you sure?",
-        defaultButton: "Close window",
-        alternateButton: "Cancel",
+      alertWindow = NSAlert.alertWithMessageText(tr("Are you sure?"),
+        defaultButton: tr("Close window"),
+        alternateButton: tr("Cancel"),
         otherButton: nil,
-        informativeTextWithFormat: "You haven't sent that message yet."
+        informativeTextWithFormat: tr("You haven't sent that message yet.")
       )
       alertWindow.beginSheetModalForWindow(self.window,
         modalDelegate: self,
@@ -97,7 +97,7 @@ class NewMessageDialogController < NSWindowController
     sendButton.mbEnable
     textField.mbEnable
     spinner.stopAnimation(self)
-    mbShowAlertSheet("Error", error.localizedDescription)
+    mbShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
 end

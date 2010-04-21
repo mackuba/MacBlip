@@ -55,7 +55,7 @@ class ApplicationDelegate
 
   def applicationDockMenu(app)
     menu = NSMenu.alloc.initWithTitle ""
-    menu.addItemWithTitle "New message...", action: 'newMessagePressed:', keyEquivalent: ''
+    menu.addItemWithTitle(tr("New message..."), action: 'newMessagePressed:', keyEquivalent: '')
     menu
   end
 

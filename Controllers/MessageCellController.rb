@@ -42,12 +42,12 @@ class MessageCellController < SDListViewItem
 
   def createContextMenu
     menu = NSMenu.alloc.initWithTitle ""
-    menu.addItemWithTitle "Quote...", action: 'quoteActionSelected:', keyEquivalent: ''
+    menu.addItemWithTitle(tr("Quote..."), action: 'quoteActionSelected:', keyEquivalent: '')
     if representedObject.user.login != OBConnector.sharedConnector.account.username
-      menu.addItemWithTitle "Reply...", action: 'replyActionSelected:', keyEquivalent: ''
+      menu.addItemWithTitle(tr("Reply..."), action: 'replyActionSelected:', keyEquivalent: '')
     end
     if representedObject.pictures && representedObject.pictures.length > 0
-      menu.addItemWithTitle "Show picture...", action: 'showPictureActionSelected:', keyEquivalent: ''
+      menu.addItemWithTitle(tr("Open picture in browser..."), action: 'showPictureActionSelected:', keyEquivalent: '')
     end
     menu.delegate = self
     menu

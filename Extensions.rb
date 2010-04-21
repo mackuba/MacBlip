@@ -9,6 +9,10 @@ module Kernel
   def obprint(*args)
     puts(*args) if OBConnector.loggingEnabled
   end
+
+  def tr(text)
+    NSBundle.mainBundle.localizedStringForKey(text, value: text, table: nil)
+  end
 end
 
 class NilClass

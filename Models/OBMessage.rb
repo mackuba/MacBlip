@@ -65,7 +65,7 @@ class OBMessage
   end
 
   def bodyForGrowl
-    hasPicture ? "#{body} [FOTO]" : body
+    hasPicture ? "#{body} [#{tr('PHOTO')}]" : body
   end
 
   def keyPathsForValuesAffectingBodyForGrowl
@@ -80,7 +80,7 @@ class OBMessage
     end
     detectLinks(richText, /\^(\w+)/) { BLIP_WWW_HOST + "/users/#{$1}/dashboard" }
     detectLinks(richText, /\b(\w+\:\/\/[^\s]+)/) { $1 }
-    detectLinks(richText, /\[FOTO\]$/) { pictures && pictures.first && pictures.first['url'] }
+    detectLinks(richText, /\[#{tr('PHOTO')}\]$/) { pictures && pictures.first && pictures.first['url'] }
 
     richText
   end

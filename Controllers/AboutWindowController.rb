@@ -16,7 +16,7 @@ class AboutWindowController < NSWindowController
 
   def windowDidLoad
     version = NSBundle.mainBundle.infoDictionary['CFBundleVersion']
-    versionLabel.stringValue = "Version #{version}"
+    versionLabel.stringValue = "#{tr('Version')} #{version}"
   end
 
 end

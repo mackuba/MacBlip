@@ -127,7 +127,7 @@ class MainWindowController < NSWindowController
   end
 
   def displayLoadingError(error)
-    mbShowAlertSheet("Error", error.localizedDescription)
+    mbShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
   def growlMessages(messages)
@@ -146,9 +146,10 @@ class MainWindowController < NSWindowController
 
   def sendGroupedGrowlNotification(messages)
     users = messages.map(&:user).map(&:login).sort.uniq.join(", ")
+    last_digit = messages.count % 10
     GrowlApplicationBridge.notifyWithTitle(
-      "… and #{messages.count} other updates",
-      description: "From: #{users}",
+      tr((last_digit >= 2 && last_digit <= 4) ? "AND_2_TO_4_OTHER_UPDATES" : "AND_5_OR_MORE_OTHER_UPDATES"),
+      description: "#{tr('From:')} #{users}",
       notificationName: "Status group received",
       iconData: nil,
       priority: 0,

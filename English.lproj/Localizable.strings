@@ -1,7 +1,15 @@
-/* 
-   Localizable.strings
-   MacBlip
-
-   Created by Jakub Suder on 21.4.10.
-   Copyright 2010 __MyCompanyName__. All rights reserved.
- */
+"New message..." = "New message...";
+"Version" = "Version";
+"Error" = "Error";
+"Login or password is incorrect" = "Login or password is incorrect";
+"AND_2_TO_4_OTHER_UPDATES" = "… and %d other updates";
+"AND_5_OR_MORE_OTHER_UPDATES" = "… and %d other updates";
+"From:" = "From:";
+"Quote..." = "Quote...";
+"Reply..." = "Reply...";
+"Open picture in browser..." = "Open picture in browser...";
+"Are you sure?" = "Are you sure?";
+"Close window" = "Close window";
+"Cancel" = "Cancel";
+"You haven't sent that message yet." = "You haven't sent that message yet.";
+"PHOTO" = "PHOTO";
