@@ -257,6 +257,9 @@
 	scrollViewWidth -= [[[[self enclosingScrollView] verticalScroller] class] scrollerWidth];
 	
 	CGFloat width = scrollViewWidth;
+	// something adds those 2 pixels, I don't know where they come from - if I don't subtract them here, the list
+	// is 2 pixels wider than it should be and it's scrollable horizontally, even though it shouldn't be - psionides
+	width -= 2.0;
 	CGFloat totalHeight = 0.0;
 	
 	CGFloat *heights = malloc(sizeof(CGFloat) * contentCount);
