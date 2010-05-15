@@ -129,16 +129,9 @@ static BOOL loggingEnabled;
   return request;
 }
 
-- (OBRequest *) avatarInfoRequestForUser: (OBUser *) user {
-  NSString *path = OBFormat(@"/users/%@/avatar", user.login);
-  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
-  [request setDidFinishSelector: @selector(avatarInfoLoaded:)];
-  [request setUserInfo: OBDict(user, @"user")];
-  return request;
-}
-
-- (OBRequest *) avatarImageRequestForUser: (OBUser *) user toPath: (NSString *) path {
-  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
+- (OBRequest *) avatarImageRequestForUser: (OBUser *) user {
+  NSString *avatarUrl = OBFormat(@"/users/%@/avatar/pico.jpg", user.login);
+  OBRequest *request = [self requestWithPath: avatarUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
   [request setUserInfo: OBDict(user, @"user")];
   return request;
@@ -224,21 +217,6 @@ static BOOL loggingEnabled;
     }
   } else {
     [[request target] dashboardUpdatedWithMessages: [NSArray array]];
-  }
-}
-
-- (void) avatarInfoLoaded: (id) request {
-  if (![self handleFinishedRequest: request]) return;
-
-  OBUser *user = [[request userInfo] objectForKey: @"user"];
-  NSInteger status = [[[request responseHeaders] objectForKey: @"Status"] intValue];
-  if (status == 404) {
-    [[request target] avatarInfoNotFoundForUser: user];
-  } else {
-    NSString *trimmedString = [[request responseString] trimmedString];
-    NSDictionary *avatarInfo = [NSDictionary dictionaryWithJSONString: trimmedString];
-    NSString *url50 = [avatarInfo objectForKey: @"url_50"];
-    [[request target] avatarInfoLoadedForUser: user path: url50];
   }
 }
 

@@ -32,9 +32,6 @@
               connector: (OBConnector *) obconnector;
 
 - (void) loadAvatars;
-
-- (void) avatarInfoNotFoundForUser: (OBUser *) user;
-- (void) avatarInfoLoadedForUser: (OBUser *) user path: (NSString *) url;
 - (void) avatarImageLoadedForUser: (OBUser *) user data: (NSData *) data;
 
 @end

@@ -30,14 +30,6 @@ OnDeallocRelease(login, avatarData);
   return user;
 }
 
-+ (NSData *) defaultAvatarData {
-  if (!defaultAvatarData) {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource: @"ob_default_avatar" ofType: @"png"];
-    defaultAvatarData = [NSData dataWithContentsOfFile: imagePath];
-  }
-  return defaultAvatarData;
-}
-
 - (id) init {
   return [super initWithProperties: OBArray(@"login")];
 }
