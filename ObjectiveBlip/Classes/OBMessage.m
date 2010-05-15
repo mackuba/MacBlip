@@ -7,16 +7,19 @@
 
 #import "OBMessage.h"
 #import "OBUser.h"
-#import "OBUtils.h"
+#import "PsiToolkit.h"
 
 @implementation OBMessage
 
 @synthesize userPath, recipientPath, body, date, user, recipient, createdAt, messageType, type, pictures;
-OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt, type, pictures);
+PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, createdAt, type, pictures);
+
++ (NSArray *) propertyList {
+  return PSArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
+}
 
 - (id) init {
-  NSArray *fields = OBArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
-  self = [super initWithProperties: fields];
+  self = [super init];
   if (self) {
     pictures = [[NSArray alloc] init];
   }
@@ -55,7 +58,7 @@ OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt
   NSDictionary *pictureInfo = [pictures objectAtIndex: 0];
   NSMutableDictionary *updatedInfo = [NSMutableDictionary dictionaryWithDictionary: pictureInfo];
   [updatedInfo setObject: data forKey: @"data"];
-  self.pictures = OBArray(updatedInfo);
+  self.pictures = PSArray(updatedInfo);
 }
 
 + (NSDateFormatter *) timeZoneLessDateFormatter {
@@ -76,11 +79,11 @@ OnDeallocRelease(userPath, recipientPath, body, date, user, recipient, createdAt
 }
 
 - (NSString *) url {
-  return OBFormat(@"%@/s/%d", BLIP_WWW_HOST, self.recordId);
+  return PSFormat(@"%@/s/%@", BLIP_WWW_HOST, self.recordId);
 }
 
 - (NSString *) description {
-  return OBFormat(@"<OBMessage: user.login=%@, date=%@, body=\"%@\">", user.login, date, body);
+  return PSFormat(@"<OBMessage: user.login=%@, date=%@, body=\"%@\">", user.login, date, body);
 }
 
 @end

@@ -45,7 +45,7 @@ class MainWindowController < NSWindowController
     if messages && messages.count > 0
       messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
       growlMessages(messages)
-      @lastGrowled = [@lastGrowled, messages.first.recordId].max
+      @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
 
@@ -121,14 +121,14 @@ class MainWindowController < NSWindowController
   end
 
   def displayLoadingError(error)
-    mbShowAlertSheet(tr("Error"), error.localizedDescription)
+    psShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
   def growlMessages(messages)
     myLogin = @blip.account.username
 
     # don't growl own messages, or those that have been growled before
-    growlableMessages = messages.find_all { |m| m.user.login != myLogin && m.recordId > @lastGrowled }
+    growlableMessages = messages.find_all { |m| m.user.login != myLogin && m.recordIdValue > @lastGrowled }
 
     if growlableMessages.count > GROWL_LIMIT + 1
       growlableMessages.first(GROWL_LIMIT).each { |m| sendGrowlNotification(m) }

@@ -11,13 +11,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Constants.h"
-#import "OBModel.h"
+#import "PSModel.h"
 
 @class OBUser;
 
 typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageType;
 
-@interface OBMessage : OBModel {
+@interface OBMessage : PSModel {
   // interesting stuff
   NSString *body;
   NSDate *date;

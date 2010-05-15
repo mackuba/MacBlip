@@ -6,7 +6,7 @@
 // -------------------------------------------------------
 
 #import "OBUser.h"
-#import "OBUtils.h"
+#import "PsiToolkit.h"
 
 static NSMutableDictionary *loginIndex;
 static NSData *defaultAvatarData;
@@ -14,7 +14,7 @@ static NSData *defaultAvatarData;
 @implementation OBUser
 
 @synthesize login, avatarData;
-OnDeallocRelease(login, avatarData);
+PSReleaseOnDealloc(login, avatarData);
 
 + (void) initialize {
   loginIndex = [[NSMutableDictionary alloc] initWithCapacity: 100];
@@ -38,8 +38,8 @@ OnDeallocRelease(login, avatarData);
   return defaultAvatarData;
 }
 
-- (id) init {
-  return [super initWithProperties: OBArray(@"login")];
++ (NSArray *) propertyList {
+  return PSArray(@"login");
 }
 
 - (void) setLogin: (NSString *) newLogin {

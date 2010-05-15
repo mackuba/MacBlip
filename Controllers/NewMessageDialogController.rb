@@ -29,7 +29,7 @@ class NewMessageDialogController < NSWindowController
     window.delegate = self
     mbObserve(textField, NSControlTextDidChangeNotification, :textEdited)
     textField.stringValue = @text
-    textField.mbUnselectText
+    textField.psUnselectText
     refreshCounter
   end
 
@@ -97,7 +97,7 @@ class NewMessageDialogController < NSWindowController
     sendButton.mbEnable
     textField.mbEnable
     spinner.stopAnimation(self)
-    mbShowAlertSheet(tr("Error"), error.localizedDescription)
+    psShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
 end
