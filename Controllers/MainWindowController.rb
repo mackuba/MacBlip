@@ -36,6 +36,53 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
+  def warningBar
+    if @warningBar.nil?
+      @warningBar = WarningBar.alloc.initWithType(:warning)
+      @warningBar.text = tr("Blip is currently overloaded…")
+      window.contentView.addSubview(@warningBar)
+    end
+    @warningBar
+  end
+
+  def errorBar
+    if @errorBar.nil?
+      @errorBar = WarningBar.alloc.initWithType(:error)
+      @errorBar.text = tr("Connection to the server has failed.")
+      window.contentView.addSubview(@errorBar)
+    end
+    @errorBar
+  end
+
+  def showWarningBar
+    unless warningBar.displayed
+      if errorBar.displayed
+        warningBar.removeFromSuperview
+        window.contentView.addSubview(warningBar)
+        errorBar.slideOut
+      end
+      @scrollView.contentView.copiesOnScroll = false
+      warningBar.slideIn
+    end
+  end
+
+  def showErrorBar
+    unless errorBar.displayed
+      if warningBar.displayed
+        errorBar.removeFromSuperview
+        window.contentView.addSubview(errorBar)
+        warningBar.slideOut
+      end
+      @scrollView.contentView.copiesOnScroll = false
+      errorBar.slideIn
+    end
+  end
+
+  def hideNoticeBars
+    [@warningBar, @errorBar].compact.each { |b| b.slideOut if b.displayed }
+    @scrollView.contentView.copiesOnScroll = true
+  end
+
   def windowDidResize(notification)
     @listView.viewDidEndLiveResize unless window.inLiveResize
   end
@@ -57,6 +104,7 @@ class MainWindowController < NSWindowController
     @newMessageButton.mbEnable
     @dashboardButton.mbEnable
     @spinner.stopAnimation(self)
+    hideNoticeBars
   end
 
   def dashboardUpdateFailed(notification)
@@ -67,12 +115,13 @@ class MainWindowController < NSWindowController
         @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 10.0)
       else
         obprint "MainWindowController: dashboard update failed, ignoring"
+        showWarningBar
         @spinner.stopAnimation(self)
       end
     else
       @loadingView.mbHide
+      showErrorBar
       @spinner.stopAnimation(self)
-      displayLoadingError(error)
     end
   end
 

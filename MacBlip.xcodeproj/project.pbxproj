@@ -103,6 +103,9 @@
 		5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1FB112DE9060029B4D9 /* macblip_icon.icns */; };
 		5897F20C112DEBEC0029B4D9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20B112DEBEC0029B4D9 /* home.png */; };
 		5897F20E112DED5D0029B4D9 /* new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20D112DED5D0029B4D9 /* new_message.png */; };
+		589CDF88119F007000B1F64D /* WarningBar.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589CDF87119F007000B1F64D /* WarningBar.rb */; };
+		589CDFF6119F08E100B1F64D /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF4119F08E100B1F64D /* error.png */; };
+		589CDFF7119F08E100B1F64D /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF5119F08E100B1F64D /* warning.png */; };
 		58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */; };
 		58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58A25E10117DE5DB00784901 /* QuickLookPicture.rb */; };
 		58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E31A113172EA00B97529 /* MessageCell.rb */; };
@@ -248,6 +251,9 @@
 		5897F1FB112DE9060029B4D9 /* macblip_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = macblip_icon.icns; sourceTree = "<group>"; };
 		5897F20B112DEBEC0029B4D9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5897F20D112DED5D0029B4D9 /* new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_message.png; sourceTree = "<group>"; };
+		589CDF87119F007000B1F64D /* WarningBar.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = WarningBar.rb; sourceTree = "<group>"; };
+		589CDFF4119F08E100B1F64D /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		589CDFF5119F08E100B1F64D /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
 		58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QLPreviewPanel.bridgesupport; sourceTree = "<group>"; };
 		58A25E10117DE5DB00784901 /* QuickLookPicture.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = QuickLookPicture.rb; sourceTree = "<group>"; };
 		58E6E31A113172EA00B97529 /* MessageCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCell.rb; sourceTree = "<group>"; };
@@ -508,6 +514,7 @@
 				58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */,
 				58E6E65511331C0400B97529 /* MessageTextView.rb */,
 				58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */,
+				589CDF87119F007000B1F64D /* WarningBar.rb */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -583,6 +590,8 @@
 		5897F1D1112DDE660029B4D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				589CDFF4119F08E100B1F64D /* error.png */,
+				589CDFF5119F08E100B1F64D /* warning.png */,
 				5883BD9C113D832C00F72D34 /* macblip_icon_80.png */,
 				5897F20D112DED5D0029B4D9 /* new_message.png */,
 				5897F20B112DEBEC0029B4D9 /* home.png */,
@@ -729,6 +738,9 @@
 				58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */,
 				58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */,
 				58230496117F235C0076AFB6 /* Localizable.strings in Resources */,
+				589CDF88119F007000B1F64D /* WarningBar.rb in Resources */,
+				589CDFF6119F08E100B1F64D /* error.png in Resources */,
+				589CDFF7119F08E100B1F64D /* warning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

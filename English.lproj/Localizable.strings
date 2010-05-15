@@ -13,3 +13,5 @@
 "Cancel" = "Cancel";
 "You haven't sent that message yet." = "You haven't sent that message yet.";
 "PHOTO" = "PHOTO";
+"Blip is currently overloaded…" = "Blip is currently overloaded…";
+"Connection to the server has failed." = "Connection to the server has failed.";
