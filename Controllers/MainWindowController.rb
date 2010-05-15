@@ -36,6 +36,10 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
+  def windowDidResize(notification)
+    @listView.viewDidEndLiveResize unless window.inLiveResize
+  end
+
   def dashboardWillUpdate
     @spinner.startAnimation(self)
   end
