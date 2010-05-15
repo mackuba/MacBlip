@@ -19,6 +19,22 @@ class OBMessage
     NSSet.setWithObjects("messageType", "user", "recipient", nil)
   end
 
+  def viewBackgroundColor
+    if messageType == OBNoticeMessage
+      if body =~ /do obserwowanych/
+        MessageCell::FOLLOW_BACKGROUND
+      else
+        MessageCell::NOTICE_BACKGROUND
+      end
+    else
+      MessageCell::BACKGROUND
+    end
+  end
+
+  def keyPathsForValuesAffectingViewBackgroundColor
+    NSSet.setWithObjects("messageType", "body", nil)
+  end
+
   def hasPicture
     !pictures.first.nil?
   end
