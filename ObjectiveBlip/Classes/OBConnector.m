@@ -176,8 +176,8 @@ static BOOL loggingEnabled;
   if (!locationHeader) {
     locationHeader = @"";
   }
-  NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
-  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"errors/blip"];
+  NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"gadu-gadu.pl"];
+  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"gadu-gadu.pl"];
   return (errorFoundInUrl.location != NSNotFound) || (errorFoundInHeader.location != NSNotFound);
 }
 
