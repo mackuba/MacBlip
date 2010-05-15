@@ -45,7 +45,8 @@ class OBMessage
   def sanitizeTag(tag)
     # remove accented characters, i.e. replace "ó" with "o" etc.
     # first, separate characters and accents
-    decomposed = tag.downcase.decomposedStringWithCanonicalMapping
+    # the letter ł doesn't seem to work with this method so we'll replace it manually
+    decomposed = tag.downcase.gsub(/ł/, 'l').decomposedStringWithCanonicalMapping
 
     # now, remove everything that is not a letter or digit
     goodChars = NSCharacterSet.characterSetWithCharactersInString("0123456789abcdefghijklmnopqrstuvwxyz")
@@ -55,9 +56,9 @@ class OBMessage
   def detectLinks(richText, regexp)
     rubyString = String.new(richText.string)
     rubyString.scan(regexp) do
+      offset = $~.offset(0)
       url = yield
       if url && url.length > 0
-        offset = $~.offset(0)
         range = NSRange.new(offset.first, offset.last - offset.first)
         richText.addAttribute(NSLinkAttributeName, value: NSURL.URLWithString(url), range: range)
       end
