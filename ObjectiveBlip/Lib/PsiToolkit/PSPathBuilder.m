@@ -16,8 +16,7 @@
 @implementation PSPathBuilder
 
 + (PSPathBuilder *) builderWithBasePath: (NSString *) path record: (PSModel *) record {
-  NSInteger recordId = [[record recordId] intValue];
-  NSString *basePath = PSFormat(path, recordId);
+  NSString *basePath = PSFormat(path, record.recordIdValue);
   PSPathBuilder *builder = [[PSPathBuilder alloc] initWithBasePath: basePath];
   return [builder autorelease];
 }

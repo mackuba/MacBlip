@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, copy) NSNumber *recordId;
+@property (nonatomic, readonly) NSInteger recordIdValue;
 
 + (NSString *) classNameForProperty: (NSString *) property;
 + (NSArray *) propertyList;

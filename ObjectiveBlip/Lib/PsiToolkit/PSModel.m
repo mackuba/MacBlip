@@ -190,4 +190,8 @@ PSReleaseOnDealloc(recordId);
   return [[self valueForKey: PSModelRecordId] unsignedIntValue];
 }
 
+- (NSInteger) recordIdValue {
+  return [recordId intValue];
+}
+
 @end

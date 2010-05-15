@@ -12,11 +12,11 @@
 @implementation NSControl (PsiToolkit)
 
 - (void) psDisable {
-  self.enabled = NO;
+  [self setEnabled: NO];
 }
 
 - (void) psEnable {
-  self.enabled = YES;
+  [self setEnabled: YES];
 }
 
 @end
@@ -33,16 +33,16 @@
 @implementation NSView (PsiToolkit)
 
 - (void) psHide {
-  self.hidden = YES;
+  [self setHidden: YES];
 }
 
 - (void) psShow {
-  self.hidden = NO;
+  [self setHidden: NO];
 }
 
 @end
 
-@interface NSWindow (PsiToolkit)
+@implementation NSWindow (PsiToolkit)
 
 - (void) psShowAlertSheetWithTitle: (NSString *) title message: (NSString *) message {
   NSAlert *alertWindow = [NSAlert alertWithMessageText: title
