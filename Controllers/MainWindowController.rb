@@ -15,6 +15,7 @@ class MainWindowController < NSWindowController
   def init
     initWithWindowNibName "MainWindow"
     @lastGrowled = NSUserDefaults.standardUserDefaults.integerForKey(LAST_GROWLED_KEY) || 0
+    @firstLoad = true
     self
   end
 
@@ -91,9 +92,15 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
+  def scrollToTop
+    scrollView.verticalScroller.floatValue = 0
+    scrollView.contentView.scrollToPoint(NSZeroPoint)
+  end
+
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
+      self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
       messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordId].max
@@ -104,6 +111,7 @@ class MainWindowController < NSWindowController
     @newMessageButton.mbEnable
     @dashboardButton.mbEnable
     @spinner.stopAnimation(self)
+    @firstLoad = false
     hideNoticeBars
   end
 
