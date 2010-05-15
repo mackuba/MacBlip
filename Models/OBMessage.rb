@@ -9,9 +9,9 @@ class OBMessage
 
   def senderAndRecipient
     case messageType
-      when OBStatusMessage then user.login
       when OBDirectedMessage then "#{user.login} > #{recipient.login}"
       when OBPrivateMessage then "#{user.login} >> #{recipient.login}"
+      else user.login
     end
   end
 
