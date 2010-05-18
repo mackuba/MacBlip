@@ -59,10 +59,6 @@ class ApplicationDelegate
     menu
   end
 
-  def applicationWillBecomeActive(notification)
-    restoreMainWindow
-  end
-
   def applicationShouldHandleReopen(app, hasVisibleWindows: hasWindows)
     restoreMainWindow
     false
