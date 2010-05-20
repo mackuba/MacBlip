@@ -15,8 +15,8 @@ class OBMessage
     end
   end
 
-  def keyPathsForValuesAffectingSenderAndRecipient
-    NSSet.setWithObjects("messageType", "user", "recipient", nil)
+  def self.keyPathsForValuesAffectingSenderAndRecipient
+    NSSet.setWithArray(["messageType", "user.login", "recipient.login"])
   end
 
   def viewBackgroundColor
@@ -31,8 +31,8 @@ class OBMessage
     end
   end
 
-  def keyPathsForValuesAffectingViewBackgroundColor
-    NSSet.setWithObjects("messageType", "body", nil)
+  def self.keyPathsForValuesAffectingViewBackgroundColor
+    NSSet.setWithArray(["messageType", "body"])
   end
 
   def hasPicture
@@ -40,7 +40,7 @@ class OBMessage
   end
 
   def self.keyPathsForValuesAffectingHasPicture
-    NSSet.setWithObjects("pictures", nil)
+    NSSet.setWithObject("pictures")
   end
 
   def picture
@@ -55,7 +55,7 @@ class OBMessage
   end
 
   def self.keyPathsForValuesAffectingPicture
-    NSSet.setWithObjects("pictures", nil)
+    NSSet.setWithObject("pictures")
   end
 
   def sanitizeTag(tag)
@@ -85,8 +85,8 @@ class OBMessage
     hasPicture ? "#{body} [#{tr('PHOTO')}]" : body
   end
 
-  def keyPathsForValuesAffectingBodyForGrowl
-    NSSet.setWithObjects("hasPicture", "body", nil)
+  def self.keyPathsForValuesAffectingBodyForGrowl
+    NSSet.setWithArray(["hasPicture", "body"])
   end
 
   def processedBody
@@ -102,8 +102,8 @@ class OBMessage
     richText
   end
 
-  def keyPathsForValuesAffectingProcessedBody
-    NSSet.setWithObjects("body", "pictures", nil)
+  def self.keyPathsForValuesAffectingProcessedBody
+    NSSet.setWithArray(["body", "pictures"])
   end
 
 end
