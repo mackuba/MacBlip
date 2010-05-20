@@ -224,7 +224,11 @@ static BOOL loggingEnabled;
   if (![self handleFinishedRequest: request]) return;
 
   OBUser *user = [[request userInfo] objectForKey: @"user"];
-  [[request target] avatarImageLoadedForUser: user data: [request responseData]];
+  NSData *data = nil;
+  if ([[[request responseHeaders] objectForKey: @"Content-Type"] hasPrefix: @"image/"]) {
+    data = [request responseData];
+  }
+  [[request target] avatarImageLoadedForUser: user data: data];
 }
 
 - (void) avatarGroupLoaded: (OBAvatarGroup *) group {
