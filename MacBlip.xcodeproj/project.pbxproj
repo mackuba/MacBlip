@@ -109,6 +109,9 @@
 		58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */; };
 		58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58A25E10117DE5DB00784901 /* QuickLookPicture.rb */; };
 		58AEE89A11A5AB8A00612211 /* FilesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE89911A5AB8A00612211 /* FilesController.rb */; };
+		58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */; };
+		58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */; };
+		58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */; };
 		58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E31A113172EA00B97529 /* MessageCell.rb */; };
 		58E6E39211317CF900B97529 /* AvatarView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E39111317CF900B97529 /* AvatarView.rb */; };
 		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
@@ -257,6 +260,11 @@
 		58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QLPreviewPanel.bridgesupport; sourceTree = "<group>"; };
 		58A25E10117DE5DB00784901 /* QuickLookPicture.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = QuickLookPicture.rb; sourceTree = "<group>"; };
 		58AEE89911A5AB8A00612211 /* FilesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = FilesController.rb; sourceTree = "<group>"; };
+		58AEE8E311A5BAE700612211 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		58AEE8E411A5BAE700612211 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestDelegate.bridgesupport; sourceTree = "<group>"; };
+		58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIProgressDelegate.bridgesupport; sourceTree = "<group>"; };
+		58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAvatarGroup.bridgesupport; sourceTree = "<group>"; };
 		58E6E31A113172EA00B97529 /* MessageCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCell.rb; sourceTree = "<group>"; };
 		58E6E39111317CF900B97529 /* AvatarView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AvatarView.rb; sourceTree = "<group>"; };
 		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
@@ -443,6 +451,8 @@
 		5821056F11178FB00025DAF4 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
+				58AEE8E311A5BAE700612211 /* ASIHTTPRequestDelegate.h */,
+				58AEE8E411A5BAE700612211 /* ASIProgressDelegate.h */,
 				5821057211178FB00025DAF4 /* ASIFormDataRequest.h */,
 				5821057311178FB00025DAF4 /* ASIFormDataRequest.m */,
 				5821057411178FB00025DAF4 /* ASIHTTPRequest.h */,
@@ -566,6 +576,9 @@
 		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */,
+				58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */,
+				58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */,
 				58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */,
 				58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */,
 				58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */,
@@ -733,6 +746,9 @@
 				589CDFF6119F08E100B1F64D /* error.png in Resources */,
 				589CDFF7119F08E100B1F64D /* warning.png in Resources */,
 				58AEE89A11A5AB8A00612211 /* FilesController.rb in Resources */,
+				58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */,
+				58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */,
+				58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
