@@ -96,7 +96,10 @@
 <method selector='setShouldRedirect:'>
 <arg type='B' index='0'/>
 </method>
-<method selector='setShouldResetProgressIndicators:'>
+<method selector='setShouldResetDownloadProgress:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldResetUploadProgress:'>
 <arg type='B' index='0'/>
 </method>
 <method selector='setShouldStreamPostDataFromDisk:'>
@@ -141,7 +144,10 @@
 <method selector='shouldRedirect'>
 <retval type='B'/>
 </method>
-<method selector='shouldResetProgressIndicators'>
+<method selector='shouldResetDownloadProgress'>
+<retval type='B'/>
+</method>
+<method selector='shouldResetUploadProgress'>
 <retval type='B'/>
 </method>
 <method selector='shouldStreamPostDataFromDisk'>
