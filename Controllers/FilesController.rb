@@ -31,6 +31,15 @@ class FilesController
       @picturesCacheDirectory
     end
 
+    def clearPicturesCache
+      cache = picturesCacheDirectory
+      allPictures = cache && fileManager.contentsOfDirectoryAtPath(cache, error: nil)
+      if allPictures
+        paths = allPictures.find_all { |f| f =~ /\.jpg$/ }.map { |f| cache.stringByAppendingPathComponent(f) }
+        paths.each { |p| fileManager.removeItemAtPath(p, error: nil) }
+      end
+    end
+
     def ensureDirectoryExists(path)
       return false if path.blank?
       isDirectory = Pointer.new_with_type("B")

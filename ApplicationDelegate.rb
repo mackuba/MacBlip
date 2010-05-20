@@ -14,6 +14,7 @@ class ApplicationDelegate
 
   def awakeFromNib
     GrowlApplicationBridge.growlDelegate = ""
+    FilesController.clearPicturesCache
     @blip = OBConnector.sharedConnector
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
