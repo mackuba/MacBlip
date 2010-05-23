@@ -28,7 +28,7 @@ class LoginWindowController < NSWindowController
 
   def loginPressed(sender)
     return if usernameField.stringValue.blank? || passwordField.stringValue.blank?
-    [usernameField, passwordField, loginButton].each(&:mbDisable)
+    [usernameField, passwordField, loginButton].each(&:psDisable)
     spinner.startAnimation(self)
     connector = OBConnector.sharedConnector
     connector.account.username = usernameField.stringValue
@@ -37,7 +37,7 @@ class LoginWindowController < NSWindowController
   end
 
   def reenableForm
-    [usernameField, passwordField, loginButton].each(&:mbEnable)
+    [usernameField, passwordField, loginButton].each(&:psEnable)
     spinner.stopAnimation(self)
     window.makeFirstResponder(usernameField)
   end

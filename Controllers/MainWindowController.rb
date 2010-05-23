@@ -49,9 +49,9 @@ class MainWindowController < NSWindowController
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
 
-    @loadingView.mbHide
-    @newMessageButton.mbEnable
-    @dashboardButton.mbEnable
+    @loadingView.psHide
+    @newMessageButton.psEnable
+    @dashboardButton.psEnable
     @spinner.stopAnimation(self)
   end
 
@@ -66,7 +66,7 @@ class MainWindowController < NSWindowController
         @spinner.stopAnimation(self)
       end
     else
-      @loadingView.mbHide
+      @loadingView.psHide
       @spinner.stopAnimation(self)
       displayLoadingError(error)
     end
