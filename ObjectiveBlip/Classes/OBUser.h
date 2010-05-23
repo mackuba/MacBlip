@@ -9,9 +9,9 @@
   OBUser - represents a Blip user
 */
 
-#import "OBModel.h"
+#import "PSModel.h"
 
-@interface OBUser : OBModel {
+@interface OBUser : PSModel {
   NSString *login;
   NSData *avatarData;
 }

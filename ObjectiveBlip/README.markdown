@@ -16,6 +16,8 @@ much...
 * add -> existing files -> select everything inside ObjectiveBlip directory
 * add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the
   [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions))
+* download the [YAJL-objc](http://github.com/gabriel/yajl-objc) JSON parser and install it into your project (the
+  installation is different on MacOSX and iPhone, so I can't simply include it in ObjectiveBlip)
 * for MacOSX apps, don't add the files Reachability.\* and ASIAuthenticationDialog.\* - they're iPhone-only and won't
   compile with Mac version of Cocoa
 * The \*.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
@@ -62,10 +64,10 @@ To update the dashboard in regular intervals, use the OBDashboardMonitor class:
 
 This will start sending dashboard update requests every 15 seconds (unless there's already one in progress). When it
 gets a response, it will send a OBDashboardUpdatedNotification via the NSNotificationCenter, with a list of new messages
-(NSArray) in "messages" key in the userInfo hash of the notification. You can use the Observe() macro from OBUtils.h
-to subscribe to this notification:
+(NSArray) in "messages" key in the userInfo hash of the notification. You can use the PSObserve() macro to subscribe to
+this notification:
 
-    Observe(blip.dashboardMonitor, OBDashboardUpdatedNotification, dashboardUpdatedWithMessages:);
+    PSObserve(blip.dashboardMonitor, OBDashboardUpdatedNotification, dashboardUpdatedWithMessages:);
     
     ...
     

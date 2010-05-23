@@ -9,7 +9,7 @@
 #import "OBConnector.h"
 #import "OBRequest.h"
 #import "OBUser.h"
-#import "OBUtils.h"
+#import "PsiToolkit.h"
 
 @interface OBAvatarGroup ()
 - (void) completeAvatarRequestForUser: (OBUser *) user withImageData: (NSData *) data;
@@ -19,7 +19,7 @@
 @implementation OBAvatarGroup
 
 @synthesize messages, request;
-OnDeallocRelease(messages, request, connector);
+PSReleaseOnDealloc(messages, request, connector);
 
 - (id) initWithMessages: (NSArray *) messageList
                 request: (OBRequest *) obrequest

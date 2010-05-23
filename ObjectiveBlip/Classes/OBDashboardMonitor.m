@@ -8,7 +8,7 @@
 #import "OBConnector.h"
 #import "OBDashboardMonitor.h"
 #import "OBRequest.h"
-#import "OBUtils.h"
+#import "PsiToolkit.h"
 
 @interface OBDashboardMonitor ()
 - (void) dashboardTimerFired: (NSTimer *) timer;
@@ -63,17 +63,17 @@
 
 - (void) executeUpdate {
   isSendingDashboardRequest = YES;
-  Notify(OBDashboardWillUpdateNotification);
+  PSNotify(OBDashboardWillUpdateNotification);
   [[connector dashboardRequest] sendFor: self];
 }
 
 - (void) dashboardUpdatedWithMessages: (NSArray *) messages {
-  NotifyWithData(OBDashboardUpdatedNotification, OBDict(messages, @"messages"));
+  PSNotifyWithData(OBDashboardUpdatedNotification, PSDict(messages, @"messages"));
   isSendingDashboardRequest = NO;
 }
 
 - (void) requestFailedWithError: (NSError *) error {
-  NotifyWithData(OBDashboardUpdateFailedNotification, OBDict(error, @"error"));
+  PSNotifyWithData(OBDashboardUpdateFailedNotification, PSDict(error, @"error"));
   isSendingDashboardRequest = NO;
 }
 

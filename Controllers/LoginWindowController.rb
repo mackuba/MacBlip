@@ -28,7 +28,7 @@ class LoginWindowController < NSWindowController
 
   def loginPressed(sender)
     return if usernameField.stringValue.blank? || passwordField.stringValue.blank?
-    [usernameField, passwordField, loginButton].each(&:mbDisable)
+    [usernameField, passwordField, loginButton].each(&:psDisable)
     spinner.startAnimation(self)
     connector = OBConnector.sharedConnector
     connector.account.username = usernameField.stringValue
@@ -37,7 +37,7 @@ class LoginWindowController < NSWindowController
   end
 
   def reenableForm
-    [usernameField, passwordField, loginButton].each(&:mbEnable)
+    [usernameField, passwordField, loginButton].each(&:psEnable)
     spinner.stopAnimation(self)
     window.makeFirstResponder(usernameField)
   end
@@ -48,7 +48,7 @@ class LoginWindowController < NSWindowController
 
   def authenticationFailed
     reenableForm
-    mbShowAlertSheet(tr("Error"), tr("Login or password is incorrect"))
+    psShowAlertSheet(tr("Error"), tr("Login or password is incorrect"))
   end
 
   def requestFailedWithError(error)
@@ -57,7 +57,7 @@ class LoginWindowController < NSWindowController
       OBConnector.sharedConnector.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 10.0)
     else
       reenableForm
-      mbShowAlertSheet(tr("Error"), error.localizedDescription)
+      psShowAlertSheet(tr("Error"), error.localizedDescription)
     end
   end
 

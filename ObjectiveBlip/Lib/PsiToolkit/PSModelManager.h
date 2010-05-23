@@ -1,24 +1,22 @@
 // -------------------------------------------------------
-// ModelManager.h
+// PSModelManager.h
 //
-// Copyright (c) 2009 Jakub Suder <jakub.suder@gmail.com>
-// Licensed under MIT license
+// Copyright (c) 2010 Jakub Suder <jakub.suder@gmail.com>
+// Licensed under WTFPL license
 // -------------------------------------------------------
-
-/*
-  OBModelManager - helper class for OBModel, don't use it directly
-*/
 
 #import <Foundation/Foundation.h>
 
-@interface OBModelManager : NSObject {
+@interface PSModelManager : NSObject {
   NSMutableArray *list;
   NSMutableDictionary *identityMap;
+  NSArray *propertyList;
 }
 
 @property (nonatomic, readonly) NSMutableArray *list;
 @property (nonatomic, readonly) NSMutableDictionary *identityMap;
+@property (nonatomic, copy) NSArray *propertyList;
 
-+ (OBModelManager *) managerForClass: (NSString *) className;
++ (PSModelManager *) managerForClass: (NSString *) className;
 
 @end

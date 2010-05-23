@@ -29,7 +29,7 @@ class NewMessageDialogController < NSWindowController
     window.delegate = self
     mbObserve(textField, NSControlTextDidChangeNotification, :textEdited)
     textField.stringValue = @text
-    textField.mbUnselectText
+    textField.psUnselectText
     refreshCounter
   end
 
@@ -79,8 +79,8 @@ class NewMessageDialogController < NSWindowController
   end
 
   def sendPressed(sender)
-    sendButton.mbDisable
-    textField.mbDisable
+    sendButton.psDisable
+    textField.psDisable
     spinner.startAnimation(self)
 
     message = textField.stringValue
@@ -94,10 +94,10 @@ class NewMessageDialogController < NSWindowController
   end
 
   def requestFailedWithError(error)
-    sendButton.mbEnable
-    textField.mbEnable
+    sendButton.psEnable
+    textField.psEnable
     spinner.stopAnimation(self)
-    mbShowAlertSheet(tr("Error"), error.localizedDescription)
+    psShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
 end

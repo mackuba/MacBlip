@@ -13,9 +13,7 @@
 #import "OBRequest.h"
 #import "OBMessage.h"
 #import "OBUser.h"
-#import "OBUtils.h"
-#import "NSDictionary+BSJSONAdditions.h"
-#import "NSString+BSJSONAdditions.h"
+#import "PsiToolkit.h"
 
 static OBConnector *sharedConnector;
 static BOOL loggingEnabled;
@@ -101,13 +99,13 @@ static BOOL loggingEnabled;
 - (OBRequest *) dashboardRequest {
   NSString *path;
   if (lastMessageId > 0) {
-    path = OBFormat(@"/dashboard/since/%d", lastMessageId);
+    path = PSFormat(@"/dashboard/since/%d", lastMessageId);
   } else {
-    path = OBFormat(@"/dashboard?limit=%d", initialDashboardFetch);
+    path = PSFormat(@"/dashboard?limit=%d", initialDashboardFetch);
   }
   if (autoLoadPictureInfo) {
     NSString *separator = ([path rangeOfString: @"?"].location == NSNotFound) ? @"?" : @"&";
-    path = OBFormat(@"%@%@%@", path, separator, @"include=pictures");
+    path = PSFormat(@"%@%@%@", path, separator, @"include=pictures");
   }
   OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(dashboardUpdated:)];
@@ -115,7 +113,7 @@ static BOOL loggingEnabled;
 }
 
 - (OBRequest *) sendMessageRequest: (NSString *) message {
-  NSString *content = OBFormat(@"{\"update\": {\"body\": %@}}", [message jsonStringValue]);
+  NSString *content = PSFormat(@"{\"update\": {\"body\": %@}}", [message performSelector: @selector(yajl_JSONString)]);
   OBRequest *request = [self requestWithPath: @"/updates" method: @"POST" text: content];
   [request setDidFinishSelector: @selector(messageSent:)];
   return request;
@@ -125,15 +123,15 @@ static BOOL loggingEnabled;
   NSString *imageUrl = [[message.pictures objectAtIndex: 0] objectForKey: @"url"];
   OBRequest *request = [self requestWithPath: imageUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(pictureLoaded:)];
-  [request setUserInfo: OBDict(message, @"message")];
+  [request setUserInfo: PSDict(message, @"message")];
   return request;
 }
 
 - (OBRequest *) avatarImageRequestForUser: (OBUser *) user {
-  NSString *avatarUrl = OBFormat(@"/users/%@/avatar/pico.jpg", user.login);
+  NSString *avatarUrl = PSFormat(@"/users/%@/avatar/pico.jpg", user.login);
   OBRequest *request = [self requestWithPath: avatarUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
-  [request setUserInfo: OBDict(user, @"user")];
+  [request setUserInfo: PSDict(user, @"user")];
   return request;
 }
 
@@ -159,7 +157,7 @@ static BOOL loggingEnabled;
   if ([contentType hasPrefix: @"application/json"]) {
     loggedText = [request responseString];
   } else {
-    loggedText = OBFormat(@"<Content-Type = %@, length = %d>", contentType, [[request responseData] length]);
+    loggedText = PSFormat(@"<Content-Type = %@, length = %d>", contentType, [[request responseData] length]);
   }
   OBLog(@"finished request to %@ (text = %@)", [request url], loggedText);
 }
@@ -199,12 +197,12 @@ static BOOL loggingEnabled;
 - (void) dashboardUpdated: (id) request {
   if (![self handleFinishedRequest: request]) return;
 
-  NSString *trimmedString = [[request responseString] trimmedString];
+  NSString *trimmedString = [[request responseString] psTrimmedString];
   if (trimmedString.length > 0) {
     NSArray *messages = [OBMessage objectsFromJSONString: trimmedString];
     if (messages.count > 0) {
       // msgs are coming in the order from newest to oldest
-      lastMessageId = [[messages objectAtIndex: 0] recordId];
+      lastMessageId = [[messages objectAtIndex: 0] recordIdValue];
     }
 
     if (autoLoadAvatars) {
@@ -237,7 +235,7 @@ static BOOL loggingEnabled;
 }
 
 - (void) acceptNewMessages: (NSArray *) messages fromRequest: (OBRequest *) request {
-  [OBMessage addObjectsToBeginningOfList: messages];
+  [OBMessage prependObjectsToList: messages];
   [[request target] dashboardUpdatedWithMessages: messages];
 }
 
@@ -285,7 +283,7 @@ static BOOL loggingEnabled;
 
 - (void) dealloc {
   [self cancelAllRequests];
-  ReleaseAll(currentRequests, dashboardMonitor, account, userAgent, avatarGroups);
+  PSRelease(currentRequests, dashboardMonitor, account, userAgent, avatarGroups);
   [super dealloc];
 }
 

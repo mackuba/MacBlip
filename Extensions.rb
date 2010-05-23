@@ -21,26 +21,6 @@ class NilClass
   end
 end
 
-class NSView
-  def mbHide
-    self.hidden = true
-  end
-
-  def mbShow
-    self.hidden = false
-  end
-end
-
-class NSControl
-  def mbEnable
-    self.enabled = true
-  end
-
-  def mbDisable
-    self.enabled = false
-  end
-end
-
 class NSError
   def blipTimeoutError?
     (self.domain == "ASIHTTPRequestErrorDomain" && self.code == ASIRequestTimedOutErrorType) ||
@@ -75,24 +55,5 @@ end
 class NSString
   def blank?
     self.to_s.gsub(/\s+/, '') == ""
-  end
-end
-
-class NSTextField
-  def mbUnselectText
-    editor = self.window.fieldEditor(true, forObject: self)
-    editor.selectedRange = NSRange.new(editor.string.length, 0)
-  end
-end
-
-class NSWindowController
-  def mbShowAlertSheet(title, message)
-    alertWindow = NSAlert.alertWithMessageText(title,
-      defaultButton: "OK",
-      alternateButton: nil,
-      otherButton: nil,
-      informativeTextWithFormat: message
-    )
-    alertWindow.beginSheetModalForWindow(self.window, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
   end
 end
