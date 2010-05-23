@@ -130,6 +130,15 @@
 		58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8AA1135E6B800B97529 /* AboutWindow.xib */; };
 		58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */; };
 		58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */; };
+		58FEDD2A11A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */; };
+		58FEDD2B11A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */; };
+		58FEDD2C11A9756500FDE3A8 /* PSIntArray.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */; };
+		58FEDD2D11A9756500FDE3A8 /* PsiToolkit.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */; };
+		58FEDD2E11A9756500FDE3A8 /* PSMacros.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */; };
+		58FEDD2F11A9756500FDE3A8 /* PSModel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */; };
+		58FEDD3011A9756500FDE3A8 /* PSModelManager.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */; };
+		58FEDD3111A9756500FDE3A8 /* PSPathBuilder.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */; };
+		58FEDD3211A9756500FDE3A8 /* PSUIExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -282,6 +291,15 @@
 		58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
 		58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessagePictureView.rb; sourceTree = "<group>"; };
+		58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSCocoaExtensions.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSFoundationExtensions.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSIntArray.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PsiToolkit.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSMacros.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModel.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModelManager.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSPathBuilder.bridgesupport; sourceTree = "<group>"; };
+		58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSUIExtensions.bridgesupport; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -400,6 +418,7 @@
 		58075E751194C11400BF1772 /* PsiToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				58FEDD2011A9756500FDE3A8 /* Bridges */,
 				58075E761194C11400BF1772 /* PSCocoaExtensions.h */,
 				58075E771194C11400BF1772 /* PSCocoaExtensions.m */,
 				58075E781194C11400BF1772 /* PSFoundationExtensions.h */,
@@ -631,6 +650,22 @@
 			path = ImageCrop;
 			sourceTree = "<group>";
 		};
+		58FEDD2011A9756500FDE3A8 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */,
+				58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */,
+				58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */,
+				58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */,
+				58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */,
+				58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */,
+				58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */,
+				58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */,
+				58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -739,6 +774,15 @@
 				58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */,
 				58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */,
 				58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */,
+				58FEDD2A11A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport in Resources */,
+				58FEDD2B11A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport in Resources */,
+				58FEDD2C11A9756500FDE3A8 /* PSIntArray.bridgesupport in Resources */,
+				58FEDD2D11A9756500FDE3A8 /* PsiToolkit.bridgesupport in Resources */,
+				58FEDD2E11A9756500FDE3A8 /* PSMacros.bridgesupport in Resources */,
+				58FEDD2F11A9756500FDE3A8 /* PSModel.bridgesupport in Resources */,
+				58FEDD3011A9756500FDE3A8 /* PSModelManager.bridgesupport in Resources */,
+				58FEDD3111A9756500FDE3A8 /* PSPathBuilder.bridgesupport in Resources */,
+				58FEDD3211A9756500FDE3A8 /* PSUIExtensions.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
