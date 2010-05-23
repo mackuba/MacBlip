@@ -15,7 +15,7 @@
 
 @class OBUser;
 
-typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage } OBMessageType;
+typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage, OBNoticeMessage } OBMessageType;
 
 @interface OBMessage : PSModel {
   // interesting stuff

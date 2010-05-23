@@ -9,14 +9,30 @@ class OBMessage
 
   def senderAndRecipient
     case messageType
-      when OBStatusMessage then user.login
       when OBDirectedMessage then "#{user.login} > #{recipient.login}"
       when OBPrivateMessage then "#{user.login} >> #{recipient.login}"
+      else user.login
     end
   end
 
-  def keyPathsForValuesAffectingSenderAndRecipient
-    NSSet.setWithObjects("messageType", "user", "recipient", nil)
+  def self.keyPathsForValuesAffectingSenderAndRecipient
+    NSSet.setWithArray(["messageType", "user.login", "recipient.login"])
+  end
+
+  def viewBackgroundColor
+    if messageType == OBNoticeMessage
+      if body =~ /do obserwowanych/
+        MessageCell::FOLLOW_BACKGROUND
+      else
+        MessageCell::NOTICE_BACKGROUND
+      end
+    else
+      MessageCell::BACKGROUND
+    end
+  end
+
+  def self.keyPathsForValuesAffectingViewBackgroundColor
+    NSSet.setWithArray(["messageType", "body"])
   end
 
   def hasPicture
@@ -24,7 +40,7 @@ class OBMessage
   end
 
   def self.keyPathsForValuesAffectingHasPicture
-    NSSet.setWithObjects("pictures", nil)
+    NSSet.setWithObject("pictures")
   end
 
   def picture
@@ -39,13 +55,14 @@ class OBMessage
   end
 
   def self.keyPathsForValuesAffectingPicture
-    NSSet.setWithObjects("pictures", nil)
+    NSSet.setWithObject("pictures")
   end
 
   def sanitizeTag(tag)
     # remove accented characters, i.e. replace "ó" with "o" etc.
     # first, separate characters and accents
-    decomposed = tag.downcase.decomposedStringWithCanonicalMapping
+    # the letter ł doesn't seem to work with this method so we'll replace it manually
+    decomposed = tag.downcase.gsub(/ł/, 'l').decomposedStringWithCanonicalMapping
 
     # now, remove everything that is not a letter or digit
     goodChars = NSCharacterSet.characterSetWithCharactersInString("0123456789abcdefghijklmnopqrstuvwxyz")
@@ -55,11 +72,12 @@ class OBMessage
   def detectLinks(richText, regexp)
     rubyString = String.new(richText.string)
     rubyString.scan(regexp) do
+      offset = $~.offset(0)
       url = yield
       if url && url.length > 0
-        offset = $~.offset(0)
         range = NSRange.new(offset.first, offset.last - offset.first)
-        richText.addAttribute(NSLinkAttributeName, value: NSURL.URLWithString(url), range: range)
+        nsurl = NSURL.URLWithString(url)
+        richText.addAttribute(NSLinkAttributeName, value: nsurl, range: range) unless nsurl.nil?
       end
     end
   end
@@ -68,8 +86,8 @@ class OBMessage
     hasPicture ? "#{body} [#{tr('PHOTO')}]" : body
   end
 
-  def keyPathsForValuesAffectingBodyForGrowl
-    NSSet.setWithObjects("hasPicture", "body", nil)
+  def self.keyPathsForValuesAffectingBodyForGrowl
+    NSSet.setWithArray(["hasPicture", "body"])
   end
 
   def processedBody
@@ -79,14 +97,14 @@ class OBMessage
       BLIP_WWW_HOST + "/tags/#{sanitizeTag($1)}"
     end
     detectLinks(richText, /\^(\w+)/) { BLIP_WWW_HOST + "/users/#{$1}/dashboard" }
-    detectLinks(richText, /\b(\w+\:\/\/[^\s]+)/) { $1 }
+    detectLinks(richText, /\b(\w+\:\/\/[^\s\^\{\}\"\\\|\`\<\>]+)/) { $1 }
     detectLinks(richText, /\[#{tr('PHOTO')}\]$/) { pictures && pictures.first && pictures.first['url'] }
 
     richText
   end
 
-  def keyPathsForValuesAffectingProcessedBody
-    NSSet.setWithObjects("body", "pictures", nil)
+  def self.keyPathsForValuesAffectingProcessedBody
+    NSSet.setWithArray(["body", "pictures"])
   end
 
 end

@@ -14,10 +14,12 @@ class ApplicationDelegate
 
   def awakeFromNib
     GrowlApplicationBridge.growlDelegate = ""
+    FilesController.clearPicturesCache
     @blip = OBConnector.sharedConnector
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
     @blip.initialDashboardFetch = 30
+    initMidnightTimer
 
     # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
     OBConnector.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
@@ -59,13 +61,35 @@ class ApplicationDelegate
     menu
   end
 
-  def applicationWillBecomeActive(notification)
-    restoreMainWindow
-  end
-
   def applicationShouldHandleReopen(app, hasVisibleWindows: hasWindows)
     restoreMainWindow
     false
+  end
+
+  def initMidnightTimer
+    calendar = NSCalendar.currentCalendar
+    fields = calendar.components(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit, fromDate: NSDate.date)
+    thisMidnight = calendar.dateFromComponents(fields)
+    interval = NSDateComponents.alloc.init
+    interval.day = 1
+    nextMidnight = calendar.dateByAddingComponents(interval, toDate: thisMidnight, options: 0)
+
+    @midnightTimer = NSTimer.alloc.initWithFireDate(nextMidnight,
+      interval: 86400,
+      target: self,
+      selector: 'onMidnight',
+      userInfo: nil,
+      repeats: true
+    )
+    NSRunLoop.mainRunLoop.addTimer(@midnightTimer, forMode: NSDefaultRunLoopMode)
+  end
+
+  def onMidnight
+    # refresh the dates in the list (those from tomorrow will have day name appended to them)
+    @mainWindow.listView.setNeedsDisplay(true)
+
+    # force resizing of date labels
+    @mainWindow.listView.viewDidEndLiveResize
   end
 
 

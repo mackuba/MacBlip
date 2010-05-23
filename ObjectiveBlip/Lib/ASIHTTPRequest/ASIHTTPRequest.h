@@ -16,6 +16,8 @@
 #endif
 #import <stdio.h>
 #import "ASIHTTPRequestConfig.h"
+#import "ASIHTTPRequestDelegate.h"
+#import "ASIProgressDelegate.h"
 
 extern NSString *ASIHTTPRequestVersion;
 
@@ -62,10 +64,11 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	NSURL *originalURL;
 	
 	// The delegate, you need to manage setting and talking to your delegate in your subclasses
-	id delegate;
+	id <ASIHTTPRequestDelegate> delegate;
 	
-	// A queue delegate that should *ALSO* be notified of delegate message (used by ASINetworkQueue)
-	id queue;
+	// Another delegate that is also notified of request status changes and progress updates
+	// Generally, you won't use this directly, but ASINetworkQueue sets itself as the queue so it can proxy updates to its own delegates
+	id <ASIHTTPRequestDelegate, ASIProgressDelegate> queue;
 	
 	// HTTP method to use (GET / POST / PUT / DELETE / HEAD). Defaults to GET
 	NSString *requestMethod;
@@ -159,10 +162,10 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	NSString *proxyDomain;
 	
 	// Delegate for displaying upload progress (usually an NSProgressIndicator, but you can supply a different object and handle this yourself)
-	id uploadProgressDelegate;
+	id <ASIProgressDelegate> uploadProgressDelegate;
 	
 	// Delegate for displaying download progress (usually an NSProgressIndicator, but you can supply a different object and handle this yourself)
-	id downloadProgressDelegate;
+	id <ASIProgressDelegate> downloadProgressDelegate;
 	
 	// Whether we've seen the headers of the response yet
     BOOL haveExaminedHeaders;
@@ -213,6 +216,7 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// HTTP status code, eg: 200 = OK, 404 = Not found etc
 	int responseStatusCode;
 	
+	// Description of the HTTP status code
 	NSString *responseStatusMessage;
 	
 	// Size of the response
@@ -242,11 +246,18 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	// Called on the delegate (if implemented) when the request starts. Default is requestStarted:
 	SEL didStartSelector;
 	
+	// Called on the delegate (if implemented) when the request receives response headers. Default is requestDidReceiveResponseHeaders:
+	SEL didReceiveResponseHeadersSelector;
+
 	// Called on the delegate (if implemented) when the request completes successfully. Default is requestFinished:
 	SEL didFinishSelector;
 	
 	// Called on the delegate (if implemented) when the request fails. Default is requestFailed:
 	SEL didFailSelector;
+	
+	// Called on the delegate (if implemented) when the request receives data. Default is request:didReceiveData:
+	// If you set this and implement the method in your delegate, you must handle the data yourself - ASIHTTPRequest will not populate responseData or write the data to downloadDestinationPath
+	SEL didReceiveDataSelector;
 	
 	// Used for recording when something last happened during the request, we will compare this value with the current date to time out requests when appropriate
 	NSDate *lastActivityTime;
@@ -255,7 +266,8 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	NSTimeInterval timeOutSeconds;
 	
 	// Will be YES when a HEAD request will handle the content-length before this request starts
-	BOOL shouldResetProgressIndicators;
+	BOOL shouldResetUploadProgress;
+	BOOL shouldResetDownloadProgress;
 	
 	// Used by HEAD requests when showAccurateProgress is YES to preset the content-length for this request
 	ASIHTTPRequest *mainRequest;
@@ -374,6 +386,9 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 	
 	// An ID that uniquely identifies this request - primarily used for debugging persistent connections
 	NSNumber *requestID;
+	
+	// Will be ASIHTTPRequestRunLoopMode for synchronous requests, NSDefaultRunLoopMode for all other requests
+	NSString *runLoopMode;
 }
 
 #pragma mark init / dealloc
@@ -443,22 +458,38 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 
 #pragma mark upload/download progress
 
+// Called approximately every 0.25 seconds to update the progress delegates
 - (void)updateProgressIndicators;
-- (void)resetUploadProgress:(unsigned long long)value;
+
+// Updates upload progress (notifies the queue and/or uploadProgressDelegate of this request)
 - (void)updateUploadProgress;
-- (void)resetDownloadProgress:(unsigned long long)value;
+
+// Updates download progress (notifies the queue and/or uploadProgressDelegate of this request)
 - (void)updateDownloadProgress;
 
 // Called when authorisation is needed, as we only find out we don't have permission to something when the upload is complete
 - (void)removeUploadProgressSoFar;
 
+// Called when we get a content-length header and shouldResetDownloadProgress is true
+- (void)incrementDownloadSizeBy:(long long)length;
+
+// Called when a request starts and shouldResetUploadProgress is true
+// Also called (with a negative length) to remove the size of the underlying buffer used for uploading
+- (void)incrementUploadSizeBy:(long long)length;
+
 // Helper method for interacting with progress indicators to abstract the details of different APIS (NSProgressIndicator and UIProgressView)
-+ (void)setProgress:(double)progress forProgressIndicator:(id)indicator;
++ (void)updateProgressIndicator:(id)indicator withProgress:(unsigned long long)progress ofTotal:(unsigned long long)total;
+
+// Helper method used for performing invocations on the main thread (used for progress)
++ (void)performSelector:(SEL)selector onTarget:(id)target withObject:(id)object amount:(void *)amount;
 
 #pragma mark handling request complete / failure
 
 // Called when a request starts, lets the delegate know via didStartSelector
 - (void)requestStarted;
+
+// Called when a request receives response headers, lets the delegate know via didReceiveResponseHeadersSelector
+- (void)requestReceivedResponseHeaders;
 
 // Called when a request completes successfully, lets the delegate know via didFinishSelector
 - (void)requestFinished;
@@ -673,8 +704,10 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (retain) NSString *downloadDestinationPath;
 @property (retain) NSString *temporaryFileDownloadPath;
 @property (assign) SEL didStartSelector;
+@property (assign) SEL didReceiveResponseHeadersSelector;
 @property (assign) SEL didFinishSelector;
 @property (assign) SEL didFailSelector;
+@property (assign) SEL didReceiveDataSelector;
 @property (retain,readonly) NSString *authenticationRealm;
 @property (retain,readonly) NSString *proxyAuthenticationRealm;
 @property (retain) NSError *error;
@@ -694,7 +727,8 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (retain) NSMutableData *postBody;
 @property (assign,readonly) unsigned long long contentLength;
 @property (assign) unsigned long long postLength;
-@property (assign) BOOL shouldResetProgressIndicators;
+@property (assign) BOOL shouldResetDownloadProgress;
+@property (assign) BOOL shouldResetUploadProgress;
 @property (assign) ASIHTTPRequest *mainRequest;
 @property (assign) BOOL showAccurateProgress;
 @property (assign,readonly) unsigned long long totalBytesRead;
@@ -723,7 +757,6 @@ extern unsigned long const ASIWWANBandwidthThrottleAmount;
 @property (assign, readonly) int proxyAuthenticationRetryCount;
 @property (assign) BOOL haveBuiltRequestHeaders;
 @property (assign, nonatomic) BOOL haveBuiltPostBody;
-
 @property (assign, readonly) BOOL isSynchronous;
 @property (assign, readonly) BOOL inProgress;
 @property (assign) int numberOfTimesToRetryOnTimeout;

@@ -15,6 +15,7 @@ class MainWindowController < NSWindowController
   def init
     initWithWindowNibName "MainWindow"
     @lastGrowled = NSUserDefaults.standardUserDefaults.integerForKey(LAST_GROWLED_KEY) || 0
+    @firstLoad = true
     self
   end
 
@@ -36,13 +37,70 @@ class MainWindowController < NSWindowController
     @spinner.startAnimation(self)
   end
 
+  def warningBar
+    if @warningBar.nil?
+      @warningBar = WarningBar.alloc.initWithType(:warning)
+      @warningBar.text = tr("Blip is currently overloaded…")
+      window.contentView.addSubview(@warningBar)
+    end
+    @warningBar
+  end
+
+  def errorBar
+    if @errorBar.nil?
+      @errorBar = WarningBar.alloc.initWithType(:error)
+      @errorBar.text = tr("Connection to the server has failed.")
+      window.contentView.addSubview(@errorBar)
+    end
+    @errorBar
+  end
+
+  def showWarningBar
+    unless warningBar.displayed
+      if errorBar.displayed
+        warningBar.removeFromSuperview
+        window.contentView.addSubview(warningBar)
+        errorBar.slideOut
+      end
+      @scrollView.contentView.copiesOnScroll = false
+      warningBar.slideIn
+    end
+  end
+
+  def showErrorBar
+    unless errorBar.displayed
+      if warningBar.displayed
+        errorBar.removeFromSuperview
+        window.contentView.addSubview(errorBar)
+        warningBar.slideOut
+      end
+      @scrollView.contentView.copiesOnScroll = false
+      errorBar.slideIn
+    end
+  end
+
+  def hideNoticeBars
+    [@warningBar, @errorBar].compact.each { |b| b.slideOut if b.displayed }
+    @scrollView.contentView.copiesOnScroll = true
+  end
+
+  def windowDidResize(notification)
+    @listView.viewDidEndLiveResize unless window.inLiveResize
+  end
+
   def dashboardWillUpdate
     @spinner.startAnimation(self)
+  end
+
+  def scrollToTop
+    scrollView.verticalScroller.floatValue = 0
+    scrollView.contentView.scrollToPoint(NSZeroPoint)
   end
 
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
+      self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
       messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
@@ -53,6 +111,8 @@ class MainWindowController < NSWindowController
     @newMessageButton.psEnable
     @dashboardButton.psEnable
     @spinner.stopAnimation(self)
+    @firstLoad = false
+    hideNoticeBars
   end
 
   def dashboardUpdateFailed(notification)
@@ -63,12 +123,13 @@ class MainWindowController < NSWindowController
         @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 10.0)
       else
         obprint "MainWindowController: dashboard update failed, ignoring"
+        showWarningBar
         @spinner.stopAnimation(self)
       end
     else
       @loadingView.psHide
+      showErrorBar
       @spinner.stopAnimation(self)
-      displayLoadingError(error)
     end
   end
 
@@ -154,7 +215,10 @@ class MainWindowController < NSWindowController
   end
 
   def sendGrowlNotification(message)
-    growlType = (message.messageType == OBStatusMessage) ? "Status received" : "Directed message received"
+    growlType = case message.messageType
+      when OBPrivateMessage, OBDirectedMessage then "Directed message received"
+      else "Status received"
+    end
     GrowlApplicationBridge.notifyWithTitle(
       message.senderAndRecipient,
       description: message.bodyForGrowl,

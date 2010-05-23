@@ -61,9 +61,7 @@
 - (OBRequest *) dashboardRequest;
 - (OBRequest *) sendMessageRequest: (NSString *) message;
 - (OBRequest *) loadPictureRequest: (OBMessage *) message;
-
-- (OBRequest *) avatarInfoRequestForUser: (OBUser *) user;
-- (OBRequest *) avatarImageRequestForUser: (OBUser *) user toPath: (NSString *) path;
+- (OBRequest *) avatarImageRequestForUser: (OBUser *) user;
 
 // internal
 - (void) avatarGroupLoaded: (OBAvatarGroup *) group;

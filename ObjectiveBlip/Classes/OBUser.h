@@ -20,6 +20,5 @@
 @property (nonatomic, copy) NSData *avatarData;
 
 + (OBUser *) findOrCreateByLogin: (NSString *) login;
-+ (NSData *) defaultAvatarData;
 
 @end

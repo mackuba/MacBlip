@@ -42,20 +42,12 @@ PSReleaseOnDealloc(messages, request, connector);
   if (userCount > 0) {
     OBLog(@"AvatarGroup: %d avatars are missing and will be loaded now.", userCount);
     for (OBUser *user in usersWithoutAvatars) {
-      [[connector avatarInfoRequestForUser: user] sendFor: self];
+      [[connector avatarImageRequestForUser: user] sendFor: self];
     }
   } else {
     // all users already have avatars, problem solved
     [connector avatarGroupLoaded: self];
   }
-}
-
-- (void) avatarInfoNotFoundForUser: (OBUser *) user {
-  [self completeAvatarRequestForUser: user withImageData: [OBUser defaultAvatarData]];
-}
-
-- (void) avatarInfoLoadedForUser: (OBUser *) user path: (NSString *) path {
-  [[connector avatarImageRequestForUser: user toPath: path] sendFor: self];
 }
 
 - (void) avatarImageLoadedForUser: (OBUser *) user data: (NSData *) data {

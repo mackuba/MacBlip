@@ -49,6 +49,8 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
     messageType = OBPrivateMessage;
   } else if ([type isEqual: @"DirectedMessage"]) {
     messageType = OBDirectedMessage;
+  } else if ([type isEqual: @"Notice"]) {
+    messageType = OBNoticeMessage;
   } else {
     messageType = OBStatusMessage;
   }

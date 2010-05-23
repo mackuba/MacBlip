@@ -127,16 +127,9 @@ static BOOL loggingEnabled;
   return request;
 }
 
-- (OBRequest *) avatarInfoRequestForUser: (OBUser *) user {
-  NSString *path = PSFormat(@"/users/%@/avatar", user.login);
-  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
-  [request setDidFinishSelector: @selector(avatarInfoLoaded:)];
-  [request setUserInfo: PSDict(user, @"user")];
-  return request;
-}
-
-- (OBRequest *) avatarImageRequestForUser: (OBUser *) user toPath: (NSString *) path {
-  OBRequest *request = [self requestWithPath: path method: @"GET" text: nil];
+- (OBRequest *) avatarImageRequestForUser: (OBUser *) user {
+  NSString *avatarUrl = PSFormat(@"/users/%@/avatar/pico.jpg", user.login);
+  OBRequest *request = [self requestWithPath: avatarUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
   [request setUserInfo: PSDict(user, @"user")];
   return request;
@@ -174,8 +167,8 @@ static BOOL loggingEnabled;
   if (!locationHeader) {
     locationHeader = @"";
   }
-  NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"errors/blip"];
-  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"errors/blip"];
+  NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"gadu-gadu.pl"];
+  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"gadu-gadu.pl"];
   return (errorFoundInUrl.location != NSNotFound) || (errorFoundInHeader.location != NSNotFound);
 }
 
@@ -225,26 +218,15 @@ static BOOL loggingEnabled;
   }
 }
 
-- (void) avatarInfoLoaded: (id) request {
-  if (![self handleFinishedRequest: request]) return;
-
-  OBUser *user = [[request userInfo] objectForKey: @"user"];
-  NSInteger status = [[[request responseHeaders] objectForKey: @"Status"] intValue];
-  if (status == 404) {
-    [[request target] avatarInfoNotFoundForUser: user];
-  } else {
-    NSString *trimmedString = [[request responseString] psTrimmedString];
-    NSDictionary *avatarInfo = [trimmedString performSelector: @selector(yajl_JSON)];
-    NSString *url50 = [avatarInfo objectForKey: @"url_50"];
-    [[request target] avatarInfoLoadedForUser: user path: url50];
-  }
-}
-
 - (void) avatarImageLoaded: (id) request {
   if (![self handleFinishedRequest: request]) return;
 
   OBUser *user = [[request userInfo] objectForKey: @"user"];
-  [[request target] avatarImageLoadedForUser: user data: [request responseData]];
+  NSData *data = nil;
+  if ([[[request responseHeaders] objectForKey: @"Content-Type"] hasPrefix: @"image/"]) {
+    data = [request responseData];
+  }
+  [[request target] avatarImageLoadedForUser: user data: data];
 }
 
 - (void) avatarGroupLoaded: (OBAvatarGroup *) group {

@@ -33,6 +33,9 @@
 <method selector='complete'>
 <retval type='B'/>
 </method>
+<method selector='connectionCanBeReused'>
+<retval type='B'/>
+</method>
 <method selector='didCreateTemporaryPostDataFile'>
 <retval type='B'/>
 </method>
@@ -55,6 +58,9 @@
 <retval type='B'/>
 </method>
 <method selector='isiPhoneOS2' class_method='true'>
+<retval type='B'/>
+</method>
+<method selector='retryUsingNewConnection'>
 <retval type='B'/>
 </method>
 <method selector='setAllowCompressedResponse:'>
@@ -90,7 +96,10 @@
 <method selector='setShouldRedirect:'>
 <arg type='B' index='0'/>
 </method>
-<method selector='setShouldResetProgressIndicators:'>
+<method selector='setShouldResetDownloadProgress:'>
+<arg type='B' index='0'/>
+</method>
+<method selector='setShouldResetUploadProgress:'>
 <arg type='B' index='0'/>
 </method>
 <method selector='setShouldStreamPostDataFromDisk:'>
@@ -102,16 +111,16 @@
 <method selector='setShowAccurateProgress:'>
 <arg type='B' index='0'/>
 </method>
-<method selector='setUseCookiePersistance:'>
+<method selector='setUseCookiePersistence:'>
 <arg type='B' index='0'/>
 </method>
 <method selector='setUseHTTPVersionOne:'>
 <arg type='B' index='0'/>
 </method>
-<method selector='setUseKeychainPersistance:'>
+<method selector='setUseKeychainPersistence:'>
 <arg type='B' index='0'/>
 </method>
-<method selector='setUseSessionPersistance:'>
+<method selector='setUseSessionPersistence:'>
 <arg type='B' index='0'/>
 </method>
 <method selector='setValidatesSecureCertificate:'>
@@ -135,7 +144,10 @@
 <method selector='shouldRedirect'>
 <retval type='B'/>
 </method>
-<method selector='shouldResetProgressIndicators'>
+<method selector='shouldResetDownloadProgress'>
+<retval type='B'/>
+</method>
+<method selector='shouldResetUploadProgress'>
 <retval type='B'/>
 </method>
 <method selector='shouldStreamPostDataFromDisk'>
@@ -153,16 +165,16 @@
 <method selector='showProxyAuthenticationDialog'>
 <retval type='B'/>
 </method>
-<method selector='useCookiePersistance'>
+<method selector='useCookiePersistence'>
 <retval type='B'/>
 </method>
 <method selector='useHTTPVersionOne'>
 <retval type='B'/>
 </method>
-<method selector='useKeychainPersistance'>
+<method selector='useKeychainPersistence'>
 <retval type='B'/>
 </method>
-<method selector='useSessionPersistance'>
+<method selector='useSessionPersistence'>
 <retval type='B'/>
 </method>
 <method selector='validatesSecureCertificate'>
