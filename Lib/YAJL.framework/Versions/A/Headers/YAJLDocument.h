@@ -31,34 +31,46 @@
 #include "YAJLParser.h"
 
 typedef enum {
-	YAJLDecoderCurrentTypeNone,
-	YAJLDecoderCurrentTypeArray,
-	YAJLDecoderCurrentTypeDict
+  YAJLDecoderCurrentTypeNone,
+  YAJLDecoderCurrentTypeArray,
+  YAJLDecoderCurrentTypeDict
 } YAJLDecoderCurrentType;
 
 extern NSInteger YAJLDocumentStackCapacity;
 
+@class YAJLDocument;
+
+@protocol YAJLDocumentDelegate <NSObject>
+@optional
+- (void)document:(YAJLDocument *)document didAddDictionary:(NSDictionary *)dict;
+- (void)document:(YAJLDocument *)document didAddArray:(NSArray *)array;
+- (void)document:(YAJLDocument *)document didAddObject:(id)object toArray:(NSArray *)array;
+- (void)document:(YAJLDocument *)document didSetObject:(id)object forKey:(id)key inDictionary:(NSDictionary *)dict;
+@end
+
 @interface YAJLDocument : NSObject <YAJLParserDelegate> {
-	
-	id root_; // NSArray or NSDictionary
-	YAJLParser *parser_;
-	
-	
-	__weak NSMutableDictionary *dict_; // weak; if map in progress, points to the current map	
-	__weak NSMutableArray *array_; // weak; If array in progress, points the current array
-	__weak NSString *key_; // weak; If map in progress, points to current key
-	
-	NSMutableArray *stack_;
-	NSMutableArray *keyStack_;
-	
-	YAJLDecoderCurrentType currentType_;
-	
-	YAJLParserStatus parserStatus_;
+  
+  id root_; // NSArray or NSDictionary
+  YAJLParser *parser_;
+  
+  __weak id<YAJLDocumentDelegate> delegate_;
+  
+  __weak NSMutableDictionary *dict_; // weak; if map in progress, points to the current map 
+  __weak NSMutableArray *array_; // weak; If array in progress, points the current array
+  __weak NSString *key_; // weak; If map in progress, points to current key
+  
+  NSMutableArray *stack_;
+  NSMutableArray *keyStack_;
+  
+  YAJLDecoderCurrentType currentType_;
+  
+  YAJLParserStatus parserStatus_;
   
 }
 
 @property (readonly, nonatomic) id root; //! Root element
 @property (readonly, nonatomic) YAJLParserStatus parserStatus;
+@property (assign, nonatomic) __weak id<YAJLDocumentDelegate> delegate;
 
 /*!
  Create document from data.
