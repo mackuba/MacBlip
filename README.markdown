@@ -10,16 +10,16 @@ can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's
 
 * dashboard view
 * sending messages
-* displaying avatars
+* displaying avatars and attached images
 * growl notifications
 * auto-update (Sparkle)
 
 ## Requirements
 
 * Snow Leopard
-* MacRuby (>= 0.5)
+* MacRuby (>= 0.6)
 
 ## License
 
 Copyright by Jakub Suder <jakub.suder at gmail.com>. Licensed under GPL v3.
-Includes open source libraries by Blake Seely (BSJSONAdditions), Ben Copsey (ASIHTTPRequest), and Steven Degutis.
+Includes open source libraries by Ben Copsey (ASIHTTPRequest), Steven Degutis (SD***), and YAJL-objc by Lloyd Hilaiel & Gabriel Handford.
