@@ -67,13 +67,7 @@ class ApplicationDelegate
   end
 
   def initMidnightTimer
-    calendar = NSCalendar.currentCalendar
-    fields = calendar.components(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit, fromDate: NSDate.date)
-    thisMidnight = calendar.dateFromComponents(fields)
-    interval = NSDateComponents.alloc.init
-    interval.day = 1
-    nextMidnight = calendar.dateByAddingComponents(interval, toDate: thisMidnight, options: 0)
-
+    nextMidnight = NSDate.psDaysFromNow(1).psMidnight
     @midnightTimer = NSTimer.alloc.initWithFireDate(nextMidnight,
       interval: 86400,
       target: self,
