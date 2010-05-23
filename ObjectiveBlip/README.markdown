@@ -10,7 +10,6 @@ much...
 
 * add a ObjectiveBlip directory to your project
 * copy all \*.m and \*.h files from the ObjectiveBlip source tree to that directory, together with the Lib subdirectory
-  and images
 * create a new group "ObjectiveBlip" in your Xcode project; set its path to ObjectiveBlip directory (context menu ->
   "Get Info" -> path)
 * add -> existing files -> select everything inside ObjectiveBlip directory
@@ -21,7 +20,8 @@ much...
 * for MacOSX apps, don't add the files Reachability.\* and ASIAuthenticationDialog.\* - they're iPhone-only and won't
   compile with Mac version of Cocoa
 * The \*.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
-  [MacRuby](http://macruby.org)
+  [MacRuby](http://macruby.org) (if you do need them, then there are two sets of them, one in Bridges, and the other
+  in Lib/PsiToolkit/Bridges)
 
 ## Usage instructions
 
