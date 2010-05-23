@@ -183,7 +183,6 @@
 		58075E811194C11400BF1772 /* PSModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModelManager.m; sourceTree = "<group>"; };
 		58075E821194C11400BF1772 /* PSPathBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPathBuilder.h; sourceTree = "<group>"; };
 		58075E831194C11400BF1772 /* PSPathBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPathBuilder.m; sourceTree = "<group>"; };
-		58075E861194C11500BF1772 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		58075E941194C1F300BF1772 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		581805A01138516600A61784 /* OBUser.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBUser.rb; sourceTree = "<group>"; };
 		5821055D11178FB00025DAF4 /* OBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAccount.h; sourceTree = "<group>"; };
@@ -433,7 +432,6 @@
 				58075E811194C11400BF1772 /* PSModelManager.m */,
 				58075E821194C11400BF1772 /* PSPathBuilder.h */,
 				58075E831194C11400BF1772 /* PSPathBuilder.m */,
-				58075E861194C11500BF1772 /* README.markdown */,
 			);
 			path = PsiToolkit;
 			sourceTree = "<group>";
@@ -550,8 +548,8 @@
 				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
 				5897EFA61129C9530029B4D9 /* SDListView */,
-				58E6E5731131D98000B97529 /* Sparkle.framework */,
 				583420A81130031E008938A9 /* Growl.framework */,
+				58E6E5731131D98000B97529 /* Sparkle.framework */,
 				58075E941194C1F300BF1772 /* YAJL.framework */,
 			);
 			path = Lib;
@@ -591,23 +589,23 @@
 		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
-				58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */,
-				58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */,
-				58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */,
 				58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */,
 				58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */,
 				58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */,
+				58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */,
 				58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */,
 				58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */,
 				58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */,
-				58E6E6E6113336D200B97529 /* OBUser.bridgesupport */,
+				58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */,
 				5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */,
 				5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */,
+				58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */,
 				5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */,
 				5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */,
-				5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */,
 				5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */,
 				5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */,
+				58E6E6E6113336D200B97529 /* OBUser.bridgesupport */,
+				5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
