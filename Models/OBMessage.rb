@@ -76,7 +76,8 @@ class OBMessage
       url = yield
       if url && url.length > 0
         range = NSRange.new(offset.first, offset.last - offset.first)
-        richText.addAttribute(NSLinkAttributeName, value: NSURL.URLWithString(url), range: range)
+        nsurl = NSURL.URLWithString(url)
+        richText.addAttribute(NSLinkAttributeName, value: nsurl, range: range) unless nsurl.nil?
       end
     end
   end
@@ -96,7 +97,7 @@ class OBMessage
       BLIP_WWW_HOST + "/tags/#{sanitizeTag($1)}"
     end
     detectLinks(richText, /\^(\w+)/) { BLIP_WWW_HOST + "/users/#{$1}/dashboard" }
-    detectLinks(richText, /\b(\w+\:\/\/[^\s]+)/) { $1 }
+    detectLinks(richText, /\b(\w+\:\/\/[^\s\^\{\}\"\\\|\`\<\>]+)/) { $1 }
     detectLinks(richText, /\[#{tr('PHOTO')}\]$/) { pictures && pictures.first && pictures.first['url'] }
 
     richText
