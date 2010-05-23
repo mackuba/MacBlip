@@ -103,4 +103,5 @@ Some options that you may want to set on OBConnector:
 ## License
 
 Copyright by Jakub Suder (Psionides) <jakub.suder at gmail.com>. Licensed under MIT license.
-Includes open source libraries BSJSONAdditions by Blake Seely and ASIHTTPRequest by Ben Copsey.
+Includes open source library ASIHTTPRequest by Ben Copsey, and my own mini library PsiToolkit which is a
+[separate project](http://github.com/psionides/PsiToolkit) licensed under WTFPL license.
