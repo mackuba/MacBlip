@@ -107,7 +107,10 @@ PSReleaseOnDealloc(recordId);
 }
 
 + (void) reset {
+  NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(0, self.list.count)];
+  [self willChange: NSKeyValueChangeRemoval valuesAtIndexes: indexes forKey: @"list"];
   [[self mutableList] removeAllObjects];
+  [self didChange: NSKeyValueChangeRemoval valuesAtIndexes: indexes forKey: @"list"];
   [[self identityMap] removeAllObjects];
 }
 
