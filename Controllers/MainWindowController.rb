@@ -235,21 +235,12 @@ class MainWindowController < NSWindowController
     @messageInQuickLook = message
     panel = QLPreviewPanel.sharedPreviewPanel
     if panel.isVisible
-      updateQuickLookPosition
+      panel.orderOut(self)
+      panel.reloadData
+      panel.performSelector('makeKeyAndOrderFront:', withObject: self, afterDelay: 0.25)
     else
       panel.makeKeyAndOrderFront(self)
     end
-  end
-
-  def updateQuickLookPosition
-    panel = QLPreviewPanel.sharedPreviewPanel
-
-    # I know this doesn't make sense, but if this line *isn't* called, every second time the image that
-    # gets displayed in the panel is the one at index 0, instead of the one that was clicked. with this
-    # line, it works correctly. I have no idea why, ask Steve, he's got the source code.
-    panel.currentPreviewItemIndex = 0
-
-    panel.currentPreviewItemIndex = messagesWithPictures.index(@messageInQuickLook)
   end
 
   def acceptsPreviewPanelControl(panel)
@@ -258,23 +249,17 @@ class MainWindowController < NSWindowController
 
   def beginPreviewPanelControl(panel)
     panel.dataSource = self
-    updateQuickLookPosition
   end
 
   def endPreviewPanelControl(panel)
   end
 
-  def messagesWithPictures
-    OBMessage.list.find_all { |m| m.hasPicture }
-  end
-
   def numberOfPreviewItemsInPreviewPanel(panel)
-    messagesWithPictures.length
+    1
   end
 
   def previewPanel(panel, previewItemAtIndex: index)
-    message = messagesWithPictures[index]
-    QuickLookPicture.new(message.pictures.first)
+    QuickLookPicture.new(@messageInQuickLook.pictures.first)
   end
 
 end

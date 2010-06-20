@@ -11,4 +11,8 @@ class MessagePictureView < NSImageView
     NSApp.sendAction(self.action, to: self.target, from: self) if self.target
   end
 
+  def acceptsFirstMouse(event)
+    true
+  end
+
 end
