@@ -5,7 +5,7 @@ if [ -n "$1" ]; then
 else
   FILES="$DIR/Classes/*.h $DIR/*.h $DIR/Lib/ASIHTTPRequest/*.h"
 fi
-INCLUDES="-I$DIR -I$DIR/Classes -I$DIR/Lib/ASIHTTPRequest"
+INCLUDES="-I$DIR -I$DIR/Classes -I$DIR/Lib/ASIHTTPRequest -I$DIR/Lib/PsiToolkit"
 
 mkdir -p $DIR/Bridges
 
