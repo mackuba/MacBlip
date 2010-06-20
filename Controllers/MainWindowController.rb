@@ -169,7 +169,7 @@ class MainWindowController < NSWindowController
 
   def openNewMessageWindow(text = nil)
     if @newMessageDialog.nil?
-      @newMessageDialog = NewMessageDialogController.alloc.initWithMainWindow(self, text: text)
+      @newMessageDialog = NewMessageDialogController.alloc.initWithMainWindowController(self, text: text)
     end
     @newMessageDialog.showWindow(self)
   end

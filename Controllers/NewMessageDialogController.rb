@@ -11,16 +11,34 @@ class NewMessageDialogController < NSWindowController
 
   attr_accessor :counterLabel, :sendButton, :textField, :spinner
 
-  def initWithMainWindow(mainWindow, text: text)
+  def initWithMainWindowController(mainWindowController, text: text)
     initWithWindowNibName "NewMessageDialog"
-    @mainWindow = mainWindow
+
+    @mainWindowController = mainWindowController
     @blip = OBConnector.sharedConnector
     @gray = NSColor.colorWithDeviceRed 0.2, green: 0.2, blue: 0.2, alpha: 1.0
     @red = NSColor.colorWithDeviceRed 0.67, green: 0, blue: 0, alpha: 1.0
     @sent = false
     @edited = false
     @text = text || ""
+
+    self.shouldCascadeWindows = false
+    positionWindowOnSameScreen
+
     self
+  end
+
+  def positionWindowOnSameScreen
+    if window.screen != @mainWindowController.window.screen
+      screenFrame = @mainWindowController.window.screen.visibleFrame
+      windowSize = window.frame.size
+      window.setFrame(NSMakeRect(
+        (screenFrame.size.width - windowSize.width) / 2.0 + screenFrame.origin.x,
+        screenFrame.size.height * 0.66 - windowSize.height / 2.0 + screenFrame.origin.y,
+        windowSize.width,
+        windowSize.height
+      ), display: false)
+    end
   end
 
   def windowDidLoad
@@ -55,7 +73,7 @@ class NewMessageDialogController < NSWindowController
 
   def closeWindow
     mbStopObserving(textField, NSControlTextDidChangeNotification)
-    @mainWindow.newMessageDialogClosed
+    @mainWindowController.newMessageDialogClosed
     window.close
   end
 
