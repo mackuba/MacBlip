@@ -118,7 +118,7 @@
   CFStringRef string = (CFStringRef) [[self mutableCopy] autorelease];
   NSString *escaped =
     (NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, string, NULL, escapedSymbols, kCFStringEncodingUTF8);
-  return [escaped autorelease];
+  return NSMakeCollectable([escaped autorelease]);
 }
 
 - (NSString *) psStringWithUppercaseFirstLetter {
