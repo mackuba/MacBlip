@@ -35,14 +35,6 @@ class OBMessage
     NSSet.setWithArray(["messageType", "body"])
   end
 
-  def hasPicture
-    !pictures.first.nil?
-  end
-
-  def self.keyPathsForValuesAffectingHasPicture
-    NSSet.setWithObject("pictures")
-  end
-
   def picture
     pictureData = pictures.first && pictures.first['data']
     if pictureData

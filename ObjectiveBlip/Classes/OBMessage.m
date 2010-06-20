@@ -63,6 +63,14 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
   self.pictures = PSArray(updatedInfo);
 }
 
+- (BOOL) hasPicture {
+  return (pictures.count > 0 && [[pictures objectAtIndex: 0] objectForKey: @"url"] != nil);
+}
+
++ (NSSet *) keyPathsForValuesAffectingHasPicture {
+  return [NSSet setWithObject: @"pictures"];
+}
+
 + (NSDateFormatter *) timeZoneLessDateFormatter {
   static NSDateFormatter *formatter = nil;
   if (!formatter) {

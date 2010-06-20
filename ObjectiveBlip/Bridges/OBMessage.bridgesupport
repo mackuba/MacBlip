@@ -5,4 +5,9 @@
 <enum name='OBNoticeMessage' value='3'/>
 <enum name='OBPrivateMessage' value='2'/>
 <enum name='OBStatusMessage' value='0'/>
+<class name='OBMessage'>
+<method selector='hasPicture'>
+<retval type='B'/>
+</method>
+</class>
 </signatures>

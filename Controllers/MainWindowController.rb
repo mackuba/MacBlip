@@ -101,7 +101,8 @@ class MainWindowController < NSWindowController
     messages = notification.userInfo["messages"]
     if messages && messages.count > 0
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
-      messages.find_all { |m| m.pictures.length > 0 }.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
+      messagesWithPictures = messages.find_all { |m| m.hasPicture }
+      messagesWithPictures.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
