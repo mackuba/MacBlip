@@ -10,7 +10,7 @@
 
 @implementation OBRequest
 
-@synthesize target;
+@synthesize target, requestContentType;
 
 - (id) initWithPath: (NSString *) path
              method: (NSString *) method
@@ -26,6 +26,7 @@
     self.timeOutSeconds = 15;
     self.shouldRedirect = NO;
     self.requestMethod = method;
+    self.requestContentType = OBJSONRequest;
     [self addRequestHeader: @"X-Blip-API" value: BLIP_API_VERSION];
     [self addRequestHeader: @"Accept" value: @"application/json"];
     [self addRequestHeader: @"Content-Type" value: @"application/json"];

@@ -93,6 +93,7 @@ static BOOL loggingEnabled;
 - (OBRequest *) authenticateRequest {
   OBRequest *request = [self requestWithPath: @"/login" method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(authenticationSuccessful:)];
+  [request setRequestContentType: OBHTMLRequest]; // successful login returns a redirect
   return request;
 }
 
@@ -124,6 +125,7 @@ static BOOL loggingEnabled;
   OBRequest *request = [self requestWithPath: imageUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(pictureLoaded:)];
   [request setUserInfo: PSDict(message, @"message")];
+  [request setRequestContentType: OBImageRequest];
   return request;
 }
 
@@ -132,6 +134,7 @@ static BOOL loggingEnabled;
   OBRequest *request = [self requestWithPath: avatarUrl method: @"GET" text: nil];
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
   [request setUserInfo: PSDict(user, @"user")];
+  [request setRequestContentType: OBImageRequest];
   return request;
 }
 
@@ -163,13 +166,28 @@ static BOOL loggingEnabled;
 }
 
 - (BOOL) isMrOponkaResponse: (id) request {
-  NSString *locationHeader = [[request responseHeaders] objectForKey: @"Location"];
-  if (!locationHeader) {
-    locationHeader = @"";
-  }
   NSRange errorFoundInUrl = [[[request url] absoluteString] rangeOfString: @"gadu-gadu.pl"];
-  NSRange errorFoundInHeader = [locationHeader rangeOfString: @"gadu-gadu.pl"];
-  return (errorFoundInUrl.location != NSNotFound) || (errorFoundInHeader.location != NSNotFound);
+  if (errorFoundInUrl.location != NSNotFound) return YES;
+
+  NSString *locationHeader = [[request responseHeaders] objectForKey: @"Location"];
+  if (locationHeader) {
+    NSRange errorFoundInHeader = [locationHeader rangeOfString: @"gadu-gadu.pl"];
+    if (errorFoundInHeader.location != NSNotFound) return YES;
+  }
+
+  NSString *contentType = [[request responseHeaders] objectForKey: @"Content-Type"];
+  if ([request requestContentType] != OBHTMLRequest && [contentType hasPrefix: @"text/html"]) return YES;
+
+  if ([request requestContentType] == OBJSONRequest) {
+    @try {
+      [[request responseString] performSelector: @selector(yajl_JSON)];
+    } @catch (NSException *exception) {
+      NSLog(@"JSON error: %@", exception);
+      return YES;
+    }
+  }
+
+  return NO;
 }
 
 - (BOOL) handleFinishedRequest: (id) request {
@@ -178,7 +196,9 @@ static BOOL loggingEnabled;
   [currentRequests removeObject: request];
 
   if ([self isMrOponkaResponse: request]) {
-    OBLog(@"Mr Oponka response detected");
+    NSLog(@"Mr Oponka response detected");
+    NSLog(@"url = %@", [[request url] absoluteString]);
+    NSLog(@"headers = %@", [request responseHeaders]);
     NSError *error = [NSError errorWithDomain: BLIP_ERROR_DOMAIN code: BLIP_ERROR_MR_OPONKA userInfo: nil];
     [[request target] requestFailedWithError: error];
     return NO;
@@ -198,6 +218,7 @@ static BOOL loggingEnabled;
   if (![self handleFinishedRequest: request]) return;
 
   NSString *trimmedString = [[request responseString] psTrimmedString];
+
   if (trimmedString.length > 0) {
     NSArray *messages = [OBMessage objectsFromJSONString: trimmedString];
     if (messages.count > 0) {

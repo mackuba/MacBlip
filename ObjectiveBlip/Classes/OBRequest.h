@@ -12,11 +12,15 @@
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 
+typedef enum { OBJSONRequest, OBImageRequest, OBHTMLRequest } OBRequestContentType;
+
 @interface OBRequest : ASIHTTPRequest {
   id target;
+  OBRequestContentType requestContentType;
 }
 
 @property (nonatomic, readonly) id target;
+@property (nonatomic, assign) OBRequestContentType requestContentType;
 
 - (id) initWithPath: (NSString *) path
              method: (NSString *) method
