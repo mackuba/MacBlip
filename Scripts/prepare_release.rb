@@ -10,10 +10,4 @@ macruby_deploy --compile $APP_BUNDLE
 echo "Bundling MacRuby..."
 macruby_deploy --embed --no-stdlib $APP_BUNDLE
 
-for file in $APP_BUNDLE/Contents/MacOS/MacBlip $APP_BUNDLE/Contents/Resources/*.rbo
-do
-  echo "Updating library paths in $file..."
-  install_name_tool -change "$MACRUBY_SYSTEM_PATH" "$MACRUBY_EMBEDDED_PATH" "$file"
-done
-
 echo "Done."
