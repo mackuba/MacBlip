@@ -13,6 +13,6 @@
 "Cancel" = "Anuluj";
 "You haven't sent that message yet." = "Ta wiadomość jeszcze nie została wysłana.";
 "PHOTO" = "FOTO";
-"Blip is currently overloaded…" = "Blip jest chwilowo przeciążony…";
-"Connection to the server has failed." = "Połączenie z serwerem jest niemożliwe.";
+"Blip server is currently overloaded." = "Serwer Blipa jest chwilowo przeciążony.";
+"No connection to Blip server." = "Brak połączenia z serwerem Blipa.";
 "Invalid username or password. Try to restart MacBlip and log in again…" = "Nieprawidłowy login lub hasło. Spróbuj uruchomić MacBlipa ponownie i zalogować się od nowa…";

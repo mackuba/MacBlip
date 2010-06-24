@@ -41,7 +41,7 @@ class MainWindowController < NSWindowController
   def warningBar
     if @warningBar.nil?
       @warningBar = WarningBar.alloc.initWithType(:warning)
-      @warningBar.text = tr("Blip is currently overloaded…")
+      @warningBar.text = tr("Blip server is currently overloaded.")
       window.contentView.addSubview(@warningBar)
     end
     @warningBar
@@ -50,7 +50,7 @@ class MainWindowController < NSWindowController
   def errorBar
     if @errorBar.nil?
       @errorBar = WarningBar.alloc.initWithType(:error)
-      @errorBar.text = tr("Connection to the server has failed.")
+      @errorBar.text = tr("No connection to Blip server.")
       window.contentView.addSubview(@errorBar)
     end
     @errorBar
