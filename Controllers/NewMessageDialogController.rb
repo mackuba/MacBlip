@@ -111,11 +111,19 @@ class NewMessageDialogController < NSWindowController
     @blip.dashboardMonitor.performSelector('requestManualUpdate', withObject: nil, afterDelay: 1)
   end
 
+  def authenticationFailed
+    showError(tr("Invalid username or password. Try to restart MacBlip and log in again…"))
+  end
+
   def requestFailedWithError(error)
+    showError(error.localizedDescription)
+  end
+
+  def showError(message)
     sendButton.psEnable
     textField.psEnable
     spinner.stopAnimation(self)
-    psShowAlertSheet(tr("Error"), error.localizedDescription)
+    window.psShowAlertSheetWithTitle(tr("Error"), message: message)
   end
 
 end

@@ -15,6 +15,7 @@
 #define OBDashboardUpdatedNotification @"OBDashboardUpdatedNotification"
 #define OBDashboardWillUpdateNotification @"OBDashboardWillUpdateNotification"
 #define OBDashboardUpdateFailedNotification @"OBDashboardUpdateFailedNotification"
+#define OBDashboardAuthFailedNotification @"OBDashboardAuthFailedNotification"
 
 @class OBConnector;
 

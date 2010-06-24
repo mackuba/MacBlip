@@ -15,3 +15,4 @@
 "PHOTO" = "PHOTO";
 "Blip is currently overloaded…" = "Blip is currently overloaded…";
 "Connection to the server has failed." = "Connection to the server has failed.";
+"Invalid username or password. Try to restart MacBlip and log in again…" = "Invalid username or password. Try to restart MacBlip and log in again…";

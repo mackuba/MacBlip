@@ -59,6 +59,11 @@ PSReleaseOnDealloc(messages, request, connector);
   [self decreaseUserCount];
 }
 
+- (void) authenticationFailed {
+  // couldn't load that avatar, ignore it
+  [self decreaseUserCount];
+}
+
 - (void) decreaseUserCount {
   userCount--;
   OBLog(@"AvatarGroup: %d avatars remaining", userCount);

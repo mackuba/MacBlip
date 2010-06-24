@@ -23,6 +23,7 @@ class MainWindowController < NSWindowController
     @blip = OBConnector.sharedConnector
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdatedNotification, 'dashboardUpdated:')
     mbObserve(@blip.dashboardMonitor, OBDashboardUpdateFailedNotification, 'dashboardUpdateFailed:')
+    mbObserve(@blip.dashboardMonitor, OBDashboardAuthFailedNotification, 'dashboardAuthFailed')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
     window.setContentBorderThickness(32, forEdge: NSMinYEdge)
@@ -102,7 +103,7 @@ class MainWindowController < NSWindowController
     if messages && messages.count > 0
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
       messagesWithPictures = messages.find_all { |m| m.hasPicture }
-      messagesWithPictures.each { |m| @blip.loadPictureRequest(m).sendFor(self) }
+      messagesWithPictures.each { |m| @blip.loadPictureRequest(m).send }
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
@@ -121,30 +122,27 @@ class MainWindowController < NSWindowController
     if error.blipTimeoutError?
       if OBMessage.list.empty?
         obprint "MainWindowController: first dashboard update failed, retrying"
-        @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 10.0)
+        @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 5.0)
       else
         obprint "MainWindowController: dashboard update failed, ignoring"
         showWarningBar
         @spinner.stopAnimation(self)
       end
     else
-      @loadingView.psHide
       showErrorBar
-      @spinner.stopAnimation(self)
+      @spinner.stopAnimation(self) unless OBMessage.list.empty?
     end
   end
 
-  def requestFailedWithError(error)
-    request = error.userInfo['request']
-    if request.didFinishSelector == :'pictureLoaded:'
-      obprint "MainWindowController: picture load error, ignored"
+  def dashboardAuthFailed
+    if OBMessage.list.empty?
+      NSApp.delegate.authenticationFailed
     else
-      obprint "MainWindowController: load error: #{error.localizedDescription}"
+      @spinner.stopAnimation(self)
+      @loadingView.psHide
+      window.psShowAlertSheetWithTitle("Error",
+        message: "Invalid username or password. Try to restart MacBlip and log in again…")
     end
-  end
-
-  def pictureLoaded(data, forMessage: message)
-    # ok, ignore
   end
 
   def newMessagePressed(sender)
@@ -180,10 +178,6 @@ class MainWindowController < NSWindowController
 
   def dashboardPressed(sender)
     BrowserController.openDashboard
-  end
-
-  def displayLoadingError(error)
-    psShowAlertSheet(tr("Error"), error.localizedDescription)
   end
 
   def growlMessages(messages)

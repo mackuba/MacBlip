@@ -55,7 +55,10 @@ it gets a response.
     [[blip dashboardRequest] send];
 
 To see the names of all the callback methods, look at the definition of OBConnectorDelegate in OBConnector.h
-(you don't have to actually include this protocol in your classes).
+(you don't have to actually include this protocol in your classes). Note that every object that sets itself as the
+delegate using `sendFor:` must be prepared to handle the callbacks `authenticationFailed` and
+`requestFailedWithError(error)` apart from the one that it expects. OBConnector doesn't check if the receiver actually
+implements these two methods before the call.
 
 To update the dashboard in regular intervals, use the OBDashboardMonitor class:
 

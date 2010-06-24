@@ -77,6 +77,11 @@
   isSendingDashboardRequest = NO;
 }
 
+- (void) authenticationFailed {
+  PSNotify(OBDashboardAuthFailedNotification);
+  isSendingDashboardRequest = NO;
+}
+
 - (void) dealloc {
   [self stopMonitoring];
   [super dealloc];

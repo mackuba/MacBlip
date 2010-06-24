@@ -54,7 +54,7 @@ class LoginWindowController < NSWindowController
   def requestFailedWithError(error)
     if error.blipTimeoutError?
       obprint "LoginWindowController: timeout problem, retrying"
-      OBConnector.sharedConnector.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 10.0)
+      OBConnector.sharedConnector.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 5.0)
     else
       reenableForm
       window.psShowAlertSheetWithTitle(tr("Error"), message: error.localizedDescription)

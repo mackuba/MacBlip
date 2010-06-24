@@ -31,20 +31,33 @@ class ApplicationDelegate
       restoreMainWindow
       @blip.authenticateRequest.sendFor(self)
     else
-      @loginDialog = LoginWindowController.new
-      @loginDialog.showWindow(self)
-      mbObserve(@loginDialog, :authenticationSuccessful, :firstLoginSuccessful)
+      showLoginWindow
     end
   end
 
   def createMainWindow
-    @mainWindow ||= MainWindowController.new
+    @mainWindowController ||= MainWindowController.new
   end
 
   def restoreMainWindow
-    if @mainWindow && !@mainWindow.window.visible?
-      @mainWindow.showWindow(self)
-      # TODO @mainWindow.makeKeyWindow
+    if @mainWindowController && !@mainWindowController.window.visible?
+      @mainWindowController.showWindow(self)
+      # TODO @mainWindowController.makeKeyWindow
+    end
+  end
+
+  def showLoginWindow
+    @loginDialog = LoginWindowController.new
+    @loginDialog.showWindow(self)
+    mbObserve(@loginDialog, :authenticationSuccessful, :firstLoginSuccessful)
+  end
+
+  def deleteMainWindow
+    if @mainWindowController
+    # TODO: recreating main window causes crashes, probably a bug in MacRuby related to KVO
+    #   @mainWindowController.window.releasedWhenClosed = true
+      @mainWindowController.window.close
+    #   @mainWindowController = nil
     end
   end
 
@@ -80,10 +93,10 @@ class ApplicationDelegate
 
   def onMidnight
     # refresh the dates in the list (those from tomorrow will have day name appended to them)
-    @mainWindow.listView.setNeedsDisplay(true)
+    @mainWindowController.listView.setNeedsDisplay(true)
 
     # force resizing of date labels
-    @mainWindow.listView.viewDidEndLiveResize
+    @mainWindowController.listView.viewDidEndLiveResize
   end
 
 
@@ -100,6 +113,13 @@ class ApplicationDelegate
     NSUserDefaults.standardUserDefaults.setObject(@blip.account.username, forKey: USERNAME_KEY)
   end
 
+  def clearLoginAndPassword
+    SDKeychain.setSecurePassword(nil, forIdentifier: @blip.account.username)
+    NSUserDefaults.standardUserDefaults.removeObjectForKey(USERNAME_KEY)
+    @blip.account.username = nil
+    @blip.account.password = nil
+  end
+
 
   # authentication
 
@@ -107,14 +127,21 @@ class ApplicationDelegate
     mbStopObserving(@loginDialog, :authenticationSuccessful)
     @loginDialog.close
     saveLoginAndPassword
+    createMainWindow
     authenticationSuccessful
   end
 
   def authenticationSuccessful
-    createMainWindow
     restoreMainWindow
+    @mainWindowController.hideNoticeBars
     @blip.dashboardMonitor.interval = 60
     @blip.dashboardMonitor.startMonitoring
+  end
+
+  def authenticationFailed
+    deleteMainWindow
+    showLoginWindow
+    clearLoginAndPassword
   end
 
   def requestFailedWithError(error)
@@ -122,9 +149,13 @@ class ApplicationDelegate
     if error.blipTimeoutError?
       # retry until it works
       obprint "timeout problem, retrying"
-      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 10.0)
+      @mainWindowController.showWarningBar
+      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 5.0)
     else
-      @mainWindow.displayLoadingError(error)
+      # retry until it works, but wait longer between requests
+      obprint "connection problem, retrying"
+      @mainWindowController.showErrorBar
+      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 15.0)
     end
   end
 
@@ -147,7 +178,7 @@ class ApplicationDelegate
   def newMessagePressed(sender)
     NSApp.activateIgnoringOtherApps(true)
     createMainWindow
-    @mainWindow.performSelector('openNewMessageWindow', withObject: nil, afterDelay: 0.01)
+    @mainWindowController.performSelector('openNewMessageWindow', withObject: nil, afterDelay: 0.01)
   end
 
 end
