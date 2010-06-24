@@ -48,7 +48,7 @@ class LoginWindowController < NSWindowController
 
   def authenticationFailed
     reenableForm
-    psShowAlertSheet(tr("Error"), tr("Login or password is incorrect"))
+    window.psShowAlertSheetWithTitle(tr("Error"), message: tr("Login or password is incorrect"))
   end
 
   def requestFailedWithError(error)
@@ -57,7 +57,7 @@ class LoginWindowController < NSWindowController
       OBConnector.sharedConnector.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 10.0)
     else
       reenableForm
-      psShowAlertSheet(tr("Error"), error.localizedDescription)
+      window.psShowAlertSheetWithTitle(tr("Error"), message: error.localizedDescription)
     end
   end
 
