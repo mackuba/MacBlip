@@ -9,5 +9,8 @@
 <method selector='hasPicture'>
 <retval type='B'/>
 </method>
+<method selector='hasPictureData'>
+<retval type='B'/>
+</method>
 </class>
 </signatures>

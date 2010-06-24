@@ -232,6 +232,7 @@ class MainWindowController < NSWindowController
   end
 
   def displayImageInQuickLook(message)
+    return unless message.hasPictureData
     @messageInQuickLook = message
     panel = QLPreviewPanel.sharedPreviewPanel
     if panel.isVisible

@@ -47,5 +47,6 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage, OBNoticeMes
 - (NSString *) url;
 - (void) setPictureData: (NSData *) data;
 - (BOOL) hasPicture;
+- (BOOL) hasPictureData;
 
 @end

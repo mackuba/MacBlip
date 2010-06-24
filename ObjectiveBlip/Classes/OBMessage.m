@@ -67,6 +67,10 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
   return (pictures.count > 0 && [[pictures objectAtIndex: 0] objectForKey: @"url"] != nil);
 }
 
+- (BOOL) hasPictureData {
+  return ([self hasPicture] && [[pictures objectAtIndex: 0] objectForKey: @"data"] != nil);
+}
+
 + (NSSet *) keyPathsForValuesAffectingHasPicture {
   return [NSSet setWithObject: @"pictures"];
 }
