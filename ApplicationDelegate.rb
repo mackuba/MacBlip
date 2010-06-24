@@ -9,6 +9,8 @@ class ApplicationDelegate
 
   USERNAME_KEY = "account.username"
   LOGGING_KEY = "objectiveblip.forceLogging"
+  BLIP_TIMEOUT_DELAY = 5.0
+  FAILED_CONNECTION_DELAY = 15.0
 
   # initialization
 
@@ -150,12 +152,12 @@ class ApplicationDelegate
       # retry until it works
       obprint "timeout problem, retrying"
       @mainWindowController.showWarningBar
-      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 5.0)
+      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: BLIP_TIMEOUT_DELAY)
     else
       # retry until it works, but wait longer between requests
       obprint "connection problem, retrying"
       @mainWindowController.showErrorBar
-      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: 15.0)
+      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: FAILED_CONNECTION_DELAY)
     end
   end
 

@@ -122,7 +122,8 @@ class MainWindowController < NSWindowController
     if error.blipTimeoutError?
       if OBMessage.list.empty?
         obprint "MainWindowController: first dashboard update failed, retrying"
-        @blip.dashboardMonitor.performSelector('forceUpdate', withObject: nil, afterDelay: 5.0)
+        @blip.dashboardMonitor.performSelector('forceUpdate',
+          withObject: nil, afterDelay: ApplicationDelegate::BLIP_TIMEOUT_DELAY)
       else
         obprint "MainWindowController: dashboard update failed, ignoring"
         showWarningBar
