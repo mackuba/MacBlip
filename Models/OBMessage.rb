@@ -20,15 +20,15 @@ class OBMessage
   end
 
   def viewBackgroundColor
-    if messageType == OBNoticeMessage
-      if body =~ /do obserwowanych/
-        MessageCell::FOLLOW_BACKGROUND
-      else
-        MessageCell::NOTICE_BACKGROUND
-      end
-    else
-      MessageCell::BACKGROUND
-    end
+    # if messageType == OBNoticeMessage
+    #   if body =~ /do obserwowanych/
+    #     MessageCell::FOLLOW_BACKGROUND
+    #   else
+    #     MessageCell::NOTICE_BACKGROUND
+    #   end
+    # else
+    MessageCell::BACKGROUND
+    # end
   end
 
   def self.keyPathsForValuesAffectingViewBackgroundColor
