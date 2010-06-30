@@ -47,8 +47,13 @@ class NewMessageDialogController < NSWindowController
     window.delegate = self
     mbObserve(textField, NSControlTextDidChangeNotification, :textEdited)
     textField.stringValue = @text
-    textField.psUnselectText
     refreshCounter
+  end
+
+  def showWindow(sender)
+    wasVisible = self.window.isVisible
+    super
+    textField.psUnselectText unless wasVisible
   end
 
   def windowShouldClose(notification)
