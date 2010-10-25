@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MACRUBY_SYSTEM_PATH="/Library/Frameworks/MacRuby.framework/Versions/0.5/usr/lib/libmacruby.dylib"
-MACRUBY_EMBEDDED_PATH="@executable_path/../Frameworks/MacRuby.framework/Versions/0.5/usr/lib/libmacruby.dylib"
+export ARCHS="i386 x86_64"
+
 APP_BUNDLE="build/Release/MacBlip.app"
 
 echo "Compiling ruby files..."
