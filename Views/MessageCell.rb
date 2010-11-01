@@ -7,6 +7,9 @@
 
 class MessageCell < NSView
 
+  attr_reader :padding
+  attr_accessor :textView
+
   BACKGROUND = NSColor.colorWithDeviceRed(0.94, green: 0.94, blue: 0.94, alpha: 1.0)
   FOLLOW_BACKGROUND = NSColor.colorWithDeviceRed(0.97, green: 0.97, blue: 0.84, alpha: 1.0)
   NOTICE_BACKGROUND = NSColor.colorWithDeviceRed(0.86, green: 0.92, blue: 0.98, alpha: 1.0)
@@ -17,7 +20,16 @@ class MessageCell < NSView
     @userLabel = self.viewWithTag(1)
     @dateLabel = self.viewWithTag(2)
     @colorWell = self.viewWithTag(3) # hidden control which is only used to store the appropriate background color
+    @pictureView = self.viewWithTag(4)
     @userLabelFont = @userLabel.font
+  end
+
+  def initializeLayout(scrollViewFrame, withPicture: hasPicture)
+    @textViewOrigin = scrollViewFrame.origin
+    verticalPadding = self.frame.size.height - scrollViewFrame.size.height
+    horizontalPadding = self.frame.size.width - scrollViewFrame.size.width
+    horizontalPadding += @pictureView.frame.size.width if hasPicture
+    @padding = NSSize.new(horizontalPadding, verticalPadding)
   end
 
   def messageBackgroundColor
@@ -59,6 +71,12 @@ class MessageCell < NSView
     frame = @userLabel.frame
     frame.size.width = space - newDateWidth
     @userLabel.frame = frame
+
+    frame = textView.frame
+    frame.origin = @textViewOrigin
+    frame.size.width = self.frame.size.width - @padding.width
+    frame.size.height = self.frame.size.height - @padding.height
+    textView.frame = frame
 
     super
   end

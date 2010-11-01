@@ -80,7 +80,7 @@
 						</object>
 						<string key="NSFrame">{{335, 7}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<int key="NSTag">77</int>
+						<int key="NSTag">4</int>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="132409775">
 							<int key="NSCellFlags">130560</int>
@@ -164,7 +164,7 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="NSTextView" id="394038919">
 										<reference key="NSNextResponder" ref="752590176"/>
-										<int key="NSvFlags">2322</int>
+										<int key="NSvFlags">2314</int>
 										<string key="NSFrameSize">{321, 56}</string>
 										<reference key="NSSuperview" ref="752590176"/>
 										<object class="NSTextContainer" key="NSTextContainer" id="235728430">
@@ -270,7 +270,7 @@
 										<nil key="NSDelegate"/>
 									</object>
 								</object>
-								<string key="NSFrameSize">{321, 53}</string>
+								<string key="NSFrameSize">{321, 56}</string>
 								<reference key="NSSuperview" ref="459756340"/>
 								<reference key="NSNextKeyView" ref="394038919"/>
 								<reference key="NSDocView" ref="394038919"/>
@@ -289,7 +289,6 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{-100, -100}, {15, 69}}</string>
 								<reference key="NSSuperview" ref="459756340"/>
-								<bool key="NSEnabled">YES</bool>
 								<reference key="NSTarget" ref="459756340"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSCurValue">1</double>
@@ -307,10 +306,10 @@
 								<double key="NSPercent">0.94565218687057495</double>
 							</object>
 						</object>
-						<string key="NSFrame">{{70, 10}, {321, 53}}</string>
+						<string key="NSFrame">{{70, 10}, {321, 56}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSNextKeyView" ref="752590176"/>
-						<int key="NSsFlags">64</int>
+						<int key="NSsFlags">0</int>
 						<reference key="NSVScroller" ref="120309728"/>
 						<reference key="NSHScroller" ref="120655596"/>
 						<reference key="NSContentView" ref="752590176"/>
@@ -572,6 +571,14 @@
 					</object>
 					<int key="connectionID">91</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">textView</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="394038919"/>
+					</object>
+					<int key="connectionID">92</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -778,7 +785,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">91</int>
+			<int key="maxID">92</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -794,6 +801,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MessageCell</string>
 					<string key="superclassName">NSView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">textView</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">textView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">textView</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Views/MessageCell.rb</string>
@@ -895,11 +913,26 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="882357171">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">ObjectiveBlip/Lib/PsiToolkit/PSCocoaExtensions.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Lib/SDKVO/SDKVO.h</string>
 					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSTextField</string>
+					<reference key="sourceIdentifier" ref="882357171"/>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSView</string>
+					<reference key="sourceIdentifier" ref="882357171"/>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">SDListViewItem</string>
@@ -1368,6 +1401,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Sparkle.framework/Headers/SUUpdater.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">YAJL.framework/Headers/NSObject+YAJL.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
