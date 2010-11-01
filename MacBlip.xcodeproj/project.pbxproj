@@ -52,6 +52,10 @@
 		58075E8C1194C11500BF1772 /* PSPathBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E831194C11400BF1772 /* PSPathBuilder.m */; };
 		58075E951194C1F300BF1772 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58075E941194C1F300BF1772 /* YAJL.framework */; };
 		58075EAA1194C23200BF1772 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58075E941194C1F300BF1772 /* YAJL.framework */; };
+		580A6D30127F2A060078439A /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D2F127F2A060078439A /* MessageTextView.m */; };
+		580A6D3B127F310F0078439A /* AvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D3A127F310F0078439A /* AvatarView.m */; };
+		580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D45127F32AF0078439A /* MessagePictureView.m */; };
+		580A6FA1127F5E390078439A /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6FA0127F5E390078439A /* MessageCell.m */; };
 		581805A11138516600A61784 /* OBUser.rb in Resources */ = {isa = PBXBuildFile; fileRef = 581805A01138516600A61784 /* OBUser.rb */; };
 		5821058B11178FB00025DAF4 /* OBAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821055E11178FB00025DAF4 /* OBAccount.m */; };
 		5821058C11178FB00025DAF4 /* OBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056011178FB00025DAF4 /* OBConnector.m */; };
@@ -109,15 +113,12 @@
 		58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */; };
 		58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */; };
 		58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */; };
-		58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E31A113172EA00B97529 /* MessageCell.rb */; };
-		58E6E39211317CF900B97529 /* AvatarView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E39111317CF900B97529 /* AvatarView.rb */; };
 		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
 		58E6E400113183B300B97529 /* OBMessage.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FE113183B300B97529 /* OBMessage.rb */; };
 		58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */; };
 		58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */; };
-		58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E65511331C0400B97529 /* MessageTextView.rb */; };
 		58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */; };
 		58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */; };
 		58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */; };
@@ -129,7 +130,6 @@
 		58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */; };
 		58E6E8AB1135E6B800B97529 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8AA1135E6B800B97529 /* AboutWindow.xib */; };
 		58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */; };
-		58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */; };
 		58FEDD2A11A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */; };
 		58FEDD2B11A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */; };
 		58FEDD2C11A9756500FDE3A8 /* PSIntArray.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */; };
@@ -184,6 +184,14 @@
 		58075E821194C11400BF1772 /* PSPathBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPathBuilder.h; sourceTree = "<group>"; };
 		58075E831194C11400BF1772 /* PSPathBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPathBuilder.m; sourceTree = "<group>"; };
 		58075E941194C1F300BF1772 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
+		580A6D2E127F2A060078439A /* MessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTextView.h; sourceTree = "<group>"; };
+		580A6D2F127F2A060078439A /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTextView.m; sourceTree = "<group>"; };
+		580A6D39127F310F0078439A /* AvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarView.h; sourceTree = "<group>"; };
+		580A6D3A127F310F0078439A /* AvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarView.m; sourceTree = "<group>"; };
+		580A6D44127F32AF0078439A /* MessagePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePictureView.h; sourceTree = "<group>"; };
+		580A6D45127F32AF0078439A /* MessagePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePictureView.m; sourceTree = "<group>"; };
+		580A6F9F127F5E390078439A /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		580A6FA0127F5E390078439A /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		581805A01138516600A61784 /* OBUser.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBUser.rb; sourceTree = "<group>"; };
 		5821055D11178FB00025DAF4 /* OBAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAccount.h; sourceTree = "<group>"; };
 		5821055E11178FB00025DAF4 /* OBAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAccount.m; sourceTree = "<group>"; };
@@ -268,14 +276,11 @@
 		58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestDelegate.bridgesupport; sourceTree = "<group>"; };
 		58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIProgressDelegate.bridgesupport; sourceTree = "<group>"; };
 		58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAvatarGroup.bridgesupport; sourceTree = "<group>"; };
-		58E6E31A113172EA00B97529 /* MessageCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCell.rb; sourceTree = "<group>"; };
-		58E6E39111317CF900B97529 /* AvatarView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AvatarView.rb; sourceTree = "<group>"; };
 		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		58E6E3FE113183B300B97529 /* OBMessage.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBMessage.rb; sourceTree = "<group>"; };
 		58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TweetieLikeScroller.rb; sourceTree = "<group>"; };
 		58E6E5731131D98000B97529 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle_pub_key.pem; sourceTree = "<group>"; };
-		58E6E65511331C0400B97529 /* MessageTextView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageTextView.rb; sourceTree = "<group>"; };
 		58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIFormDataRequest.bridgesupport; sourceTree = "<group>"; };
 		58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequest.bridgesupport; sourceTree = "<group>"; };
 		58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestConfig.bridgesupport; sourceTree = "<group>"; };
@@ -289,7 +294,6 @@
 		58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AboutWindowController.rb; sourceTree = "<group>"; };
 		58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
-		58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessagePictureView.rb; sourceTree = "<group>"; };
 		58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSCocoaExtensions.bridgesupport; sourceTree = "<group>"; };
 		58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSFoundationExtensions.bridgesupport; sourceTree = "<group>"; };
 		58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSIntArray.bridgesupport; sourceTree = "<group>"; };
@@ -525,16 +529,20 @@
 		585A924F111B6831003ABD05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				58E6E39111317CF900B97529 /* AvatarView.rb */,
+				580A6D39127F310F0078439A /* AvatarView.h */,
+				580A6D3A127F310F0078439A /* AvatarView.m */,
 				58E6E8AA1135E6B800B97529 /* AboutWindow.xib */,
 				5897F1D4112DDE850029B4D9 /* LoginWindow.xib */,
 				5897F031112C766F0029B4D9 /* MessageCell.xib */,
 				585A92AE111B7060003ABD05 /* MainMenu.xib */,
 				585A92AC111B7011003ABD05 /* MainWindow.xib */,
 				583422CC113083BA008938A9 /* NewMessageDialog.xib */,
-				58E6E31A113172EA00B97529 /* MessageCell.rb */,
-				58FBAA2C117A3AF800D1D323 /* MessagePictureView.rb */,
-				58E6E65511331C0400B97529 /* MessageTextView.rb */,
+				580A6F9F127F5E390078439A /* MessageCell.h */,
+				580A6FA0127F5E390078439A /* MessageCell.m */,
+				580A6D44127F32AF0078439A /* MessagePictureView.h */,
+				580A6D45127F32AF0078439A /* MessagePictureView.m */,
+				580A6D2E127F2A060078439A /* MessageTextView.h */,
+				580A6D2F127F2A060078439A /* MessageTextView.m */,
 				58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */,
 				589CDF87119F007000B1F64D /* WarningBar.rb */,
 			);
@@ -744,13 +752,10 @@
 				583420EC11300618008938A9 /* Growl Registration Ticket.growlRegDict in Resources */,
 				583422CD113083BA008938A9 /* NewMessageDialog.xib in Resources */,
 				5834229811306E7E008938A9 /* NewMessageDialogController.rb in Resources */,
-				58E6E31B113172EA00B97529 /* MessageCell.rb in Resources */,
-				58E6E39211317CF900B97529 /* AvatarView.rb in Resources */,
 				58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */,
 				58E6E400113183B300B97529 /* OBMessage.rb in Resources */,
 				58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */,
 				58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */,
-				58E6E65611331C0400B97529 /* MessageTextView.rb in Resources */,
 				58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */,
 				58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */,
 				58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */,
@@ -762,7 +767,6 @@
 				58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */,
 				581805A11138516600A61784 /* OBUser.rb in Resources */,
 				5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */,
-				58FBAA2D117A3AF800D1D323 /* MessagePictureView.rb in Resources */,
 				58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */,
 				58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */,
 				58230496117F235C0076AFB6 /* Localizable.strings in Resources */,
@@ -858,6 +862,10 @@
 				58075E8A1194C11500BF1772 /* PSModel.m in Sources */,
 				58075E8B1194C11500BF1772 /* PSModelManager.m in Sources */,
 				58075E8C1194C11500BF1772 /* PSPathBuilder.m in Sources */,
+				580A6D30127F2A060078439A /* MessageTextView.m in Sources */,
+				580A6D3B127F310F0078439A /* AvatarView.m in Sources */,
+				580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */,
+				580A6FA1127F5E390078439A /* MessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@ class OBMessage
     #     MessageCell::NOTICE_BACKGROUND
     #   end
     # else
-    MessageCell::BACKGROUND
+    MessageCell.backgroundColor
     # end
   end
 

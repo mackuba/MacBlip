@@ -22,7 +22,7 @@ class MessageCellController < SDListViewItem
     scrollView = textView.enclosingScrollView
     frame = scrollView.frame
 
-    self.view.initializeLayout(frame, withPicture: representedObject.hasPicture)
+    self.view.initializeLayoutWithTextFrame(frame, withPicture: representedObject.hasPicture)
 
     # pull text view out of its scroll view (we can't do that in IB, Bad Things happen then)
     scrollView.removeFromSuperview
