@@ -11,7 +11,7 @@ class OBUser
     if avatarData
       image = NSImage.alloc.initWithData(avatarData)
       # fix for NSImage#size returning wrong size because of weird DPI
-      image.representations.each { |r| r.size = NSSize.new(50, 50) }
+      image.representations.each { |r| r.size = NSSize.new(50, 50) } if image
       image
     end
   end

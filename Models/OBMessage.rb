@@ -39,12 +39,12 @@ class OBMessage
     pictureData = pictures.first && pictures.first['data']
     if pictureData
       image = NSImage.alloc.initWithData(pictureData)
-      rep = image.representations.first
-      image.size = NSMakeSize(rep.pixelsWide, rep.pixelsHigh)  # force correct size, even if DPI is weird
-      minSize = [image.size.width, image.size.height].min
-      image.imageCroppedToFitSize(NSMakeSize(minSize, minSize))
-    else
-      nil
+      rep = image && image.representations.first
+      if rep
+        image.size = NSMakeSize(rep.pixelsWide, rep.pixelsHigh)  # force correct size, even if DPI is weird
+        minSize = [image.size.width, image.size.height].min
+        image.imageCroppedToFitSize(NSMakeSize(minSize, minSize))
+      end
     end
   end
 
