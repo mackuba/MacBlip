@@ -16,9 +16,13 @@
 @interface OBShortLink : PSModel {
   NSString *url;
   NSString *originalLink;
+  NSString *shortcode;
 }
 
 @property (nonatomic, copy) NSString *originalLink;
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *shortcode;
+
++ (OBShortLink *) shortLinkWithRdirUrl: (NSString *) url;
 
 @end

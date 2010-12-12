@@ -70,7 +70,8 @@ class OBMessage
       url = yield
       if url && url.length > 0
         range = NSRange.new(offset.first, offset.last - offset.first)
-        nsurl = NSURL.URLWithString(url)
+        expanded = LinkExpander.sharedLinkExpander.expand(url) || url
+        nsurl = NSURL.URLWithString(expanded)
         richText.addAttribute(NSLinkAttributeName, value: nsurl, range: range) unless nsurl.nil?
       end
     end
@@ -99,6 +100,11 @@ class OBMessage
 
   def self.keyPathsForValuesAffectingProcessedBody
     NSSet.setWithArray(["body", "pictures"])
+  end
+
+  def refreshBody
+    willChangeValueForKey "processedBody"
+    didChangeValueForKey "processedBody"
   end
 
 end

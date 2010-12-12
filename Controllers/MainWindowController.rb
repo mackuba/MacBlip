@@ -98,10 +98,19 @@ class MainWindowController < NSWindowController
 
   def dashboardUpdated(notification)
     messages = notification.userInfo["messages"]
+
     if messages && messages.count > 0
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
+
       messagesWithPictures = messages.find_all { |m| m.hasPicture }
       messagesWithPictures.each { |m| @blip.loadPictureRequest(m).send }
+
+      messages.each do |message|
+        message.body.scan(%r{http://rdir.pl/\w+}) do |link|
+          expandLink(link, message)
+        end
+      end
+
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
@@ -177,6 +186,18 @@ class MainWindowController < NSWindowController
 
   def dashboardPressed(sender)
     BrowserController.openDashboard
+  end
+
+  def expandLink(link, message)
+    unless LinkExpander.sharedLinkExpander.expand(link)
+      shortLink = OBShortLink.shortLinkWithRdirUrl(link)
+      @blip.expandLinkRequest(shortLink, inMessage: message).sendFor(self) if shortLink
+    end
+  end
+
+  def link shortUrl, inMessage: message, expandedTo: originalLink
+    LinkExpander.sharedLinkExpander.register(shortUrl, originalLink)
+    message.refreshBody
   end
 
   def growlMessages(messages)

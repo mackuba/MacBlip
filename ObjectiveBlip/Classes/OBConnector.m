@@ -147,6 +147,13 @@ static BOOL loggingEnabled;
   return request;
 }
 
+- (OBRequest *) expandLinkRequest: (OBShortLink *) link inMessage: (OBMessage *) message {
+  OBRequest *request = [self requestWithPath: PSFormat(@"/shortlinks/%@", link.shortcode) method: @"GET" text: nil];
+  [request setDidFinishSelector: @selector(linkExpanded:)];
+  [request setUserInfo: PSDict(message, @"message")];
+  return request;
+}
+
 - (OBRequest *) requestWithPath: (NSString *) path
                          method: (NSString *) method
                            text: (NSString *) text {
@@ -291,6 +298,14 @@ static BOOL loggingEnabled;
   OBShortLink *shortlink = [OBShortLink objectFromJSONString: [[request responseString] psTrimmedString]];
 
   [[request target] link: originalLink shortenedTo: shortlink.url];
+}
+
+- (void) linkExpanded: (id) request {
+  if (![self handleFinishedRequest: request]) return;
+
+  OBShortLink *shortlink = [OBShortLink objectFromJSONString: [[request responseString] psTrimmedString]];
+  OBMessage *message = [[request userInfo] objectForKey: @"message"];
+  [[request target] link: shortlink.url inMessage: message expandedTo: shortlink.originalLink];
 }
 
 - (void) requestFailed: (id) request {

@@ -14,7 +14,7 @@
 // to enable logging in debug mode, add "-DDEBUG" to "Other C Flags" in the build properties of your target
 #define OBLog(...) do { if ([OBConnector loggingEnabled]) NSLog(__VA_ARGS__); } while(0);
 
-@class OBAccount, OBAvatarGroup, OBDashboardMonitor, OBMessage, OBRequest, OBUser;
+@class OBAccount, OBAvatarGroup, OBDashboardMonitor, OBMessage, OBRequest, OBShortLink, OBUser;
 
 // these callback methods will be called on objects that created the request
 @protocol OBConnectorDelegate
@@ -24,6 +24,7 @@
 - (void) dashboardUpdatedWithMessages: (NSArray *) messages;
 - (void) pictureLoaded: (NSData *) data forMessage: (OBMessage *) message;
 - (void) link: (NSString *) originalLink shortenedTo: (NSString *) shortUrl;
+- (void) link: (NSString *) shortUrl inMessage: (OBMessage *) message expandedTo: (NSString *) originalLink;
 - (void) requestFailedWithError: (NSError *) error;
 @end
 
@@ -59,6 +60,7 @@
 - (OBRequest *) loadPictureRequest: (OBMessage *) message;
 - (OBRequest *) avatarImageRequestForUser: (OBUser *) user;
 - (OBRequest *) shortenLinkRequest: (NSString *) link;
+- (OBRequest *) expandLinkRequest: (OBShortLink *) link inMessage: (OBMessage *) message;
 
 // internal
 - (void) avatarGroupLoaded: (OBAvatarGroup *) group;
