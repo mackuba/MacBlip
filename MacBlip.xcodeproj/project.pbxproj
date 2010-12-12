@@ -113,6 +113,7 @@
 		58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */; };
 		58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */; };
 		58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */; };
+		58AEE8FE11A5BD6000612211 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8FD11A5BD6000612211 /* link.png */; };
 		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
 		58E6E400113183B300B97529 /* OBMessage.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FE113183B300B97529 /* OBMessage.rb */; };
 		58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */; };
@@ -276,6 +277,7 @@
 		58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestDelegate.bridgesupport; sourceTree = "<group>"; };
 		58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIProgressDelegate.bridgesupport; sourceTree = "<group>"; };
 		58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAvatarGroup.bridgesupport; sourceTree = "<group>"; };
+		58AEE8FD11A5BD6000612211 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = "<group>"; };
 		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		58E6E3FE113183B300B97529 /* OBMessage.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBMessage.rb; sourceTree = "<group>"; };
 		58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TweetieLikeScroller.rb; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 		5897F1D1112DDE660029B4D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				58AEE8FD11A5BD6000612211 /* link.png */,
 				589CDFF4119F08E100B1F64D /* error.png */,
 				589CDFF5119F08E100B1F64D /* warning.png */,
 				5883BD9C113D832C00F72D34 /* macblip_icon_80.png */,
@@ -786,6 +789,7 @@
 				58FEDD3011A9756500FDE3A8 /* PSModelManager.bridgesupport in Resources */,
 				58FEDD3111A9756500FDE3A8 /* PSPathBuilder.bridgesupport in Resources */,
 				58FEDD3211A9756500FDE3A8 /* PSUIExtensions.bridgesupport in Resources */,
+				58AEE8FE11A5BD6000612211 /* link.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

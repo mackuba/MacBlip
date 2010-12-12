@@ -9,7 +9,7 @@ class NewMessageDialogController < NSWindowController
 
   MAX_CHARS = 160
 
-  attr_accessor :counterLabel, :sendButton, :textField, :spinner
+  attr_accessor :counterLabel, :sendButton, :shortenButton, :textField, :sendSpinner, :shortenSpinner
 
   def initWithMainWindowController(mainWindowController, text: text)
     initWithWindowNibName "NewMessageDialog"
@@ -102,10 +102,7 @@ class NewMessageDialogController < NSWindowController
   end
 
   def sendPressed(sender)
-    sendButton.psDisable
-    textField.psDisable
-    spinner.startAnimation(self)
-
+    enterRequestMode
     message = textField.stringValue
     @blip.sendMessageRequest(message).sendFor(self)
   end
@@ -116,19 +113,37 @@ class NewMessageDialogController < NSWindowController
     @blip.dashboardMonitor.performSelector('requestManualUpdate', withObject: nil, afterDelay: 1)
   end
 
+  def shortenLinksPressed(sender)
+    links = textField.stringValue.scan(/((http|https|ftp):\/\/[^\s]+)/).map(&:first)
+    if links.length > 0
+      #enterRequestMode
+      p links
+    end
+  end
+
+  def enterRequestMode
+    sendButton.psDisable
+    shortenButton.psDisable
+    textField.psDisable
+    sendSpinner.startAnimation(self)
+  end
+
+  def leaveRequestMode
+    sendButton.psEnable
+    shortenButton.psEnable
+    textField.psEnable
+    sendSpinner.stopAnimation(self)
+  end
+
   def authenticationFailed
-    showError(tr("Invalid username or password. Try to restart MacBlip and log in again…"))
+    leaveRequestMode
+    message = tr("Invalid username or password. Try to restart MacBlip and log in again…")
+    window.psShowAlertSheetWithTitle(tr("Error"), message: message)
   end
 
   def requestFailedWithError(error)
-    showError(error.localizedDescription)
-  end
-
-  def showError(message)
-    sendButton.psEnable
-    textField.psEnable
-    spinner.stopAnimation(self)
-    window.psShowAlertSheetWithTitle(tr("Error"), message: message)
+    leaveRequestMode
+    window.psShowAlertSheetWithTitle(tr("Error"), message: error.localizedDescription)
   end
 
 end
