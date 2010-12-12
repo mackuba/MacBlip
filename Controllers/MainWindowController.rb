@@ -116,7 +116,7 @@ class MainWindowController < NSWindowController
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
 
-    @loadingView.psHide
+    @loadingView.performSelector(:psHide, withObject: nil, afterDelay: 0.1)
     @newMessageButton.psEnable
     @dashboardButton.psEnable
     @spinner.stopAnimation(self)
