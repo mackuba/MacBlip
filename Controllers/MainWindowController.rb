@@ -34,8 +34,6 @@ class MainWindowController < NSWindowController
     @listView.topPadding = 5
     @listView.bottomPadding = 5
     # the order is actually descending, but listView is not flipped so it counts Y coordinate from bottom... o_O
-
-    @spinner.startAnimation(self)
   end
 
   def warningBar
@@ -90,7 +88,7 @@ class MainWindowController < NSWindowController
   end
 
   def dashboardWillUpdate
-    @spinner.startAnimation(self)
+    @spinner.startAnimation(self) if @loadingView.isHidden
   end
 
   def scrollToTop
