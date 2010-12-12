@@ -29,7 +29,6 @@
     self.requestContentType = OBJSONRequest;
     [self addRequestHeader: @"X-Blip-API" value: BLIP_API_VERSION];
     [self addRequestHeader: @"Accept" value: @"application/json"];
-    [self addRequestHeader: @"Content-Type" value: @"application/json"];
     if (text) {
       [self appendPostData: [text dataUsingEncoding: NSUTF8StringEncoding]];
     }

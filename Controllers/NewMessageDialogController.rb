@@ -8,6 +8,7 @@
 class NewMessageDialogController < NSWindowController
 
   MAX_CHARS = 160
+  URL_REGEXP = %r{((http|https|ftp)://\S+\w)}
 
   attr_accessor :counterLabel, :sendButton, :shortenButton, :textField, :sendSpinner, :shortenSpinner
 
@@ -114,10 +115,11 @@ class NewMessageDialogController < NSWindowController
   end
 
   def shortenLinksPressed(sender)
-    links = textField.stringValue.scan(/((http|https|ftp):\/\/[^\s]+)/).map(&:first)
+    links = textField.stringValue.scan(URL_REGEXP).map(&:first)
     if links.length > 0
-      #enterRequestMode
-      p links
+      links.each do |url|
+        @blip.shortenLinkRequest(url).sendFor(self) unless url =~ %r(//rdir.pl/)
+      end
     end
   end
 
@@ -133,6 +135,11 @@ class NewMessageDialogController < NSWindowController
     shortenButton.psEnable
     textField.psEnable
     sendSpinner.stopAnimation(self)
+  end
+
+  def link originalLink, shortenedTo: shortUrl
+    message = textField.stringValue
+    textField.stringValue = message.stringByReplacingOccurrencesOfString(originalLink, withString: shortUrl)
   end
 
   def authenticationFailed

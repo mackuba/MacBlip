@@ -12,6 +12,7 @@
 #import "OBDashboardMonitor.h"
 #import "OBRequest.h"
 #import "OBMessage.h"
+#import "OBShortLink.h"
 #import "OBUser.h"
 #import "PsiToolkit.h"
 
@@ -114,7 +115,7 @@ static BOOL loggingEnabled;
 }
 
 - (OBRequest *) sendMessageRequest: (NSString *) message {
-  NSString *content = PSFormat(@"{\"update\": {\"body\": %@}}", [message performSelector: @selector(yajl_JSONString)]);
+  NSString *content = PSFormat(@"update[body]=%@", [message psStringWithPercentEscapesForFormValues]);
   OBRequest *request = [self requestWithPath: @"/updates" method: @"POST" text: content];
   [request setDidFinishSelector: @selector(messageSent:)];
   return request;
@@ -135,6 +136,14 @@ static BOOL loggingEnabled;
   [request setDidFinishSelector: @selector(avatarImageLoaded:)];
   [request setUserInfo: PSDict(user, @"user")];
   [request setRequestContentType: OBImageRequest];
+  return request;
+}
+
+- (OBRequest *) shortenLinkRequest: (NSString *) link {
+  NSString *content = PSFormat(@"shortlink[original_link]=%@", [link psStringWithPercentEscapesForFormValues]);
+  OBRequest *request = [self requestWithPath: @"/shortlinks" method: @"POST" text: content];
+  [request setDidFinishSelector: @selector(linkShortened:)];
+  [request setUserInfo: PSDict(link, @"originalLink")];
   return request;
 }
 
@@ -272,6 +281,16 @@ static BOOL loggingEnabled;
   OBMessage *message = [[request userInfo] objectForKey: @"message"];
   [message setPictureData: pictureData];
   [[request target] pictureLoaded: pictureData forMessage: message];
+}
+
+- (void) linkShortened: (id) request {
+  if (![self handleFinishedRequest: request]) return;
+
+  // we could take it from the response, but sometimes it returns e.g. Gazeta.pl when we ask for gazeta.pl...
+  NSString *originalLink = [[request userInfo] objectForKey: @"originalLink"];
+  OBShortLink *shortlink = [OBShortLink objectFromJSONString: [[request responseString] psTrimmedString]];
+
+  [[request target] link: originalLink shortenedTo: shortlink.url];
 }
 
 - (void) requestFailed: (id) request {

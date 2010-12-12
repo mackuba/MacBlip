@@ -81,6 +81,7 @@
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
+		5871629D12B4EDA900830147 /* OBShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871629B12B4EDA900830147 /* OBShortLink.m */; };
 		5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5883BD9C113D832C00F72D34 /* macblip_icon_80.png */; };
 		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
 		5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFA51129C9530029B4D9 /* SDKVO.m */; };
@@ -237,6 +238,9 @@
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		585A92AF111B7060003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5871629A12B4EDA900830147 /* OBShortLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShortLink.h; sourceTree = "<group>"; };
+		5871629B12B4EDA900830147 /* OBShortLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShortLink.m; sourceTree = "<group>"; };
+		5871629C12B4EDA900830147 /* OBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUser.h; sourceTree = "<group>"; };
 		5883BD9C113D832C00F72D34 /* macblip_icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macblip_icon_80.png; sourceTree = "<group>"; };
 		5897EF461129C3750029B4D9 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
 		5897EFA41129C9530029B4D9 /* SDKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKVO.h; sourceTree = "<group>"; };
@@ -469,6 +473,9 @@
 				5821056411178FB00025DAF4 /* OBMessage.m */,
 				5821056911178FB00025DAF4 /* OBRequest.h */,
 				5821056A11178FB00025DAF4 /* OBRequest.m */,
+				5871629A12B4EDA900830147 /* OBShortLink.h */,
+				5871629B12B4EDA900830147 /* OBShortLink.m */,
+				5871629C12B4EDA900830147 /* OBUser.h */,
 				583421A3113043B8008938A9 /* OBUser.m */,
 			);
 			path = Classes;
@@ -870,6 +877,7 @@
 				580A6D3B127F310F0078439A /* AvatarView.m in Sources */,
 				580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */,
 				580A6FA1127F5E390078439A /* MessageCell.m in Sources */,
+				5871629D12B4EDA900830147 /* OBShortLink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
