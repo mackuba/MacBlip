@@ -9,4 +9,7 @@
 
 @interface MessageTextView : NSTextView {}
 
+// private
+- (void) refreshToolTips;
+
 @end

@@ -31,6 +31,9 @@ class MessageCellController < SDListViewItem
 
     self.view.menu = createContextMenu
     self.view.subviews.each { |v| v.menu = self.view.menu }
+
+    # notify text view when body changes, to let it update the tooltips
+    representedObject.addObserver(textView, forKeyPath: "processedBody", options: 0, context: nil)
   end
 
   def createContextMenu

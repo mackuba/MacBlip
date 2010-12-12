@@ -11,6 +11,7 @@ class ApplicationDelegate
   LOGGING_KEY = "objectiveblip.forceLogging"
   BLIP_TIMEOUT_DELAY = 5.0
   FAILED_CONNECTION_DELAY = 15.0
+  TOOLTIP_DELAY = 1.1
 
   # initialization
 
@@ -22,6 +23,7 @@ class ApplicationDelegate
     @blip.autoLoadAvatars = true
     @blip.initialDashboardFetch = 30
     initMidnightTimer
+    initTooltips
 
     # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
     OBConnector.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
@@ -79,6 +81,16 @@ class ApplicationDelegate
   def applicationShouldHandleReopen(app, hasVisibleWindows: hasWindows)
     restoreMainWindow
     false
+  end
+
+  def initTooltips
+    # changing settings in a private class - Steve will probably send a hitman after me... :(
+    if defined?(NSToolTipManager) && NSToolTipManager && NSToolTipManager.respond_to?('sharedToolTipManager')
+      manager = NSToolTipManager.sharedToolTipManager
+      if manager && manager.respond_to?('setInitialToolTipDelay:')
+        manager.setInitialToolTipDelay(TOOLTIP_DELAY)
+      end
+    end
   end
 
   def initMidnightTimer

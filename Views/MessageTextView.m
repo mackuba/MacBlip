@@ -19,6 +19,52 @@
   [attributes setObject: hand forKey: NSCursorAttributeName];
   [attributes setObject: blue forKey: NSForegroundColorAttributeName];
   self.linkTextAttributes = attributes;
+  self.displaysLinkToolTips = false;
+}
+
+- (void) resizeWithOldSuperviewSize: (NSSize) size {
+  [super resizeWithOldSuperviewSize: size];
+  [self refreshToolTips];
+}
+
+- (void) observeValueForKeyPath: (NSString *) path
+                       ofObject: (id) source
+                         change: (NSDictionary *) change
+                        context: (void *) context {
+  // due to the way events are processed, when this is called at the moment when processedBody changes,
+  // the text view hasn't been through the binding yet, so we refresh tooltips after event loop finishes
+  [self performSelector: @selector(refreshToolTips) withObject: nil afterDelay: 0.1];
+}
+
+- (void) refreshToolTips {
+  [self removeAllToolTips];
+
+  // ugly hack to make the tooltip delay smaller than default (3-4s)
+  // to do that, we need to add tooltips to the text view manually and set the delay in private class NSTooltipManager
+
+  NSInteger position = 0;
+  NSRange range;
+  NSRange empty = { NSNotFound, 0 };
+  NSAttributedString *string = self.textStorage;
+  NSLayoutManager *layout = self.layoutManager;
+  NSTextContainer *container = self.textContainer;
+  NSRectArray rectArray;
+  NSUInteger rectCount;
+  NSUInteger r;
+
+  while (position < string.length) {
+    NSURL *link = [string attribute: NSLinkAttributeName atIndex: position effectiveRange: &range];
+    if (link) {
+      rectArray = [layout rectArrayForCharacterRange: range
+                        withinSelectedCharacterRange: empty
+                                     inTextContainer: container
+                                           rectCount: &rectCount];
+      for (r = 0; r < rectCount; r++) {
+        [self addToolTipRect: rectArray[r] owner: link userData: nil];
+      }
+    }
+    position += range.length;
+  }
 }
 
 - (NSMenu *) menuForEvent: (NSEvent *) event {
