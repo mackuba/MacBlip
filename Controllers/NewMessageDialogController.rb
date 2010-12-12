@@ -10,7 +10,7 @@ class NewMessageDialogController < NSWindowController
   MAX_CHARS = 160
   URL_REGEXP = %r{((http|https|ftp)://\S+\w)}
 
-  attr_accessor :counterLabel, :sendButton, :shortenButton, :textField, :sendSpinner, :shortenSpinner
+  attr_accessor :counterLabel, :sendButton, :actionButton, :textField, :spinner
 
   def initWithMainWindowController(mainWindowController, text: text)
     initWithWindowNibName "NewMessageDialog"
@@ -125,21 +125,22 @@ class NewMessageDialogController < NSWindowController
 
   def enterRequestMode
     sendButton.psDisable
-    shortenButton.psDisable
+    actionButton.psDisable
     textField.psDisable
-    sendSpinner.startAnimation(self)
+    spinner.startAnimation(self)
   end
 
   def leaveRequestMode
     sendButton.psEnable
-    shortenButton.psEnable
+    actionButton.psEnable
     textField.psEnable
-    sendSpinner.stopAnimation(self)
+    spinner.stopAnimation(self)
   end
 
   def link originalLink, shortenedTo: shortUrl
     message = textField.stringValue
     textField.stringValue = message.stringByReplacingOccurrencesOfString(originalLink, withString: shortUrl)
+    refreshCounter
   end
 
   def authenticationFailed
