@@ -50,8 +50,6 @@
 		58075E8A1194C11500BF1772 /* PSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E7F1194C11400BF1772 /* PSModel.m */; };
 		58075E8B1194C11500BF1772 /* PSModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E811194C11400BF1772 /* PSModelManager.m */; };
 		58075E8C1194C11500BF1772 /* PSPathBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E831194C11400BF1772 /* PSPathBuilder.m */; };
-		58075E951194C1F300BF1772 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58075E941194C1F300BF1772 /* YAJL.framework */; };
-		58075EAA1194C23200BF1772 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58075E941194C1F300BF1772 /* YAJL.framework */; };
 		580A6D30127F2A060078439A /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D2F127F2A060078439A /* MessageTextView.m */; };
 		580A6D3B127F310F0078439A /* AvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D3A127F310F0078439A /* AvatarView.m */; };
 		580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D45127F32AF0078439A /* MessagePictureView.m */; };
@@ -82,6 +80,7 @@
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
 		5871629D12B4EDA900830147 /* OBShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871629B12B4EDA900830147 /* OBShortLink.m */; };
+		5872F27B12CA806500162208 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5872F27A12CA806500162208 /* YAJL.framework */; };
 		5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5883BD9C113D832C00F72D34 /* macblip_icon_80.png */; };
 		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
 		5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFA51129C9530029B4D9 /* SDKVO.m */; };
@@ -156,7 +155,6 @@
 			files = (
 				583420D2113003DA008938A9 /* Growl.framework in CopyFiles */,
 				58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */,
-				58075EAA1194C23200BF1772 /* YAJL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +184,6 @@
 		58075E811194C11400BF1772 /* PSModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModelManager.m; sourceTree = "<group>"; };
 		58075E821194C11400BF1772 /* PSPathBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPathBuilder.h; sourceTree = "<group>"; };
 		58075E831194C11400BF1772 /* PSPathBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPathBuilder.m; sourceTree = "<group>"; };
-		58075E941194C1F300BF1772 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		580A6D2E127F2A060078439A /* MessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTextView.h; sourceTree = "<group>"; };
 		580A6D2F127F2A060078439A /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTextView.m; sourceTree = "<group>"; };
 		580A6D39127F310F0078439A /* AvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarView.h; sourceTree = "<group>"; };
@@ -241,6 +238,7 @@
 		5871629A12B4EDA900830147 /* OBShortLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShortLink.h; sourceTree = "<group>"; };
 		5871629B12B4EDA900830147 /* OBShortLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShortLink.m; sourceTree = "<group>"; };
 		5871629C12B4EDA900830147 /* OBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUser.h; sourceTree = "<group>"; };
+		5872F27A12CA806500162208 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		5883BD9C113D832C00F72D34 /* macblip_icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macblip_icon_80.png; sourceTree = "<group>"; };
 		5897EF461129C3750029B4D9 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
 		5897EFA41129C9530029B4D9 /* SDKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKVO.h; sourceTree = "<group>"; };
@@ -328,7 +326,7 @@
 				5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */,
 				583420A91130031E008938A9 /* Growl.framework in Frameworks */,
 				58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */,
-				58075E951194C1F300BF1772 /* YAJL.framework in Frameworks */,
+				5872F27B12CA806500162208 /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +568,7 @@
 				5897EFA61129C9530029B4D9 /* SDListView */,
 				583420A81130031E008938A9 /* Growl.framework */,
 				58E6E5731131D98000B97529 /* Sparkle.framework */,
-				58075E941194C1F300BF1772 /* YAJL.framework */,
+				5872F27A12CA806500162208 /* YAJL.framework */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
