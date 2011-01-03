@@ -8,26 +8,17 @@ much...
 
 ## Setup instructions
 
-* add a ObjectiveBlip directory to your project
-* copy all \*.m and \*.h files from the ObjectiveBlip source tree to that directory, together with the Lib subdirectory
-* create a new group "ObjectiveBlip" in your Xcode project; set its path to ObjectiveBlip directory (context menu ->
-  "Get Info" -> path)
-* add -> existing files -> select everything inside ObjectiveBlip directory
-* add CFNetwork, SystemConfiguration and zlib (libz.1.2.3) frameworks to your project (follow the
-  [ASIHTTPRequest documentation](http://allseeing-i.com/ASIHTTPRequest/Setup-instructions))
-* download the [YAJL-objc](http://github.com/gabriel/yajl-objc) JSON parser and install it into your project (the
-  installation is different on MacOSX and iPhone, so I can't simply include it in ObjectiveBlip)
-* for MacOSX apps, don't add the files Reachability.\* and ASIAuthenticationDialog.\* - they're iPhone-only and won't
-  compile with Mac version of Cocoa
-* The \*.bridgesupport files are only useful if you want to use a language other than ObjC, e.g.
-  [MacRuby](http://macruby.org) (if you do need them, then there are two sets of them, one in Bridges, and the other
-  in Lib/PsiToolkit/Bridges)
+* add the whole ObjectiveBlip directory to your Xcode project (the \*.bridgesupport files are only useful if you want
+  to use a language other than ObjC, e.g. [MacRuby](http://macruby.org)
+* install external dependencies:
+  * [ASIHTTPRequest](http://allseeing-i.com/ASIHTTPRequest)
+  * a JSON parser - [YAJL](http://github.com/gabriel/yajl-objc),
+  [JSON Framework](http://stig.github.com/json-framework), [TouchJSON](https://github.com/schwa/TouchJSON)
+  or [JSONKit](https://github.com/johnezang/JSONKit)
+  * [PsiToolkit](http://github.com/psionides/PsiToolkit) with Models, Network and Security modules enabled
+* import `ObjectiveBlip.h` somewhere, the best place is probably your `Prefix.pch` file
 
 ## Usage instructions
-
-To access ObjectiveBlip classes from your code, include this header:
-
-    #import "ObjectiveBlip.h"
 
 Most of the interaction with the server is done through an instance of the OBConnector class. First, create the
 OBConnector and set a login and password:
@@ -45,20 +36,18 @@ OBConnector and set a login and password:
     OBConnector *blip = [OBConnector sharedConnector];
 
 Requests are made by generating a request object (OBRequest) by calling a method on the connector, and then calling
-a `send` or `sendFor` method on the request. Use `sendFor` if you want the request to call a callback method when
-it gets a response.
+a `send` or `sendFor:callback:` method on the request. Use `sendFor:callback:` if you want the request to call a
+callback method when it gets a response.
 
-    // this will call authenticationSuccessful on self, and set blip.account.loggedIn to YES
-    [[blip authenticateRequest] sendFor: self];
+    // this will set blip.account.loggedIn to YES and then call authenticationSuccessful on self
+    [[blip authenticateRequest] sendFor: self callback: @selector(authenticationSuccessful)];
     
     // this will only update messages, but won't call any callbacks
     [[blip dashboardRequest] send];
 
-To see the names of all the callback methods, look at the definition of OBConnectorDelegate in OBConnector.h
-(you don't have to actually include this protocol in your classes). Note that every object that sets itself as the
-delegate using `sendFor:` must be prepared to handle the callbacks `authenticationFailed` and
-`requestFailedWithError(error)` apart from the one that it expects. OBConnector doesn't check if the receiver actually
-implements these two methods before the call.
+Note that every object that sets itself as the delegate using `sendFor:callback:` must be prepared to handle the
+callbacks `authenticationFailedInRequest:` and `requestFailed:withError:` apart from the one that it expects.
+OBConnector doesn't check if the receiver actually implements these two methods before the call.
 
 To update the dashboard in regular intervals, use the OBDashboardMonitor class:
 
@@ -86,7 +75,7 @@ Messages from the dashboard are stored in a global list accessible through OBMes
 
     [OBMessage list]; // returns NSArray with all messages
     [OBMessage count]; // returns number of messages
-    [OBMessage objectWithId: 123]; // returns specific message (lookup is fast since it's done through a dictionary)
+    [OBMessage objectWithIntegerId: 123]; // returns specific message (lookup is fast since it uses a dictionary)
 
 Some options that you may want to set on OBConnector:
 
@@ -96,15 +85,15 @@ Some options that you may want to set on OBConnector:
 * `autoLoadPictureInfo` - if on, it will pass ?include=pictures to dashboard requests to include attached picture URLs;
   it's not a lot of data, but you can turn this off if you don't need pictures (default is on)
 * `initialDashboardFetch` - how many messages will be loaded from the dashboard at first load (default: 20, max: 50)
-* `loggingEnabled` (class property) - by default it's on when DEBUG is defined, the idea is that you can enable this
-  setting only in debug mode, but not in release mode (in Xcode, add "-DDEBUG" to "Other C Flags" in the build
-  properties of your target); you can also manually change this property according to e.g. user's settings. Warning:
-  if this is enabled, OBConnector will print lots of boring shit so you really don't want this to be enabled by default
-  in release mode.
+* `loggingEnabled` - by default it's on when DEBUG is defined, the idea is that you can enable this setting only in
+  debug mode, but not in release mode (in Xcode, add "-DDEBUG" to "Other C Flags" in the build properties of your
+  target); you can also manually change this property according to e.g. user's settings. Warning: if this is enabled,
+  OBConnector will print lots of boring shit so you really don't want this to be enabled by default in release mode.
+
+For more info, check out the header file for OBConnector, and also docs and header for PSConnector from PsiToolkit
+(of which OBConnector is a subclass).
 
 
 ## License
 
 Copyright by Jakub Suder (Psionides) <jakub.suder at gmail.com>. Licensed under MIT license.
-Includes open source library ASIHTTPRequest by Ben Copsey, and my own mini library PsiToolkit which is a
-[separate project](http://github.com/psionides/PsiToolkit) licensed under WTFPL license.

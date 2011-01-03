@@ -18,7 +18,7 @@ class ApplicationDelegate
     GrowlApplicationBridge.growlDelegate = ""
     FilesController.clearPicturesCache
 
-    @blip = OBConnector.sharedConnector = OBConnector.new
+    @blip = OBConnector.sharedConnector
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
     @blip.initialDashboardFetch = 30

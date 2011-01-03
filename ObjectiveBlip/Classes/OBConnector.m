@@ -27,6 +27,15 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 // -------------------------------------------------------------------------------------------
 #pragma mark Initializers
 
++ (id) sharedConnector {
+  id connector = [super sharedConnector];
+  if (![connector isKindOfClass: [OBConnector class]]) {
+    connector = [[[OBConnector alloc] init] autorelease];
+    [self setSharedConnector: connector];
+  }
+  return connector;
+}
+
 - (id) init {
   self = [super init];
   if (self) {

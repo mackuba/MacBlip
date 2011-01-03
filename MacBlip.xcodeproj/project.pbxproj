@@ -207,7 +207,6 @@
 		5821056211178FB00025DAF4 /* OBDashboardMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDashboardMonitor.m; sourceTree = "<group>"; };
 		5821056311178FB00025DAF4 /* OBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBMessage.h; sourceTree = "<group>"; };
 		5821056411178FB00025DAF4 /* OBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBMessage.m; sourceTree = "<group>"; };
-		5821056D11178FB00025DAF4 /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
 		5821058A11178FB00025DAF4 /* ObjectiveBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveBlip.h; sourceTree = "<group>"; };
 		582105BA111793B60025DAF4 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		582105C0111793C20025DAF4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -296,6 +295,7 @@
 		583BB31412D26D4D002AD442 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		583BB31612D26D4D002AD442 /* PSUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSUIExtensions.h; sourceTree = "<group>"; };
 		583BB31712D26D4D002AD442 /* PSUIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSUIExtensions.m; sourceTree = "<group>"; };
+		583BB36712D26EAE002AD442 /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -483,7 +483,6 @@
 			children = (
 				5897F1B6112DDD5D0029B4D9 /* Bridges */,
 				5821055C11178FB00025DAF4 /* Classes */,
-				5821056D11178FB00025DAF4 /* OBUtils.h */,
 				5821058A11178FB00025DAF4 /* ObjectiveBlip.h */,
 			);
 			path = ObjectiveBlip;
@@ -506,6 +505,7 @@
 				5871629B12B4EDA900830147 /* OBShortLink.m */,
 				5871629C12B4EDA900830147 /* OBUser.h */,
 				583421A3113043B8008938A9 /* OBUser.m */,
+				583BB36712D26EAE002AD442 /* OBUtils.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
