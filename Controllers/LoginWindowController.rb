@@ -33,7 +33,11 @@ class LoginWindowController < NSWindowController
     connector = OBConnector.sharedConnector
     connector.account.username = usernameField.stringValue
     connector.account.password = passwordField.stringValue
-    connector.authenticateRequest.sendFor(self)
+    authenticate
+  end
+
+  def authenticate
+    OBConnector.sharedConnector.authenticateRequest.sendFor(self, callback: 'authenticationSuccessful')
   end
 
   def reenableForm
@@ -46,16 +50,15 @@ class LoginWindowController < NSWindowController
     mbNotify :authenticationSuccessful
   end
 
-  def authenticationFailed
+  def authenticationFailedInRequest(request)
     reenableForm
     window.psShowAlertSheetWithTitle(tr("Error"), message: tr("Login or password is incorrect"))
   end
 
-  def requestFailedWithError(error)
+  def requestFailed(request, withError: error)
     if error.blipTimeoutError?
-      obprint "LoginWindowController: timeout problem, retrying"
-      request = OBConnector.sharedConnector.authenticateRequest
-      request.performSelector('sendFor:', withObject: self, afterDelay: ApplicationDelegate::BLIP_TIMEOUT_DELAY)
+      OBConnector.sharedConnector.log "LoginWindowController: timeout problem, retrying"
+      self.performSelector('authenticate', withObject: nil, afterDelay: ApplicationDelegate::BLIP_TIMEOUT_DELAY)
     else
       reenableForm
       window.psShowAlertSheetWithTitle(tr("Error"), message: error.localizedDescription)

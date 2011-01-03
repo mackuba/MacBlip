@@ -10,8 +10,7 @@
 */
 
 #import <Foundation/Foundation.h>
-#import "Constants.h"
-#import "PSModel.h"
+#import "OBUtils.h"
 
 @class OBUser;
 
@@ -44,9 +43,11 @@ typedef enum { OBStatusMessage, OBDirectedMessage, OBPrivateMessage, OBNoticeMes
 @property (nonatomic, retain) OBUser *recipient;
 @property (nonatomic) OBMessageType messageType;
 
++ (OBMessage *) messageWithBody: (NSString *) text;
 - (NSString *) url;
 - (void) setPictureData: (NSData *) data;
 - (BOOL) hasPicture;
 - (BOOL) hasPictureData;
+- (NSString *) pictureURL;
 
 @end

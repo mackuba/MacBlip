@@ -6,7 +6,6 @@
 // -------------------------------------------------------
 
 #import "MessageTextView.h"
-#import "PsiToolkit.h"
 
 @implementation MessageTextView
 

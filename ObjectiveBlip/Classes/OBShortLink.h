@@ -10,8 +10,7 @@
 */
 
 #import <Foundation/Foundation.h>
-#import "Constants.h"
-#import "PSModel.h"
+#import "OBUtils.h"
 
 @interface OBShortLink : PSModel {
   NSString *url;
@@ -24,5 +23,6 @@
 @property (nonatomic, copy) NSString *shortcode;
 
 + (OBShortLink *) shortLinkWithRdirUrl: (NSString *) url;
++ (OBShortLink *) shortLinkWithOriginalLink: (NSString *) url;
 
 @end

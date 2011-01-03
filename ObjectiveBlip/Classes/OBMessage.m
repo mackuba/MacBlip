@@ -7,7 +7,6 @@
 
 #import "OBMessage.h"
 #import "OBUser.h"
-#import "PsiToolkit.h"
 
 @implementation OBMessage
 
@@ -16,6 +15,16 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
 
 + (NSArray *) propertyList {
   return PSArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
+}
+
++ (NSString *) routeName {
+  return @"updates";
+}
+
++ (OBMessage *) messageWithBody: (NSString *) text {
+  OBMessage *message = [[OBMessage alloc] init];
+  message.body = text;
+  return [message autorelease];
 }
 
 - (id) init {
@@ -71,6 +80,10 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
   return ([self hasPicture] && [[pictures objectAtIndex: 0] objectForKey: @"data"] != nil);
 }
 
+- (NSString *) pictureURL {
+  return [[pictures objectAtIndex: 0] objectForKey: @"url"];
+}
+
 + (NSSet *) keyPathsForValuesAffectingHasPicture {
   return [NSSet setWithObject: @"pictures"];
 }
@@ -98,6 +111,10 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
 
 - (NSString *) description {
   return PSFormat(@"<OBMessage: user.login=%@, date=%@, body=\"%@\">", user.login, date, body);
+}
+
+- (NSString *) encodeToPostData {
+  return PSFormat(@"update[body]=%@", [body psStringWithPercentEscapesForFormValues]);
 }
 
 @end

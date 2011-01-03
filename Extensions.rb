@@ -6,10 +6,6 @@
 # -------------------------------------------------------
 
 module Kernel
-  def obprint(*args)
-    puts(*args) if OBConnector.loggingEnabled
-  end
-
   def tr(text)
     NSBundle.mainBundle.localizedStringForKey(text, value: text, table: nil)
   end
@@ -29,15 +25,6 @@ class NSError
 end
 
 class NSObject
-  def mbCatcher
-    begin
-      yield
-    rescue Exception => e
-      obprint e.backtrace
-      raise
-    end
-  end
-
   def mbObserve(sender, notification, selector = nil)
     selector ||= notification
     NSNotificationCenter.defaultCenter.addObserver(self, selector: selector, name: notification.to_s, object: sender)

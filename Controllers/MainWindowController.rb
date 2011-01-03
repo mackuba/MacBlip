@@ -128,11 +128,11 @@ class MainWindowController < NSWindowController
     error = notification.userInfo["error"]
     if error.blipTimeoutError?
       if OBMessage.list.empty?
-        obprint "MainWindowController: first dashboard update failed, retrying"
+        @blip.log "MainWindowController: first dashboard update failed, retrying"
         @blip.dashboardMonitor.performSelector('forceUpdate',
           withObject: nil, afterDelay: ApplicationDelegate::BLIP_TIMEOUT_DELAY)
       else
-        obprint "MainWindowController: dashboard update failed, ignoring"
+        @blip.log "MainWindowController: dashboard update failed, ignoring"
         showWarningBar
         @spinner.stopAnimation(self)
       end
@@ -144,13 +144,21 @@ class MainWindowController < NSWindowController
 
   def dashboardAuthFailed
     if OBMessage.list.empty?
-      NSApp.delegate.authenticationFailed
+      NSApp.delegate.authenticationFailedInRequest(nil)
     else
       @spinner.stopAnimation(self)
       @loadingView.psHide
       window.psShowAlertSheetWithTitle("Error",
         message: "Invalid username or password. Try to restart MacBlip and log in again…")
     end
+  end
+
+  def requestFailed(request, withError: error)
+    # link expand request failed - ignore
+  end
+
+  def authenticationFailedInRequest(request)
+    # link expand request failed - ignore
   end
 
   def newMessagePressed(sender)
@@ -191,12 +199,14 @@ class MainWindowController < NSWindowController
   def expandLink(link, message)
     unless LinkExpander.sharedLinkExpander.expand(link)
       shortLink = OBShortLink.shortLinkWithRdirUrl(link)
-      @blip.expandLinkRequest(shortLink, inMessage: message).sendFor(self) if shortLink
+      @blip.expandLinkRequest(shortLink, inMessage: message).sendFor(self, callback: 'linkExpanded:') if shortLink
     end
   end
 
-  def link shortUrl, inMessage: message, expandedTo: originalLink
-    LinkExpander.sharedLinkExpander.register(shortUrl, originalLink)
+  def linkExpanded(data)
+    shortlink = data['shortlink']
+    message = data['message']
+    LinkExpander.sharedLinkExpander.register(shortlink.url, shortlink.originalLink)
     message.refreshBody
   end
 

@@ -10,16 +10,13 @@
 */
 
 #import <Foundation/Foundation.h>
+#import "OBUtils.h"
 
-@interface OBAccount : NSObject {
+@interface OBAccount : PSAccount {
   BOOL loggedIn;
-  NSString *username;
-  NSString *password;
 }
 
 @property (nonatomic, getter=isLoggedIn) BOOL loggedIn;
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *password;
 
 - (BOOL) hasCredentials;
 

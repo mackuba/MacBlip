@@ -6,7 +6,6 @@
 // -------------------------------------------------------
 
 #import "MessageCell.h"
-#import "PsiToolkit.h"
 
 static NSColor *borderColor;
 static NSColor *backgroundColor;
@@ -61,7 +60,7 @@ static NSInteger labelPadding = 4;
   NSString *user = userLabel.stringValue;
   NSString *date = dateLabel.stringValue;
   CGFloat oldDateWidth = dateLabel.frame.size.width;
-  NSSize newDateSize = [date sizeWithAttributes: PSDict(dateLabel.font, NSFontAttributeName)];
+  NSSize newDateSize = [date sizeWithAttributes: PSHash(NSFontAttributeName, dateLabel.font)];
   CGFloat newDateWidth = newDateSize.width + labelPadding;
   CGFloat space = dateLabel.frame.origin.x + oldDateWidth - userLabel.frame.origin.x;
   NSRect frame;
@@ -72,12 +71,12 @@ static NSInteger labelPadding = 4;
   dateLabel.frame = frame;
 
   userLabel.font = userLabelFont;
-  NSSize newUserSize = [user sizeWithAttributes: PSDict(userLabelFont, NSFontAttributeName)];
+  NSSize newUserSize = [user sizeWithAttributes: PSHash(NSFontAttributeName, userLabelFont)];
   CGFloat newUserWidth = newUserSize.width + labelPadding;
 
   while (space - newDateWidth < newUserWidth) {
     userLabel.font = [NSFont fontWithName: userLabel.font.fontName size: userLabel.font.pointSize - 0.5];
-    NSSize size = [user sizeWithAttributes: PSDict(userLabel.font, NSFontAttributeName)];
+    NSSize size = [user sizeWithAttributes: PSHash(NSFontAttributeName, userLabel.font)];
     newUserWidth = size.width + labelPadding;
   }
 

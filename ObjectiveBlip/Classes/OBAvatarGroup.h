@@ -14,24 +14,23 @@
 #import <Foundation/Foundation.h>
 
 @class OBConnector;
-@class OBRequest;
+@class PSRequest;
 @class OBUser;
 
 @interface OBAvatarGroup : NSObject {
   NSArray *messages;
   NSInteger userCount;
-  OBRequest *request;
+  PSRequest *request;
   OBConnector *connector;
 }
 
 @property (nonatomic, readonly) NSArray *messages;
-@property (nonatomic, readonly) OBRequest *request;
+@property (nonatomic, readonly) PSRequest *request;
 
 - (id) initWithMessages: (NSArray *) messageList
-                request: (OBRequest *) obrequest
+                request: (PSRequest *) psrequest
               connector: (OBConnector *) obconnector;
 
 - (void) loadAvatars;
-- (void) avatarImageLoadedForUser: (OBUser *) user data: (NSData *) data;
 
 @end

@@ -6,7 +6,6 @@
 // -------------------------------------------------------
 
 #import "OBUser.h"
-#import "PsiToolkit.h"
 
 static NSMutableDictionary *loginIndex;
 static NSData *defaultAvatarData;

@@ -44,12 +44,6 @@
 
 /* Begin PBXBuildFile section */
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
-		58075E871194C11500BF1772 /* PSCocoaExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E771194C11400BF1772 /* PSCocoaExtensions.m */; };
-		58075E881194C11500BF1772 /* PSFoundationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E791194C11400BF1772 /* PSFoundationExtensions.m */; };
-		58075E891194C11500BF1772 /* PSIntArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E7B1194C11400BF1772 /* PSIntArray.m */; };
-		58075E8A1194C11500BF1772 /* PSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E7F1194C11400BF1772 /* PSModel.m */; };
-		58075E8B1194C11500BF1772 /* PSModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E811194C11400BF1772 /* PSModelManager.m */; };
-		58075E8C1194C11500BF1772 /* PSPathBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 58075E831194C11400BF1772 /* PSPathBuilder.m */; };
 		580A6D30127F2A060078439A /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D2F127F2A060078439A /* MessageTextView.m */; };
 		580A6D3B127F310F0078439A /* AvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D3A127F310F0078439A /* AvatarView.m */; };
 		580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D45127F32AF0078439A /* MessagePictureView.m */; };
@@ -59,7 +53,6 @@
 		5821058C11178FB00025DAF4 /* OBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056011178FB00025DAF4 /* OBConnector.m */; };
 		5821058D11178FB00025DAF4 /* OBDashboardMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056211178FB00025DAF4 /* OBDashboardMonitor.m */; };
 		5821058E11178FB00025DAF4 /* OBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056411178FB00025DAF4 /* OBMessage.m */; };
-		5821059111178FB00025DAF4 /* OBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821056A11178FB00025DAF4 /* OBRequest.m */; };
 		5821059411178FB00025DAF4 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821057311178FB00025DAF4 /* ASIFormDataRequest.m */; };
 		5821059511178FB00025DAF4 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821057511178FB00025DAF4 /* ASIHTTPRequest.m */; };
 		5821059611178FB00025DAF4 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5821057811178FB00025DAF4 /* ASIInputStream.m */; };
@@ -75,12 +68,37 @@
 		583421A4113043B8008938A9 /* OBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 583421A3113043B8008938A9 /* OBUser.m */; };
 		5834229811306E7E008938A9 /* NewMessageDialogController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5834229711306E7E008938A9 /* NewMessageDialogController.rb */; };
 		583422CD113083BA008938A9 /* NewMessageDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583422CC113083BA008938A9 /* NewMessageDialog.xib */; };
+		583BA1A112CB63BD002AD442 /* SDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 583BA1A012CB63BD002AD442 /* SDKeychain.m */; };
+		583BA23112CB6D23002AD442 /* YAJL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5872F27A12CA806500162208 /* YAJL.framework */; };
+		583BA55112CB9162002AD442 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5872F27A12CA806500162208 /* YAJL.framework */; };
+		583BAFC712D11216002AD442 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583BAFC612D11216002AD442 /* Security.framework */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
 		5871629D12B4EDA900830147 /* OBShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871629B12B4EDA900830147 /* OBShortLink.m */; };
-		5872F27B12CA806500162208 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5872F27A12CA806500162208 /* YAJL.framework */; };
+		5872F20B12CA703B00162208 /* PSFoundationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1DC12CA703B00162208 /* PSFoundationExtensions.m */; };
+		5872F20C12CA703B00162208 /* PSIntArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1DE12CA703B00162208 /* PSIntArray.m */; };
+		5872F20D12CA703B00162208 /* PSCocoaExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E112CA703B00162208 /* PSCocoaExtensions.bridgesupport */; };
+		5872F20E12CA703B00162208 /* PSFoundationExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E212CA703B00162208 /* PSFoundationExtensions.bridgesupport */; };
+		5872F20F12CA703B00162208 /* PSIntArray.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E312CA703B00162208 /* PSIntArray.bridgesupport */; };
+		5872F21012CA703B00162208 /* PsiToolkit.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E412CA703B00162208 /* PsiToolkit.bridgesupport */; };
+		5872F21112CA703B00162208 /* PSMacros.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E512CA703B00162208 /* PSMacros.bridgesupport */; };
+		5872F21212CA703B00162208 /* PSModel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E612CA703B00162208 /* PSModel.bridgesupport */; };
+		5872F21312CA703B00162208 /* PSModelManager.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E712CA703B00162208 /* PSModelManager.bridgesupport */; };
+		5872F21412CA703B00162208 /* PSPathBuilder.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5872F1E812CA703B00162208 /* PSPathBuilder.bridgesupport */; };
+		5872F21612CA703B00162208 /* PSCocoaExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1EC12CA703B00162208 /* PSCocoaExtensions.m */; };
+		5872F21712CA703B00162208 /* PSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1EF12CA703B00162208 /* PSAccount.m */; };
+		5872F21812CA703B00162208 /* PSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1F112CA703B00162208 /* PSModel.m */; };
+		5872F21912CA703B00162208 /* PSModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1F312CA703B00162208 /* PSModelManager.m */; };
+		5872F21A12CA703B00162208 /* PSConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1F612CA703B00162208 /* PSConnector.m */; };
+		5872F21B12CA703B00162208 /* PSPathBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1FA12CA703B00162208 /* PSPathBuilder.m */; };
+		5872F21C12CA703B00162208 /* PSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1FC12CA703B00162208 /* PSRequest.m */; };
+		5872F21D12CA703B00162208 /* PSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F1FE12CA703B00162208 /* PSResponse.m */; };
+		5872F21E12CA703B00162208 /* PSRestRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F20012CA703B00162208 /* PSRestRouter.m */; };
+		5872F21F12CA703B00162208 /* PSSecurityExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F20512CA703B00162208 /* PSSecurityExtensions.m */; };
+		5872F22012CA703B00162208 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F20712CA703B00162208 /* SFHFKeychainUtils.m */; };
+		5872F22112CA703B00162208 /* PSUIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5872F20A12CA703B00162208 /* PSUIExtensions.m */; };
 		5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5883BD9C113D832C00F72D34 /* macblip_icon_80.png */; };
 		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
 		5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897EFA51129C9530029B4D9 /* SDKVO.m */; };
@@ -89,8 +107,6 @@
 		5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EFBC1129C9E90029B4D9 /* Quartz.framework */; };
 		5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F02F112C76650029B4D9 /* MessageCellController.rb */; };
 		5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F031112C766F0029B4D9 /* MessageCell.xib */; };
-		5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897F162112DCB180029B4D9 /* SDKeychain.m */; };
-		5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897F16A112DCB480029B4D9 /* Security.framework */; };
 		5897F1C2112DDD5D0029B4D9 /* Constants.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */; };
 		5897F1C3112DDD5D0029B4D9 /* OBAccount.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */; };
 		5897F1C4112DDD5D0029B4D9 /* OBConnector.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */; };
@@ -132,15 +148,6 @@
 		58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E6E7101133404C00B97529 /* OBAvatarGroup.m */; };
 		58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */; };
 		58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */; };
-		58FEDD2A11A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */; };
-		58FEDD2B11A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */; };
-		58FEDD2C11A9756500FDE3A8 /* PSIntArray.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */; };
-		58FEDD2D11A9756500FDE3A8 /* PsiToolkit.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */; };
-		58FEDD2E11A9756500FDE3A8 /* PSMacros.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */; };
-		58FEDD2F11A9756500FDE3A8 /* PSModel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */; };
-		58FEDD3011A9756500FDE3A8 /* PSModelManager.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */; };
-		58FEDD3111A9756500FDE3A8 /* PSPathBuilder.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */; };
-		58FEDD3211A9756500FDE3A8 /* PSUIExtensions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -153,6 +160,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				583BA23112CB6D23002AD442 /* YAJL.framework in CopyFiles */,
 				583420D2113003DA008938A9 /* Growl.framework in CopyFiles */,
 				58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */,
 			);
@@ -170,20 +178,6 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4DE339F60D74FCDD00ADB6EE /* rb_main.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
-		58075E761194C11400BF1772 /* PSCocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCocoaExtensions.h; sourceTree = "<group>"; };
-		58075E771194C11400BF1772 /* PSCocoaExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCocoaExtensions.m; sourceTree = "<group>"; };
-		58075E781194C11400BF1772 /* PSFoundationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFoundationExtensions.h; sourceTree = "<group>"; };
-		58075E791194C11400BF1772 /* PSFoundationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFoundationExtensions.m; sourceTree = "<group>"; };
-		58075E7A1194C11400BF1772 /* PSIntArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSIntArray.h; sourceTree = "<group>"; };
-		58075E7B1194C11400BF1772 /* PSIntArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSIntArray.m; sourceTree = "<group>"; };
-		58075E7C1194C11400BF1772 /* PsiToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsiToolkit.h; sourceTree = "<group>"; };
-		58075E7D1194C11400BF1772 /* PSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacros.h; sourceTree = "<group>"; };
-		58075E7E1194C11400BF1772 /* PSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSModel.h; sourceTree = "<group>"; };
-		58075E7F1194C11400BF1772 /* PSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModel.m; sourceTree = "<group>"; };
-		58075E801194C11400BF1772 /* PSModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSModelManager.h; sourceTree = "<group>"; };
-		58075E811194C11400BF1772 /* PSModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModelManager.m; sourceTree = "<group>"; };
-		58075E821194C11400BF1772 /* PSPathBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPathBuilder.h; sourceTree = "<group>"; };
-		58075E831194C11400BF1772 /* PSPathBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPathBuilder.m; sourceTree = "<group>"; };
 		580A6D2E127F2A060078439A /* MessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTextView.h; sourceTree = "<group>"; };
 		580A6D2F127F2A060078439A /* MessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTextView.m; sourceTree = "<group>"; };
 		580A6D39127F310F0078439A /* AvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarView.h; sourceTree = "<group>"; };
@@ -201,9 +195,7 @@
 		5821056211178FB00025DAF4 /* OBDashboardMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDashboardMonitor.m; sourceTree = "<group>"; };
 		5821056311178FB00025DAF4 /* OBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBMessage.h; sourceTree = "<group>"; };
 		5821056411178FB00025DAF4 /* OBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBMessage.m; sourceTree = "<group>"; };
-		5821056911178FB00025DAF4 /* OBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRequest.h; sourceTree = "<group>"; };
-		5821056A11178FB00025DAF4 /* OBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRequest.m; sourceTree = "<group>"; };
-		5821056D11178FB00025DAF4 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5821056D11178FB00025DAF4 /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
 		5821057211178FB00025DAF4 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
 		5821057311178FB00025DAF4 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
 		5821057411178FB00025DAF4 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
@@ -231,6 +223,11 @@
 		583421A3113043B8008938A9 /* OBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUser.m; sourceTree = "<group>"; };
 		5834229211306A9F008938A9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/NewMessageDialog.xib; sourceTree = "<group>"; };
 		5834229711306E7E008938A9 /* NewMessageDialogController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = NewMessageDialogController.rb; sourceTree = "<group>"; };
+		583BA19F12CB63BD002AD442 /* SDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKeychain.h; sourceTree = "<group>"; };
+		583BA1A012CB63BD002AD442 /* SDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeychain.m; sourceTree = "<group>"; };
+		583BAF7A12D111D6002AD442 /* PSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConstants.h; sourceTree = "<group>"; };
+		583BAF7B12D111D6002AD442 /* PSDependencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDependencies.h; sourceTree = "<group>"; };
+		583BAFC612D11216002AD442 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -238,6 +235,48 @@
 		5871629A12B4EDA900830147 /* OBShortLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShortLink.h; sourceTree = "<group>"; };
 		5871629B12B4EDA900830147 /* OBShortLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShortLink.m; sourceTree = "<group>"; };
 		5871629C12B4EDA900830147 /* OBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUser.h; sourceTree = "<group>"; };
+		5872F1DB12CA703B00162208 /* PSFoundationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFoundationExtensions.h; sourceTree = "<group>"; };
+		5872F1DC12CA703B00162208 /* PSFoundationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFoundationExtensions.m; sourceTree = "<group>"; };
+		5872F1DD12CA703B00162208 /* PSIntArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSIntArray.h; sourceTree = "<group>"; };
+		5872F1DE12CA703B00162208 /* PSIntArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSIntArray.m; sourceTree = "<group>"; };
+		5872F1DF12CA703B00162208 /* PSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMacros.h; sourceTree = "<group>"; };
+		5872F1E112CA703B00162208 /* PSCocoaExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSCocoaExtensions.bridgesupport; sourceTree = "<group>"; };
+		5872F1E212CA703B00162208 /* PSFoundationExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSFoundationExtensions.bridgesupport; sourceTree = "<group>"; };
+		5872F1E312CA703B00162208 /* PSIntArray.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSIntArray.bridgesupport; sourceTree = "<group>"; };
+		5872F1E412CA703B00162208 /* PsiToolkit.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PsiToolkit.bridgesupport; sourceTree = "<group>"; };
+		5872F1E512CA703B00162208 /* PSMacros.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSMacros.bridgesupport; sourceTree = "<group>"; };
+		5872F1E612CA703B00162208 /* PSModel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModel.bridgesupport; sourceTree = "<group>"; };
+		5872F1E712CA703B00162208 /* PSModelManager.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModelManager.bridgesupport; sourceTree = "<group>"; };
+		5872F1E812CA703B00162208 /* PSPathBuilder.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSPathBuilder.bridgesupport; sourceTree = "<group>"; };
+		5872F1EB12CA703B00162208 /* PSCocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCocoaExtensions.h; sourceTree = "<group>"; };
+		5872F1EC12CA703B00162208 /* PSCocoaExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCocoaExtensions.m; sourceTree = "<group>"; };
+		5872F1EE12CA703B00162208 /* PSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAccount.h; sourceTree = "<group>"; };
+		5872F1EF12CA703B00162208 /* PSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAccount.m; sourceTree = "<group>"; };
+		5872F1F012CA703B00162208 /* PSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSModel.h; sourceTree = "<group>"; };
+		5872F1F112CA703B00162208 /* PSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModel.m; sourceTree = "<group>"; };
+		5872F1F212CA703B00162208 /* PSModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSModelManager.h; sourceTree = "<group>"; };
+		5872F1F312CA703B00162208 /* PSModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSModelManager.m; sourceTree = "<group>"; };
+		5872F1F512CA703B00162208 /* PSConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConnector.h; sourceTree = "<group>"; };
+		5872F1F612CA703B00162208 /* PSConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSConnector.m; sourceTree = "<group>"; };
+		5872F1F712CA703B00162208 /* PSConnectorAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConnectorAccount.h; sourceTree = "<group>"; };
+		5872F1F812CA703B00162208 /* PSConnectorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSConnectorDelegate.h; sourceTree = "<group>"; };
+		5872F1F912CA703B00162208 /* PSPathBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPathBuilder.h; sourceTree = "<group>"; };
+		5872F1FA12CA703B00162208 /* PSPathBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPathBuilder.m; sourceTree = "<group>"; };
+		5872F1FB12CA703B00162208 /* PSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSRequest.h; sourceTree = "<group>"; };
+		5872F1FC12CA703B00162208 /* PSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSRequest.m; sourceTree = "<group>"; };
+		5872F1FD12CA703B00162208 /* PSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSResponse.h; sourceTree = "<group>"; };
+		5872F1FE12CA703B00162208 /* PSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSResponse.m; sourceTree = "<group>"; };
+		5872F1FF12CA703B00162208 /* PSRestRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSRestRouter.h; sourceTree = "<group>"; };
+		5872F20012CA703B00162208 /* PSRestRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSRestRouter.m; sourceTree = "<group>"; };
+		5872F20112CA703B00162208 /* PSRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSRouter.h; sourceTree = "<group>"; };
+		5872F20212CA703B00162208 /* PsiToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsiToolkit.h; sourceTree = "<group>"; };
+		5872F20412CA703B00162208 /* PSSecurityExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSSecurityExtensions.h; sourceTree = "<group>"; };
+		5872F20512CA703B00162208 /* PSSecurityExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSSecurityExtensions.m; sourceTree = "<group>"; };
+		5872F20612CA703B00162208 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		5872F20712CA703B00162208 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		5872F20912CA703B00162208 /* PSUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSUIExtensions.h; sourceTree = "<group>"; };
+		5872F20A12CA703B00162208 /* PSUIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSUIExtensions.m; sourceTree = "<group>"; };
+		5872F23312CA7F3700162208 /* MacBlip_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacBlip_Prefix.pch; sourceTree = "<group>"; };
 		5872F27A12CA806500162208 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
 		5883BD9C113D832C00F72D34 /* macblip_icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macblip_icon_80.png; sourceTree = "<group>"; };
 		5897EF461129C3750029B4D9 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
@@ -252,9 +291,6 @@
 		5897EFBC1129C9E90029B4D9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		5897F02F112C76650029B4D9 /* MessageCellController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCellController.rb; sourceTree = "<group>"; };
 		5897F032112C766F0029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MessageCell.xib; sourceTree = "<group>"; };
-		5897F161112DCB180029B4D9 /* SDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKeychain.h; sourceTree = "<group>"; };
-		5897F162112DCB180029B4D9 /* SDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeychain.m; sourceTree = "<group>"; };
-		5897F16A112DCB480029B4D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Constants.bridgesupport; sourceTree = "<group>"; };
 		5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAccount.bridgesupport; sourceTree = "<group>"; };
 		5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBConnector.bridgesupport; sourceTree = "<group>"; };
@@ -300,15 +336,6 @@
 		58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = AboutWindowController.rb; sourceTree = "<group>"; };
 		58FBAA07117A338A00D1D323 /* NSImage+MGCropExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MGCropExtensions.h"; sourceTree = "<group>"; };
 		58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MGCropExtensions.m"; sourceTree = "<group>"; };
-		58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSCocoaExtensions.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSFoundationExtensions.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSIntArray.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PsiToolkit.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSMacros.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModel.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSModelManager.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSPathBuilder.bridgesupport; sourceTree = "<group>"; };
-		58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PSUIExtensions.bridgesupport; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MacBlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacBlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -323,10 +350,10 @@
 				582105C1111793C20025DAF4 /* SystemConfiguration.framework in Frameworks */,
 				5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */,
 				5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */,
-				5897F16B112DCB480029B4D9 /* Security.framework in Frameworks */,
 				583420A91130031E008938A9 /* Growl.framework in Frameworks */,
 				58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */,
-				5872F27B12CA806500162208 /* YAJL.framework in Frameworks */,
+				583BA55112CB9162002AD442 /* YAJL.framework in Frameworks */,
+				583BAFC712D11216002AD442 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +368,7 @@
 				582105C0111793C20025DAF4 /* SystemConfiguration.framework */,
 				5897EF461129C3750029B4D9 /* MacRuby.framework */,
 				5897EFBC1129C9E90029B4D9 /* Quartz.framework */,
-				5897F16A112DCB480029B4D9 /* Security.framework */,
+				583BAFC612D11216002AD442 /* Security.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -398,6 +425,7 @@
 				4DE339F60D74FCDD00ADB6EE /* rb_main.rb */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */,
+				5872F23312CA7F3700162208 /* MacBlip_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -428,23 +456,17 @@
 		58075E751194C11400BF1772 /* PsiToolkit */ = {
 			isa = PBXGroup;
 			children = (
-				58FEDD2011A9756500FDE3A8 /* Bridges */,
-				58075E761194C11400BF1772 /* PSCocoaExtensions.h */,
-				58075E771194C11400BF1772 /* PSCocoaExtensions.m */,
-				58075E781194C11400BF1772 /* PSFoundationExtensions.h */,
-				58075E791194C11400BF1772 /* PSFoundationExtensions.m */,
-				58075E7A1194C11400BF1772 /* PSIntArray.h */,
-				58075E7B1194C11400BF1772 /* PSIntArray.m */,
-				58075E7C1194C11400BF1772 /* PsiToolkit.h */,
-				58075E7D1194C11400BF1772 /* PSMacros.h */,
-				58075E7E1194C11400BF1772 /* PSModel.h */,
-				58075E7F1194C11400BF1772 /* PSModel.m */,
-				58075E801194C11400BF1772 /* PSModelManager.h */,
-				58075E811194C11400BF1772 /* PSModelManager.m */,
-				58075E821194C11400BF1772 /* PSPathBuilder.h */,
-				58075E831194C11400BF1772 /* PSPathBuilder.m */,
+				5872F1DA12CA703B00162208 /* Base */,
+				5872F1E012CA703B00162208 /* Bridges */,
+				5872F1EA12CA703B00162208 /* Cocoa */,
+				5872F1ED12CA703B00162208 /* Models */,
+				5872F1F412CA703B00162208 /* Network */,
+				5872F20212CA703B00162208 /* PsiToolkit.h */,
+				5872F20312CA703B00162208 /* Security */,
+				5872F20812CA703B00162208 /* UIKit */,
 			);
-			path = PsiToolkit;
+			name = PsiToolkit;
+			path = ../../../../PsiToolkit;
 			sourceTree = "<group>";
 		};
 		5821055B11178F990025DAF4 /* ObjectiveBlip */ = {
@@ -453,7 +475,7 @@
 				5897F1B6112DDD5D0029B4D9 /* Bridges */,
 				5821055C11178FB00025DAF4 /* Classes */,
 				5821056E11178FB00025DAF4 /* Lib */,
-				5821056D11178FB00025DAF4 /* Constants.h */,
+				5821056D11178FB00025DAF4 /* OBUtils.h */,
 				5821058A11178FB00025DAF4 /* ObjectiveBlip.h */,
 			);
 			path = ObjectiveBlip;
@@ -472,8 +494,6 @@
 				5821056211178FB00025DAF4 /* OBDashboardMonitor.m */,
 				5821056311178FB00025DAF4 /* OBMessage.h */,
 				5821056411178FB00025DAF4 /* OBMessage.m */,
-				5821056911178FB00025DAF4 /* OBRequest.h */,
-				5821056A11178FB00025DAF4 /* OBRequest.m */,
 				5871629A12B4EDA900830147 /* OBShortLink.h */,
 				5871629B12B4EDA900830147 /* OBShortLink.m */,
 				5871629C12B4EDA900830147 /* OBUser.h */,
@@ -559,11 +579,103 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5872F1DA12CA703B00162208 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				583BAF7A12D111D6002AD442 /* PSConstants.h */,
+				583BAF7B12D111D6002AD442 /* PSDependencies.h */,
+				5872F1DB12CA703B00162208 /* PSFoundationExtensions.h */,
+				5872F1DC12CA703B00162208 /* PSFoundationExtensions.m */,
+				5872F1DD12CA703B00162208 /* PSIntArray.h */,
+				5872F1DE12CA703B00162208 /* PSIntArray.m */,
+				5872F1DF12CA703B00162208 /* PSMacros.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5872F1E012CA703B00162208 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				5872F1E112CA703B00162208 /* PSCocoaExtensions.bridgesupport */,
+				5872F1E212CA703B00162208 /* PSFoundationExtensions.bridgesupport */,
+				5872F1E312CA703B00162208 /* PSIntArray.bridgesupport */,
+				5872F1E412CA703B00162208 /* PsiToolkit.bridgesupport */,
+				5872F1E512CA703B00162208 /* PSMacros.bridgesupport */,
+				5872F1E612CA703B00162208 /* PSModel.bridgesupport */,
+				5872F1E712CA703B00162208 /* PSModelManager.bridgesupport */,
+				5872F1E812CA703B00162208 /* PSPathBuilder.bridgesupport */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
+		5872F1EA12CA703B00162208 /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				5872F1EB12CA703B00162208 /* PSCocoaExtensions.h */,
+				5872F1EC12CA703B00162208 /* PSCocoaExtensions.m */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
+		5872F1ED12CA703B00162208 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5872F1EE12CA703B00162208 /* PSAccount.h */,
+				5872F1EF12CA703B00162208 /* PSAccount.m */,
+				5872F1F012CA703B00162208 /* PSModel.h */,
+				5872F1F112CA703B00162208 /* PSModel.m */,
+				5872F1F212CA703B00162208 /* PSModelManager.h */,
+				5872F1F312CA703B00162208 /* PSModelManager.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5872F1F412CA703B00162208 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5872F1F512CA703B00162208 /* PSConnector.h */,
+				5872F1F612CA703B00162208 /* PSConnector.m */,
+				5872F1F712CA703B00162208 /* PSConnectorAccount.h */,
+				5872F1F812CA703B00162208 /* PSConnectorDelegate.h */,
+				5872F1F912CA703B00162208 /* PSPathBuilder.h */,
+				5872F1FA12CA703B00162208 /* PSPathBuilder.m */,
+				5872F1FB12CA703B00162208 /* PSRequest.h */,
+				5872F1FC12CA703B00162208 /* PSRequest.m */,
+				5872F1FD12CA703B00162208 /* PSResponse.h */,
+				5872F1FE12CA703B00162208 /* PSResponse.m */,
+				5872F1FF12CA703B00162208 /* PSRestRouter.h */,
+				5872F20012CA703B00162208 /* PSRestRouter.m */,
+				5872F20112CA703B00162208 /* PSRouter.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5872F20312CA703B00162208 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				5872F20412CA703B00162208 /* PSSecurityExtensions.h */,
+				5872F20512CA703B00162208 /* PSSecurityExtensions.m */,
+				583BA19F12CB63BD002AD442 /* SDKeychain.h */,
+				583BA1A012CB63BD002AD442 /* SDKeychain.m */,
+				5872F20612CA703B00162208 /* SFHFKeychainUtils.h */,
+				5872F20712CA703B00162208 /* SFHFKeychainUtils.m */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		5872F20812CA703B00162208 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				5872F20912CA703B00162208 /* PSUIExtensions.h */,
+				5872F20A12CA703B00162208 /* PSUIExtensions.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		5897EFA11129C93C0029B4D9 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
 				58FBAA06117A338A00D1D323 /* ImageCrop */,
-				5897F15F112DCB180029B4D9 /* SDKeychain */,
 				5897EFA21129C9530029B4D9 /* SDKVO */,
 				5897EFA61129C9530029B4D9 /* SDListView */,
 				583420A81130031E008938A9 /* Growl.framework */,
@@ -593,15 +705,6 @@
 				5897EFAD1129C9530029B4D9 /* SDListViewItem.m */,
 			);
 			path = SDListView;
-			sourceTree = "<group>";
-		};
-		5897F15F112DCB180029B4D9 /* SDKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				5897F161112DCB180029B4D9 /* SDKeychain.h */,
-				5897F162112DCB180029B4D9 /* SDKeychain.m */,
-			);
-			path = SDKeychain;
 			sourceTree = "<group>";
 		};
 		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
@@ -665,22 +768,6 @@
 				58FBAA08117A338A00D1D323 /* NSImage+MGCropExtensions.m */,
 			);
 			path = ImageCrop;
-			sourceTree = "<group>";
-		};
-		58FEDD2011A9756500FDE3A8 /* Bridges */ = {
-			isa = PBXGroup;
-			children = (
-				58FEDD2111A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport */,
-				58FEDD2211A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport */,
-				58FEDD2311A9756500FDE3A8 /* PSIntArray.bridgesupport */,
-				58FEDD2411A9756500FDE3A8 /* PsiToolkit.bridgesupport */,
-				58FEDD2511A9756500FDE3A8 /* PSMacros.bridgesupport */,
-				58FEDD2611A9756500FDE3A8 /* PSModel.bridgesupport */,
-				58FEDD2711A9756500FDE3A8 /* PSModelManager.bridgesupport */,
-				58FEDD2811A9756500FDE3A8 /* PSPathBuilder.bridgesupport */,
-				58FEDD2911A9756500FDE3A8 /* PSUIExtensions.bridgesupport */,
-			);
-			path = Bridges;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -787,18 +874,17 @@
 				58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */,
 				58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */,
 				58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */,
-				58FEDD2A11A9756500FDE3A8 /* PSCocoaExtensions.bridgesupport in Resources */,
-				58FEDD2B11A9756500FDE3A8 /* PSFoundationExtensions.bridgesupport in Resources */,
-				58FEDD2C11A9756500FDE3A8 /* PSIntArray.bridgesupport in Resources */,
-				58FEDD2D11A9756500FDE3A8 /* PsiToolkit.bridgesupport in Resources */,
-				58FEDD2E11A9756500FDE3A8 /* PSMacros.bridgesupport in Resources */,
-				58FEDD2F11A9756500FDE3A8 /* PSModel.bridgesupport in Resources */,
-				58FEDD3011A9756500FDE3A8 /* PSModelManager.bridgesupport in Resources */,
-				58FEDD3111A9756500FDE3A8 /* PSPathBuilder.bridgesupport in Resources */,
-				58FEDD3211A9756500FDE3A8 /* PSUIExtensions.bridgesupport in Resources */,
 				589B867412B50D4F00516FA2 /* ajax-loader.gif in Resources */,
 				589B878E12B52DEE00516FA2 /* LinkExpander.rb in Resources */,
 				589B893512B56B5A00516FA2 /* Credits.html in Resources */,
+				5872F20D12CA703B00162208 /* PSCocoaExtensions.bridgesupport in Resources */,
+				5872F20E12CA703B00162208 /* PSFoundationExtensions.bridgesupport in Resources */,
+				5872F20F12CA703B00162208 /* PSIntArray.bridgesupport in Resources */,
+				5872F21012CA703B00162208 /* PsiToolkit.bridgesupport in Resources */,
+				5872F21112CA703B00162208 /* PSMacros.bridgesupport in Resources */,
+				5872F21212CA703B00162208 /* PSModel.bridgesupport in Resources */,
+				5872F21312CA703B00162208 /* PSModelManager.bridgesupport in Resources */,
+				5872F21412CA703B00162208 /* PSPathBuilder.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,7 +942,6 @@
 				5821058C11178FB00025DAF4 /* OBConnector.m in Sources */,
 				5821058D11178FB00025DAF4 /* OBDashboardMonitor.m in Sources */,
 				5821058E11178FB00025DAF4 /* OBMessage.m in Sources */,
-				5821059111178FB00025DAF4 /* OBRequest.m in Sources */,
 				5821059411178FB00025DAF4 /* ASIFormDataRequest.m in Sources */,
 				5821059511178FB00025DAF4 /* ASIHTTPRequest.m in Sources */,
 				5821059611178FB00025DAF4 /* ASIInputStream.m in Sources */,
@@ -865,21 +950,29 @@
 				5897EFAF1129C9530029B4D9 /* SDKVO.m in Sources */,
 				5897EFB11129C9530029B4D9 /* SDListView.m in Sources */,
 				5897EFB21129C9530029B4D9 /* SDListViewItem.m in Sources */,
-				5897F164112DCB180029B4D9 /* SDKeychain.m in Sources */,
 				583421A4113043B8008938A9 /* OBUser.m in Sources */,
 				58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */,
 				58FBAA09117A338A00D1D323 /* NSImage+MGCropExtensions.m in Sources */,
-				58075E871194C11500BF1772 /* PSCocoaExtensions.m in Sources */,
-				58075E881194C11500BF1772 /* PSFoundationExtensions.m in Sources */,
-				58075E891194C11500BF1772 /* PSIntArray.m in Sources */,
-				58075E8A1194C11500BF1772 /* PSModel.m in Sources */,
-				58075E8B1194C11500BF1772 /* PSModelManager.m in Sources */,
-				58075E8C1194C11500BF1772 /* PSPathBuilder.m in Sources */,
 				580A6D30127F2A060078439A /* MessageTextView.m in Sources */,
 				580A6D3B127F310F0078439A /* AvatarView.m in Sources */,
 				580A6D46127F32AF0078439A /* MessagePictureView.m in Sources */,
 				580A6FA1127F5E390078439A /* MessageCell.m in Sources */,
 				5871629D12B4EDA900830147 /* OBShortLink.m in Sources */,
+				5872F20B12CA703B00162208 /* PSFoundationExtensions.m in Sources */,
+				5872F20C12CA703B00162208 /* PSIntArray.m in Sources */,
+				5872F21612CA703B00162208 /* PSCocoaExtensions.m in Sources */,
+				5872F21712CA703B00162208 /* PSAccount.m in Sources */,
+				5872F21812CA703B00162208 /* PSModel.m in Sources */,
+				5872F21912CA703B00162208 /* PSModelManager.m in Sources */,
+				5872F21A12CA703B00162208 /* PSConnector.m in Sources */,
+				5872F21B12CA703B00162208 /* PSPathBuilder.m in Sources */,
+				5872F21C12CA703B00162208 /* PSRequest.m in Sources */,
+				5872F21D12CA703B00162208 /* PSResponse.m in Sources */,
+				5872F21E12CA703B00162208 /* PSRestRouter.m in Sources */,
+				5872F21F12CA703B00162208 /* PSSecurityExtensions.m in Sources */,
+				5872F22012CA703B00162208 /* SFHFKeychainUtils.m in Sources */,
+				5872F22112CA703B00162208 /* PSUIExtensions.m in Sources */,
+				583BA1A112CB63BD002AD442 /* SDKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1130,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MacBlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-DDEBUG";
@@ -1057,6 +1151,7 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MacBlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "";

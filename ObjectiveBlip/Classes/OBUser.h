@@ -9,7 +9,7 @@
   OBUser - represents a Blip user
 */
 
-#import "PSModel.h"
+#import "OBUtils.h"
 
 @interface OBUser : PSModel {
   NSString *login;

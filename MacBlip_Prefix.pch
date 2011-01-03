@@ -1,0 +1,10 @@
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+
+#define PSITOOLKIT_ENABLE_COCOA
+#define PSITOOLKIT_ENABLE_MODELS
+#define PSITOOLKIT_ENABLE_NETWORK
+#define PSITOOLKIT_ENABLE_SECURITY
+#define PSITOOLKIT_USE_YAJL
+#import "PsiToolkit.h"
+#endif

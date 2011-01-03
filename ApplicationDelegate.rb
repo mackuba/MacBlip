@@ -7,7 +7,6 @@
 
 class ApplicationDelegate
 
-  USERNAME_KEY = "account.username"
   LOGGING_KEY = "objectiveblip.forceLogging"
   BLIP_TIMEOUT_DELAY = 5.0
   FAILED_CONNECTION_DELAY = 15.0
@@ -18,25 +17,29 @@ class ApplicationDelegate
   def awakeFromNib
     GrowlApplicationBridge.growlDelegate = ""
     FilesController.clearPicturesCache
-    @blip = OBConnector.sharedConnector
+
+    @blip = OBConnector.sharedConnector = OBConnector.new
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
     @blip.initialDashboardFetch = 30
+    @blip.account = OBAccount.accountFromSettings
+    @blip.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
+    # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
+
     initMidnightTimer
     initTooltips
-
-    # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
-    OBConnector.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
-
-    loadLoginAndPassword
 
     if @blip.account.hasCredentials
       createMainWindow
       restoreMainWindow
-      @blip.authenticateRequest.sendFor(self)
+      authenticate
     else
       showLoginWindow
     end
+  end
+
+  def authenticate
+    @blip.authenticateRequest.sendFor(self, callback: 'authenticationSuccessful')
   end
 
   def createMainWindow
@@ -113,34 +116,12 @@ class ApplicationDelegate
     @mainWindowController.listView.viewDidEndLiveResize
   end
 
-
-  # settings
-
-  def loadLoginAndPassword
-    user = @blip.account
-    user.username = NSUserDefaults.standardUserDefaults.objectForKey(USERNAME_KEY)
-    user.password = SDKeychain.securePasswordForIdentifier(user.username) if user.username
-  end
-
-  def saveLoginAndPassword
-    SDKeychain.setSecurePassword(@blip.account.password, forIdentifier: @blip.account.username)
-    NSUserDefaults.standardUserDefaults.setObject(@blip.account.username, forKey: USERNAME_KEY)
-  end
-
-  def clearLoginAndPassword
-    SDKeychain.setSecurePassword(nil, forIdentifier: @blip.account.username)
-    NSUserDefaults.standardUserDefaults.removeObjectForKey(USERNAME_KEY)
-    @blip.account.username = nil
-    @blip.account.password = nil
-  end
-
-
   # authentication
 
   def firstLoginSuccessful
     mbStopObserving(@loginDialog, :authenticationSuccessful)
     @loginDialog.close
-    saveLoginAndPassword
+    @blip.account.save
     createMainWindow
     authenticationSuccessful
   end
@@ -152,24 +133,24 @@ class ApplicationDelegate
     @blip.dashboardMonitor.startMonitoring
   end
 
-  def authenticationFailed
+  def authenticationFailedInRequest(request)
     deleteMainWindow
     showLoginWindow
-    clearLoginAndPassword
+    @blip.account.clear
   end
 
-  def requestFailedWithError(error)
-    obprint "ApplicationDelegate: got error: #{error.domain}, #{error.code}, #{error.localizedDescription}"
+  def requestFailed(request, withError: error)
+    @blip.log "ApplicationDelegate: got error: #{error.domain}, #{error.code}, #{error.localizedDescription}"
     if error.blipTimeoutError?
       # retry until it works
-      obprint "timeout problem, retrying"
+      @blip.log "timeout problem, retrying"
       @mainWindowController.showWarningBar
-      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: BLIP_TIMEOUT_DELAY)
+      self.performSelector('authenticate', withObject: nil, afterDelay: BLIP_TIMEOUT_DELAY)
     else
       # retry until it works, but wait longer between requests
-      obprint "connection problem, retrying"
+      @blip.log "connection problem, retrying"
       @mainWindowController.showErrorBar
-      @blip.authenticateRequest.performSelector('sendFor:', withObject: self, afterDelay: FAILED_CONNECTION_DELAY)
+      self.performSelector('authenticate', withObject: nil, afterDelay: FAILED_CONNECTION_DELAY)
     end
   end
 

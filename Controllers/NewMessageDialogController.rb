@@ -105,7 +105,7 @@ class NewMessageDialogController < NSWindowController
   def sendPressed(sender)
     enterRequestMode
     message = textField.stringValue
-    @blip.sendMessageRequest(message).sendFor(self)
+    @blip.sendMessageRequest(message).sendFor(self, callback: 'messageSent')
   end
 
   def messageSent
@@ -118,7 +118,7 @@ class NewMessageDialogController < NSWindowController
     links = textField.stringValue.scan(URL_REGEXP).map(&:first)
     if links.length > 0
       links.each do |url|
-        @blip.shortenLinkRequest(url).sendFor(self) unless url =~ %r(//rdir.pl/)
+        @blip.shortenLinkRequest(url).sendFor(self, callback: 'linkShortened:') unless url =~ %r(//rdir.pl/)
       end
     end
   end
@@ -137,19 +137,20 @@ class NewMessageDialogController < NSWindowController
     spinner.stopAnimation(self)
   end
 
-  def link originalLink, shortenedTo: shortUrl
+  def linkShortened(shortlink)
     message = textField.stringValue
-    textField.stringValue = message.stringByReplacingOccurrencesOfString(originalLink, withString: shortUrl)
+    message = message.stringByReplacingOccurrencesOfString(shortlink.originalLink, withString: shortlink.url)
+    textField.stringValue = message
     refreshCounter
   end
 
-  def authenticationFailed
+  def authenticationFailedInRequest(request)
     leaveRequestMode
     message = tr("Invalid username or password. Try to restart MacBlip and log in again…")
     window.psShowAlertSheetWithTitle(tr("Error"), message: message)
   end
 
-  def requestFailedWithError(error)
+  def requestFailed(request, withError: error)
     leaveRequestMode
     window.psShowAlertSheetWithTitle(tr("Error"), message: error.localizedDescription)
   end

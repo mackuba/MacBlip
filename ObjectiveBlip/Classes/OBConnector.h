@@ -11,56 +11,31 @@
 
 #import <Foundation/Foundation.h>
 
-// to enable logging in debug mode, add "-DDEBUG" to "Other C Flags" in the build properties of your target
-#define OBLog(...) do { if ([OBConnector loggingEnabled]) NSLog(__VA_ARGS__); } while(0);
+@class OBAccount, OBAvatarGroup, OBDashboardMonitor, OBMessage, OBShortLink, OBUser, PSRequest;
 
-@class OBAccount, OBAvatarGroup, OBDashboardMonitor, OBMessage, OBRequest, OBShortLink, OBUser;
-
-// these callback methods will be called on objects that created the request
-@protocol OBConnectorDelegate
-- (void) authenticationSuccessful;
-- (void) authenticationFailed;
-- (void) messageSent;
-- (void) dashboardUpdatedWithMessages: (NSArray *) messages;
-- (void) pictureLoaded: (NSData *) data forMessage: (OBMessage *) message;
-- (void) link: (NSString *) originalLink shortenedTo: (NSString *) shortUrl;
-- (void) link: (NSString *) shortUrl inMessage: (OBMessage *) message expandedTo: (NSString *) originalLink;
-- (void) requestFailedWithError: (NSError *) error;
-@end
-
-@interface OBConnector : NSObject {
+@interface OBConnector : PSConnector {
   NSInteger lastMessageId;
-  NSMutableArray *currentRequests;
   NSMutableArray *avatarGroups;
-  NSString *userAgent;
   OBDashboardMonitor *dashboardMonitor;
-  OBAccount *account;
   BOOL autoLoadAvatars;
   BOOL autoLoadPictureInfo;
   NSInteger initialDashboardFetch;
 }
 
-@property (nonatomic, retain) OBAccount *account;
-@property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
 @property (nonatomic) BOOL autoLoadAvatars;
 @property (nonatomic) NSInteger initialDashboardFetch;
 
-+ (OBConnector *) sharedConnector;
-
-+ (BOOL) loggingEnabled;
-+ (void) setLoggingEnabled: (BOOL) enabled;
-
 - (id) init;
 - (id) initWithUsername: (NSString *) username password: (NSString *) password;
 
-- (OBRequest *) authenticateRequest;
-- (OBRequest *) dashboardRequest;
-- (OBRequest *) sendMessageRequest: (NSString *) message;
-- (OBRequest *) loadPictureRequest: (OBMessage *) message;
-- (OBRequest *) avatarImageRequestForUser: (OBUser *) user;
-- (OBRequest *) shortenLinkRequest: (NSString *) link;
-- (OBRequest *) expandLinkRequest: (OBShortLink *) link inMessage: (OBMessage *) message;
+- (PSRequest *) authenticateRequest;
+- (PSRequest *) dashboardRequest;
+- (PSRequest *) sendMessageRequest: (NSString *) message;
+- (PSRequest *) loadPictureRequest: (OBMessage *) message;
+- (PSRequest *) avatarImageRequestForUser: (OBUser *) user;
+- (PSRequest *) shortenLinkRequest: (NSString *) link;
+- (PSRequest *) expandLinkRequest: (OBShortLink *) link inMessage: (OBMessage *) message;
 
 // internal
 - (void) avatarGroupLoaded: (OBAvatarGroup *) group;

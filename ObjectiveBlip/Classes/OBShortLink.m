@@ -6,7 +6,6 @@
 // -------------------------------------------------------
 
 #import "OBShortLink.h"
-#import "PsiToolkit.h"
 
 @implementation OBShortLink
 
@@ -15,6 +14,10 @@ PSReleaseOnDealloc(url, originalLink, shortcode);
 
 + (NSArray *) propertyList {
   return PSArray(@"url", @"originalLink", @"shortcode");
+}
+
++ (NSString *) routeName {
+  return @"shortlinks";
 }
 
 + (OBShortLink *) shortLinkWithRdirUrl: (NSString *) url {
@@ -30,11 +33,25 @@ PSReleaseOnDealloc(url, originalLink, shortcode);
   return nil;
 }
 
++ (OBShortLink *) shortLinkWithOriginalLink: (NSString *) url {
+  OBShortLink *shortLink = [[OBShortLink alloc] init];
+  shortLink.originalLink = url;
+  return [shortLink autorelease];
+}
+
 - (NSString *) url {
   if (!url && shortcode) {
     self.url = PSFormat(@"http://rdir.pl/%@", shortcode);
   }
   return url;
+}
+
+- (NSString *) toParam {
+  return shortcode;
+}
+
+- (NSString *) encodeToPostData {
+  return PSFormat(@"shortlink[original_link]=%@", [originalLink psStringWithPercentEscapesForFormValues]);
 }
 
 @end

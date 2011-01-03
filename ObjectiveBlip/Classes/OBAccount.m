@@ -9,7 +9,7 @@
 
 @implementation OBAccount
 
-@synthesize username, loggedIn, password;
+@synthesize loggedIn;
 
 - (id) init {
   self = [super init];
@@ -20,7 +20,7 @@
 }
 
 - (BOOL) hasCredentials {
-  return username && password && (username.length > 0) && (password.length > 0);
+  return [self hasAllRequiredProperties];
 }
 
 @end
