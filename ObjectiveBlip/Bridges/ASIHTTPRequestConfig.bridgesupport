@@ -1,9 +1,0 @@
-<?xml version='1.0'?>
-<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<enum name='DEBUG_FORM_DATA_REQUEST' value='0'/>
-<enum name='DEBUG_PERSISTENT_CONNECTIONS' value='0'/>
-<enum name='DEBUG_REQUEST_STATUS' value='0'/>
-<enum name='DEBUG_THROTTLING' value='0'/>
-<enum name='REACHABILITY_20_API' value='1'/>
-</signatures>

@@ -1,7 +1,0 @@
-<?xml version='1.0'?>
-<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<enum name='OBHTMLRequest' value='2'/>
-<enum name='OBImageRequest' value='1'/>
-<enum name='OBJSONRequest' value='0'/>
-</signatures>

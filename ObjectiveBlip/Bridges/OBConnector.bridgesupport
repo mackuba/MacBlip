@@ -5,13 +5,7 @@
 <method selector='autoLoadAvatars'>
 <retval type='B'/>
 </method>
-<method selector='loggingEnabled' class_method='true'>
-<retval type='B'/>
-</method>
 <method selector='setAutoLoadAvatars:'>
-<arg type='B' index='0'/>
-</method>
-<method selector='setLoggingEnabled:' class_method='true'>
 <arg type='B' index='0'/>
 </method>
 </class>

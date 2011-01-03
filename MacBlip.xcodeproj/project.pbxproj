@@ -106,6 +106,8 @@
 		583BB34212D26D4D002AD442 /* SDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 583BB31212D26D4D002AD442 /* SDKeychain.m */; };
 		583BB34312D26D4D002AD442 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 583BB31412D26D4D002AD442 /* SFHFKeychainUtils.m */; };
 		583BB34412D26D4D002AD442 /* PSUIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 583BB31712D26D4D002AD442 /* PSUIExtensions.m */; };
+		583BB43E12D28B2E002AD442 /* OBShortLink.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 583BB43C12D28B2E002AD442 /* OBShortLink.bridgesupport */; };
+		583BB43F12D28B2E002AD442 /* OBUtils.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 583BB43D12D28B2E002AD442 /* OBUtils.bridgesupport */; };
 		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
@@ -119,13 +121,11 @@
 		5897EFBD1129C9E90029B4D9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EFBC1129C9E90029B4D9 /* Quartz.framework */; };
 		5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F02F112C76650029B4D9 /* MessageCellController.rb */; };
 		5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F031112C766F0029B4D9 /* MessageCell.xib */; };
-		5897F1C2112DDD5D0029B4D9 /* Constants.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */; };
 		5897F1C3112DDD5D0029B4D9 /* OBAccount.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */; };
 		5897F1C4112DDD5D0029B4D9 /* OBConnector.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */; };
 		5897F1C5112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */; };
 		5897F1C6112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */; };
 		5897F1C7112DDD5D0029B4D9 /* OBMessage.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */; };
-		5897F1CA112DDD5D0029B4D9 /* OBRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */; };
 		5897F1CE112DDE4A0029B4D9 /* LoginWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */; };
 		5897F1D0112DDE5B0029B4D9 /* Extensions.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1CF112DDE5B0029B4D9 /* Extensions.rb */; };
 		5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1D4112DDE850029B4D9 /* LoginWindow.xib */; };
@@ -141,8 +141,6 @@
 		58A25DF8117DE51100784901 /* QLPreviewPanel.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */; };
 		58A25E11117DE5DB00784901 /* QuickLookPicture.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58A25E10117DE5DB00784901 /* QuickLookPicture.rb */; };
 		58AEE89A11A5AB8A00612211 /* FilesController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE89911A5AB8A00612211 /* FilesController.rb */; };
-		58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */; };
-		58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */; };
 		58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */; };
 		58E6E3FF113183B300B97529 /* HumanReadableDateFormatter.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */; };
 		58E6E400113183B300B97529 /* OBMessage.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E3FE113183B300B97529 /* OBMessage.rb */; };
@@ -150,12 +148,6 @@
 		58E6E5741131D98000B97529 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5771131D99100B97529 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58E6E5731131D98000B97529 /* Sparkle.framework */; };
 		58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */; };
-		58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */; };
-		58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */; };
-		58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */; };
-		58E6E6EB113336D200B97529 /* ASIInputStream.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */; };
-		58E6E6EC113336D200B97529 /* ASINetworkQueue.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */; };
-		58E6E6ED113336D200B97529 /* ASINSStringAdditions.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */; };
 		58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E6E6113336D200B97529 /* OBUser.bridgesupport */; };
 		58E6E7111133404C00B97529 /* OBAvatarGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E6E7101133404C00B97529 /* OBAvatarGroup.m */; };
 		58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */; };
@@ -296,6 +288,8 @@
 		583BB31612D26D4D002AD442 /* PSUIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSUIExtensions.h; sourceTree = "<group>"; };
 		583BB31712D26D4D002AD442 /* PSUIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSUIExtensions.m; sourceTree = "<group>"; };
 		583BB36712D26EAE002AD442 /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
+		583BB43C12D28B2E002AD442 /* OBShortLink.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBShortLink.bridgesupport; sourceTree = "<group>"; };
+		583BB43D12D28B2E002AD442 /* OBUtils.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUtils.bridgesupport; sourceTree = "<group>"; };
 		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -318,13 +312,11 @@
 		5897EFBC1129C9E90029B4D9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		5897F02F112C76650029B4D9 /* MessageCellController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MessageCellController.rb; sourceTree = "<group>"; };
 		5897F032112C766F0029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MessageCell.xib; sourceTree = "<group>"; };
-		5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Constants.bridgesupport; sourceTree = "<group>"; };
 		5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAccount.bridgesupport; sourceTree = "<group>"; };
 		5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBConnector.bridgesupport; sourceTree = "<group>"; };
 		5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBDashboardMonitor.bridgesupport; sourceTree = "<group>"; };
 		5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ObjectiveBlip.bridgesupport; sourceTree = "<group>"; };
 		5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBMessage.bridgesupport; sourceTree = "<group>"; };
-		5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBRequest.bridgesupport; sourceTree = "<group>"; };
 		5897F1CD112DDE4A0029B4D9 /* LoginWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = LoginWindowController.rb; sourceTree = "<group>"; };
 		5897F1CF112DDE5B0029B4D9 /* Extensions.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Extensions.rb; sourceTree = "<group>"; };
 		5897F1D5112DDE850029B4D9 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/LoginWindow.xib; sourceTree = "<group>"; };
@@ -341,20 +333,12 @@
 		58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QLPreviewPanel.bridgesupport; sourceTree = "<group>"; };
 		58A25E10117DE5DB00784901 /* QuickLookPicture.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = QuickLookPicture.rb; sourceTree = "<group>"; };
 		58AEE89911A5AB8A00612211 /* FilesController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = FilesController.rb; sourceTree = "<group>"; };
-		58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestDelegate.bridgesupport; sourceTree = "<group>"; };
-		58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIProgressDelegate.bridgesupport; sourceTree = "<group>"; };
 		58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBAvatarGroup.bridgesupport; sourceTree = "<group>"; };
 		58E6E3FD113183B300B97529 /* HumanReadableDateFormatter.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = HumanReadableDateFormatter.rb; sourceTree = "<group>"; };
 		58E6E3FE113183B300B97529 /* OBMessage.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = OBMessage.rb; sourceTree = "<group>"; };
 		58E6E4B11131C55B00B97529 /* TweetieLikeScroller.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = TweetieLikeScroller.rb; sourceTree = "<group>"; };
 		58E6E5731131D98000B97529 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		58E6E59C1131E3FA00B97529 /* sparkle_pub_key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle_pub_key.pem; sourceTree = "<group>"; };
-		58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIFormDataRequest.bridgesupport; sourceTree = "<group>"; };
-		58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequest.bridgesupport; sourceTree = "<group>"; };
-		58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestConfig.bridgesupport; sourceTree = "<group>"; };
-		58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIInputStream.bridgesupport; sourceTree = "<group>"; };
-		58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINetworkQueue.bridgesupport; sourceTree = "<group>"; };
-		58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINSStringAdditions.bridgesupport; sourceTree = "<group>"; };
 		58E6E6E6113336D200B97529 /* OBUser.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUser.bridgesupport; sourceTree = "<group>"; };
 		58E6E70F1133404C00B97529 /* OBAvatarGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAvatarGroup.h; sourceTree = "<group>"; };
 		58E6E7101133404C00B97529 /* OBAvatarGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAvatarGroup.m; sourceTree = "<group>"; };
@@ -739,22 +723,14 @@
 		5897F1B6112DDD5D0029B4D9 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
-				58E6E6E0113336D200B97529 /* ASIFormDataRequest.bridgesupport */,
-				58E6E6E1113336D200B97529 /* ASIHTTPRequest.bridgesupport */,
-				58E6E6E2113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport */,
-				58AEE8E611A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport */,
-				58E6E6E3113336D200B97529 /* ASIInputStream.bridgesupport */,
-				58E6E6E4113336D200B97529 /* ASINetworkQueue.bridgesupport */,
-				58E6E6E5113336D200B97529 /* ASINSStringAdditions.bridgesupport */,
-				58AEE8E711A5BB0000612211 /* ASIProgressDelegate.bridgesupport */,
-				5897F1B7112DDD5D0029B4D9 /* Constants.bridgesupport */,
 				5897F1B8112DDD5D0029B4D9 /* OBAccount.bridgesupport */,
 				58AEE8E811A5BB0000612211 /* OBAvatarGroup.bridgesupport */,
 				5897F1B9112DDD5D0029B4D9 /* OBConnector.bridgesupport */,
 				5897F1BA112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport */,
 				5897F1BC112DDD5D0029B4D9 /* OBMessage.bridgesupport */,
-				5897F1BF112DDD5D0029B4D9 /* OBRequest.bridgesupport */,
+				583BB43C12D28B2E002AD442 /* OBShortLink.bridgesupport */,
 				58E6E6E6113336D200B97529 /* OBUser.bridgesupport */,
+				583BB43D12D28B2E002AD442 /* OBUtils.bridgesupport */,
 				5897F1BB112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport */,
 			);
 			path = Bridges;
@@ -862,13 +838,11 @@
 				585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */,
 				5897F030112C76650029B4D9 /* MessageCellController.rb in Resources */,
 				5897F033112C766F0029B4D9 /* MessageCell.xib in Resources */,
-				5897F1C2112DDD5D0029B4D9 /* Constants.bridgesupport in Resources */,
 				5897F1C3112DDD5D0029B4D9 /* OBAccount.bridgesupport in Resources */,
 				5897F1C4112DDD5D0029B4D9 /* OBConnector.bridgesupport in Resources */,
 				5897F1C5112DDD5D0029B4D9 /* OBDashboardMonitor.bridgesupport in Resources */,
 				5897F1C6112DDD5D0029B4D9 /* ObjectiveBlip.bridgesupport in Resources */,
 				5897F1C7112DDD5D0029B4D9 /* OBMessage.bridgesupport in Resources */,
-				5897F1CA112DDD5D0029B4D9 /* OBRequest.bridgesupport in Resources */,
 				5897F1CE112DDE4A0029B4D9 /* LoginWindowController.rb in Resources */,
 				5897F1D0112DDE5B0029B4D9 /* Extensions.rb in Resources */,
 				5897F1D6112DDE850029B4D9 /* LoginWindow.xib in Resources */,
@@ -883,12 +857,6 @@
 				58E6E400113183B300B97529 /* OBMessage.rb in Resources */,
 				58E6E4B21131C55B00B97529 /* TweetieLikeScroller.rb in Resources */,
 				58E6E5A11131E3FA00B97529 /* sparkle_pub_key.pem in Resources */,
-				58E6E6E8113336D200B97529 /* ASIFormDataRequest.bridgesupport in Resources */,
-				58E6E6E9113336D200B97529 /* ASIHTTPRequest.bridgesupport in Resources */,
-				58E6E6EA113336D200B97529 /* ASIHTTPRequestConfig.bridgesupport in Resources */,
-				58E6E6EB113336D200B97529 /* ASIInputStream.bridgesupport in Resources */,
-				58E6E6EC113336D200B97529 /* ASINetworkQueue.bridgesupport in Resources */,
-				58E6E6ED113336D200B97529 /* ASINSStringAdditions.bridgesupport in Resources */,
 				58E6E6EE113336D200B97529 /* OBUser.bridgesupport in Resources */,
 				58E6E8A51135E5BB00B97529 /* AboutWindowController.rb in Resources */,
 				581805A11138516600A61784 /* OBUser.rb in Resources */,
@@ -900,8 +868,6 @@
 				589CDFF6119F08E100B1F64D /* error.png in Resources */,
 				589CDFF7119F08E100B1F64D /* warning.png in Resources */,
 				58AEE89A11A5AB8A00612211 /* FilesController.rb in Resources */,
-				58AEE8E911A5BB0000612211 /* ASIHTTPRequestDelegate.bridgesupport in Resources */,
-				58AEE8EA11A5BB0000612211 /* ASIProgressDelegate.bridgesupport in Resources */,
 				58AEE8EB11A5BB0000612211 /* OBAvatarGroup.bridgesupport in Resources */,
 				589B867412B50D4F00516FA2 /* ajax-loader.gif in Resources */,
 				589B878E12B52DEE00516FA2 /* LinkExpander.rb in Resources */,
@@ -925,6 +891,8 @@
 				583BB33212D26D4D002AD442 /* PSRestRouter.bridgesupport in Resources */,
 				583BB33312D26D4D002AD442 /* PSRouter.bridgesupport in Resources */,
 				583BB33412D26D4D002AD442 /* PSSecurityExtensions.bridgesupport in Resources */,
+				583BB43E12D28B2E002AD442 /* OBShortLink.bridgesupport in Resources */,
+				583BB43F12D28B2E002AD442 /* OBUtils.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
