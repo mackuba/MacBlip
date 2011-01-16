@@ -2,7 +2,7 @@
 # HumanReadableDateFormatter.rb
 #
 # Copyright (c) 2010 Jakub Suder <jakub.suder@gmail.com>
-# Licensed under GPL v3 license
+# Licensed under Eclipse Public License v1.0
 # -------------------------------------------------------
 
 class HumanReadableDateFormatter < NSFormatter
