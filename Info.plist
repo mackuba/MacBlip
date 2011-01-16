@@ -28,5 +28,24 @@
 	<string>sparkle_pub_key.pem</string>
 	<key>SUFeedURL</key>
 	<string>http://github.com/psionides/MacBlip/raw/master/Sparkle/macblip_appcast.xml</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMessage</key>
+			<string>newMessageWithTextFromService</string>
+			<key>NSRequiredContext</key>
+			<array/>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSPasteboardTypeString</string>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Post with MacBlip</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

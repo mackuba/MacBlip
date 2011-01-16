@@ -128,9 +128,14 @@ class ApplicationDelegate
 
   def authenticationSuccessful
     restoreMainWindow
+    enableIncomingServices
     @mainWindowController.hideNoticeBars
     @blip.dashboardMonitor.interval = 60
     @blip.dashboardMonitor.startMonitoring
+  end
+
+  def enableIncomingServices
+    NSApp.servicesProvider = self
   end
 
   def authenticationFailedInRequest(request)
@@ -169,6 +174,19 @@ class ApplicationDelegate
     NSApp.activateIgnoringOtherApps(true)
     createMainWindow
     @mainWindowController.performSelector('openNewMessageWindow', withObject: nil, afterDelay: 0.01)
+  end
+
+  # system service
+
+  def newMessageWithTextFromService(pasteboard, userData: data, error: error)
+    return unless pasteboard.canReadObjectForClasses([NSString], options: {})
+
+    text = pasteboard.stringForType(NSPasteboardTypeString)
+    unless text.blank?
+      NSApp.activateIgnoringOtherApps(true)
+      createMainWindow
+      @mainWindowController.performSelector('openNewMessageWindow:', withObject: text, afterDelay: 0.01)
+    end
   end
 
 end

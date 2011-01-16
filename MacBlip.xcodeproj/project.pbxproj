@@ -112,6 +112,7 @@
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
+		586CC38D12E36009002A2086 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 586CC38C12E36009002A2086 /* ServicesMenu.strings */; };
 		5871629D12B4EDA900830147 /* OBShortLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871629B12B4EDA900830147 /* OBShortLink.m */; };
 		5883BD9D113D832C00F72D34 /* macblip_icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5883BD9C113D832C00F72D34 /* macblip_icon_80.png */; };
 		5897EF471129C3750029B4D9 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5897EF461129C3750029B4D9 /* MacRuby.framework */; };
@@ -294,6 +295,8 @@
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		585A92AF111B7060003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		586CC38A12E36004002A2086 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		586CC38E12E3600E002A2086 /* Polish */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Polish; path = Polish.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
 		5871629A12B4EDA900830147 /* OBShortLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShortLink.h; sourceTree = "<group>"; };
 		5871629B12B4EDA900830147 /* OBShortLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShortLink.m; sourceTree = "<group>"; };
 		5871629C12B4EDA900830147 /* OBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUser.h; sourceTree = "<group>"; };
@@ -449,6 +452,7 @@
 				583420A7112FFD31008938A9 /* Growl Registration Ticket.growlRegDict */,
 				58230495117F235C0076AFB6 /* Localizable.strings */,
 				589B893412B56B5A00516FA2 /* Credits.html */,
+				586CC38C12E36009002A2086 /* ServicesMenu.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -893,6 +897,7 @@
 				583BB33412D26D4D002AD442 /* PSSecurityExtensions.bridgesupport in Resources */,
 				583BB43E12D28B2E002AD442 /* OBShortLink.bridgesupport in Resources */,
 				583BB43F12D28B2E002AD442 /* OBUtils.bridgesupport in Resources */,
+				586CC38D12E36009002A2086 /* ServicesMenu.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,6 +1035,15 @@
 				5823049B117F23A40076AFB6 /* Polish */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		586CC38C12E36009002A2086 /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				586CC38A12E36004002A2086 /* English */,
+				586CC38E12E3600E002A2086 /* Polish */,
+			);
+			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
 		5897F031112C766F0029B4D9 /* MessageCell.xib */ = {
