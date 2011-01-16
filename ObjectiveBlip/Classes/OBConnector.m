@@ -143,6 +143,11 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
   NSString *url = [[request url] absoluteString];
   NSString *locationHeader = [[request responseHeaders] objectForKey: @"Location"];
 
+  if (request.response.status == PSHTTPStatusNoContent) {
+    // Blip can return this status with incorrect content type (text/plain) if there's no data
+    return;
+  }
+
   if ([url psContainsString: @"gadu-gadu.pl"] || [locationHeader psContainsString: @"gadu-gadu.pl"]) {
     NSLog(@"Mr Oponka response detected");
     NSLog(@"url = %@", url);
@@ -164,6 +169,10 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 - (void) dashboardUpdated: (PSRequest *) request {
   NSArray *messages = [self parseObjectsFromRequest: request model: [OBMessage class]];
   if (messages) {
+    if ([messages isEqual: PSNull]) {
+      messages = [NSArray array];
+    }
+
     if (messages.count > 0) {
       // msgs are coming in the order from newest to oldest
       lastMessageId = [[messages objectAtIndex: 0] recordIdValue];
