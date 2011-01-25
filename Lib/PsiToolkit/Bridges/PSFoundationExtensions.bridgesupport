@@ -5,6 +5,9 @@
 <method selector='psSortedArrayUsingField:ascending:'>
 <arg type='B' index='1'/>
 </method>
+<method selector='psSortedArrayUsingField:ascending:compareWith:'>
+<arg type='B' index='1'/>
+</method>
 </class>
 <class name='NSDate'>
 <method selector='psIsEarlierOrSameDay:'>

@@ -16,6 +16,7 @@
 <enum name='PSHTTPStatusCreated' value='201'/>
 <enum name='PSHTTPStatusForbidden' value='403'/>
 <enum name='PSHTTPStatusInternalServerError' value='500'/>
+<enum name='PSHTTPStatusNoContent' value='204'/>
 <enum name='PSHTTPStatusNotFound' value='404'/>
 <enum name='PSHTTPStatusOK' value='200'/>
 <enum name='PSHTTPStatusPreconditionFailed' value='412'/>
