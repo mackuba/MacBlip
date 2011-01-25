@@ -33,8 +33,7 @@ PSReleaseOnDealloc(messages, request, connector);
 
 - (void) loadAvatars {
   NSArray *uniqueUsers = [messages valueForKeyPath: @"@distinctUnionOfObjects.user"];
-  NSPredicate *noAvatarFilter = [NSPredicate predicateWithFormat: @"avatar == NIL"];
-  NSArray *usersWithoutAvatars = [uniqueUsers filteredArrayUsingPredicate: noAvatarFilter];
+  NSArray *usersWithoutAvatars = [uniqueUsers psFilterWithPredicate: @"avatar == NIL"];
   userCount = usersWithoutAvatars.count;
 
   if (userCount > 0) {

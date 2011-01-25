@@ -175,7 +175,7 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 
     if (messages.count > 0) {
       // msgs are coming in the order from newest to oldest
-      lastMessageId = [[messages objectAtIndex: 0] recordIdValue];
+      lastMessageId = [[messages psFirstObject] recordIdValue];
     }
 
     if (autoLoadAvatars && messages.count > 0) {

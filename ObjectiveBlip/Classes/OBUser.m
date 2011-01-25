@@ -12,7 +12,8 @@ static NSData *defaultAvatarData;
 
 @implementation OBUser
 
-@synthesize login, avatarData;
+@synthesize avatarData;
+PSModelProperties(login);
 PSReleaseOnDealloc(login, avatarData);
 
 + (void) initialize {
@@ -27,10 +28,6 @@ PSReleaseOnDealloc(login, avatarData);
     user.login = login;
   }
   return user;
-}
-
-+ (NSArray *) propertyList {
-  return PSArray(@"login");
 }
 
 - (void) setLogin: (NSString *) newLogin {

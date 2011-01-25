@@ -9,12 +9,8 @@
 
 @implementation OBShortLink
 
-@synthesize url, originalLink, shortcode;
+PSModelProperties(url, originalLink, shortcode);
 PSReleaseOnDealloc(url, originalLink, shortcode);
-
-+ (NSArray *) propertyList {
-  return PSArray(@"url", @"originalLink", @"shortcode");
-}
 
 + (NSString *) routeName {
   return @"shortlinks";

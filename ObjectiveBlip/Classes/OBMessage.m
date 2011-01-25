@@ -10,12 +10,9 @@
 
 @implementation OBMessage
 
-@synthesize userPath, recipientPath, body, date, user, recipient, createdAt, messageType, type, pictures;
-PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, createdAt, type, pictures);
-
-+ (NSArray *) propertyList {
-  return PSArray(@"body", @"userPath", @"createdAt", @"recipientPath", @"type", @"pictures");
-}
+@synthesize date, user, recipient, messageType;
+PSModelProperties(userPath, recipientPath, body, createdAt, type, pictures);
+PSReleaseOnDealloc(userPath, recipientPath, body, createdAt, type, pictures, date, user, recipient);
 
 + (NSString *) routeName {
   return @"updates";
@@ -66,22 +63,22 @@ PSReleaseOnDealloc(userPath, recipientPath, body, date, user, recipient, created
 }
 
 - (void) setPictureData: (NSData *) data {
-  NSDictionary *pictureInfo = [pictures objectAtIndex: 0];
+  NSDictionary *pictureInfo = [pictures psFirstObject];
   NSMutableDictionary *updatedInfo = [NSMutableDictionary dictionaryWithDictionary: pictureInfo];
   [updatedInfo setObject: data forKey: @"data"];
   self.pictures = PSArray(updatedInfo);
 }
 
 - (BOOL) hasPicture {
-  return (pictures.count > 0 && [[pictures objectAtIndex: 0] objectForKey: @"url"] != nil);
+  return ([self pictureURL] != nil);
 }
 
 - (BOOL) hasPictureData {
-  return ([self hasPicture] && [[pictures objectAtIndex: 0] objectForKey: @"data"] != nil);
+  return ([self hasPicture] && [[pictures psFirstObject] objectForKey: @"data"] != nil);
 }
 
 - (NSString *) pictureURL {
-  return [[pictures objectAtIndex: 0] objectForKey: @"url"];
+  return [[pictures psFirstObject] objectForKey: @"url"];
 }
 
 + (NSSet *) keyPathsForValuesAffectingHasPicture {
