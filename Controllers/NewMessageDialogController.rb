@@ -43,7 +43,7 @@ class NewMessageDialogController < NSWindowController
   end
 
   def windowDidLoad
-    window.setContentBorderThickness(32, forEdge: NSMinYEdge)
+    window.setContentBorderThickness(32, forEdge: CGRectMinYEdge)
     window.movableByWindowBackground = true
     window.delegate = self
     mbObserve(textField, NSControlTextDidChangeNotification, :textEdited)

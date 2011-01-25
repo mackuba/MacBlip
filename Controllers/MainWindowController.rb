@@ -26,7 +26,7 @@ class MainWindowController < NSWindowController
     mbObserve(@blip.dashboardMonitor, OBDashboardAuthFailedNotification, 'dashboardAuthFailed')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
-    window.setContentBorderThickness(32, forEdge: NSMinYEdge)
+    window.setContentBorderThickness(32, forEdge: CGRectMinYEdge)
     window.movableByWindowBackground = true
 
     @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
