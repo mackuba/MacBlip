@@ -25,6 +25,15 @@ class NSError
 end
 
 class NSObject
+  def mbCatcher
+    begin
+      yield
+    rescue Exception => e
+      puts e.backtrace
+      raise
+    end
+  end
+
   def mbObserve(sender, notification, selector = nil)
     selector ||= notification
     NSNotificationCenter.defaultCenter.addObserver(self, selector: selector, name: notification.to_s, object: sender)
