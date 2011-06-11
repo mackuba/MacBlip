@@ -38,7 +38,7 @@ PSReleaseOnDealloc(messages, request, connector);
 
   if (userCount > 0) {
     if (connector.loggingEnabled) {
-      NSLog(@"AvatarGroup: %d avatars are missing and will be loaded now.", userCount);
+      NSLog(@"AvatarGroup: %ld avatars are missing and will be loaded now.", userCount);
     }
     for (OBUser *user in usersWithoutAvatars) {
       [[connector avatarImageRequestForUser: user] sendFor: self callback: @selector(avatarLoadedForUser:)];
@@ -66,7 +66,7 @@ PSReleaseOnDealloc(messages, request, connector);
 - (void) decreaseUserCount {
   userCount--;
   if (connector.loggingEnabled) {
-    NSLog(@"AvatarGroup: %d avatars remaining", userCount);
+    NSLog(@"AvatarGroup: %ld avatars remaining", userCount);
   }
   if (userCount == 0) {
     // all avatars have been downloaded

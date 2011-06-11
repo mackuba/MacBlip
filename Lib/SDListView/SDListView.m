@@ -64,7 +64,7 @@
 }
 
 - (id)initWithFrame:(NSRect)frame {
-	if (self = [super initWithFrame:frame]) {
+	if ((self = [super initWithFrame:frame])) {
 		self.observers = [NSMutableArray array];
 		listViewItems = [[NSMutableArray array] retain];
 		viewsThatShouldNotAnimate = [[NSMutableArray array] retain];
