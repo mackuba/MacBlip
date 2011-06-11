@@ -41,6 +41,7 @@ class MessageCellController < SDListViewItem
     menu.addItemWithTitle(tr("Quote..."), action: 'quoteActionSelected:', keyEquivalent: '')
     if representedObject.user.login != OBConnector.sharedConnector.account.username
       menu.addItemWithTitle(tr("Reply..."), action: 'replyActionSelected:', keyEquivalent: '')
+      menu.addItemWithTitle(tr("Reply with quote..."), action: 'replyWithQuoteActionSelected:', keyEquivalent: '')
     end
     if representedObject.pictures && representedObject.pictures.length > 0
       menu.addItemWithTitle(tr("Open picture in browser..."), action: 'showPictureActionSelected:', keyEquivalent: '')

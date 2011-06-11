@@ -188,6 +188,12 @@ class MainWindowController < NSWindowController
     openNewMessageWindow("#{symbol}#{message.user.login}: ")
   end
 
+  def replyWithQuoteActionSelected(sender)
+    message = sender.menu.delegate.representedObject
+    symbol = (message.messageType == OBPrivateMessage) ? ">>" : ">"
+    openNewMessageWindow("#{symbol}#{message.user.login}: #{message.url} ")
+  end
+
   def showPictureActionSelected(sender)
     message = sender.menu.delegate.representedObject
     BrowserController.openAttachedPicture(message)
