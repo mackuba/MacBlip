@@ -26,6 +26,16 @@
   [self refreshToolTips];
 }
 
+- (void) doCommandBySelector: (SEL) selector {
+  if (selector == @selector(scrollToBeginningOfDocument:)
+      || selector == @selector(scrollToEndOfDocument:)
+      || selector == @selector(scrollPageUp:)
+      || selector == @selector(scrollPageDown:)) {
+    id delegate = [[self window] delegate];
+    [[delegate valueForKey: @"listView"] performSelector: selector withObject: self];
+  }
+}
+
 - (void) observeValueForKeyPath: (NSString *) path
                        ofObject: (id) source
                          change: (NSDictionary *) change

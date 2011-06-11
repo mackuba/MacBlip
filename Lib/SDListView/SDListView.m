@@ -446,6 +446,36 @@
 	[self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
 }
 
+// added support for paging and home/end - psionides
+- (void) doCommandBySelector: (SEL) selector {
+  if (selector == @selector(scrollToBeginningOfDocument:)
+      || selector == @selector(scrollToEndOfDocument:)
+      || selector == @selector(scrollPageUp:)
+      || selector == @selector(scrollPageDown:)) {
+    [self performSelector: selector withObject: self];
+  }
+}
+
+- (void) scrollToBeginningOfDocument: (id) sender {
+  [[[self enclosingScrollView] contentView] scrollToPoint: NSZeroPoint];
+  [[[self enclosingScrollView] verticalScroller] setFloatValue: 0.0];
+}
+
+- (void) scrollToEndOfDocument: (id) sender {
+  NSClipView *clipView = [[self enclosingScrollView] contentView];
+  [clipView scrollToPoint: NSMakePoint(0, self.frame.size.height - clipView.frame.size.height)];
+  [[[self enclosingScrollView] verticalScroller] setFloatValue: 1.0];
+}
+
+- (void) scrollPageUp: (id) sender {
+  [[self enclosingScrollView] pageUp: self];
+}
+
+- (void) scrollPageDown: (id) sender {
+  [[self enclosingScrollView] pageDown: self];
+}
+// end paging
+
 - (void)keyUp:(NSEvent *)theEvent {
 }
 
