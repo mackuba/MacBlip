@@ -69,7 +69,6 @@
 		583BB31D12D26D4D002AD442 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 583BB2CF12D26D4D002AD442 /* ASINSStringAdditions.m */; };
 		583BB43E12D28B2E002AD442 /* OBShortLink.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 583BB43C12D28B2E002AD442 /* OBShortLink.bridgesupport */; };
 		583BB43F12D28B2E002AD442 /* OBUtils.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 583BB43D12D28B2E002AD442 /* OBUtils.bridgesupport */; };
-		585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */; };
 		585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */ = {isa = PBXBuildFile; fileRef = 585A923D111B674D003ABD05 /* MainWindowController.rb */; };
 		585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AC111B7011003ABD05 /* MainWindow.xib */; };
 		585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585A92AE111B7060003ABD05 /* MainMenu.xib */; };
@@ -110,6 +109,7 @@
 		589B957A13A3EE2F00B4CE02 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956D13A3EE2F00B4CE02 /* SBJsonUTF8Stream.m */; };
 		589B957B13A3EE2F00B4CE02 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */; };
 		589B958B13A3F82B00B4CE02 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 589B958A13A3F82B00B4CE02 /* README.markdown */; };
+		589B959013A3FF7F00B4CE02 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589B958F13A3FF7F00B4CE02 /* ApplicationDelegate.rb */; };
 		589CDF88119F007000B1F64D /* WarningBar.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589CDF87119F007000B1F64D /* WarningBar.rb */; };
 		589CDFF6119F08E100B1F64D /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF4119F08E100B1F64D /* error.png */; };
 		589CDFF7119F08E100B1F64D /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF5119F08E100B1F64D /* warning.png */; };
@@ -262,7 +262,6 @@
 		583BB36712D26EAE002AD442 /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
 		583BB43C12D28B2E002AD442 /* OBShortLink.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBShortLink.bridgesupport; sourceTree = "<group>"; };
 		583BB43D12D28B2E002AD442 /* OBUtils.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OBUtils.bridgesupport; sourceTree = "<group>"; };
-		585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		585A923D111B674D003ABD05 /* MainWindowController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = MainWindowController.rb; sourceTree = "<group>"; };
 		585A92AA111B7003003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		585A92AF111B7060003ABD05 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -326,6 +325,7 @@
 		589B956E13A3EE2F00B4CE02 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		589B958A13A3F82B00B4CE02 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		589B958F13A3FF7F00B4CE02 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
 		589CDF87119F007000B1F64D /* WarningBar.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = WarningBar.rb; sourceTree = "<group>"; };
 		589CDFF4119F08E100B1F64D /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		589CDFF5119F08E100B1F64D /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
@@ -432,7 +432,6 @@
 				5897F1CF112DDE5B0029B4D9 /* Extensions.rb */,
 				4DE339F60D74FCDD00ADB6EE /* rb_main.rb */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				585A9238111B66FA003ABD05 /* ApplicationDelegate.rb */,
 				5872F23312CA7F3700162208 /* MacBlip_Prefix.pch */,
 			);
 			name = "Other Sources";
@@ -648,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				58E6E8A41135E5BB00B97529 /* AboutWindowController.rb */,
+				589B958F13A3FF7F00B4CE02 /* ApplicationDelegate.rb */,
 				58341FEE112F1B44008938A9 /* BrowserController.rb */,
 				58AEE89911A5AB8A00612211 /* FilesController.rb */,
 				589B878D12B52DEE00516FA2 /* LinkExpander.rb */,
@@ -877,7 +877,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */,
-				585A9239111B66FA003ABD05 /* ApplicationDelegate.rb in Resources */,
 				585A923E111B674D003ABD05 /* MainWindowController.rb in Resources */,
 				585A92AD111B7011003ABD05 /* MainWindow.xib in Resources */,
 				585A92B0111B7060003ABD05 /* MainMenu.xib in Resources */,
@@ -940,6 +939,7 @@
 				5831CEBD12EF735A008169A7 /* PSRouter.bridgesupport in Resources */,
 				5831CEBE12EF735A008169A7 /* PSSecurityExtensions.bridgesupport in Resources */,
 				589B958B13A3F82B00B4CE02 /* README.markdown in Resources */,
+				589B959013A3FF7F00B4CE02 /* ApplicationDelegate.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
