@@ -99,7 +99,7 @@ PSReleaseOnDealloc(response, target, pathBuilder);
 }
 
 - (void) notifyTargetOfSuccess {
-  [target performSelector: callback withObject: nil];
+  [target performSelector: callback];
 }
 
 - (void) notifyTargetOfSuccessWithObject: (id) object {
