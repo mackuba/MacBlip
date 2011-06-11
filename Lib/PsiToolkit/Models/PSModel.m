@@ -58,7 +58,7 @@ PSReleaseOnDealloc(numericRecordId);
 + (id) valueFromJSONString: (NSString *) jsonString {
   #if defined(PSITOOLKIT_USE_YAJL)
     return [jsonString yajl_JSON];
-  #elif defined(PSITOOLKIT_USE_JSON_FRAMEWORK)
+  #elif defined(PSITOOLKIT_USE_SBJSON)
     return [jsonString JSONValue];
   #elif defined(PSITOOLKIT_USE_TOUCHJSON)
     static CJSONDeserializer *deserializer;

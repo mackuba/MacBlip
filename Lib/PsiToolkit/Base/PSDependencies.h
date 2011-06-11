@@ -9,8 +9,8 @@
 
 #if defined(PSITOOLKIT_USE_YAJL)
   #import <YAJL/YAJL.h>
-#elif defined(PSITOOLKIT_USE_JSON_FRAMEWORK)
-  #import "JSON.h"
+#elif defined(PSITOOLKIT_USE_SBJSON)
+  #import "SBJson.h"
 #elif defined(PSITOOLKIT_USE_TOUCHJSON)
   #import "CJSONDeserializer.h"
 #elif defined(PSITOOLKIT_USE_JSONKIT)

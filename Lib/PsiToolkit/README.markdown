@@ -33,14 +33,14 @@ which modules you'd like to import (Cocoa and UIKit obviously shouldn't be used 
 The configuration lines have to be added before the import, otherwise they won't matter.
 
 Another thing you can configure this way is the choice of a JSON parsing library, if you need one. 4 libraries are
-supported: [YAJL](http://github.com/gabriel/yajl-objc), [JSON Framework](http://stig.github.com/json-framework),
+supported: [YAJL](http://github.com/gabriel/yajl-objc), [SBJson](http://stig.github.com/json-framework),
 [TouchJSON](https://github.com/schwa/TouchJSON) and [JSONKit](https://github.com/johnezang/JSONKit) (see also a
 [blog post that compares them](http://psionides.jogger.pl/2010/12/12/cocoa-json-parsing-libraries-part-2)).
 
 To use one of them, add one of these lines to the prefix file:
 
     #define PSITOOLKIT_USE_YAJL
-    #define PSITOOLKIT_USE_JSON_FRAMEWORK
+    #define PSITOOLKIT_USE_SBJSON
     #define PSITOOLKIT_USE_TOUCHJSON
     #define PSITOOLKIT_USE_JSONKIT
 
