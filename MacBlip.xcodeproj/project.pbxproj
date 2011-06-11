@@ -110,6 +110,16 @@
 		589B957B13A3EE2F00B4CE02 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */; };
 		589B958B13A3F82B00B4CE02 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 589B958A13A3F82B00B4CE02 /* README.markdown */; };
 		589B959013A3FF7F00B4CE02 /* ApplicationDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589B958F13A3FF7F00B4CE02 /* ApplicationDelegate.rb */; };
+		589B95C413A414E300B4CE02 /* LoginWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B959B13A414E300B4CE02 /* LoginWindow.strings */; };
+		589B95C613A414E300B4CE02 /* MainMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B959F13A414E300B4CE02 /* MainMenu.strings */; };
+		589B95C813A414E300B4CE02 /* MainWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95A313A414E300B4CE02 /* MainWindow.strings */; };
+		589B95CA13A414E300B4CE02 /* MessageCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95A713A414E300B4CE02 /* MessageCell.strings */; };
+		589B95CC13A414E300B4CE02 /* NewMessageDialog.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95AB13A414E300B4CE02 /* NewMessageDialog.strings */; };
+		589B95CE13A414E300B4CE02 /* LoginWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95B013A414E300B4CE02 /* LoginWindow.strings */; };
+		589B95D013A414E300B4CE02 /* MainMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95B413A414E300B4CE02 /* MainMenu.strings */; };
+		589B95D213A414E300B4CE02 /* MainWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95B813A414E300B4CE02 /* MainWindow.strings */; };
+		589B95D413A414E300B4CE02 /* MessageCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95BC13A414E300B4CE02 /* MessageCell.strings */; };
+		589B95D613A414E300B4CE02 /* NewMessageDialog.strings in Resources */ = {isa = PBXBuildFile; fileRef = 589B95C013A414E300B4CE02 /* NewMessageDialog.strings */; };
 		589CDF88119F007000B1F64D /* WarningBar.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589CDF87119F007000B1F64D /* WarningBar.rb */; };
 		589CDFF6119F08E100B1F64D /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF4119F08E100B1F64D /* error.png */; };
 		589CDFF7119F08E100B1F64D /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF5119F08E100B1F64D /* warning.png */; };
@@ -326,6 +336,16 @@
 		589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		589B958A13A3F82B00B4CE02 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		589B958F13A3FF7F00B4CE02 /* ApplicationDelegate.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ApplicationDelegate.rb; sourceTree = "<group>"; };
+		589B959C13A414E300B4CE02 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = LoginWindow.strings; sourceTree = "<group>"; };
+		589B95A013A414E300B4CE02 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = MainMenu.strings; sourceTree = "<group>"; };
+		589B95A413A414E300B4CE02 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = MainWindow.strings; sourceTree = "<group>"; };
+		589B95A813A414E300B4CE02 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = MessageCell.strings; sourceTree = "<group>"; };
+		589B95AC13A414E300B4CE02 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = NewMessageDialog.strings; sourceTree = "<group>"; };
+		589B95B113A414E300B4CE02 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = LoginWindow.strings; sourceTree = "<group>"; };
+		589B95B513A414E300B4CE02 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = MainMenu.strings; sourceTree = "<group>"; };
+		589B95B913A414E300B4CE02 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = MainWindow.strings; sourceTree = "<group>"; };
+		589B95BD13A414E300B4CE02 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = MessageCell.strings; sourceTree = "<group>"; };
+		589B95C113A414E300B4CE02 /* Polish */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Polish; path = NewMessageDialog.strings; sourceTree = "<group>"; };
 		589CDF87119F007000B1F64D /* WarningBar.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = WarningBar.rb; sourceTree = "<group>"; };
 		589CDFF4119F08E100B1F64D /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		589CDFF5119F08E100B1F64D /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
@@ -662,6 +682,8 @@
 		585A924F111B6831003ABD05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				589B959A13A414E300B4CE02 /* English.lproj */,
+				589B95AF13A414E300B4CE02 /* Polish.lproj */,
 				580A6D39127F310F0078439A /* AvatarView.h */,
 				580A6D3A127F310F0078439A /* AvatarView.m */,
 				5897F1D4112DDE850029B4D9 /* LoginWindow.xib */,
@@ -778,6 +800,30 @@
 				589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */,
 			);
 			path = SBJson;
+			sourceTree = "<group>";
+		};
+		589B959A13A414E300B4CE02 /* English.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				589B959B13A414E300B4CE02 /* LoginWindow.strings */,
+				589B959F13A414E300B4CE02 /* MainMenu.strings */,
+				589B95A313A414E300B4CE02 /* MainWindow.strings */,
+				589B95A713A414E300B4CE02 /* MessageCell.strings */,
+				589B95AB13A414E300B4CE02 /* NewMessageDialog.strings */,
+			);
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+		589B95AF13A414E300B4CE02 /* Polish.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				589B95B013A414E300B4CE02 /* LoginWindow.strings */,
+				589B95B413A414E300B4CE02 /* MainMenu.strings */,
+				589B95B813A414E300B4CE02 /* MainWindow.strings */,
+				589B95BC13A414E300B4CE02 /* MessageCell.strings */,
+				589B95C013A414E300B4CE02 /* NewMessageDialog.strings */,
+			);
+			path = Polish.lproj;
 			sourceTree = "<group>";
 		};
 		58A25DF6117DE4F200784901 /* Bridges */ = {
@@ -940,6 +986,16 @@
 				5831CEBE12EF735A008169A7 /* PSSecurityExtensions.bridgesupport in Resources */,
 				589B958B13A3F82B00B4CE02 /* README.markdown in Resources */,
 				589B959013A3FF7F00B4CE02 /* ApplicationDelegate.rb in Resources */,
+				589B95C413A414E300B4CE02 /* LoginWindow.strings in Resources */,
+				589B95C613A414E300B4CE02 /* MainMenu.strings in Resources */,
+				589B95C813A414E300B4CE02 /* MainWindow.strings in Resources */,
+				589B95CA13A414E300B4CE02 /* MessageCell.strings in Resources */,
+				589B95CC13A414E300B4CE02 /* NewMessageDialog.strings in Resources */,
+				589B95CE13A414E300B4CE02 /* LoginWindow.strings in Resources */,
+				589B95D013A414E300B4CE02 /* MainMenu.strings in Resources */,
+				589B95D213A414E300B4CE02 /* MainWindow.strings in Resources */,
+				589B95D413A414E300B4CE02 /* MessageCell.strings in Resources */,
+				589B95D613A414E300B4CE02 /* NewMessageDialog.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1138,86 @@
 				589B893812B56B8200516FA2 /* Polish */,
 			);
 			name = Credits.html;
+			sourceTree = "<group>";
+		};
+		589B959B13A414E300B4CE02 /* LoginWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B959C13A414E300B4CE02 /* English */,
+			);
+			name = LoginWindow.strings;
+			sourceTree = "<group>";
+		};
+		589B959F13A414E300B4CE02 /* MainMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95A013A414E300B4CE02 /* English */,
+			);
+			name = MainMenu.strings;
+			sourceTree = "<group>";
+		};
+		589B95A313A414E300B4CE02 /* MainWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95A413A414E300B4CE02 /* English */,
+			);
+			name = MainWindow.strings;
+			sourceTree = "<group>";
+		};
+		589B95A713A414E300B4CE02 /* MessageCell.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95A813A414E300B4CE02 /* English */,
+			);
+			name = MessageCell.strings;
+			sourceTree = "<group>";
+		};
+		589B95AB13A414E300B4CE02 /* NewMessageDialog.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95AC13A414E300B4CE02 /* English */,
+			);
+			name = NewMessageDialog.strings;
+			sourceTree = "<group>";
+		};
+		589B95B013A414E300B4CE02 /* LoginWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95B113A414E300B4CE02 /* Polish */,
+			);
+			name = LoginWindow.strings;
+			sourceTree = "<group>";
+		};
+		589B95B413A414E300B4CE02 /* MainMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95B513A414E300B4CE02 /* Polish */,
+			);
+			name = MainMenu.strings;
+			sourceTree = "<group>";
+		};
+		589B95B813A414E300B4CE02 /* MainWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95B913A414E300B4CE02 /* Polish */,
+			);
+			name = MainWindow.strings;
+			sourceTree = "<group>";
+		};
+		589B95BC13A414E300B4CE02 /* MessageCell.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95BD13A414E300B4CE02 /* Polish */,
+			);
+			name = MessageCell.strings;
+			sourceTree = "<group>";
+		};
+		589B95C013A414E300B4CE02 /* NewMessageDialog.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				589B95C113A414E300B4CE02 /* Polish */,
+			);
+			name = NewMessageDialog.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
