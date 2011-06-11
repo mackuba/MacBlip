@@ -6,42 +6,6 @@
 	objectVersion = 44;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		172754BD107597F200D0347B /* Unit Tests */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */;
-			buildPhases = (
-				172754BC107597F200D0347B /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "Unit Tests";
-			productName = "Unit Tests";
-		};
-		4D1A51A110A4FF5D0046A98A /* Compile */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */;
-			buildPhases = (
-				4D1A51A010A4FF5D0046A98A /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Compile;
-			productName = Compile;
-		};
-		4D1A51A510A4FF640046A98A /* Embed */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */;
-			buildPhases = (
-				4D1A51A410A4FF640046A98A /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Embed;
-			productName = Embed;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		4DE339F70D74FCDD00ADB6EE /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 4DE339F60D74FCDD00ADB6EE /* rb_main.rb */; };
 		580A6D30127F2A060078439A /* MessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 580A6D2F127F2A060078439A /* MessageTextView.m */; };
@@ -776,6 +740,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		589B950613A3E3E300B4CE02 /* Deployment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--compile --embed";
+			buildConfigurationList = 589B950713A3E3E300B4CE02 /* Build configuration list for PBXLegacyTarget "Deployment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/macruby_deploy;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = Deployment;
+			passBuildSettingsInEnvironment = 1;
+			productName = Deployment;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		8D1107260486CEB800E47090 /* MacBlip */ = {
 			isa = PBXNativeTarget;
@@ -817,9 +798,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* MacBlip */,
-				172754BD107597F200D0347B /* Unit Tests */,
-				4D1A51A110A4FF5D0046A98A /* Compile */,
-				4D1A51A510A4FF640046A98A /* Embed */,
+				589B950613A3E3E300B4CE02 /* Deployment */,
 			);
 		};
 /* End PBXProject section */
@@ -897,48 +876,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		172754BC107597F200D0347B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/macruby Tests/run_suite.rb";
-		};
-		4D1A51A010A4FF5D0046A98A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The macruby_deploy command-line tool with the --compile argument will compile every Ruby source file of your .app into machine code. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --compile \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
-		};
-		4D1A51A410A4FF640046A98A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The macruby_deploy command-line tool with the --embed argument will make sure the MacRuby framework will be embedded in your .app. Default options will be used. Pass the -h option to get more information.\nPATH=\"$PATH:/usr/local/bin\" macruby_deploy --embed \"$TARGET_BUILD_DIR/$PROJECT_NAME.app\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -1070,66 +1007,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		172754BE107597F200D0347B /* Debug */ = {
+		589B950813A3E3E300B4CE02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Unit Tests";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		172754BF107597F200D0347B /* Release */ = {
+		589B950913A3E3E300B4CE02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "Unit Tests";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		4D1A51A210A4FF5D0046A98A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = Compile;
-			};
-			name = Debug;
-		};
-		4D1A51A310A4FF5D0046A98A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = Compile;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		4D1A51A610A4FF640046A98A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = Embed;
-			};
-			name = Debug;
-		};
-		4D1A51A710A4FF640046A98A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = Embed;
-				ZERO_LINK = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1149,7 +1052,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MacBlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = /Applications;
 				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = MacBlip;
 				WRAPPER_EXTENSION = app;
@@ -1170,7 +1073,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MacBlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = /Applications;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = MacBlip;
 				WRAPPER_EXTENSION = app;
@@ -1180,65 +1083,50 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH_ACTUAL)";
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				VALID_ARCHS = "i386 x86_64";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					x86_64,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
-				VALID_ARCHS = "i386 x86_64";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		172754C7107597F400D0347B /* Build configuration list for PBXAggregateTarget "Unit Tests" */ = {
+		589B950713A3E3E300B4CE02 /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				172754BE107597F200D0347B /* Debug */,
-				172754BF107597F200D0347B /* Release */,
+				589B950813A3E3E300B4CE02 /* Debug */,
+				589B950913A3E3E300B4CE02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4D1A51AB10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Compile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4D1A51A210A4FF5D0046A98A /* Debug */,
-				4D1A51A310A4FF5D0046A98A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4D1A51AC10A4FF6A0046A98A /* Build configuration list for PBXAggregateTarget "Embed" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4D1A51A610A4FF640046A98A /* Debug */,
-				4D1A51A710A4FF640046A98A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "MacBlip" */ = {
 			isa = XCConfigurationList;

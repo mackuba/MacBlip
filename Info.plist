@@ -20,17 +20,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>0.3.3</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.social-networking</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>sparkle_pub_key.pem</string>
-	<key>SUFeedURL</key>
-	<string>http://github.com/psionides/MacBlip/raw/master/Sparkle/macblip_appcast.xml</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Post with MacBlip</string>
+			</dict>
 			<key>NSMessage</key>
 			<string>newMessageWithTextFromService</string>
 			<key>NSRequiredContext</key>
@@ -40,12 +43,11 @@
 				<string>NSPasteboardTypeString</string>
 				<string>NSStringPboardType</string>
 			</array>
-			<key>NSMenuItem</key>
-			<dict>
-				<key>default</key>
-				<string>Post with MacBlip</string>
-			</dict>
 		</dict>
 	</array>
+	<key>SUFeedURL</key>
+	<string>http://github.com/psionides/MacBlip/raw/master/Sparkle/macblip_appcast.xml</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>sparkle_pub_key.pem</string>
 </dict>
 </plist>
