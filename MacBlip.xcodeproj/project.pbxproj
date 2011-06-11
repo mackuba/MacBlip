@@ -109,6 +109,7 @@
 		589B957913A3EE2F00B4CE02 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956B13A3EE2F00B4CE02 /* SBJsonTokeniser.m */; };
 		589B957A13A3EE2F00B4CE02 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956D13A3EE2F00B4CE02 /* SBJsonUTF8Stream.m */; };
 		589B957B13A3EE2F00B4CE02 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */; };
+		589B958B13A3F82B00B4CE02 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 589B958A13A3F82B00B4CE02 /* README.markdown */; };
 		589CDF88119F007000B1F64D /* WarningBar.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589CDF87119F007000B1F64D /* WarningBar.rb */; };
 		589CDFF6119F08E100B1F64D /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF4119F08E100B1F64D /* error.png */; };
 		589CDFF7119F08E100B1F64D /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 589CDFF5119F08E100B1F64D /* warning.png */; };
@@ -324,6 +325,7 @@
 		589B956D13A3EE2F00B4CE02 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		589B956E13A3EE2F00B4CE02 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		589B956F13A3EE2F00B4CE02 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		589B958A13A3F82B00B4CE02 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		589CDF87119F007000B1F64D /* WarningBar.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = WarningBar.rb; sourceTree = "<group>"; };
 		589CDFF4119F08E100B1F64D /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		589CDFF5119F08E100B1F64D /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				589B958A13A3F82B00B4CE02 /* README.markdown */,
 				5897F1CF112DDE5B0029B4D9 /* Extensions.rb */,
 				4DE339F60D74FCDD00ADB6EE /* rb_main.rb */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -936,6 +939,7 @@
 				5831CEBC12EF735A008169A7 /* PSRestRouter.bridgesupport in Resources */,
 				5831CEBD12EF735A008169A7 /* PSRouter.bridgesupport in Resources */,
 				5831CEBE12EF735A008169A7 /* PSSecurityExtensions.bridgesupport in Resources */,
+				589B958B13A3F82B00B4CE02 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

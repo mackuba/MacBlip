@@ -23,4 +23,5 @@ can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's
 
 Copyright by Jakub Suder <jakub.suder at gmail.com>. Licensed under Eclipse Public License v1.0.
 
-Includes open source libraries: ASIHTTPRequest by Ben Copsey; SDListView, SDKVO and SDKeychain by Steven Degutis; YAJL-objc by Lloyd Hilaiel & Gabriel Handford; ImageCrop by Matt Gemmell; Sparkle by Andy Matuschak; and the Growl Framework.
+Includes open source libraries: ASIHTTPRequest by Ben Copsey; SDListView, SDKVO and SDKeychain by Steven Degutis;
+SBJson by Stig Brautaset; ImageCrop by Matt Gemmell; Sparkle by Andy Matuschak; and the Growl Framework.
