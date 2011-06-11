@@ -75,13 +75,16 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void) releaseResources {
 	[observers release];
 	[sortDescriptors release], sortDescriptors = nil;
 	[content release], content = nil;
 	[listViewItems release];
 	[viewsThatShouldNotAnimate release];
-	
+}
+
+- (void) dealloc {
+	[self releaseResources];
 	[super dealloc];
 }
 

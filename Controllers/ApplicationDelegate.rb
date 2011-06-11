@@ -18,14 +18,7 @@ class ApplicationDelegate
     GrowlApplicationBridge.growlDelegate = ""
     FilesController.clearPicturesCache
 
-    @blip = OBConnector.sharedConnector
-    @blip.userAgent = userAgentString
-    @blip.autoLoadAvatars = true
-    @blip.initialDashboardFetch = 30
-    @blip.account = OBAccount.accountFromSettings || OBAccount.new
-    @blip.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
-    # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
-
+    initConnector
     initMidnightTimer
     initTooltips
 
@@ -36,6 +29,16 @@ class ApplicationDelegate
     else
       showLoginWindow
     end
+  end
+
+  def initConnector
+    @blip = OBConnector.sharedConnector = OBConnector.new
+    @blip.userAgent = userAgentString
+    @blip.autoLoadAvatars = true
+    @blip.initialDashboardFetch = 30
+    @blip.account = OBAccount.accountFromSettings || OBAccount.new
+    @blip.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
+    # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES
   end
 
   def authenticate
@@ -138,6 +141,10 @@ class ApplicationDelegate
     NSApp.servicesProvider = self
   end
 
+  def disableIncomingServices
+    NSApp.servicesProvider = nil
+  end
+
   def authenticationFailedInRequest(request)
     deleteMainWindow
     showLoginWindow
@@ -164,6 +171,22 @@ class ApplicationDelegate
 
   def forceDashboardUpdate(sender)
     @blip.dashboardMonitor.requestManualUpdate if @blip.account.loggedIn?
+  end
+
+  def logoutPressed(sender)
+    @blip.account.clear
+    @blip.dashboardMonitor.stopMonitoring
+
+    @mainWindowController.releaseWindow
+    @mainWindowController = nil
+
+    NSUserDefaults.standardUserDefaults.removeObjectForKey(MainWindowController::LAST_GROWLED_KEY)
+    FilesController.clearPicturesCache
+    OBMessage.reset
+    disableIncomingServices
+    initConnector
+
+    showLoginWindow
   end
 
   def openDashboard(sender)

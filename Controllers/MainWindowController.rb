@@ -29,11 +29,23 @@ class MainWindowController < NSWindowController
     window.setContentBorderThickness(32, forEdge: CGRectMinYEdge)
     window.movableByWindowBackground = true
 
-    @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
+    # sort descriptors have to be set *before* the content is bound to a list with items in it
     @listView.sortDescriptors = [NSSortDescriptor.sortDescriptorWithKey('date', ascending: true)]
+    # the order is actually descending, but listView is not flipped so it counts Y coordinate from bottom... o_O
+    @listView.bind "content", toObject: OBMessage, withKeyPath: "list", options: nil
     @listView.topPadding = 5
     @listView.bottomPadding = 5
-    # the order is actually descending, but listView is not flipped so it counts Y coordinate from bottom... o_O
+  end
+
+  def releaseWindow
+    @listView.unbind "content"
+    @listView.releaseResources
+    mbStopObserving(@blip.dashboardMonitor, OBDashboardUpdatedNotification)
+    mbStopObserving(@blip.dashboardMonitor, OBDashboardUpdateFailedNotification)
+    mbStopObserving(@blip.dashboardMonitor, OBDashboardAuthFailedNotification)
+    mbStopObserving(@blip.dashboardMonitor, OBDashboardWillUpdateNotification)
+    self.window.close
+    self.window = nil
   end
 
   def warningBar
