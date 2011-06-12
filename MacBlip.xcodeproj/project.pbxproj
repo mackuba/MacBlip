@@ -861,7 +861,7 @@
 /* Begin PBXLegacyTarget section */
 		589B950613A3E3E300B4CE02 /* Deployment */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--compile --embed";
+			buildArgumentsString = "--compile --embed --no-stdlib";
 			buildConfigurationList = 589B950713A3E3E300B4CE02 /* Build configuration list for PBXLegacyTarget "Deployment" */;
 			buildPhases = (
 			);
