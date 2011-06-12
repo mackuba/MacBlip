@@ -93,6 +93,12 @@
 		5897F1FC112DE9060029B4D9 /* macblip_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5897F1FB112DE9060029B4D9 /* macblip_icon.icns */; };
 		5897F20C112DEBEC0029B4D9 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20B112DEBEC0029B4D9 /* home.png */; };
 		5897F20E112DED5D0029B4D9 /* new_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 5897F20D112DED5D0029B4D9 /* new_message.png */; };
+		589B1CC513A4E53500797252 /* ASIFormDataRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CBF13A4E53500797252 /* ASIFormDataRequest.bridgesupport */; };
+		589B1CC613A4E53500797252 /* ASIHTTPRequest.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CC013A4E53500797252 /* ASIHTTPRequest.bridgesupport */; };
+		589B1CC713A4E53500797252 /* ASIHTTPRequestConfig.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CC113A4E53500797252 /* ASIHTTPRequestConfig.bridgesupport */; };
+		589B1CC813A4E53500797252 /* ASIHTTPRequestDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CC213A4E53500797252 /* ASIHTTPRequestDelegate.bridgesupport */; };
+		589B1CC913A4E53500797252 /* ASINetworkQueue.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CC313A4E53500797252 /* ASINetworkQueue.bridgesupport */; };
+		589B1CCA13A4E53500797252 /* ASIProgressDelegate.bridgesupport in Resources */ = {isa = PBXBuildFile; fileRef = 589B1CC413A4E53500797252 /* ASIProgressDelegate.bridgesupport */; };
 		589B867412B50D4F00516FA2 /* ajax-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 589B867312B50D4F00516FA2 /* ajax-loader.gif */; };
 		589B878E12B52DEE00516FA2 /* LinkExpander.rb in Resources */ = {isa = PBXBuildFile; fileRef = 589B878D12B52DEE00516FA2 /* LinkExpander.rb */; };
 		589B893512B56B5A00516FA2 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 589B893412B56B5A00516FA2 /* Credits.html */; };
@@ -306,6 +312,12 @@
 		5897F1FB112DE9060029B4D9 /* macblip_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = macblip_icon.icns; sourceTree = "<group>"; };
 		5897F20B112DEBEC0029B4D9 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5897F20D112DED5D0029B4D9 /* new_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_message.png; sourceTree = "<group>"; };
+		589B1CBF13A4E53500797252 /* ASIFormDataRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIFormDataRequest.bridgesupport; sourceTree = "<group>"; };
+		589B1CC013A4E53500797252 /* ASIHTTPRequest.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequest.bridgesupport; sourceTree = "<group>"; };
+		589B1CC113A4E53500797252 /* ASIHTTPRequestConfig.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestConfig.bridgesupport; sourceTree = "<group>"; };
+		589B1CC213A4E53500797252 /* ASIHTTPRequestDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIHTTPRequestDelegate.bridgesupport; sourceTree = "<group>"; };
+		589B1CC313A4E53500797252 /* ASINetworkQueue.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASINetworkQueue.bridgesupport; sourceTree = "<group>"; };
+		589B1CC413A4E53500797252 /* ASIProgressDelegate.bridgesupport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASIProgressDelegate.bridgesupport; sourceTree = "<group>"; };
 		589B867312B50D4F00516FA2 /* ajax-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ajax-loader.gif"; sourceTree = "<group>"; };
 		589B878D12B52DEE00516FA2 /* LinkExpander.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = LinkExpander.rb; sourceTree = "<group>"; };
 		589B88D912B5591E00516FA2 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = English; path = English.lproj/Credits.html; sourceTree = "<group>"; };
@@ -834,6 +846,12 @@
 		58A25DF6117DE4F200784901 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				589B1CBF13A4E53500797252 /* ASIFormDataRequest.bridgesupport */,
+				589B1CC013A4E53500797252 /* ASIHTTPRequest.bridgesupport */,
+				589B1CC113A4E53500797252 /* ASIHTTPRequestConfig.bridgesupport */,
+				589B1CC213A4E53500797252 /* ASIHTTPRequestDelegate.bridgesupport */,
+				589B1CC313A4E53500797252 /* ASINetworkQueue.bridgesupport */,
+				589B1CC413A4E53500797252 /* ASIProgressDelegate.bridgesupport */,
 				58A25DF7117DE51100784901 /* QLPreviewPanel.bridgesupport */,
 			);
 			path = Bridges;
@@ -1001,6 +1019,12 @@
 				589B95D213A414E300B4CE02 /* MainWindow.strings in Resources */,
 				589B95D413A414E300B4CE02 /* MessageCell.strings in Resources */,
 				589B95D613A414E300B4CE02 /* NewMessageDialog.strings in Resources */,
+				589B1CC513A4E53500797252 /* ASIFormDataRequest.bridgesupport in Resources */,
+				589B1CC613A4E53500797252 /* ASIHTTPRequest.bridgesupport in Resources */,
+				589B1CC713A4E53500797252 /* ASIHTTPRequestConfig.bridgesupport in Resources */,
+				589B1CC813A4E53500797252 /* ASIHTTPRequestDelegate.bridgesupport in Resources */,
+				589B1CC913A4E53500797252 /* ASINetworkQueue.bridgesupport in Resources */,
+				589B1CCA13A4E53500797252 /* ASIProgressDelegate.bridgesupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
