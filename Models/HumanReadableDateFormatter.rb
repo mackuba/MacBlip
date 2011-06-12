@@ -8,10 +8,6 @@
 class HumanReadableDateFormatter < NSFormatter
 
   def init
-    @dateOnlyFormatter = NSDateFormatter.new
-    @dateOnlyFormatter.dateStyle = NSDateFormatterShortStyle
-    @dateOnlyFormatter.timeStyle = NSDateFormatterNoStyle
-
     @timeOnlyFormatter = NSDateFormatter.new
     @timeOnlyFormatter.dateStyle = NSDateFormatterNoStyle
     @timeOnlyFormatter.timeStyle = NSDateFormatterMediumStyle
@@ -19,17 +15,23 @@ class HumanReadableDateFormatter < NSFormatter
     @timeAndDayFormatter = NSDateFormatter.new
     @timeAndDayFormatter.dateFormat = "EEEE, HH:mm:ss"
 
+    @timeAndDateFormatter = NSDateFormatter.new
+    @timeAndDateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+
     self
   end
 
   def stringForObjectValue(date)
-    thatDate = @dateOnlyFormatter.stringFromDate(date)
-    today = @dateOnlyFormatter.stringFromDate(NSDate.date)
-    if thatDate == today
-      @timeOnlyFormatter.stringFromDate(date)
-    else
-      @timeAndDayFormatter.stringFromDate(date)
+    formatter = case
+      when date.psMidnight == NSDate.date.psMidnight
+        @timeOnlyFormatter
+      when date.psMidnight >= NSDate.psDaysAgo(6).psMidnight
+        @timeAndDayFormatter
+      else
+        @timeAndDateFormatter
     end
+
+    formatter.stringFromDate(date)
   end
 
 end
