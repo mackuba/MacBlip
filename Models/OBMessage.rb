@@ -71,7 +71,7 @@ class OBMessage
       if url && url.length > 0
         range = NSRange.new(offset.first, offset.last - offset.first)
         expanded = LinkExpander.sharedLinkExpander.expand(url) || url
-        nsurl = NSURL.URLWithString(expanded)
+        nsurl = NSURL.URLWithString(expanded.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding))
         richText.addAttribute(NSLinkAttributeName, value: nsurl, range: range) unless nsurl.nil?
       end
     end
