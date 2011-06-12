@@ -18,7 +18,8 @@
 	NSArray *content;
 	SDListViewItem *prototypeItem;
 	NSArray *sortDescriptors;
-	
+	NSView *footerView;
+
 	NSMutableArray *observers;
 	
 	NSMutableArray *listViewItems;
@@ -39,6 +40,8 @@
 
 @property (readwrite, copy) NSArray *content;
 @property (readwrite, retain) IBOutlet SDListViewItem *prototypeItem;
+
+@property (readwrite, retain) IBOutlet NSView *footerView;
 
 @property (readwrite) CGFloat topPadding;
 @property (readwrite) CGFloat bottomPadding;

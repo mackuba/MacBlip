@@ -35,7 +35,7 @@ class ApplicationDelegate
     @blip = OBConnector.sharedConnector = OBConnector.new
     @blip.userAgent = userAgentString
     @blip.autoLoadAvatars = true
-    @blip.initialDashboardFetch = 30
+    @blip.initialDashboardFetch = @blip.pageSize = 30
     @blip.account = OBAccount.accountFromSettings || OBAccount.new
     @blip.loggingEnabled = true if NSUserDefaults.standardUserDefaults.boolForKey(LOGGING_KEY)
     # enable logging with: defaults write net.psionides.MacBlip 'objectiveblip.forceLogging' -bool YES

@@ -11,6 +11,7 @@ class MainWindowController < NSWindowController
   GROWL_LIMIT = 5
 
   attr_accessor :listView, :scrollView, :spinner, :loadingView, :newMessageButton, :dashboardButton
+  attr_accessor :loadMoreButton, :loadMoreSpinner
 
   def init
     initWithWindowNibName "MainWindow"
@@ -114,26 +115,41 @@ class MainWindowController < NSWindowController
     if messages && messages.count > 0
       self.performSelector('scrollToTop', withObject: nil, afterDelay: 0.2) if @firstLoad
 
-      messagesWithPictures = messages.find_all { |m| m.hasPicture }
-      messagesWithPictures.each { |m| @blip.loadPictureRequest(m).send }
-
-      messages.each do |message|
-        message.body.scan(%r{http://rdir.pl/\w+}) do |link|
-          expandLink(link, message)
-        end
-      end
-
+      loadPicturesForMessages(messages)
+      expandLinksForMessages(messages)
       growlMessages(messages)
       @lastGrowled = [@lastGrowled, messages.first.recordIdValue].max
       NSUserDefaults.standardUserDefaults.setInteger(@lastGrowled, forKey: LAST_GROWLED_KEY)
     end
 
     @loadingView.performSelector(:psHide, withObject: nil, afterDelay: 0.1)
+    @listView.footerView.performSelector(:psShow, withObject: nil, afterDelay: 0.3)
     @newMessageButton.psEnable
     @dashboardButton.psEnable
     @spinner.stopAnimation(self)
     @firstLoad = false
     hideNoticeBars
+  end
+
+  def oldMessagesLoaded(messages)
+    @loadMoreSpinner.performSelector('stopAnimation:', withObject: self, afterDelay: 0.2)
+    @loadMoreButton.performSelector('psShow', withObject: nil, afterDelay: 0.2)
+    hideNoticeBars
+    loadPicturesForMessages(messages)
+    expandLinksForMessages(messages)
+  end
+
+  def loadPicturesForMessages(messages)
+    messagesWithPictures = messages.find_all { |m| m.hasPicture }
+    messagesWithPictures.each { |m| @blip.loadPictureRequest(m).send }
+  end
+
+  def expandLinksForMessages(messages)
+    messages.each do |message|
+      message.body.scan(%r{http://rdir.pl/\w+}) do |link|
+        expandLink(link, message)
+      end
+    end
   end
 
   def dashboardUpdateFailed(notification)
@@ -166,11 +182,21 @@ class MainWindowController < NSWindowController
   end
 
   def requestFailed(request, withError: error)
-    # link expand request failed - ignore
+    # link expand or old messages request failed - ignore
+    @loadMoreSpinner.stopAnimation(self)
+    @loadMoreButton.psShow
   end
 
   def authenticationFailedInRequest(request)
-    # link expand request failed - ignore
+    # link expand or old messages request failed - ignore
+    @loadMoreSpinner.stopAnimation(self)
+    @loadMoreButton.psShow
+  end
+
+  def loadMoreButtonPressed(sender)
+    @loadMoreButton.psHide
+    @loadMoreSpinner.startAnimation(self)
+    @blip.oldMessagesRequest.sendFor(self, callback: 'oldMessagesLoaded:')
   end
 
   def newMessagePressed(sender)

@@ -42,6 +42,7 @@
 @synthesize content;
 @synthesize prototypeItem;
 @synthesize sortDescriptors;
+@synthesize footerView;
 
 @synthesize observers;
 
@@ -69,7 +70,7 @@
 		listViewItems = [[NSMutableArray array] retain];
 		viewsThatShouldNotAnimate = [[NSMutableArray array] retain];
 		selectionFellOfSide = 1;
-		
+
 		[self _beginObservingContent];
 	}
 	return self;
@@ -81,6 +82,7 @@
 	[content release], content = nil;
 	[listViewItems release];
 	[viewsThatShouldNotAnimate release];
+  [footerView release];
 }
 
 - (void) dealloc {
@@ -91,7 +93,12 @@
 - (void) awakeFromNib {
 	NSClipView *clipView = [[self enclosingScrollView] contentView];
 	object_setClass(clipView, [SDFlippedClipView class]);
-	
+
+  if (footerView && [footerView superview] != self) {
+    [self addSubview: footerView];
+    [footerView setFrame: NSMakeRect(0, 0, self.frame.size.width, footerView.frame.size.height)];
+  }
+
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self _rebuildContent];
 		[self _sortContent];
@@ -274,11 +281,18 @@
 	}
 	
 	totalHeight += self.topPadding + self.bottomPadding;
-	
+
+  if (footerView) {
+    totalHeight += footerView.frame.size.height;
+  }
+
 	[self setFrameSize:NSMakeSize(width, totalHeight)];
 	
 	CGFloat y = 0.0 + self.bottomPadding;
-	
+  if (footerView) {
+    y += footerView.frame.size.height;
+  }
+
 	for (NSInteger i = 0; i < contentCount; i++) {
 		SDListViewItem *item = [listViewItems objectAtIndex:i];
 		
