@@ -21,7 +21,7 @@
 
 @implementation OBConnector
 
-@synthesize autoLoadAvatars, initialDashboardFetch;
+@synthesize autoLoadAvatars, initialDashboardFetch, pageSize;
 PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 
 // -------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 
     avatarGroups = [[NSMutableArray alloc] initWithCapacity: 1];
     lastMessageId = -1;
-    initialDashboardFetch = 20;
+    initialDashboardFetch = pageSize = 20;
     autoLoadAvatars = NO;
     autoLoadPictureInfo = YES;
   }
@@ -99,6 +99,15 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
   if (autoLoadPictureInfo) {
     [request addURLParameter: @"include" value: @"pictures"];
   }
+  request.successHandler = @selector(dashboardUpdated:);
+  return request;
+}
+
+- (PSRequest *) oldMessagesRequest {
+  PSRequest *request = [self requestToPath: @"/dashboard"];
+  [request addURLParameter: @"limit" integerValue: initialDashboardFetch];
+  [request addURLParameter: @"offset" integerValue: [OBMessage count]];
+  request.userInfo = PSHash(@"old", PSBool(YES));
   request.successHandler = @selector(dashboardUpdated:);
   return request;
 }
@@ -168,12 +177,22 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 
 - (void) dashboardUpdated: (PSRequest *) request {
   NSArray *messages = [self parseObjectsFromRequest: request model: [OBMessage class]];
+  BOOL old = [[request objectForKey: @"old"] boolValue];
   if (messages) {
     if ([messages isEqual: PSNull]) {
       messages = [NSArray array];
+    } else {
+      // blip is stupid and sometimes returns duplicates, so remove them now
+      NSMutableArray *filteredMessages = [NSMutableArray array];
+      for (OBMessage *message in messages) {
+        if (![OBMessage objectWithId: message.recordId]) {
+          [filteredMessages addObject: message];
+        }
+      }
+      messages = filteredMessages;
     }
 
-    if (messages.count > 0) {
+    if (messages.count > 0 && !old) {
       // msgs are coming in the order from newest to oldest
       lastMessageId = [[messages psFirstObject] recordIdValue];
     }
@@ -231,7 +250,11 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 }
 
 - (void) acceptNewMessages: (NSArray *) messages fromRequest: (PSRequest *) request {
-  [OBMessage prependObjectsToList: messages];
+  if ([request objectForKey: @"old"]) {
+    [OBMessage prependObjectsToList: messages];
+  } else {
+    [OBMessage appendObjectsToList: messages];
+  }
   [request notifyTargetOfSuccessWithObject: messages];
 }
 

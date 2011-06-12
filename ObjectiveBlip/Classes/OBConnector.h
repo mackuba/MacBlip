@@ -20,17 +20,20 @@
   BOOL autoLoadAvatars;
   BOOL autoLoadPictureInfo;
   NSInteger initialDashboardFetch;
+  NSInteger pageSize;
 }
 
 @property (nonatomic, readonly) OBDashboardMonitor *dashboardMonitor;
 @property (nonatomic) BOOL autoLoadAvatars;
 @property (nonatomic) NSInteger initialDashboardFetch;
+@property (nonatomic) NSInteger pageSize;
 
 - (id) init;
 - (id) initWithUsername: (NSString *) username password: (NSString *) password;
 
 - (PSRequest *) authenticateRequest;
 - (PSRequest *) dashboardRequest;
+- (PSRequest *) oldMessagesRequest;
 - (PSRequest *) sendMessageRequest: (NSString *) message;
 - (PSRequest *) loadPictureRequest: (OBMessage *) message;
 - (PSRequest *) avatarImageRequestForUser: (OBUser *) user;
