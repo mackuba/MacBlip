@@ -17,7 +17,8 @@ can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's
 ## Requirements
 
 * Snow Leopard
-* MacRuby (>= 0.6)
+* MacRuby (>= 0.10)
+* 64-bit CPU (Core 2 Duo)
 
 ## License
 
