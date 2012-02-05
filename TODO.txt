@@ -1,0 +1,15 @@
+What else could be added:
+
+* add a dock icon badge with unread message count
+* reply/quote icon buttons appearing in the message cell on hover
+* user info panel
+* arranging quotes in threads
+* preferences window
+* list of directed/private messages
+* refactoring of view controllers
+* tag view (messages with that tag)
+* sending pictures
+* remember spelling correction settings in new message window (after NSTextView is added)
+* autosuggest user name when typing ^... in new message window
+* smaller notification message cells a la Adium
+* global shortcut to new message window (see RegisterEventHotKey or SDGlobalShortcuts, avoid NSEvent)
