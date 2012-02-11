@@ -21,21 +21,38 @@ class TweetieLikeScroller < NSScroller
     @gradient
   end
 
+  def self.isCompatibleWithOverlayScrollers
+    self == TweetieLikeScroller
+  end
+
+  def awakeFromNib
+    # on Lion use the standard scrollers, because they have a similar style and look better
+    @useDefaultScroller = self.respond_to?(:scrollerStyle)
+  end
+
   def setKnobProportion(amount)
-    super(amount / 2)
+    if @useDefaultScroller
+      super
+    else
+      super(amount / 2)
+    end
   end
 
   def drawRect(rect)
-    self.superview.backgroundColor.setFill
-    NSBezierPath.fillRect(self.bounds)
+    if @useDefaultScroller
+      super
+    else
+      self.superview.backgroundColor.setFill
+      NSBezierPath.fillRect(self.bounds)
 
-    scrollerRect = self.rectForPart(NSScrollerKnob)
-    scrollerRect.size.width *= 0.8
+      scrollerRect = self.rectForPart(NSScrollerKnob)
+      scrollerRect.size.width *= 0.8
 
-    unless scrollerRect.size == NSZeroSize
-      path = NSBezierPath.bezierPathWithRoundedRect(scrollerRect, xRadius: SCROLLER_RADIUS, yRadius: SCROLLER_RADIUS)
-      gradient = self.class.gradient
-      gradient.drawInBezierPath(path, angle: 0.0)
+      unless scrollerRect.size == NSZeroSize
+        path = NSBezierPath.bezierPathWithRoundedRect(scrollerRect, xRadius: SCROLLER_RADIUS, yRadius: SCROLLER_RADIUS)
+        gradient = self.class.gradient
+        gradient.drawInBezierPath(path, angle: 0.0)
+      end
     end
   end
 
