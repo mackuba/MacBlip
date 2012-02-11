@@ -72,8 +72,19 @@
 		selectionFellOfSide = 1;
 
 		[self _beginObservingContent];
+
+    // support for Lion scroller style changes - psionides
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(scrollerStyleChanged)
+                                                 name: NSPreferredScrollerStyleDidChangeNotification
+                                               object: nil];
 	}
 	return self;
+}
+
+- (void) scrollerStyleChanged {
+  // support for Lion scroller style changes - psionides
+  [self _layout];
 }
 
 - (void) releaseResources {
@@ -83,6 +94,11 @@
 	[listViewItems release];
 	[viewsThatShouldNotAnimate release];
   [footerView release];
+
+  // support for Lion scroller style changes - psionides
+  [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                  name: NSPreferredScrollerStyleDidChangeNotification
+                                                object: nil];
 }
 
 - (void) dealloc {
@@ -264,8 +280,13 @@
 	NSInteger contentCount = [listViewItems count];
 	
 	CGFloat scrollViewWidth = NSWidth([[self enclosingScrollView] frame]);
-	scrollViewWidth -= [[[[self enclosingScrollView] verticalScroller] class] scrollerWidth];
-	
+
+  // added support for Lion overlay scrollers - psionides
+  NSScroller *scroller = [[self enclosingScrollView] verticalScroller];
+  if (![scroller respondsToSelector: @selector(scrollerStyle)] || [scroller scrollerStyle] == NSScrollerStyleLegacy) {
+    scrollViewWidth -= [[scroller class] scrollerWidth];
+  }
+
 	CGFloat width = scrollViewWidth;
 	// something adds those 2 pixels, I don't know where they come from - if I don't subtract them here, the list
 	// is 2 pixels wider than it should be and it's scrollable horizontally, even though it shouldn't be - psionides
