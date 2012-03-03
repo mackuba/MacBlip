@@ -1,5 +1,6 @@
 #ifdef __OBJC__
 #import <Cocoa/Cocoa.h>
+#import <Quartz/Quartz.h>
 
 #define PSITOOLKIT_ENABLE_COCOA
 #define PSITOOLKIT_ENABLE_MODELS

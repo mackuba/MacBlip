@@ -94,6 +94,10 @@
   return YES;
 }
 
+- (BOOL) acceptsPreviewPanelControl: (QLPreviewPanel *) panel {
+  return NO;
+}
+
 // don't draw vertical text cursor
 - (BOOL) shouldDrawInsertionPoint {
   return NO;
