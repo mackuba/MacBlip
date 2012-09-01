@@ -7,10 +7,10 @@
 <enum name='OBStatusMessage' value='0'/>
 <class name='OBMessage'>
 <method selector='hasPicture'>
-<retval type='c'/>
+<retval type='B'/>
 </method>
 <method selector='hasPictureData'>
-<retval type='c'/>
+<retval type='B'/>
 </method>
 </class>
 </signatures>

@@ -3,10 +3,10 @@
 <signatures version='1.0'>
 <class name='OBConnector'>
 <method selector='autoLoadAvatars'>
-<retval type='c'/>
+<retval type='B'/>
 </method>
 <method selector='setAutoLoadAvatars:'>
-<arg type='c' index='0'/>
+<arg type='B' index='0'/>
 </method>
 </class>
 </signatures>
