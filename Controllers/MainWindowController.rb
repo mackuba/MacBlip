@@ -27,7 +27,7 @@ class MainWindowController < NSWindowController
     mbObserve(@blip.dashboardMonitor, OBDashboardAuthFailedNotification, 'dashboardAuthFailed')
     mbObserve(@blip.dashboardMonitor, OBDashboardWillUpdateNotification, :dashboardWillUpdate)
 
-    window.setContentBorderThickness(32, forEdge: CGRectMinYEdge)
+    window.setContentBorderThickness(32, forEdge: NSMinYEdge)
     window.movableByWindowBackground = true
 
     # sort descriptors have to be set *before* the content is bound to a list with items in it
