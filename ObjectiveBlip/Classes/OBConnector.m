@@ -91,7 +91,7 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
 }
 
 - (PSRequest *) dashboardRequest {
-  NSString *path = (lastMessageId == -1) ? @"/dashboard" : PSFormat(@"/dashboard/since/%d", lastMessageId);
+  NSString *path = (lastMessageId == -1) ? @"/dashboard" : PSFormat(@"/dashboard/since/%ld", lastMessageId);
   PSRequest *request = [self requestToPath: path];
   if (lastMessageId == -1) {
     [request addURLParameter: @"limit" integerValue: initialDashboardFetch];

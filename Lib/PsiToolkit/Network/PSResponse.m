@@ -72,12 +72,12 @@
 }
 
 - (NSString *) description {
-  NSString *message = PSFormat(@"request to %@: status = %d, content type = %@",
+  NSString *message = PSFormat(@"request to %@: status = %ld, content type = %@",
                                request.url, self.status, self.contentType);
   if ([self hasReadableContentType] && (self.text.length <= DEBUG_RESPONSE_LIMIT)) {
     message = [message stringByAppendingFormat: @", text = %@", self.text];
   } else {
-    message = [message stringByAppendingFormat: @", length = %d", self.text.length];
+    message = [message stringByAppendingFormat: @", length = %ld", self.text.length];
   }
 
   return message;

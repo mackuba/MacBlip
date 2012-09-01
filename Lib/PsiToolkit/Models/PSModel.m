@@ -353,7 +353,7 @@ PSReleaseOnDealloc(numericRecordId);
   switch (count) {
     case 0: return @"";
     case 1: return @"1 element";
-    default: return PSFormat(@"%d elements", count);
+    default: return PSFormat(@"%ld elements", count);
   }
 }
 

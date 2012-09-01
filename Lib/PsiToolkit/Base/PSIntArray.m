@@ -56,7 +56,7 @@
   if (index >= 0 && index < count) {
     values[index] = value;
   } else {
-    NSString *reason = PSFormat(@"Index outside range (index = %d, count = %d)", index, count);
+    NSString *reason = PSFormat(@"Index outside range (index = %ld, count = %ld)", index, count);
     NSException *exception = [NSException exceptionWithName: NSRangeException reason: reason userInfo: nil];
     @throw(exception);
   }
@@ -66,7 +66,7 @@
   if (index >= 0 && index < count) {
     return values[index];
   } else {
-    NSString *reason = PSFormat(@"Index outside range (index = %d, count = %d)", index, count);
+    NSString *reason = PSFormat(@"Index outside range (index = %ld, count = %ld)", index, count);
     NSException *exception = [NSException exceptionWithName: NSRangeException reason: reason userInfo: nil];
     @throw(exception);
   }
