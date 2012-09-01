@@ -107,6 +107,11 @@ PSReleaseOnDealloc(dashboardMonitor, avatarGroups);
   PSRequest *request = [self requestToPath: @"/dashboard"];
   [request addURLParameter: @"limit" integerValue: initialDashboardFetch];
   [request addURLParameter: @"offset" integerValue: [OBMessage count]];
+
+  if (autoLoadPictureInfo) {
+    [request addURLParameter: @"include" value: @"pictures"];
+  }
+
   request.userInfo = PSHash(@"old", PSBool(YES));
   request.successHandler = @selector(dashboardUpdated:);
   return request;
