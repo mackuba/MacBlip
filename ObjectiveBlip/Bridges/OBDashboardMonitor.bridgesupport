@@ -1,8 +1,8 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<string_constant name='OBDashboardAuthFailedNotification' nsstring='true' value='OBDashboardAuthFailedNotification'/>
-<string_constant name='OBDashboardUpdateFailedNotification' nsstring='true' value='OBDashboardUpdateFailedNotification'/>
-<string_constant name='OBDashboardUpdatedNotification' nsstring='true' value='OBDashboardUpdatedNotification'/>
-<string_constant name='OBDashboardWillUpdateNotification' nsstring='true' value='OBDashboardWillUpdateNotification'/>
+<signatures version='1.0'>
+<string_constant value='OBDashboardAuthFailedNotification' name='OBDashboardAuthFailedNotification' nsstring='true'/>
+<string_constant value='OBDashboardUpdateFailedNotification' name='OBDashboardUpdateFailedNotification' nsstring='true'/>
+<string_constant value='OBDashboardUpdatedNotification' name='OBDashboardUpdatedNotification' nsstring='true'/>
+<string_constant value='OBDashboardWillUpdateNotification' name='OBDashboardWillUpdateNotification' nsstring='true'/>
 </signatures>

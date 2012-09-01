@@ -1,9 +1,9 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
+<signatures version='1.0'>
 <class name='PSModel'>
 <method selector='copyFieldsFrom:skipNullValues:'>
-<arg type='B' index='1'/>
+<arg index='1' type='B'/>
 </method>
 <method selector='isEqual:'>
 <retval type='B'/>

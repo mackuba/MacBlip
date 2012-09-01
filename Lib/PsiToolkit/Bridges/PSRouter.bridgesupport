@@ -1,8 +1,8 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<informal_protocol name='NSObject'>
-<method type='@12@0:4#8' selector='pathForModel:'/>
-<method type='@12@0:4@8' selector='pathForObject:'/>
+<signatures version='1.0'>
+<informal_protocol name='PSRouter'>
+<method selector='pathForModel:' type='@12@0:4#8' type64='@24@0:8#16'/>
+<method selector='pathForObject:' type='@12@0:4@8' type64='@24@0:8@16'/>
 </informal_protocol>
 </signatures>

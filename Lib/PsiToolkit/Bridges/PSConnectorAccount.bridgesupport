@@ -1,8 +1,8 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<informal_protocol name='NSObject'>
-<method type='@8@0:4' selector='password'/>
-<method type='@8@0:4' selector='username'/>
+<signatures version='1.0'>
+<informal_protocol name='PSConnectorAccount'>
+<method selector='password' type64='@16@0:8' type='@8@0:4'/>
+<method selector='username' type64='@16@0:8' type='@8@0:4'/>
 </informal_protocol>
 </signatures>

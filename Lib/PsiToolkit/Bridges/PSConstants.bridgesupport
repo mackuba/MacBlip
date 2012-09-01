@@ -1,31 +1,31 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<string_constant name='PSDeleteMethod' nsstring='true' value='DELETE'/>
-<string_constant name='PSGenericCell' nsstring='true' value='PSGenericCell'/>
-<string_constant name='PSGetMethod' nsstring='true' value='GET'/>
-<string_constant name='PSPostMethod' nsstring='true' value='POST'/>
-<string_constant name='PSPutMethod' nsstring='true' value='PUT'/>
-<string_constant name='PsiToolkitErrorDomain' nsstring='true' value='PsiToolkitErrorDomain'/>
-<enum name='PSDay' value='86400'/>
-<enum name='PSGigabyte' value='1073741824'/>
-<enum name='PSHTTPStatusAccepted' value='202'/>
-<enum name='PSHTTPStatusBadGateway' value='502'/>
-<enum name='PSHTTPStatusBadRequest' value='400'/>
-<enum name='PSHTTPStatusConflict' value='409'/>
-<enum name='PSHTTPStatusCreated' value='201'/>
-<enum name='PSHTTPStatusForbidden' value='403'/>
-<enum name='PSHTTPStatusInternalServerError' value='500'/>
-<enum name='PSHTTPStatusNoContent' value='204'/>
-<enum name='PSHTTPStatusNotFound' value='404'/>
-<enum name='PSHTTPStatusOK' value='200'/>
-<enum name='PSHTTPStatusPreconditionFailed' value='412'/>
-<enum name='PSHTTPStatusServiceUnavailable' value='503'/>
-<enum name='PSHTTPStatusUnauthorized' value='401'/>
-<enum name='PSHour' value='3600'/>
-<enum name='PSIncorrectContentTypeError' value='-1'/>
-<enum name='PSJSONParsingError' value='-2'/>
-<enum name='PSKilobyte' value='1024'/>
-<enum name='PSMegabyte' value='1048576'/>
-<enum name='PSMinute' value='60'/>
+<signatures version='1.0'>
+<string_constant value='DELETE' name='PSDeleteMethod' nsstring='true'/>
+<string_constant value='PSGenericCell' name='PSGenericCell' nsstring='true'/>
+<string_constant value='GET' name='PSGetMethod' nsstring='true'/>
+<string_constant value='POST' name='PSPostMethod' nsstring='true'/>
+<string_constant value='PUT' name='PSPutMethod' nsstring='true'/>
+<string_constant value='PsiToolkitErrorDomain' name='PsiToolkitErrorDomain' nsstring='true'/>
+<enum value='86400' name='PSDay'/>
+<enum value='1073741824' name='PSGigabyte'/>
+<enum value='202' name='PSHTTPStatusAccepted'/>
+<enum value='502' name='PSHTTPStatusBadGateway'/>
+<enum value='400' name='PSHTTPStatusBadRequest'/>
+<enum value='409' name='PSHTTPStatusConflict'/>
+<enum value='201' name='PSHTTPStatusCreated'/>
+<enum value='403' name='PSHTTPStatusForbidden'/>
+<enum value='500' name='PSHTTPStatusInternalServerError'/>
+<enum value='204' name='PSHTTPStatusNoContent'/>
+<enum value='404' name='PSHTTPStatusNotFound'/>
+<enum value='200' name='PSHTTPStatusOK'/>
+<enum value='412' name='PSHTTPStatusPreconditionFailed'/>
+<enum value='503' name='PSHTTPStatusServiceUnavailable'/>
+<enum value='401' name='PSHTTPStatusUnauthorized'/>
+<enum value='3600' name='PSHour'/>
+<enum value='-1' name='PSIncorrectContentTypeError'/>
+<enum value='-2' name='PSJSONParsingError'/>
+<enum value='1024' name='PSKilobyte'/>
+<enum value='1048576' name='PSMegabyte'/>
+<enum value='60' name='PSMinute'/>
 </signatures>

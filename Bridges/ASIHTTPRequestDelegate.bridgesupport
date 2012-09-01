@@ -1,13 +1,13 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
-<informal_protocol name='NSObject'>
-<method type='v12@0:4@8' selector='authenticationNeededForRequest:'/>
-<method type='v12@0:4@8' selector='proxyAuthenticationNeededForRequest:'/>
-<method type='v16@0:4@8@12' selector='request:didReceiveData:'/>
-<method type='v12@0:4@8' selector='requestFailed:'/>
-<method type='v12@0:4@8' selector='requestFinished:'/>
-<method type='v12@0:4@8' selector='requestReceivedResponseHeaders:'/>
-<method type='v12@0:4@8' selector='requestStarted:'/>
+<signatures version='1.0'>
+<informal_protocol name='ASIHTTPRequestDelegate'>
+<method type64='v24@0:8@16' selector='authenticationNeededForRequest:' type='v12@0:4@8'/>
+<method type64='v24@0:8@16' selector='proxyAuthenticationNeededForRequest:' type='v12@0:4@8'/>
+<method type64='v32@0:8@16@24' selector='request:didReceiveData:' type='v16@0:4@8@12'/>
+<method type64='v24@0:8@16' selector='requestFailed:' type='v12@0:4@8'/>
+<method type64='v24@0:8@16' selector='requestFinished:' type='v12@0:4@8'/>
+<method type64='v24@0:8@16' selector='requestReceivedResponseHeaders:' type='v12@0:4@8'/>
+<method type64='v24@0:8@16' selector='requestStarted:' type='v12@0:4@8'/>
 </informal_protocol>
 </signatures>

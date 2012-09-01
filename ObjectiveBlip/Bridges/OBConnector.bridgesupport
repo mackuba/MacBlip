@@ -1,12 +1,12 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
+<signatures version='1.0'>
 <class name='OBConnector'>
 <method selector='autoLoadAvatars'>
-<retval type='B'/>
+<retval type='c'/>
 </method>
 <method selector='setAutoLoadAvatars:'>
-<arg type='B' index='0'/>
+<arg type='c' index='0'/>
 </method>
 </class>
 </signatures>

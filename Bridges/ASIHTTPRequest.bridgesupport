@@ -1,8 +1,8 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'>
+<signatures version='1.0'>
 <constant name='ASIHTTPRequestVersion' type='@'/>
-<constant name='ASIWWANBandwidthThrottleAmount' type='L'/>
+<constant name='ASIWWANBandwidthThrottleAmount' type64='Q' type='L'/>
 <constant name='NetworkRequestErrorDomain' type='@'/>
 <enum name='ASIAuthenticationErrorType' value='3'/>
 <enum name='ASIConnectionFailureErrorType' value='1'/>
@@ -48,7 +48,7 @@
 <method selector='inProgress'>
 <retval type='B'/>
 </method>
-<method selector='isBandwidthThrottled' class_method='true'>
+<method class_method='true' selector='isBandwidthThrottled'>
 <retval type='B'/>
 </method>
 <method selector='isResponseCompressed'>
@@ -57,74 +57,74 @@
 <method selector='isSynchronous'>
 <retval type='B'/>
 </method>
-<method selector='isiPhoneOS2' class_method='true'>
+<method class_method='true' selector='isiPhoneOS2'>
 <retval type='B'/>
 </method>
 <method selector='retryUsingNewConnection'>
 <retval type='B'/>
 </method>
 <method selector='setAllowCompressedResponse:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setAllowResumeForFileDownloads:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setDidCreateTemporaryPostDataFile:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setHaveBuiltPostBody:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setHaveBuiltRequestHeaders:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldAttemptPersistentConnection:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldCompressRequestBody:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldPresentAuthenticationDialog:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldPresentCredentialsBeforeChallenge:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldPresentProxyAuthenticationDialog:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldRedirect:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldResetDownloadProgress:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldResetUploadProgress:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldStreamPostDataFromDisk:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShouldUseRFC2616RedirectBehaviour:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setShowAccurateProgress:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setUseCookiePersistence:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setUseHTTPVersionOne:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setUseKeychainPersistence:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setUseSessionPersistence:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='setValidatesSecureCertificate:'>
-<arg type='B' index='0'/>
+<arg index='0' type='B'/>
 </method>
 <method selector='shouldAttemptPersistentConnection'>
 <retval type='B'/>

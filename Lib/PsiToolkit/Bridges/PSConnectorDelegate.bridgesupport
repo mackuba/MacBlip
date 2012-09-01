@@ -1,3 +1,8 @@
 <?xml version='1.0'?>
 <!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
-<signatures version='0.9'/>
+<signatures version='1.0'>
+<informal_protocol name='PSConnectorDelegate'>
+<method type64='v24@0:8@16' selector='authenticationFailedInRequest:' type='v12@0:4@8'/>
+<method type64='v32@0:8@16@24' selector='requestFailed:withError:' type='v16@0:4@8@12'/>
+</informal_protocol>
+</signatures>
