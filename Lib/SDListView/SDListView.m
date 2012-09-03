@@ -74,10 +74,12 @@
 		[self _beginObservingContent];
 
     // support for Lion scroller style changes - psionides
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(scrollerStyleChanged)
-                                                 name: NSPreferredScrollerStyleDidChangeNotification
-                                               object: nil];
+    if (&NSPreferredScrollerStyleDidChangeNotification != NULL) {
+      [[NSNotificationCenter defaultCenter] addObserver: self
+                                               selector: @selector(scrollerStyleChanged)
+                                                   name: NSPreferredScrollerStyleDidChangeNotification
+                                                 object: nil];
+    }
 	}
 	return self;
 }
@@ -95,10 +97,12 @@
 	[viewsThatShouldNotAnimate release];
   [footerView release];
 
-  // support for Lion scroller style changes - psionides
-  [[NSNotificationCenter defaultCenter] removeObserver: self
-                                                  name: NSPreferredScrollerStyleDidChangeNotification
-                                                object: nil];
+  if (&NSPreferredScrollerStyleDidChangeNotification != NULL) {
+    // support for Lion scroller style changes - psionides
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                    name: NSPreferredScrollerStyleDidChangeNotification
+                                                  object: nil];
+  }
 }
 
 - (void) dealloc {
