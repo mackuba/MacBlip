@@ -10,9 +10,29 @@
 
     <item>
       <title>Wersja 0.4.1</title>
-      <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.4.1.html
-      </sparkle:releaseNotesLink>
+      <description>
+        <![CDATA[
+          <html>
+            <head>
+              <meta http-equiv="content-type" content="text/html;charset=utf-8">
+              <title>MacBlip wersja 0.4.1</title>
+              <link href="http://github.com/psionides/MacBlip/raw/master/Sparkle/appcast.css" type="text/css"
+                    rel="stylesheet" media="all">
+            </head>
+
+            <body>
+              <br>
+              <h3>Zmiany:</h3>
+              <ul>
+                <li>kompatybilność z OSX 10.8 (Mountain Lion)</li>
+                <li>w OSX 10.7+ używany jest standardowy cienki scrollbar z boku okna</li>
+                <li>naprawiony błąd w wyświetlaniu podglądu obrazków</li>
+                <li>naprawiony błąd w wyświetlaniu obrazków w wiadomościach doładowanych przez "Załaduj więcej"</li>
+              </ul>
+            </body>
+          </html>
+        ]]>
+      </description>
       <pubDate>Tue, 4 Sep 2012 21:19:08 +0000</pubDate>
       <enclosure
         url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.4.1.zip"
