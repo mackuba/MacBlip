@@ -4,7 +4,7 @@
   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>MacBlip Changelog</title>
-    <link>http://github.com/psionides/MacBlip/raw/master/Sparkle/macblip_appcast.xml</link>
+    <link>http://github.com/jsuder/MacBlip/raw/master/Sparkle/macblip_appcast.xml</link>
     <description>Najnowsze zmiany w MacBlip</description>
     <language>pl</language>
 
@@ -16,7 +16,7 @@
             <head>
               <meta http-equiv="content-type" content="text/html;charset=utf-8">
               <title>MacBlip wersja 0.4.1</title>
-              <link href="http://github.com/psionides/MacBlip/raw/master/Sparkle/appcast.css" type="text/css"
+              <link href="http://github.com/jsuder/MacBlip/raw/master/Sparkle/appcast.css" type="text/css"
                     rel="stylesheet" media="all">
             </head>
 
@@ -35,7 +35,7 @@
       </description>
       <pubDate>Tue, 4 Sep 2012 21:19:08 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.4.1.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.4.1.zip"
         sparkle:version="0.4.1"
         length="6758101"
         type="application/octet-stream"
@@ -45,11 +45,11 @@
     <item>
       <title>Wersja 0.4</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.4.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.4.html
       </sparkle:releaseNotesLink>
       <pubDate>Sun, 12 Jun 2011 21:55:41 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.4.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.4.zip"
         sparkle:version="0.4"
         length="6557283"
         type="application/octet-stream"
@@ -59,11 +59,11 @@
     <item>
       <title>Wersja 0.3.3</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.3.3.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.3.3.html
       </sparkle:releaseNotesLink>
       <pubDate>Sun, 26 Jun 2010 18:27:16 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.3.3.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.3.3.zip"
         sparkle:version="0.3.3"
         length="11261542"
         type="application/octet-stream"
@@ -73,11 +73,11 @@
     <item>
       <title>Wersja 0.3.2</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.3.2.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.3.2.html
       </sparkle:releaseNotesLink>
       <pubDate>Thu, 22 Apr 2010 12:34:35 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.3.2.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.3.2.zip"
         sparkle:version="0.3.2"
         length="11305181"
         type="application/octet-stream"
@@ -87,11 +87,11 @@
     <item>
       <title>Wersja 0.3.1</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.3.1.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.3.1.html
       </sparkle:releaseNotesLink>
       <pubDate>Thu, 22 Apr 2010 11:43:58 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip_0.3.1.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip_0.3.1.zip"
         sparkle:version="0.3.1"
         length="11305229"
         type="application/octet-stream"
@@ -101,11 +101,11 @@
     <item>
       <title>Wersja 0.3</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.3.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.3.html
       </sparkle:releaseNotesLink>
       <pubDate>Wed, 21 Apr 2010 16:45:48 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.3.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.3.zip"
         sparkle:version="0.3"
         length="11082380"
         type="application/octet-stream"
@@ -115,11 +115,11 @@
     <item>
       <title>Wersja 0.2</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.2.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.2.html
       </sparkle:releaseNotesLink>
       <pubDate>Mon, 15 Mar 2010 19:26:21 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.2.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.2.zip"
         sparkle:version="0.2"
         length="11245003"
         type="application/octet-stream"
@@ -129,11 +129,11 @@
     <item>
       <title>Wersja 0.1.1</title>
       <sparkle:releaseNotesLink>
-        http://github.com/psionides/MacBlip/raw/master/Sparkle/release-0.1.1.html
+        http://github.com/jsuder/MacBlip/raw/master/Sparkle/release-0.1.1.html
       </sparkle:releaseNotesLink>
       <pubDate>Wed, 26 Feb 2010 20:16:56 +0000</pubDate>
       <enclosure
-        url="http://github.com/downloads/psionides/MacBlip/MacBlip-0.1.1.zip"
+        url="http://github.com/downloads/jsuder/MacBlip/MacBlip-0.1.1.zip"
         sparkle:version="0.1.1"
         length="10901781"
         type="application/octet-stream"
