@@ -3,7 +3,7 @@
 MacBlip is a MacOSX client for [Blip.pl](http://blip.pl), Polish microblogging service, written in MacRuby.
 
 The ObjectiveBlip directory contains the backend code that handles the connection to Blip API. It's a separate
-subproject, available at [http://github.com/psionides/ObjectiveBlip](http://github.com/psionides/ObjectiveBlip), and you
+subproject, available at [http://github.com/jsuder/ObjectiveBlip](http://github.com/jsuder/ObjectiveBlip), and you
 can use it to create your own Blip clients in ObjectiveC/Cocoa if you want (it's MIT-licensed).
 
 ## Features
